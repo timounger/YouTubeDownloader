@@ -20,8 +20,8 @@ S_TITEL = "YouTube Downloader"
 S_DOWNLOAD_FOLDER = "Download"
 
 L_FORMAT = [
-    ("720p",1),
-    ("144p",2),
+    ("Hohe Auflösung",1),
+    ("Niedrige Auflösung",2),
     ("Nur Audio",3)
 ]
 
@@ -43,7 +43,7 @@ class CyoutubeDownloadGui:
         o_url_label.grid()
         #Entry Box
         o_url = Entry(self.root,width=50,textvariable=self.o_url_choice)
-        o_url.insert(0, clipboard.paste())
+        o_url.insert(0, clipboard.paste()) # set content of clipboard as default
         o_url.grid()
         #Error Message
         self.o_status = Label(self.root,text="Status",fg="red",font=("jost",10))
