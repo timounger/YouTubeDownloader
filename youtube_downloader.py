@@ -28,10 +28,11 @@ L_FORMAT = [
 c_gui = []
 
 class CyoutubeDownloadGui:
-    """ class for youtube download gui """
+    """ class for YouTube download GUI """
     def __init__(self):
         self.root = Tk()
         self.root.title(S_TITEL + " V%s\n" % S_VERSION)
+        #self.root.iconbitmap('Tool/app.ico')
         self.root.geometry("350x250") #set window
         self.root.columnconfigure(0,weight=1) #set all content in center.
         self.o_url_choice = StringVar()
@@ -77,15 +78,16 @@ class CyoutubeDownloadGui:
                 self.o_status.config(text="Ungültige URL!",fg="red")
             if b_valid_url:
                 if i_choice == 1:
-                    select = youtube_obj.streams.filter(progressive=True).first()
+                    o_stream = youtube_obj.streams.filter(progressive=True, file_extension='mp4').get_highest_resolution()
                 elif i_choice == 2:
-                    select = youtube_obj.streams.filter(progressive=True,\
-                                                        file_extension='mp4').last()
+                    o_stream = youtube_obj.streams.filter(progressive=True, file_extension='mp4').get_lowest_resolution()
                 elif i_choice == 3:
-                    select = youtube_obj.streams.filter(only_audio=True).first()
+                    o_stream = youtube_obj.streams.filter(only_audio=True).first()
                 else:
-                    select = youtube_obj.streams.filter(progressive=True).first()
-                select.download(S_DOWNLOAD_FOLDER)
+                    self.o_status.config(text="Unerwarteter Fehler!",fg="red")
+                #for stream in youtube_obj.streams.filter(progressive=True, file_extension='mp4'): print(stream)
+                #print(o_stream)
+                o_stream.download(S_DOWNLOAD_FOLDER)
                 self.o_status.config(text="Download abgeschlossen!", fg="green")
         else:
             self.o_status.config(text="Bitte Format angeben!",fg="red")
