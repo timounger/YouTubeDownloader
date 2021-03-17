@@ -8,6 +8,7 @@
 """
 
 from tkinter import Label, Tk, StringVar, IntVar, Entry, Radiobutton, Button
+import clipboard
 import os
 import subprocess
 import pytube
@@ -42,6 +43,7 @@ class CyoutubeDownloadGui:
         o_url_label.grid()
         #Entry Box
         o_url = Entry(self.root,width=50,textvariable=self.o_url_choice)
+        o_url.insert(0, clipboard.paste())
         o_url.grid()
         #Error Message
         self.o_status = Label(self.root,text="Status",fg="red",font=("jost",10))
