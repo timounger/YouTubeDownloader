@@ -19,23 +19,27 @@ S_DEVELOPER_LABLE = "Timo Unger © 2021"
 S_TITEL = "YouTube Downloader"
 S_DOWNLOAD_FOLDER = "Download"
 
+l_format = [
+    ("720p",1),
+    ("144p",2),
+    ("Nur Audio",3)
+]
+
 def download():
     """ download YouTube content"""
-    choice = o_format.get()
-    url = s_url.get()
-    if len(url) > 1:
-        s_status.config(text="")
-        youtube_obj = pytube.YouTube(url)
-        if choice == l_format[0]:
-            select = youtube_obj.streams.filter(progressive=True).first()
-        elif choice == l_format[1]:
-            select = youtube_obj.streams.filter(progressive=True,file_extension='mp4').last()
-        elif choice == l_format[2]:
-            select = youtube_obj.streams.filter(only_audio=True).first()
-        else:
-            s_status.config(text="Bitte Format angeben!",fg="red")
+    i_choice = o_format_choice.get()
+    s_url = o_url_choice.get()
+    youtube_obj = pytube.YouTube(s_url)
+    if i_choice == 1:
+        select = youtube_obj.streams.filter(progressive=True).first()
+    elif i_choice == 2:
+        select = youtube_obj.streams.filter(progressive=True,file_extension='mp4').last()
+    elif i_choice == 3:
+        select = youtube_obj.streams.filter(only_audio=True).first()
+    else:
+        o_status.config(text="Bitte Format angeben!",fg="red")
     select.download(S_DOWNLOAD_FOLDER)
-    s_status.config(text="Download abgeschlossen!", fg="green")
+    o_status.config(text="Download abgeschlossen!", fg="green")
 
 def open_download_folder():
     """ open download folder and create if not exist """
@@ -47,38 +51,38 @@ if __name__ == "__main__":
     root = Tk()
     root.title(S_TITEL + " V%s\n" % S_VERSION)
     root.geometry("350x250") #set window
-    root.columnconfigure(0,weight=1)#set all content in center.
+    root.columnconfigure(0,weight=1) #set all content in center.
 
     #YouTube Link Label
     ytdLabel = Label(root,text="Gebe die YouTube URL ein:",font=("jost",15))
     ytdLabel.grid()
 
     #Entry Box
-    ytdEntryVar = StringVar()
-    s_url = Entry(root,width=50,textvariable=ytdEntryVar)
-    s_url.grid()
+    o_url_choice = StringVar()
+    o_url = Entry(root,width=50,textvariable=o_url_choice)
+    o_url.grid()
 
     #Error Message
-    s_status = Label(root,text="Status",fg="red",font=("jost",10))
-    s_status.grid()
+    o_status = Label(root,text="Status",fg="red",font=("jost",10))
+    o_status.grid()
 
     #Download Quality
-    ytdQuality = Label(root,text="Wähle ein Format",font=("jost",15))
-    ytdQuality.grid()
-
-    l_format = ["720p","144p","Nur Audio"]
-    o_format = ttk.Combobox(root,values=l_format)
-    o_format.grid()
+    o_format_label = Label(root,text="Wähle ein Format",font=("jost",15))
+    o_format_label.grid()
+    o_format_choice = IntVar()
+    for txt, val in l_format:
+        o_format = Radiobutton(root, text=txt, padx = 20, variable = o_format_choice, value=val)
+        o_format.grid()
 
     #download button
-    downloadbtn = Button(root,text="Download",width=10,bg="red",fg="white",command=download)
-    downloadbtn.grid()
+    o_download_button = Button(root,text="Download",width=10,bg="red",fg="white",command=download)
+    o_download_button.grid()
 
     #folder button
-    downloadbtn = Button(root,text="Öffne Speicherort",width=15,bg="grey",fg="white",command=open_download_folder)
-    downloadbtn.grid()
+    o_download_button = Button(root,text="Öffne Speicherort",width=15,bg="grey",fg="white",command=open_download_folder)
+    o_download_button.grid()
 
     #developer Label
-    developerlabel = Label(root,text=S_DEVELOPER_LABLE,font=("Calibri",12))
-    developerlabel.grid()
+    o_developer_label = Label(root,text=S_DEVELOPER_LABLE,font=("Calibri",12))
+    o_developer_label.grid()
     root.mainloop()
