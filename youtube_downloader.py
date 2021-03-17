@@ -7,8 +7,7 @@
 *****************************************************************************
 """
 
-from tkinter import *
-from tkinter import ttk
+from tkinter import Label, Tk, StringVar, IntVar, Entry, Radiobutton, Button
 import os
 import subprocess
 import pytube
@@ -51,13 +50,16 @@ class CyoutubeDownloadGui:
         o_format_label.grid()
         # format radio button
         for txt, val in L_FORMAT:
-            o_format = Radiobutton(self.root, text=txt, padx = 20, variable = self.o_format_choice, value=val)
+            o_format = Radiobutton(self.root, text=txt, padx = 20,\
+                                   variable = self.o_format_choice, value=val)
             o_format.grid()
         #download button
-        o_download_button = Button(self.root,text="Download",width=10,bg="red",fg="white",command=self.download)
+        o_download_button = Button(self.root,text="Download",width=10,\
+                                   bg="red",fg="white",command=self.download)
         o_download_button.grid()
         #folder button
-        o_download_button = Button(self.root,text="Öffne Speicherort",width=15,bg="grey",fg="white",command=self.open_download_folder)
+        o_download_button = Button(self.root,text="Öffne Speicherort",width=15,\
+                                   bg="grey",fg="white",command=self.open_download_folder)
         o_download_button.grid()
         #developer Label
         o_developer_label = Label(self.root,text=S_DEVELOPER_LABLE,font=("Calibri",12))
@@ -71,13 +73,14 @@ class CyoutubeDownloadGui:
             try:
                 youtube_obj = pytube.YouTube(s_url)
                 b_valid_url = True
-            except:
+            except: # pylint: disable=bare-except
                 self.o_status.config(text="Ungültige URL!",fg="red")
             if b_valid_url:
                 if i_choice == 1:
                     select = youtube_obj.streams.filter(progressive=True).first()
                 elif i_choice == 2:
-                    select = youtube_obj.streams.filter(progressive=True,file_extension='mp4').last()
+                    select = youtube_obj.streams.filter(progressive=True,\
+                                                        file_extension='mp4').last()
                 elif i_choice == 3:
                     select = youtube_obj.streams.filter(only_audio=True).first()
                 else:
@@ -86,7 +89,7 @@ class CyoutubeDownloadGui:
                 self.o_status.config(text="Download abgeschlossen!", fg="green")
         else:
             self.o_status.config(text="Bitte Format angeben!",fg="red")
-    def open_download_folder(self):
+    def open_download_folder(self): # pylint: disable=R0201
         """ open download folder and create if not exist """
         if not os.path.isdir(S_DOWNLOAD_FOLDER):
             os.makedirs(S_DOWNLOAD_FOLDER)
