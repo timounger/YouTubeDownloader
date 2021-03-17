@@ -29,17 +29,26 @@ def download():
     """ download YouTube content"""
     i_choice = o_format_choice.get()
     s_url = o_url_choice.get()
-    youtube_obj = pytube.YouTube(s_url)
-    if i_choice == 1:
-        select = youtube_obj.streams.filter(progressive=True).first()
-    elif i_choice == 2:
-        select = youtube_obj.streams.filter(progressive=True,file_extension='mp4').last()
-    elif i_choice == 3:
-        select = youtube_obj.streams.filter(only_audio=True).first()
+    if  i_choice != 0:
+        b_valid_url = False
+        try:
+            youtube_obj = pytube.YouTube(s_url)
+            b_valid_url = True
+        except:
+            o_status.config(text="Ungültige URL!",fg="red")
+        if b_valid_url:
+            if i_choice == 1:
+                select = youtube_obj.streams.filter(progressive=True).first()
+            elif i_choice == 2:
+                select = youtube_obj.streams.filter(progressive=True,file_extension='mp4').last()
+            elif i_choice == 3:
+                select = youtube_obj.streams.filter(only_audio=True).first()
+            else:
+                select = youtube_obj.streams.filter(progressive=True).first()
+            select.download(S_DOWNLOAD_FOLDER)
+            o_status.config(text="Download abgeschlossen!", fg="green")
     else:
         o_status.config(text="Bitte Format angeben!",fg="red")
-    select.download(S_DOWNLOAD_FOLDER)
-    o_status.config(text="Download abgeschlossen!", fg="green")
 
 def open_download_folder():
     """ open download folder and create if not exist """
@@ -66,9 +75,11 @@ if __name__ == "__main__":
     o_status = Label(root,text="Status",fg="red",font=("jost",10))
     o_status.grid()
 
-    #Download Quality
+    # format label
     o_format_label = Label(root,text="Wähle ein Format",font=("jost",15))
     o_format_label.grid()
+    
+    # format radio button
     o_format_choice = IntVar()
     for txt, val in l_format:
         o_format = Radiobutton(root, text=txt, padx = 20, variable = o_format_choice, value=val)
