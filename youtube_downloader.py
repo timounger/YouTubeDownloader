@@ -54,6 +54,7 @@ class CyoutubeDownloadGui:
             o_format = Radiobutton(self.root, text=txt, padx = 20,\
                                    variable = self.o_format_choice, value=val)
             o_format.grid()
+        self.o_format_choice.set(1) # set first radio button as default
         #download button
         o_download_button = Button(self.root,text="Download",width=10,\
                                    bg="red",fg="white",command=self.download)
