@@ -7,39 +7,64 @@
 *****************************************************************************
 """
 
+from tkinter import *
+from tkinter import ttk
 import subprocess
 import pytube
-from tkinter import *
 
 S_VERSION = "0.1"
 S_TITEL = "YouTube Downloader"
 S_DOWNLOAD_FOLDER = "Download"
 
-b_button_mp4_pressed = False
-
 def download():
-    """ download YouTube content and open explorer if successful """
-    notif.config(fg="green",text="Download wird durchgeführt...")
-    try:
-        yt_obj = pytube.YouTube(s_url.get())
-        filters = yt_obj.streams.filter(progressive=True, file_extension="mp4")
-        # download_loop the highest quality video
-        filters.get_highest_resolution().download(S_DOWNLOAD_FOLDER)
-        notif.config(fg="green",text="Download war erfolgreich!")
-        subprocess.Popen('explorer ' + S_DOWNLOAD_FOLDER)
-    except Exception: # pylint: disable=broad-except 
-        notif.config(fg="red",text="Download war nicht erfolgreich!")
+    choice = o_format.get()
+    url = s_url.get()
+    if(len(url) > 1):
+        s_status.config(text="")
+        yt = pytube.YouTube(url)
+        if(choice == choices[0]):
+            select = yt.streams.filter(progressive=True).first()
+        elif(choice == choices[1]):
+            select = yt.streams.filter(progressive=True,file_extension='mp4').last()
+        elif(choice == choices[2]):
+            select = yt.streams.filter(only_audio=True).first()
+        else:
+            s_status.config(text="Bitte Format angeben!",fg="red")
+    select.download(S_DOWNLOAD_FOLDER)
+    s_status.config(text="Download abgeschlossen!")
+    subprocess.Popen('explorer ' + S_DOWNLOAD_FOLDER)
+root = Tk()
+root.title(S_TITEL + " V%s\n" % S_VERSION)
+root.geometry("350x180") #set window
+root.columnconfigure(0,weight=1)#set all content in center.
 
-if __name__ == "__main__":
-    master = Tk()
-    master.title(S_TITEL + " V%s\n" % S_VERSION)
-    Label(master, text=S_TITEL,fg="red",font=("Calibri",15)).grid(sticky=N,padx=100,row=0)
-    Label(master,text="Gebe die YouTube URL ein:",font=("Calibri",12)).grid(sticky=N,row=1,pady=15)
-    Label(master, text="Timo Unger © 2021",fg="black",font=("Calibri",12)).grid(sticky=N,padx=100,row=6)
-    notif = Label(master,font=("Calibri",12))
-    notif.grid(sticky=N,pady=1,row=5)
-    s_url=StringVar()
-    Entry(master,width=50,textvariable=s_url).grid(sticky=N,row=2)
-    Button(master,width=20,text="Download .mp4",font=("Calibri",12),command=download).grid(sticky=N,row=3,pady=15) #Button mp4
-    Button(master,width=20,text="Download .mp3",font=("Calibri",12),command=download).grid(sticky=N,row=4,pady=15) #Button mp3
-    master.mainloop()
+#Ytd Link Label
+ytdLabel = Label(root,text="Gebe die YouTube URL ein:",font=("jost",15))
+ytdLabel.grid()
+
+#Entry Box
+ytdEntryVar = StringVar()
+s_url = Entry(root,width=50,textvariable=ytdEntryVar)
+s_url.grid()
+
+#Error Msg
+s_status = Label(root,text="Status",fg="red",font=("jost",10))
+s_status.grid()
+
+#Download Quality
+ytdQuality = Label(root,text="Wähle ein Format",font=("jost",15))
+ytdQuality.grid()
+
+#combobox
+choices = ["720p","144p","Nur Audio"]
+o_format = ttk.Combobox(root,values=choices)
+o_format.grid()
+
+#download button
+downloadbtn = Button(root,text="Download",width=10,bg="red",fg="white",command=download)
+downloadbtn.grid()
+
+#developer Label
+developerlabel = Label(root,text="Timo Unger © 2021",font=("Calibri",12))
+developerlabel.grid()
+root.mainloop()
