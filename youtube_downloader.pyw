@@ -90,16 +90,16 @@ c_gui = []
 
 class CyoutubeDownloadGui:
     """ class for YouTube download GUI """
-    def __init__(self):
+    def __init__(self): # pylint: disable=R0914
         self.root = Tk()
         self.root.title(S_TITEL + " V%s\n" % S_VERSION)
         icondata = base64.b64decode(S_ICON) # The Base64 icon version as a string
-        tempFile= "temp_icon.ico" # The temporary file
-        iconfile= open(tempFile,"wb")
+        s_temp_file= "temp_icon.ico" # The temporary file
+        iconfile= open(s_temp_file,"wb")
         iconfile.write(icondata) # Extract the icon
         iconfile.close()
-        self.root.wm_iconbitmap(tempFile) # set icon
-        os.remove(tempFile) # Delete the tempfile
+        self.root.wm_iconbitmap(s_temp_file) # set icon
+        os.remove(s_temp_file) # Delete the tempfile
         self.root.geometry("350x250") #set window
         self.root.columnconfigure(0,weight=1) #set all content in center.
         self.o_url_choice = StringVar()
@@ -111,7 +111,15 @@ class CyoutubeDownloadGui:
         o_url = Entry(self.root,width=50,textvariable=self.o_url_choice)
         s_clipboard_text = clipboard.paste() # get content of clip board
         s_compare_string = "https://"
-        if (len(s_clipboard_text) < 50) and (s_clipboard_text[0:len(s_compare_string)] == s_compare_string):
+        b_valid_url = False
+        if     (len(s_clipboard_text) < 50)\
+           and (s_clipboard_text[0:len(s_compare_string)] == s_compare_string):
+            try:
+                pytube.YouTube(s_clipboard_text)
+                b_valid_url = True
+            except: # pylint: disable=bare-except
+                b_valid_url = False
+        if b_valid_url:
             s_default_text = s_clipboard_text
         else:
             s_default_text = "" # if no YouTube link or invalid set no text as default
