@@ -93,6 +93,8 @@ class CdownloadThread(threading.Thread):
     """ thread class for download """
     def __init__(self):
         threading.Thread.__init__(self)
+        self.b_first_callback_call = False
+        self.i_file_size = 0
     def run(self):
         """ download YouTube content"""
         c_gui.o_status.config(text="Analysiere URL...", fg="blue")
@@ -101,7 +103,7 @@ class CdownloadThread(threading.Thread):
         if  i_choice != 0:
             b_valid_url = False
             try:
-                youtube_obj = pytube.YouTube(s_url)
+                youtube_obj = pytube.YouTube(s_url, on_progress_callback=self.progress_callback)
                 b_valid_url = True
             except: # pylint: disable=bare-except
                 c_gui.o_status.config(text="Ungültige URL!",fg="red")
@@ -121,6 +123,13 @@ class CdownloadThread(threading.Thread):
                 c_gui.o_status.config(text="Download abgeschlossen!", fg="green")
         else:
             c_gui.o_status.config(text="Bitte Format angeben!",fg="red")
+    def progress_callback(self, _, _, bytes_remaining):
+        print("bytes remaining:", bytes_remaining)
+        if not self.b_first_callback_call:
+            print("File size %d" % bytes_remaining)
+            self.i_file_size = bytes_remaining
+            self.b_first_callback_call = True
+        print("Status: %.1f%%" % (((self.i_file_size - bytes_remaining) / self.i_file_size) * 100))
 
 class CyoutubeDownloadGui:
     """ class for YouTube download GUI """
