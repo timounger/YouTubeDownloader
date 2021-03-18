@@ -11,11 +11,11 @@ import os
 import base64
 from tkinter import Label, Tk, StringVar, IntVar, Entry, Radiobutton, Button
 import subprocess
+import threading
 import clipboard
 import pytube
-import threading
 
-S_VERSION = "0.1"
+S_VERSION = "0.2"
 S_DEVELOPER_LABLE = "Timo Unger © 2021"
 
 S_TITEL = "YouTube Downloader"
@@ -88,13 +88,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 
 # global variables
 c_gui = []
-c_download = []
 
 class CdownloadThread(threading.Thread):
+    """ thread class for download """
     def __init__(self):
         threading.Thread.__init__(self)
     def run(self):
         """ download YouTube content"""
+        c_gui.o_status.config(text="Analysiere URL...", fg="blue")
         i_choice = c_gui.o_format_choice.get()
         s_url = c_gui.o_url_choice.get()
         if  i_choice != 0:
@@ -115,12 +116,11 @@ class CdownloadThread(threading.Thread):
                     o_stream = youtube_obj.streams.filter(only_audio=True).first()
                 else:
                     c_gui.o_status.config(text="Unerwarteter Fehler!",fg="red")
+                c_gui.o_status.config(text="Download läuft...", fg="blue")
                 o_stream.download(S_DOWNLOAD_FOLDER)
                 c_gui.o_status.config(text="Download abgeschlossen!", fg="green")
         else:
-            self.o_status.config(text="Bitte Format angeben!",fg="red")
-
-c_download = CdownloadThread()
+            c_gui.o_status.config(text="Bitte Format angeben!",fg="red")
 
 class CyoutubeDownloadGui:
     """ class for YouTube download GUI """
@@ -155,12 +155,14 @@ class CyoutubeDownloadGui:
                 b_valid_url = False
         if b_valid_url:
             s_default_text = s_clipboard_text
+            s_default_status = "URL aus Zwischenablage wurde eingefügt!"
         else:
             s_default_text = "" # if no YouTube link or invalid set no text as default
+            s_default_status = "URL eingeben und Downlaod starten!"
         o_url.insert(0, s_default_text) # set content of clipboard as default
         o_url.grid()
         #Error Message
-        self.o_status = Label(self.root,text="Status",fg="red",font=("jost",10))
+        self.o_status = Label(self.root,text=s_default_status,fg="blue",font=("jost",10))
         self.o_status.grid()
         # format label
         o_format_label = Label(self.root,text="Wähle ein Format:",font=("jost",14))
@@ -173,7 +175,7 @@ class CyoutubeDownloadGui:
         self.o_format_choice.set(1) # set first radio button as default
         #download button
         o_download_button = Button(self.root,text="Download",width=10,\
-                                   bg="red",fg="white",command=c_download.start)
+                                   bg="red",fg="white",command=self.start_download)
         o_download_button.grid()
         #folder button
         o_download_button = Button(self.root,text="Öffne Speicherort",width=15,\
@@ -182,6 +184,10 @@ class CyoutubeDownloadGui:
         #developer Label
         o_developer_label = Label(self.root,text=S_DEVELOPER_LABLE,font=("Calibri",12))
         o_developer_label.grid()
+    def start_download(self): # pylint: disable=R0201
+        """ create and start thread for download """
+        c_download = CdownloadThread()
+        c_download.start()
     def open_download_folder(self): # pylint: disable=R0201
         """ open download folder and create if not exist """
         if not os.path.isdir(S_DOWNLOAD_FOLDER):
