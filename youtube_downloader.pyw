@@ -10,6 +10,7 @@
 import os
 import base64
 from tkinter import Label, Tk, StringVar, IntVar, Entry, Radiobutton, Button
+from tkinter.ttk import Progressbar
 import subprocess
 import threading
 import clipboard
@@ -95,6 +96,7 @@ class CdownloadThread(threading.Thread):
         threading.Thread.__init__(self)
         self.b_first_callback_call = False
         self.i_file_size = 0
+        self.i_last_persent = 0
     def run(self):
         """ download YouTube content"""
         c_gui.o_status.config(text="Analysiere URL...", fg="blue")
@@ -103,19 +105,19 @@ class CdownloadThread(threading.Thread):
         if  i_choice != 0:
             b_valid_url = False
             try:
-                youtube_obj = pytube.YouTube(s_url, on_progress_callback=self.progress_callback)
+                o_youtube = pytube.YouTube(s_url, on_progress_callback=self.progress_callback)
                 b_valid_url = True
             except: # pylint: disable=bare-except
                 c_gui.o_status.config(text="Ungültige URL!",fg="red")
             if b_valid_url:
                 if i_choice == 1:
-                    o_stream = youtube_obj.streams.filter(progressive=True, file_extension='mp4')\
+                    o_stream = o_youtube.streams.filter(progressive=True, file_extension='mp4')\
                                                          .get_highest_resolution()
                 elif i_choice == 2:
-                    o_stream = youtube_obj.streams.filter(progressive=True, file_extension='mp4')\
+                    o_stream = o_youtube.streams.filter(progressive=True, file_extension='mp4')\
                                                          .get_lowest_resolution()
                 elif i_choice == 3:
-                    o_stream = youtube_obj.streams.filter(only_audio=True).first()
+                    o_stream = o_youtube.streams.filter(only_audio=True).first()
                 else:
                     c_gui.o_status.config(text="Unerwarteter Fehler!",fg="red")
                 c_gui.o_status.config(text="Download läuft...", fg="blue")
@@ -123,13 +125,15 @@ class CdownloadThread(threading.Thread):
                 c_gui.o_status.config(text="Download abgeschlossen!", fg="green")
         else:
             c_gui.o_status.config(text="Bitte Format angeben!",fg="red")
-    def progress_callback(self, _, _, bytes_remaining):
-        print("bytes remaining:", bytes_remaining)
+    def progress_callback(self, _stream, _chunk, bytes_remaining):
+        """ calculate process and update process bar"""
         if not self.b_first_callback_call:
-            print("File size %d" % bytes_remaining)
             self.i_file_size = bytes_remaining
             self.b_first_callback_call = True
-        print("Status: %.1f%%" % (((self.i_file_size - bytes_remaining) / self.i_file_size) * 100))
+        i_percent = int(((self.i_file_size - bytes_remaining) / self.i_file_size) * 100)
+        if self.i_last_persent != i_percent: # one percent is over then step process bar
+            c_gui.o_progress.step()
+            self.i_last_persent = i_percent
 
 class CyoutubeDownloadGui:
     """ class for YouTube download GUI """
@@ -143,7 +147,7 @@ class CyoutubeDownloadGui:
         iconfile.close()
         self.root.wm_iconbitmap(s_temp_file) # set icon
         os.remove(s_temp_file) # Delete the tempfile
-        self.root.geometry("350x250") #set window
+        self.root.geometry("350x275") #set window
         self.root.columnconfigure(0,weight=1) #set all content in center.
         self.o_url_choice = StringVar()
         self.o_format_choice = IntVar()
@@ -173,6 +177,10 @@ class CyoutubeDownloadGui:
         #Error Message
         self.o_status = Label(self.root,text=s_default_status,fg="blue",font=("jost",10))
         self.o_status.grid()
+        # progress bar
+        self.o_progress = Progressbar(self.root, orient = 'horizontal',\
+                                      length = 200, mode = 'determinate')
+        self.o_progress.grid()
         # format label
         o_format_label = Label(self.root,text="Wähle ein Format:",font=("jost",14))
         o_format_label.grid()
