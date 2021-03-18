@@ -7,10 +7,10 @@
 *****************************************************************************
 """
 
-from tkinter import Label, Tk, StringVar, IntVar, Entry, Radiobutton, Button
-import clipboard
 import os
+from tkinter import Label, Tk, StringVar, IntVar, Entry, Radiobutton, Button
 import subprocess
+import clipboard
 import pytube
 
 S_VERSION = "0.1"
@@ -81,15 +81,15 @@ class CyoutubeDownloadGui:
                 self.o_status.config(text="Ungültige URL!",fg="red")
             if b_valid_url:
                 if i_choice == 1:
-                    o_stream = youtube_obj.streams.filter(progressive=True, file_extension='mp4').get_highest_resolution()
+                    o_stream = youtube_obj.streams.filter(progressive=True, file_extension='mp4')\
+                                                         .get_highest_resolution()
                 elif i_choice == 2:
-                    o_stream = youtube_obj.streams.filter(progressive=True, file_extension='mp4').get_lowest_resolution()
+                    o_stream = youtube_obj.streams.filter(progressive=True, file_extension='mp4')\
+                                                         .get_lowest_resolution()
                 elif i_choice == 3:
                     o_stream = youtube_obj.streams.filter(only_audio=True).first()
                 else:
                     self.o_status.config(text="Unerwarteter Fehler!",fg="red")
-                #for stream in youtube_obj.streams.filter(progressive=True, file_extension='mp4'): print(stream)
-                #print(o_stream)
                 o_stream.download(S_DOWNLOAD_FOLDER)
                 self.o_status.config(text="Download abgeschlossen!", fg="green")
         else:
