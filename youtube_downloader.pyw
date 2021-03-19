@@ -11,8 +11,10 @@ import os
 import base64
 from tkinter import Label, Tk, StringVar, IntVar, Entry, Radiobutton, Button
 from tkinter.ttk import Progressbar
+import statistics
 import subprocess
 import threading
+import time
 import clipboard
 import pytube
 
@@ -21,6 +23,8 @@ S_DEVELOPER_LABLE = "Timo Unger © 2021"
 
 S_TITEL = "YouTube Downloader"
 S_DOWNLOAD_FOLDER = "Download"
+
+I_SPEED_AVERAGE_VALUES = 10
 
 L_FORMAT = [
     ("Hohe Auflösung",1),
@@ -97,6 +101,9 @@ class CdownloadThread(threading.Thread):
         self.b_first_callback_call = False
         self.i_file_size = 0
         self.i_last_persent = 0
+        self.f_time_stamp = 0.0
+        self.i_last_bytes_remaining = 0
+        self.d_speed_history = [] # download speed history
     def run(self):
         """ download YouTube content"""
         c_gui.o_status.config(text="Analysiere URL...", fg="blue")
@@ -129,7 +136,26 @@ class CdownloadThread(threading.Thread):
         """ calculate process and update process bar"""
         if not self.b_first_callback_call:
             self.i_file_size = bytes_remaining
+            self.i_last_bytes_remaining = bytes_remaining
             self.b_first_callback_call = True
+        else:
+            f_actual_time = time.time()
+            if (f_actual_time - self.f_time_stamp) > 1:  # 1 second is over
+                if self.f_time_stamp != 0: # set calculate time only for second call
+                    i_actual_speed = (self.i_last_bytes_remaining - bytes_remaining)
+                    i_history_len = len(self.d_speed_history)
+                    if i_history_len < I_SPEED_AVERAGE_VALUES:
+                        self.d_speed_history.append(i_actual_speed)
+                    else:
+                        for i, value in enumerate(self.d_speed_history):
+                            if i != 0:
+                                self.d_speed_history[i-1] = value
+                        self.d_speed_history[I_SPEED_AVERAGE_VALUES-1] = i_actual_speed
+                    i_average_speed = statistics.mean(self.d_speed_history)
+                    i_remaining_seconds = int(bytes_remaining / i_average_speed)
+                    c_gui.o_status.config(text="Download läuft... noch %dsek" % i_remaining_seconds, fg="blue")
+                self.f_time_stamp = f_actual_time
+                self.i_last_bytes_remaining = bytes_remaining
         i_percent = int(((self.i_file_size - bytes_remaining) / self.i_file_size) * 100)
         if self.i_last_persent != i_percent: # one percent is over then step process bar
             c_gui.o_progress.step()
