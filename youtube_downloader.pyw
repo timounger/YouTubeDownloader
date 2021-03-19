@@ -10,7 +10,7 @@
 import os
 import base64
 from tkinter import Label, Tk, StringVar, IntVar, Entry, Radiobutton, Button
-from tkinter.ttk import Progressbar
+from tkinter.ttk import Progressbar, Style
 import statistics
 import subprocess
 import threading
@@ -162,6 +162,7 @@ class CdownloadThread(threading.Thread):
         i_percent = int(((self.i_file_size - bytes_remaining) / self.i_file_size) * 100)
         if self.i_last_persent != i_percent: # one percent is over then step process bar
             c_gui.o_progress.step()
+            c_gui.style.configure('text.Horizontal.TProgressbar', text='%d%%' % i_percent)
             self.i_last_persent = i_percent
 
 class CyoutubeDownloadGui:
@@ -207,8 +208,15 @@ class CyoutubeDownloadGui:
         self.o_status = Label(self.root,text=s_default_status,fg="blue",font=("jost",10))
         self.o_status.grid()
         # progress bar
-        self.o_progress = Progressbar(self.root, orient = 'horizontal',\
-                                      length = 200, mode = 'determinate')
+        self.style = Style(self.root)
+        self.style.layout('text.Horizontal.TProgressbar',
+                     [('Horizontal.Progressbar.trough',
+                       {'children': [('Horizontal.Progressbar.pbar',
+                                      {'side': 'left', 'sticky': 'ns'})],
+                        'sticky': 'nswe'}),
+                      ('Horizontal.Progressbar.label', {'sticky': ''})]) # ,lightcolor=None,bordercolo=None,darkcolor=None
+        self.style.configure('text.Horizontal.TProgressbar', text='0 %')
+        self.o_progress = Progressbar(self.root,style='text.Horizontal.TProgressbar', length=200,  maximum=100, value=0,)
         self.o_progress.grid()
         # format label
         o_format_label = Label(self.root,text="Wähle ein Format:",font=("jost",14))
