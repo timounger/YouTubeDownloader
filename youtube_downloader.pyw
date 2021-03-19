@@ -127,9 +127,12 @@ class CdownloadThread(threading.Thread):
                     o_stream = o_youtube.streams.filter(only_audio=True).first()
                 else:
                     c_gui.o_status.config(text="Unerwarteter Fehler!",fg="red")
-                c_gui.o_status.config(text="Download läuft...", fg="blue")
-                o_stream.download(S_DOWNLOAD_FOLDER)
-                c_gui.o_status.config(text="Download abgeschlossen!", fg="green")
+                try:
+                    c_gui.o_status.config(text="Download läuft...", fg="blue")
+                    o_stream.download(S_DOWNLOAD_FOLDER)
+                    c_gui.o_status.config(text="Download abgeschlossen!", fg="green")
+                except: # pylint: disable=bare-except
+                    c_gui.o_status.config(text="Dieses Video kann nicht heruntergeladen werden!",fg="red")
         else:
             c_gui.o_status.config(text="Bitte Format angeben!",fg="red")
     def progress_callback(self, _stream, _chunk, bytes_remaining):
