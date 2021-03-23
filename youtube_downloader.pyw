@@ -9,7 +9,7 @@
 
 import os
 import base64
-from tkinter import Label, Tk, StringVar, IntVar, Entry, Radiobutton, Button
+from tkinter import Label, Tk, StringVar, IntVar, Entry, Radiobutton, Button, Menu
 from tkinter.ttk import Progressbar, Style
 import statistics
 import subprocess
@@ -18,7 +18,7 @@ import time
 import clipboard
 import pytube
 
-S_VERSION = "0.2"
+S_VERSION = "0.3"
 S_DEVELOPER_LABLE = "Timo Unger © 2021"
 
 S_TITEL = "YouTube Downloader"
@@ -132,7 +132,8 @@ class CdownloadThread(threading.Thread):
                     o_stream.download(S_DOWNLOAD_FOLDER)
                     c_gui.o_status.config(text="Download abgeschlossen!", fg="green")
                 except: # pylint: disable=bare-except
-                    c_gui.o_status.config(text="Dieses Video kann nicht heruntergeladen werden!",fg="red")
+                    c_gui.o_status.config(text="Dieses Video kann nicht heruntergeladen werden!",\
+                                          fg="red")
         else:
             c_gui.o_status.config(text="Bitte Format angeben!",fg="red")
     def progress_callback(self, _stream, _chunk, bytes_remaining):
@@ -156,7 +157,8 @@ class CdownloadThread(threading.Thread):
                         self.d_speed_history[I_SPEED_AVERAGE_VALUES-1] = i_actual_speed
                     i_average_speed = statistics.mean(self.d_speed_history)
                     i_remaining_seconds = int(bytes_remaining / i_average_speed)
-                    c_gui.o_status.config(text="Download läuft... noch %dsek" % i_remaining_seconds, fg="blue")
+                    c_gui.o_status.config(text="Download läuft... noch %dsek"\
+                                          % i_remaining_seconds, fg="blue")
                 self.f_time_stamp = f_actual_time
                 self.i_last_bytes_remaining = bytes_remaining
         i_percent = int(((self.i_file_size - bytes_remaining) / self.i_file_size) * 100)
@@ -177,7 +179,8 @@ class CyoutubeDownloadGui:
         iconfile.close()
         self.root.wm_iconbitmap(s_temp_file) # set icon
         os.remove(s_temp_file) # Delete the tempfile
-        self.root.geometry("350x275") #set window
+        self.root.geometry("350x300") #set window
+        self.root.resizable(0, 0) # Don't allow resizing
         self.root.columnconfigure(0,weight=1) #set all content in center.
         self.o_url_choice = StringVar()
         self.o_format_choice = IntVar()
@@ -185,7 +188,8 @@ class CyoutubeDownloadGui:
         o_url_label = Label(self.root,text="Gebe die YouTube URL ein:",font=("jost",15))
         o_url_label.grid()
         #Entry Box
-        o_url = Entry(self.root,width=50,textvariable=self.o_url_choice)
+        self.o_url = Entry(self.root,width=50,textvariable=self.o_url_choice)
+        self.o_url.bind("<Button-3>", self.do_popup) # event for right mouse click (button 3)
         s_clipboard_text = clipboard.paste() # get content of clip board
         s_compare_string = "https://"
         b_valid_url = False
@@ -202,8 +206,11 @@ class CyoutubeDownloadGui:
         else:
             s_default_text = "" # if no YouTube link or invalid set no text as default
             s_default_status = "URL eingeben und Downlaod starten!"
-        o_url.insert(0, s_default_text) # set content of clipboard as default
-        o_url.grid()
+        self.o_url.insert(0, s_default_text) # set content of clipboard as default
+        self.o_url.grid()
+        o_input_button = Button(self.root,text="Einfügen",width=10,\
+                                bg="green",fg="white",command=self.input_link)
+        o_input_button.grid()
         #Error Message
         self.o_status = Label(self.root,text=s_default_status,fg="blue",font=("jost",10))
         self.o_status.grid()
@@ -214,9 +221,10 @@ class CyoutubeDownloadGui:
                        {'children': [('Horizontal.Progressbar.pbar',
                                       {'side': 'left', 'sticky': 'ns'})],
                         'sticky': 'nswe'}),
-                      ('Horizontal.Progressbar.label', {'sticky': ''})]) # ,lightcolor=None,bordercolo=None,darkcolor=None
+                      ('Horizontal.Progressbar.label', {'sticky': ''})])
         self.style.configure('text.Horizontal.TProgressbar', text='0 %')
-        self.o_progress = Progressbar(self.root,style='text.Horizontal.TProgressbar', length=200,  maximum=100, value=0,)
+        self.o_progress = Progressbar(self.root,style='text.Horizontal.TProgressbar',\
+                                      length=200,  maximum=100, value=0,)
         self.o_progress.grid()
         # format label
         o_format_label = Label(self.root,text="Wähle ein Format:",font=("jost",14))
@@ -238,6 +246,40 @@ class CyoutubeDownloadGui:
         #developer Label
         o_developer_label = Label(self.root,text=S_DEVELOPER_LABLE,font=("Calibri",12))
         o_developer_label.grid()
+        # right click content menu
+        self.menu = Menu(self.root, tearoff = 0)
+        self.menu.add_command(label ="Ausschneiden", command=self.cut)
+        self.menu.add_command(label ="Kopieren", command=self.copy)
+        self.menu.add_command(label ="Einfügen", command=self.paste)
+    def copy(self):
+        """ copy selected text to clipboard """
+        copy_selected_text_to_clipboard(self.o_url)
+    def cut(self):
+        """ copy selected text to clipboard and cut text out """
+        copy_selected_text_to_clipboard(self.o_url)
+        delete_selected_text(self.o_url)
+    def paste(self):
+        """ paste text from clipboard to position """
+        delete_selected_text(self.o_url)
+        self.o_url.insert(self.o_url.index('insert'), clipboard.paste()) # paste at cursor position
+    def do_popup(self, event):
+        """ pop up content menu """
+        try:
+            self.o_url.selection_get()
+            self.menu.entryconfig("Kopieren", state="normal")
+            self.menu.entryconfig("Ausschneiden", state="normal")
+        except: # pylint: disable=bare-except
+            self.menu.entryconfig("Kopieren", state="disabled")
+            self.menu.entryconfig("Ausschneiden", state="disabled")
+        try:
+            self.menu.tk_popup(event.x_root, event.y_root)
+        finally:
+            self.menu.grab_release()
+    def input_link(self):
+        """ input texyt from clipboard to entry box """
+        self.o_url.delete(0, "end")
+        self.o_url.insert(0, clipboard.paste()) # paste content of clipboard
+        self.o_status.config(text="Text aus Zwischenablage wurde eingefügt!",fg="blue")
     def start_download(self): # pylint: disable=R0201
         """ create and start thread for download """
         c_download = CdownloadThread()
@@ -247,6 +289,28 @@ class CyoutubeDownloadGui:
         if not os.path.isdir(S_DOWNLOAD_FOLDER):
             os.makedirs(S_DOWNLOAD_FOLDER)
         subprocess.Popen('explorer ' + S_DOWNLOAD_FOLDER)
+
+def copy_selected_text_to_clipboard(o_url):
+    """ copy selected text to clipboard """
+    s_text = o_url.selection_get()
+    clipboard.copy(s_text)
+
+def delete_selected_text(o_url):
+    """ delete selected text from URL """
+    try:
+        s_select_text = o_url.selection_get()
+    except: # pylint: disable=bare-except
+        pass
+    else:
+        s_enty_text = o_url.get()
+        i_selected_text_length = len(s_select_text)
+        i_curser_pos = o_url.index('insert')
+        i_curser_pos_end = i_curser_pos + i_selected_text_length
+        s_text_to_check = s_enty_text[i_curser_pos : i_curser_pos_end]
+        if s_text_to_check == s_select_text:
+            o_url.delete(i_curser_pos, i_curser_pos_end)
+        else:
+            o_url.delete(i_curser_pos - i_selected_text_length, i_curser_pos)
 
 if __name__ == "__main__":
     c_gui = CyoutubeDownloadGui()
