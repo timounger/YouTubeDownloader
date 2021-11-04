@@ -1,4 +1,9 @@
+pip
 pyinstaller
 pylint
 clipboard
 pytube
+google-api-python-client
+selenium
+webdriver-manager
+bs4

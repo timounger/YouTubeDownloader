@@ -4,7 +4,7 @@
 del "YoutubeDownloader.exe"
 del "YoutubeDownloader.exe.spec"
 del "pylint.log"
+del "geckodriver.log"
 rmdir /s/q "__pycache__"
 rmdir /s/q "build"
 rmdir /s/q "Download"
-rmdir /s/q "Tool/Download"
