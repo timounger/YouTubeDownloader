@@ -4,7 +4,7 @@
 *****************************************************************************
  @file    youtube_api.py
  @brief   API to get links from playlist
-          Code for YouTube API: "https://www.py4u.net/discuss/194200"
+          Code for YouTube "API: "https://www.py4u.net/discuss/194200"
 *****************************************************************************
 """
 

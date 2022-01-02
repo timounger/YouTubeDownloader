@@ -4,7 +4,6 @@
 *****************************************************************************
  @file    youtube_downloader.pyw
  @brief   YouTube content download
-          Code for YouTube API: https://www.py4u.net/discuss/194200
 *****************************************************************************
 """
 
@@ -19,6 +18,7 @@ import time
 import re
 import clipboard
 import pytube
+from moviepy.editor import AudioFileClip
 
 from icon import S_ICON
 
@@ -76,18 +76,20 @@ class CdownloadThread(threading.Thread):
             i_titels = len(l_url)
             for i, s_url in enumerate(l_url, 1):
                 c_gui.o_status.config(text="Analysiere URL...", fg="blue")
-                s_text = "Titel %d/%d: ..." % (i, i_titels)
+                s_text = f"Titel {i}/{i_titels}: ..."
                 c_gui.o_titel.config(text=s_text,fg="orange")
                 b_valid_url = False
                 try:
                     o_youtube = pytube.YouTube(s_url, on_progress_callback=self.progress_callback)
-                    s_text = "Titel %d/%d: %s" % (i, i_titels, o_youtube.title[:35])
+                    s_titel = o_youtube.title[:35]
+                    s_text = f"Titel {i}/{i_titels}: {s_titel}"
                     c_gui.o_titel.config(text=s_text,fg="orange")
                     b_valid_url = True
                 except: # pylint: disable=bare-except
                     c_gui.o_status.config(text="Ungültige URL!",fg="red")
                 if b_valid_url:
                     self.clear_data()
+                    s_filename = None
                     if i_choice == 1:
                         o_stream = o_youtube.streams.filter(progressive=True, file_extension='mp4')\
                                                              .get_highest_resolution()
@@ -100,8 +102,16 @@ class CdownloadThread(threading.Thread):
                         c_gui.o_status.config(text="Unerwarteter Fehler!",fg="red")
                     try:
                         c_gui.o_status.config(text="Download läuft...", fg="blue")
-                        o_stream.download(S_DOWNLOAD_FOLDER + s_subfolder_name)
+                        o_stream.download(S_DOWNLOAD_FOLDER + s_subfolder_name, s_filename)
                         c_gui.o_status.config(text="Download abgeschlossen!", fg="green")
+                        if i_choice == 3:
+                            c_gui.o_status.config(text="MP3 wird erstellt...", fg="blue")
+                            s_file_path_name = S_DOWNLOAD_FOLDER + s_subfolder_name + "/" + o_stream.default_filename
+                            audioclip = AudioFileClip(s_file_path_name)
+                            audioclip.write_audiofile(s_file_path_name[:-1] + "3")
+                            audioclip.close()
+                            os.remove(s_file_path_name)
+                            c_gui.o_status.config(text="MP3 erstellt!", fg="green")
                     except: # pylint: disable=bare-except
                         c_gui.o_status.config(text="Dieses Video kann nicht heruntergeladen werden!",\
                                               fg="red")
