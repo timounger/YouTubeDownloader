@@ -8,3 +8,5 @@ selenium
 webdriver-manager
 bs4
 moviepy
+pyqt5
+pyqt5-tools

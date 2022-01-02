@@ -1,0 +1,1 @@
+pyuic5 window.ui > window.py

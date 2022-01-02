@@ -1,7 +1,7 @@
 :: "run_pylint.bat"
 :: run pylint to analyse python skripts of binokel
 
-set TARGET_FILES=youtube_downloader.pyw youtube_api.py youtube_html.py
+set TARGET_FILES=youtube_download.py youtube_api.py youtube_html.py main_window.py
 set DISABLE_MSG=
 set LOG_FILE=pylint.log
 
