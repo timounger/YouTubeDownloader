@@ -79,6 +79,7 @@ class CDownload(threading.Thread):
                                              .get_highest_resolution()
         o_stream.download(S_DOWNLOAD_FOLDER)
         self.entry[3] = EState.FINISH
+        sys.exit()
 
 def open_download_folder():
     """ open download folder and create if not exist """

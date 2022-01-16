@@ -8,7 +8,7 @@
 """
 
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QMessageBox, QAction
 from PyQt5.QtGui import QIcon
 from pyuic5.window import Ui_MainWindow
 import threading
@@ -27,6 +27,8 @@ class CGui(object):
         self.window = window
         window.setWindowTitle("YouTube Downloader")
         window.setWindowIcon(QIcon('app.ico'))
+        #window.actionExit = window.findChild(QAction, "actionExit")
+        #window.actionExit.triggered.connect(self.closeEvent)
         gui.button_paste.clicked.connect(self.paste_clicked)
         gui.button_add.clicked.connect(self.add_clicked)
         gui.button_folder.clicked.connect(yd.open_download_folder)
@@ -41,6 +43,18 @@ class CGui(object):
         self.c_queue.start()
         self.gui.text_url.setPlainText("https://www.youtube.com/watch?v=q5WdWSpz1vQ")
         self.gui.text_url.setPlainText("https://www.youtube.com/watch?v=jfotDk-fTOk&list=PLZq2gDq-SDjf5F35rolsQ3eFPvfTUKYpC")
+    """
+    def closeEvent(self, event):
+        print("CLOSE")
+        close = QMessageBox.question(self,
+                                     "QUIT",
+                                     "Are you sure want to stop process?",
+                                     QMessageBox.Yes | QMessageBox.No)
+        if close == QMessageBox.Yes:
+            event.accept()
+        else:
+            event.ignore()
+    """
     def add_clicked(self):
         self.gui.statusbar.showMessage("URL wird analysiert...")
         s_input = self.gui.text_url.toPlainText()
@@ -70,7 +84,14 @@ class CQueue(threading.Thread):
         while True:
             time.sleep(0.1)
             self.process_queue()
-            self.set_status_table()
+            if True:
+                try:
+                    self.set_status_table()
+                except: # pylint: disable=bare-except
+                    pass
+            else:
+                self.set_status_table()
+            #sys.exit()
     def process_queue(self):
         for i, entry in enumerate(self.l_queue):
             if entry[I_STATUS_POS] == EState.QUEUED:
@@ -85,14 +106,20 @@ class CQueue(threading.Thread):
                     self.c_download = yd.CDownload(entry)
                     self.c_download.start()
                     break
+            elif entry[I_STATUS_POS] == EState.FINISH:
+                self.gui.statusbar.showMessage("Download finish of: %s" % self.l_queue[i][0])
+                del self.l_queue[i]
+                break
     def set_status_table(self):
-        if False:
+        if True:
             table = self.gui.table_queue
-            table.setRowCount(0)
+            row_cnt = table.rowCount()
             for i, entry in enumerate(self.l_queue):
-                table.insertRow(i)
+                if row_cnt <= i:
+                    table.insertRow(i)
                 for j, _ in enumerate(L_ROW_DESCRIPTION):
                     table.setItem(i, j, QTableWidgetItem(entry[j]))
+            table.setRowCount(len(self.l_queue))
         else:
             table = self.gui.table_queue
             row_cnt = table.rowCount()
