@@ -37,7 +37,7 @@ class CGui(object):
         self.c_queue = CQueue(gui)
         self.c_queue.start()
         self.gui.text_url.setPlainText("https://www.youtube.com/watch?v=q5WdWSpz1vQ")
-        self.gui.text_url.setPlainText("https://www.youtube.com/watch?v=q5WdWSpz1vQ&list=RDq5WdWSpz1vQ&index=1")
+        self.gui.text_url.setPlainText("https://www.youtube.com/watch?v=K6lThwljr2M&list=PL9HJJedWjAmNILSM93NSf0-5-VoLXs_6Q&index=2")
     def add_clicked(self):
         self.gui.statusbar.showMessage("URL wird analysiert...")
         s_input = self.gui.text_url.toPlainText()
