@@ -123,6 +123,9 @@ class DownloadThread(threading.Thread):
     def progress_callback(self, _stream, _chunk, bytes_remaining):
         """!
         @brief Calculate process and update process bar
+        @param _stream : stream
+        @param _chunk : chunk
+        @param bytes_remaining : bytes remaining
         """
         if not self.b_first_callback_call:
             self.i_file_size = bytes_remaining
@@ -259,6 +262,7 @@ class YoutubeDownloader:
     def do_popup(self, event):
         """!
         @brief Pop up content menu
+        @param event : arrived event
         """
         try:
             self.o_url.selection_get()
