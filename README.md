@@ -9,7 +9,7 @@
 
 ## Über ℹ️
 
-Das YouTubeDownloader Tool dient läd Inhalte von Youtube herunter.
+Das YouTubeDownloader Tool läd Inhalte von Youtube herunter.
 
 ## Voraussetzungen ⚠️
 
