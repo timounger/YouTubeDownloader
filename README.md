@@ -20,4 +20,4 @@ Das YouTubeDownloader Tool läd Inhalte von Youtube herunter.
 
 ## Download ☁️ ⬇️
 
-Die freigegebenen Version sind auf GitHub veröffentlicht und steht dort zum [Download](https://github.com/timounger/WJH-SV/releases) bereit.
+Die freigegebenen Version sind auf GitHub veröffentlicht und steht dort zum [Download](https://github.com/timounger/YouTubeDownloader/releases) bereit.
