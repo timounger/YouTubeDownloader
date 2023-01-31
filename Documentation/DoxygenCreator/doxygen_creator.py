@@ -20,7 +20,7 @@ from doxygen import ConfigParser
 
 # user include
 sys.path.append('../../')
-import Source.downloader_data as mdata 
+import Source.Util.downloader_data as mdata 
 from Documentation.DoxygenCreator.doxy_py_checker import DoxyPyChecker
 
 B_USE_OWN_STYLE = True

@@ -12,7 +12,7 @@ import sys
 from PyInstaller.utils.win32.versioninfo import *
 
 sys.path.append('../')
-import Source.downloader_data as mdata
+import Source.Util.downloader_data as mdata
 
 versionInfo = VSVersionInfo(
     ffi=FixedFileInfo(
