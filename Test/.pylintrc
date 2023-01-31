@@ -157,7 +157,7 @@ disable=raw-checker-failed,
         useless-suppression,
         deprecated-pragma,
         use-symbolic-message-instead,
-		# BonPrinter disabled mesages:
+		# YouTubeDownloader disabled mesages:
 		invalid-name,       # invalid-constant name (required e.g. snake case)
 		line-too-long,
 		superfluous-parens, # unnecessary parents (brackets)

@@ -1,4 +1,4 @@
-\mainpage BonPrinter
+\mainpage YouTubeDownloader
 
 \tableofcontents
 

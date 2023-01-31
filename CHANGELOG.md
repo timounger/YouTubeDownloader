@@ -2,7 +2,7 @@
 
 \tableofcontents
 
-# BonPrinter changelog 📋️
+# YouTubeDownloader changelog 📋️
 
 ## [v1.0.0]
 
