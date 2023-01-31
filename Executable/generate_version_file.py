@@ -2,7 +2,7 @@
 """
 *****************************************************************************
  @file    generate_version_file.py
- @brief   BonPrinter - Utility Script to generate a version info .txt file for the executable
+ @brief   YouTubeDownloader - Utility Script to generate a version info .txt file for the executable
 *****************************************************************************
 """
 
@@ -39,10 +39,10 @@ versionInfo = VSVersionInfo(
                 StringTable(
                     u'040904E4',
                     [
-                        StringStruct(u'FileDescription', mdata.S_BON_PRINTER_DESCRIPTION),
+                        StringStruct(u'FileDescription', mdata.S_YOUTUBE_DOWNLOADER_DESCRIPTION),
                         StringStruct(u'FileVersion', mdata.S_VERSION),
                         StringStruct(u'LegalCopyright', mdata.S_COPYRIGHT.replace("©", "(c)")),
-                        StringStruct(u'ProductName', mdata.S_BON_PRINTER_APPLICATION_NAME),
+                        StringStruct(u'ProductName', mdata.S_YOUTUBE_DOWNLOADER_APPLICATION_NAME),
                         StringStruct(u'ProductVersion', mdata.S_VERSION)
                     ])
                 ]),

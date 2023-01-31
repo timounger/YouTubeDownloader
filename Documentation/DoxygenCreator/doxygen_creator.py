@@ -50,7 +50,7 @@ S_GITHUB_CORNER_LAST = """ class="github-corner" aria-label="View source on GitH
 S_ICON_FIRST = """<link rel="icon" href="""
 S_ICON_LAST = """>"""
 
-S_REPO_LINK = "https://github.com/timounger/BonPrinter"
+S_REPO_LINK = "https://github.com/timounger/YouTubeDownloader"
 
 S_DEFAULT = "_DEFAULT_KEY" # this values not set in doxyfile
 S_AUTO = "_AUTO_KEY" # this values not set in doxyfile and you will get a warning if forget to override this value
@@ -615,9 +615,9 @@ class DoxygenCreator():
 
 if __name__ == "__main__":
     doxygen_creator = DoxygenCreator(S_REPO_LINK)
-    doxygen_creator.set_configuration('PROJECT_NAME', mdata.S_BON_PRINTER_APPLICATION_NAME)
+    doxygen_creator.set_configuration('PROJECT_NAME', mdata.S_YOUTUBE_DOWNLOADER_APPLICATION_NAME)
     doxygen_creator.set_configuration('PROJECT_NUMBER', mdata.S_VERSION)
-    doxygen_creator.set_configuration('PROJECT_BRIEF', mdata.S_BON_PRINTER_DESCRIPTION)
+    doxygen_creator.set_configuration('PROJECT_BRIEF', mdata.S_YOUTUBE_DOWNLOADER_DESCRIPTION)
     doxygen_creator.set_configuration('PROJECT_LOGO', f"{S_MAIN_FOLDER_FOLDER}{mdata.S_ICON_RESOURCE_PATH}")
     doxygen_creator.set_configuration('INPUT', S_MAIN_FOLDER_FOLDER)
     doxygen_creator.set_configuration('USE_MDFILE_AS_MAINPAGE', f"{S_MAIN_FOLDER_FOLDER}README.md")

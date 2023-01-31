@@ -2,8 +2,8 @@
 """
 *****************************************************************************
  @file    check_included_packages.py
- @brief   BonPrinter - Utility Script to list and check if the build executable only
-					   constains specified third party packages
+ @brief   YouTubeDownloader - Utility Script to list and check if the build executable only
+					          constains specified third party packages
 *****************************************************************************
 """
 
