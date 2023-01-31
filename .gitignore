@@ -1,0 +1,17 @@
+# General
+*.log
+*.pyc
+/.settings
+
+# Source
+/Download
+
+# Doxygen
+/Documentation/DoxygenCreator/Output_Doxygen
+/Documentation/DoxygenCreator/YouTubeDownloader.Doxyfile.bak
+/Documentation/DoxygenCreator/plantuml.jar
+/Documentation/DoxygenCreator/YouTubeDownloader.Doxyfile
+
+# Executable
+/Executable/build
+/Executable/bin
