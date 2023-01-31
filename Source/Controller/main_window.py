@@ -60,7 +60,7 @@ class YoutubeDownloader:
         self.root = Tk()
         self.root.title(mdata.S_YOUTUBE_DOWNLOADER_APPLICATION_NAME + f" v{mdata.S_VERSION}\n")
         self.root.wm_iconbitmap(mdata.S_ICON_REL_PATH) # set icon
-        self.root.geometry("350x300") #set window
+        self.root.geometry("350x320") #set window
         self.root.resizable(0, 0) # Don't allow resizing
         self.root.columnconfigure(0, weight=1) #set all content in center.
         self.o_url_choice = StringVar()
