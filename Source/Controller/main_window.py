@@ -24,6 +24,34 @@ L_FORMAT = [
     ("Nur Audio", 3)
 ]
 
+def copy_selected_text_to_clipboard(o_url):
+    """!
+    @brief Copy selected text to clipboard
+    @param o_url : url
+    """
+    s_text = o_url.selection_get()
+    clipboard.copy(s_text)
+
+def delete_selected_text(o_url):
+    """!
+    @brief Delete selected text
+    @param o_url : url
+    """
+    try:
+        s_select_text = o_url.selection_get()
+    except: # pylint: disable=bare-except
+        pass
+    else:
+        s_enty_text = o_url.get()
+        i_selected_text_length = len(s_select_text)
+        i_curser_pos = o_url.index('insert')
+        i_curser_pos_end = i_curser_pos + i_selected_text_length
+        s_text_to_check = s_enty_text[i_curser_pos : i_curser_pos_end]
+        if s_text_to_check == s_select_text:
+            o_url.delete(i_curser_pos, i_curser_pos_end)
+        else:
+            o_url.delete(i_curser_pos - i_selected_text_length, i_curser_pos)
+
 class YoutubeDownloader:
     """!
     @brief Class for YouTube download GUI
@@ -168,31 +196,3 @@ class YoutubeDownloader:
             os.makedirs(S_DOWNLOAD_FOLDER)
         with subprocess.Popen('explorer ' + S_DOWNLOAD_FOLDER):
             pass
-
-def copy_selected_text_to_clipboard(o_url):
-    """!
-    @brief Copy selected text to clipboard
-    @param o_url : url
-    """
-    s_text = o_url.selection_get()
-    clipboard.copy(s_text)
-
-def delete_selected_text(o_url):
-    """!
-    @brief Delete selected text
-    @param o_url : url
-    """
-    try:
-        s_select_text = o_url.selection_get()
-    except: # pylint: disable=bare-except
-        pass
-    else:
-        s_enty_text = o_url.get()
-        i_selected_text_length = len(s_select_text)
-        i_curser_pos = o_url.index('insert')
-        i_curser_pos_end = i_curser_pos + i_selected_text_length
-        s_text_to_check = s_enty_text[i_curser_pos : i_curser_pos_end]
-        if s_text_to_check == s_select_text:
-            o_url.delete(i_curser_pos, i_curser_pos_end)
-        else:
-            o_url.delete(i_curser_pos - i_selected_text_length, i_curser_pos)
