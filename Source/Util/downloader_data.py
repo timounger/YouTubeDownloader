@@ -11,7 +11,7 @@ import os
 
 B_DEBUG = True
 
-S_YOUTUBE_DOWNLOADER_APPLICATION_NAME = "YouTubeDownloader"
+S_YOUTUBE_DOWNLOADER_APPLICATION_NAME = "YouTube Downloader"
 S_YOUTUBE_DOWNLOADER_DESCRIPTION = "YouTube content downloader"
 
 # Version

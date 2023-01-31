@@ -13,7 +13,7 @@ import subprocess
 import clipboard
 import pytube
 
-import Source.Util.downloader_data as mdata # pylint: disable=wrong-import-position
+import Source.Util.downloader_data as mdata
 from Source.Worker.downloader import DownloadThread
 
 S_DOWNLOAD_FOLDER = "Download"

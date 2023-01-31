@@ -1,1 +1,2 @@
-python youtube_downloader.pyw
+cd ./Source
+python youtube_downloader.py
