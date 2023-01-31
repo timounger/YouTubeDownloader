@@ -22,4 +22,3 @@ if __name__ == "__main__":
 
     gui = YoutubeDownloader()
     gui.root.mainloop()
-    
