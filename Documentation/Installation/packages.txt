@@ -1,0 +1,8 @@
+pip==23.0
+pyinstaller==5.7.0
+pylint==2.15.10
+clipboard==0.0.4
+pytube==12.1.2
+bs4==0.0.1
+moviepy==1.0.3
+doxygen-interface==0.0.1
