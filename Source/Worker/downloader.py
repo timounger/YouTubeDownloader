@@ -12,7 +12,11 @@ import threading
 import time
 import re
 import pytube
-from moviepy.editor import AudioFileClip
+
+B_MP3_CONVERT = False
+
+if B_MP3_CONVERT:
+    from moviepy.editor import AudioFileClip
 
 S_DOWNLOAD_FOLDER = "Download"
 I_SPEED_AVERAGE_VALUES = 10
@@ -97,7 +101,7 @@ class DownloadThread(threading.Thread):
                         self.gui.o_status.config(text="Download läuft...", fg="blue")
                         o_stream.download(S_DOWNLOAD_FOLDER + s_subfolder_name, s_filename)
                         self.gui.o_status.config(text="Download abgeschlossen!", fg="green")
-                        if i_choice == 3:
+                        if i_choice == 3 and B_MP3_CONVERT:
                             self.gui.o_status.config(text="MP3 wird erstellt...", fg="blue")
                             s_file_path_name = S_DOWNLOAD_FOLDER + s_subfolder_name + "/" + o_stream.default_filename
                             audioclip = AudioFileClip(s_file_path_name)
