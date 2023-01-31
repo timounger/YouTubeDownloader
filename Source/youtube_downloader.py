@@ -25,11 +25,8 @@ sys.path.append('../')
 from Source.icon import S_ICON # pylint: disable=wrong-import-position
 import Source.downloader_data as mdata # pylint: disable=wrong-import-position
 
-
 S_DOWNLOAD_FOLDER = "Download"
-
 S_TEMP_ICON_NAME = "temp_icon.ico"
-
 I_SPEED_AVERAGE_VALUES = 10
 
 L_FORMAT = [
@@ -39,7 +36,9 @@ L_FORMAT = [
 ]
 
 class DownloadThread(threading.Thread):
-    """ thread class for download """
+    """!
+    @brief Thread class for download
+    """
     def __init__(self):
         threading.Thread.__init__(self)
         self.b_first_callback_call = False
@@ -51,7 +50,9 @@ class DownloadThread(threading.Thread):
         self.clear_data()
 
     def clear_data(self):
-        """ clear data """
+        """!
+        @brief Clear data
+        """
         self.b_first_callback_call = False
         self.i_file_size = 0
         self.i_last_percent = 0
@@ -60,7 +61,9 @@ class DownloadThread(threading.Thread):
         self.d_speed_history = [] # download speed history
 
     def run(self):
-        """ download YouTube content"""
+        """!
+        @brief Download YouTube content
+        """
         gui.o_status.config(text="Analysiere URL...", fg="blue")
         i_choice = gui.o_format_choice.get()
         s_url = gui.o_url_choice.get()
@@ -121,7 +124,9 @@ class DownloadThread(threading.Thread):
         gui.o_download_button["state"] = "normal"
 
     def progress_callback(self, _stream, _chunk, bytes_remaining):
-        """ calculate process and update process bar """
+        """!
+        @brief Calculate process and update process bar
+        """
         if not self.b_first_callback_call:
             self.i_file_size = bytes_remaining
             self.i_last_bytes_remaining = bytes_remaining
@@ -152,7 +157,9 @@ class DownloadThread(threading.Thread):
             self.i_last_percent = i_percent
 
 class YoutubeDownloader:
-    """ class for YouTube download GUI """
+    """!
+    @brief Class for YouTube download GUI
+    """
     def __init__(self): # pylint: disable=R0914
         self.root = Tk()
         self.root.title(mdata.S_BON_PRINTER_APPLICATION_NAME + f" v{mdata.S_VERSION}\n")
@@ -238,21 +245,29 @@ class YoutubeDownloader:
         self.menu.add_command(label ="Einfügen", command=self.paste)
 
     def copy(self):
-        """ copy selected text to clipboard """
+        """!
+        @brief Copy selected text to clipboard
+        """
         copy_selected_text_to_clipboard(self.o_url)
 
     def cut(self):
-        """ copy selected text to clipboard and cut text out """
+        """!
+        @brief Copy selected text to clipboard and cut text out
+        """
         copy_selected_text_to_clipboard(self.o_url)
         delete_selected_text(self.o_url)
 
     def paste(self):
-        """ paste text from clipboard to position """
+        """!
+        @brief Paste text from clipboard to position
+        """
         delete_selected_text(self.o_url)
         self.o_url.insert(self.o_url.index('insert'), clipboard.paste()) # paste at cursor position
 
     def do_popup(self, event):
-        """ pop up content menu """
+        """!
+        @brief Pop up content menu
+        """
         try:
             self.o_url.selection_get()
             self.menu.entryconfig("Kopieren", state="normal")
@@ -266,31 +281,43 @@ class YoutubeDownloader:
             self.menu.grab_release()
 
     def input_link(self):
-        """ input text from clipboard to entry box """
+        """!
+        @brief Input text from clipboard to entry box
+        """
         self.o_url.delete(0, "end")
         self.o_url.insert(0, clipboard.paste()) # paste content of clipboard
         self.o_status.config(text="Text aus Zwischenablage wurde eingefügt!",fg="blue")
 
     def start_download(self):
-        """ create and start thread for download """
+        """!
+        @brief Create and start thread for download
+        """
         self.o_download_button["state"] = "disable"
         c_download = DownloadThread()
         c_download.start()
 
     def open_download_folder(self):
-        """ open download folder and create if not exist """
+        """!
+        @brief Open download folder and create if not exist
+        """
         if not os.path.isdir(S_DOWNLOAD_FOLDER):
             os.makedirs(S_DOWNLOAD_FOLDER)
         with subprocess.Popen('explorer ' + S_DOWNLOAD_FOLDER):
             pass
 
 def copy_selected_text_to_clipboard(o_url):
-    """ copy selected text to clipboard """
+    """!
+    @brief Copy selected text to clipboard
+    @param o_url : url
+    """
     s_text = o_url.selection_get()
     clipboard.copy(s_text)
 
 def delete_selected_text(o_url):
-    """ delete selected text from URL """
+    """!
+    @brief Delete selected text
+    @param o_url : url
+    """
     try:
         s_select_text = o_url.selection_get()
     except: # pylint: disable=bare-except
