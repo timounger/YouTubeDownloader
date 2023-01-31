@@ -16,9 +16,9 @@ import subprocess
 import threading
 import time
 import re
+import ctypes
 import clipboard
 import pytube
-import ctypes
 from moviepy.editor import AudioFileClip
 
 sys.path.append('../')
@@ -49,6 +49,7 @@ class DownloadThread(threading.Thread):
         self.i_last_bytes_remaining = 0
         self.d_speed_history = [] # download speed history
         self.clear_data()
+
     def clear_data(self):
         """ clear data """
         self.b_first_callback_call = False
@@ -57,6 +58,7 @@ class DownloadThread(threading.Thread):
         self.f_time_stamp = 0.0
         self.i_last_bytes_remaining = 0
         self.d_speed_history = [] # download speed history
+
     def run(self):
         """ download YouTube content"""
         gui.o_status.config(text="Analysiere URL...", fg="blue")
@@ -117,6 +119,7 @@ class DownloadThread(threading.Thread):
         else:
             gui.o_status.config(text="Bitte Format angeben!",fg="red")
         gui.o_download_button["state"] = "normal"
+
     def progress_callback(self, _stream, _chunk, bytes_remaining):
         """ calculate process and update process bar """
         if not self.b_first_callback_call:
@@ -233,17 +236,21 @@ class YoutubeDownloader:
         self.menu.add_command(label ="Ausschneiden", command=self.cut)
         self.menu.add_command(label ="Kopieren", command=self.copy)
         self.menu.add_command(label ="Einfügen", command=self.paste)
+
     def copy(self):
         """ copy selected text to clipboard """
         copy_selected_text_to_clipboard(self.o_url)
+
     def cut(self):
         """ copy selected text to clipboard and cut text out """
         copy_selected_text_to_clipboard(self.o_url)
         delete_selected_text(self.o_url)
+
     def paste(self):
         """ paste text from clipboard to position """
         delete_selected_text(self.o_url)
         self.o_url.insert(self.o_url.index('insert'), clipboard.paste()) # paste at cursor position
+
     def do_popup(self, event):
         """ pop up content menu """
         try:
@@ -257,17 +264,20 @@ class YoutubeDownloader:
             self.menu.tk_popup(event.x_root, event.y_root)
         finally:
             self.menu.grab_release()
+
     def input_link(self):
         """ input text from clipboard to entry box """
         self.o_url.delete(0, "end")
         self.o_url.insert(0, clipboard.paste()) # paste content of clipboard
         self.o_status.config(text="Text aus Zwischenablage wurde eingefügt!",fg="blue")
-    def start_download(self): # pylint: disable=R0201
+
+    def start_download(self):
         """ create and start thread for download """
         self.o_download_button["state"] = "disable"
         c_download = DownloadThread()
         c_download.start()
-    def open_download_folder(self): # pylint: disable=R0201
+
+    def open_download_folder(self):
         """ open download folder and create if not exist """
         if not os.path.isdir(S_DOWNLOAD_FOLDER):
             os.makedirs(S_DOWNLOAD_FOLDER)
