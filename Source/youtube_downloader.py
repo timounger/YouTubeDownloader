@@ -1,13 +1,13 @@
-#!/usr/bin/env python3
-# encoding: utf-8
+# This Python file uses the following encoding: utf-8
 """
 *****************************************************************************
- @file    youtube_downloader.pyw
+ @file    youtube_downloader.py
  @brief   YouTube content download
 *****************************************************************************
 """
 
 import os
+import sys
 import base64
 from tkinter import Label, Tk, StringVar, IntVar, Entry, Radiobutton, Button, Menu
 from tkinter.ttk import Progressbar, Style
@@ -18,15 +18,14 @@ import time
 import re
 import clipboard
 import pytube
+import ctypes
 from moviepy.editor import AudioFileClip
 
-from icon import S_ICON
+sys.path.append('../')
+from Source.icon import S_ICON # pylint: disable=wrong-import-position
+import Source.downloader_data as mdata # pylint: disable=wrong-import-position
 
 
-S_VERSION = "0.3"
-S_DEVELOPER_LABLE = "Timo Unger © 2021"
-
-S_TITEL = "YouTube Downloader"
 S_DOWNLOAD_FOLDER = "Download"
 
 S_TEMP_ICON_NAME = "temp_icon.ico"
@@ -34,12 +33,12 @@ S_TEMP_ICON_NAME = "temp_icon.ico"
 I_SPEED_AVERAGE_VALUES = 10
 
 L_FORMAT = [
-    ("Hohe Auflösung",1),
-    ("Niedrige Auflösung",2),
-    ("Nur Audio",3)
+    ("Hohe Auflösung", 1),
+    ("Niedrige Auflösung", 2),
+    ("Nur Audio", 3)
 ]
 
-class CdownloadThread(threading.Thread):
+class DownloadThread(threading.Thread):
     """ thread class for download """
     def __init__(self):
         threading.Thread.__init__(self)
@@ -60,9 +59,9 @@ class CdownloadThread(threading.Thread):
         self.d_speed_history = [] # download speed history
     def run(self):
         """ download YouTube content"""
-        c_gui.o_status.config(text="Analysiere URL...", fg="blue")
-        i_choice = c_gui.o_format_choice.get()
-        s_url = c_gui.o_url_choice.get()
+        gui.o_status.config(text="Analysiere URL...", fg="blue")
+        i_choice = gui.o_format_choice.get()
+        s_url = gui.o_url_choice.get()
         if  i_choice != 0:
             l_url = []
             s_subfolder_name = ""
@@ -75,18 +74,18 @@ class CdownloadThread(threading.Thread):
                 l_url = [s_url]
             i_titels = len(l_url)
             for i, s_url in enumerate(l_url, 1):
-                c_gui.o_status.config(text="Analysiere URL...", fg="blue")
+                gui.o_status.config(text="Analysiere URL...", fg="blue")
                 s_text = f"Titel {i}/{i_titels}: ..."
-                c_gui.o_titel.config(text=s_text,fg="orange")
+                gui.o_titel.config(text=s_text,fg="orange")
                 b_valid_url = False
                 try:
                     o_youtube = pytube.YouTube(s_url, on_progress_callback=self.progress_callback)
                     s_titel = o_youtube.title[:35]
                     s_text = f"Titel {i}/{i_titels}: {s_titel}"
-                    c_gui.o_titel.config(text=s_text,fg="orange")
+                    gui.o_titel.config(text=s_text,fg="orange")
                     b_valid_url = True
                 except: # pylint: disable=bare-except
-                    c_gui.o_status.config(text="Ungültige URL!",fg="red")
+                    gui.o_status.config(text="Ungültige URL!",fg="red")
                 if b_valid_url:
                     self.clear_data()
                     s_filename = None
@@ -99,25 +98,25 @@ class CdownloadThread(threading.Thread):
                     elif i_choice == 3:
                         o_stream = o_youtube.streams.filter(only_audio=True).first()
                     else:
-                        c_gui.o_status.config(text="Unerwarteter Fehler!",fg="red")
+                        gui.o_status.config(text="Unerwarteter Fehler!",fg="red")
                     try:
-                        c_gui.o_status.config(text="Download läuft...", fg="blue")
+                        gui.o_status.config(text="Download läuft...", fg="blue")
                         o_stream.download(S_DOWNLOAD_FOLDER + s_subfolder_name, s_filename)
-                        c_gui.o_status.config(text="Download abgeschlossen!", fg="green")
+                        gui.o_status.config(text="Download abgeschlossen!", fg="green")
                         if i_choice == 3:
-                            c_gui.o_status.config(text="MP3 wird erstellt...", fg="blue")
+                            gui.o_status.config(text="MP3 wird erstellt...", fg="blue")
                             s_file_path_name = S_DOWNLOAD_FOLDER + s_subfolder_name + "/" + o_stream.default_filename
                             audioclip = AudioFileClip(s_file_path_name)
                             audioclip.write_audiofile(s_file_path_name[:-1] + "3")
                             audioclip.close()
                             os.remove(s_file_path_name)
-                            c_gui.o_status.config(text="MP3 erstellt!", fg="green")
+                            gui.o_status.config(text="MP3 erstellt!", fg="green")
                     except: # pylint: disable=bare-except
-                        c_gui.o_status.config(text="Dieses Video kann nicht heruntergeladen werden!",\
+                        gui.o_status.config(text="Dieses Video kann nicht heruntergeladen werden!",\
                                               fg="red")
         else:
-            c_gui.o_status.config(text="Bitte Format angeben!",fg="red")
-        c_gui.o_download_button["state"] = "normal"
+            gui.o_status.config(text="Bitte Format angeben!",fg="red")
+        gui.o_download_button["state"] = "normal"
     def progress_callback(self, _stream, _chunk, bytes_remaining):
         """ calculate process and update process bar """
         if not self.b_first_callback_call:
@@ -139,21 +138,21 @@ class CdownloadThread(threading.Thread):
                     self.d_speed_history[I_SPEED_AVERAGE_VALUES-1] = i_actual_speed
                 i_average_speed = statistics.mean(self.d_speed_history)
                 i_remaining_seconds = int(bytes_remaining / i_average_speed)
-                c_gui.o_status.config(text=f'Download läuft... noch {i_remaining_seconds}sek', fg="blue")
+                gui.o_status.config(text=f'Download läuft... noch {i_remaining_seconds}sek', fg="blue")
             self.f_time_stamp = f_actual_time
             self.i_last_bytes_remaining = bytes_remaining
             i_percent = int(((self.i_file_size - bytes_remaining) / self.i_file_size) * 100)
             i_percent_diff = i_percent - self.i_last_percent
             for _ in range(i_percent_diff):
-                c_gui.o_progress.step()
-            c_gui.style.configure('text.Horizontal.TProgressbar', text=f'{i_percent}%')
+                gui.o_progress.step()
+            gui.style.configure('text.Horizontal.TProgressbar', text=f'{i_percent}%')
             self.i_last_percent = i_percent
 
-class CyoutubeDownloadGui:
+class YoutubeDownloader:
     """ class for YouTube download GUI """
     def __init__(self): # pylint: disable=R0914
         self.root = Tk()
-        self.root.title(S_TITEL + f" V{S_VERSION}\n")
+        self.root.title(mdata.S_BON_PRINTER_APPLICATION_NAME + f" v{mdata.S_VERSION}\n")
         icondata = base64.b64decode(S_ICON) # The Base64 icon version as a string
         with open(S_TEMP_ICON_NAME, "wb") as o_file:
             o_file.write(icondata) # Extract the icon
@@ -227,7 +226,7 @@ class CyoutubeDownloadGui:
                                    bg="grey",fg="white",command=self.open_download_folder)
         o_folder_button.grid()
         #developer Label
-        o_developer_label = Label(self.root,text=S_DEVELOPER_LABLE,font=("Calibri",12))
+        o_developer_label = Label(self.root,text=mdata.S_COPYRIGHT,font=("Calibri",12))
         o_developer_label.grid()
         # right click content menu
         self.menu = Menu(self.root, tearoff = 0)
@@ -266,7 +265,7 @@ class CyoutubeDownloadGui:
     def start_download(self): # pylint: disable=R0201
         """ create and start thread for download """
         self.o_download_button["state"] = "disable"
-        c_download = CdownloadThread()
+        c_download = DownloadThread()
         c_download.start()
     def open_download_folder(self): # pylint: disable=R0201
         """ open download folder and create if not exist """
@@ -298,6 +297,12 @@ def delete_selected_text(o_url):
             o_url.delete(i_curser_pos - i_selected_text_length, i_curser_pos)
 
 if __name__ == "__main__":
-    c_gui = CyoutubeDownloadGui()
-    c_gui.root.mainloop()
+    # Set custom application id to show correct icon instead of Python in the task bar
+    try:
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(mdata.S_APP_ID)
+    except ImportError:
+        pass
+
+    gui = YoutubeDownloader()
+    gui.root.mainloop()
     

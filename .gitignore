@@ -4,7 +4,7 @@
 /.settings
 
 # Source
-/Download
+/Source/Download
 
 # Doxygen
 /Documentation/DoxygenCreator/Output_Doxygen
