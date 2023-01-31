@@ -185,7 +185,7 @@ class YoutubeDownloader:
         @brief Create and start thread for download
         """
         self.o_download_button["state"] = "disable"
-        c_download = DownloadThread()
+        c_download = DownloadThread(self)
         c_download.start()
 
     def open_download_folder(self):
