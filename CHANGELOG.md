@@ -2,7 +2,7 @@
 
 \tableofcontents
 
-# YouTubeDownloader changelog 📋️
+# YouTube Downloader changelog 📋️
 
 ## [v1.0.0]
 
