@@ -8,7 +8,6 @@
 
 import os
 import sys
-import base64
 from tkinter import Label, Tk, StringVar, IntVar, Entry, Radiobutton, Button, Menu
 from tkinter.ttk import Progressbar, Style
 import statistics
@@ -22,11 +21,9 @@ import pytube
 from moviepy.editor import AudioFileClip
 
 sys.path.append('../')
-from Source.icon import S_ICON # pylint: disable=wrong-import-position
 import Source.downloader_data as mdata # pylint: disable=wrong-import-position
 
 S_DOWNLOAD_FOLDER = "Download"
-S_TEMP_ICON_NAME = "temp_icon.ico"
 I_SPEED_AVERAGE_VALUES = 10
 
 L_FORMAT = [
@@ -163,12 +160,7 @@ class YoutubeDownloader:
     def __init__(self): # pylint: disable=R0914
         self.root = Tk()
         self.root.title(mdata.S_BON_PRINTER_APPLICATION_NAME + f" v{mdata.S_VERSION}\n")
-        icondata = base64.b64decode(S_ICON) # The Base64 icon version as a string
-        with open(S_TEMP_ICON_NAME, "wb") as o_file:
-            o_file.write(icondata) # Extract the icon
-            o_file.close()
-        self.root.wm_iconbitmap(S_TEMP_ICON_NAME) # set icon
-        os.remove(S_TEMP_ICON_NAME) # Delete the temporary file
+        self.root.wm_iconbitmap(mdata.S_ICON_REL_PATH) # set icon
         self.root.geometry("350x300") #set window
         self.root.resizable(0, 0) # Don't allow resizing
         self.root.columnconfigure(0,weight=1) #set all content in center.
