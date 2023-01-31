@@ -1,0 +1,65 @@
+#------------------------------------------------------------------------------
+# Central YouTubeDownloader GitHub CI
+# Doc: https://docs.github.com/de/actions
+#------------------------------------------------------------------------------
+name: YouTubeDownloader CI
+
+#--------------------------------------------------------------------------------
+# WORKFLOW TRIGGER
+#--------------------------------------------------------------------------------
+on:
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+    inputs:
+      pylint:
+        description: 'Run PyLint'
+        required: true
+        type: boolean
+        default: true
+      exe:
+        description: 'Build Exe'
+        required: true
+        type: boolean
+        default: true
+  #push:
+    #branches: [ master ]
+  #pull_request:
+    #branches: [ master ]
+
+#--------------------------------------------------------------------------------
+# WORKFLOW JOBS
+#--------------------------------------------------------------------------------
+jobs:
+#------------------------------------------------------------------------------
+  test-PyLint:
+    if: inputs.pylint || github.event.inputs.pylint == ''
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Packages
+        working-directory: ./Documentation/Installation
+        shell: cmd
+        run: install_packages.bat
+      - name: Run PyLint
+        working-directory: ./Test
+        shell: cmd
+        run: run_pylint.bat
+#------------------------------------------------------------------------------
+  build-Exe:
+    if: inputs.exe  || github.event.inputs.exe == ''
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Packages
+        working-directory: ./Documentation/Installation
+        shell: cmd
+        run: install_packages.bat
+      - name: Build Executable
+        working-directory: ./Executable
+        shell: cmd
+        run: generate_executable.bat
+      - uses: actions/upload-artifact@v2
+        with:
+          name: YouTubeDownloader.exe
+          path: ./Executable/bin
