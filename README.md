@@ -11,6 +11,9 @@
 
 Das YouTubeDownloader Tool läd Inhalte von Youtube herunter.
 
+![](app.png)
+![](Documentation/img/app.png)
+
 ## Voraussetzungen ⚠️
 
 * Um das Tool über den Code auszuführen wird mindestens `Python 3.7.9` benötigt.
@@ -20,4 +23,4 @@ Das YouTubeDownloader Tool läd Inhalte von Youtube herunter.
 
 ## Download ☁️ ⬇️
 
-Die freigegebenen Version sind auf GitHub veröffentlicht und steht dort zum [Download](https://github.com/timounger/YouTubeDownloader/releases) bereit.
+Die freigegebenen Versionen sind auf GitHub veröffentlicht und können dort [heruntergeladen](https://github.com/timounger/YouTubeDownloader/releases) werden.

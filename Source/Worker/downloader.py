@@ -30,6 +30,7 @@ L_FORMAT = [
 class DownloadThread(threading.Thread):
     """!
     @brief Thread class for download
+    @param gui : gui object
     """
     def __init__(self, gui):
         threading.Thread.__init__(self)

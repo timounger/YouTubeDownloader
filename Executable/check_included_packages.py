@@ -17,23 +17,9 @@ L_ALLOWED_THIRD_PARTY_PACKAGES = [
 	"PyInstaller",
 	"_pyinstaller_hooks_contrib",
 	"PIL",
-	"certifi",
-	"charset_normalizer",
 	"clipboard",
-	"colorama",
-	"decorator",
-	"idna",
-	"imageio",
-	"imageio_ffmpeg",
-	"moviepy",
-	"numpy",
-	"pkg_resources",
-	"proglog",
 	"pyperclip",
-	"pytube",
-	"requests",
-	"tqdm",
-	"urllib3"
+	"pytube"
 ]
 
 S_RELATIVE_PATH = r'build\YouTubeDownloader\xref-YouTubeDownloader.html'

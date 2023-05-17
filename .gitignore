@@ -7,11 +7,15 @@
 /Source/Download
 
 # Doxygen
-/Documentation/DoxygenCreator/Output_Doxygen
-/Documentation/DoxygenCreator/YouTubeDownloader.Doxyfile.bak
+/Documentation/DoxygenCreator/doxygen-1.9.2.windows.bin.zip
+/Documentation/DoxygenCreator/doxygen.exe
+/Documentation/DoxygenCreator/libclang.dll
 /Documentation/DoxygenCreator/plantuml.jar
+/Documentation/DoxygenCreator/Output_Doxygen
 /Documentation/DoxygenCreator/YouTubeDownloader.Doxyfile
+/Documentation/DoxygenCreator/YouTubeDownloader.Doxyfile.bak
 
 # Executable
 /Executable/build
 /Executable/bin
+/Executable/YouTubeDownloader.spec

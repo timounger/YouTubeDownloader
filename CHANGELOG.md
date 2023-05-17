@@ -4,6 +4,10 @@
 
 # YouTube Downloader changelog 📋️
 
+## [v1.0.1]
+
+* Packages aktualisiert
+
 ## [v1.0.0]
 
 * Architektur und Dokumentation

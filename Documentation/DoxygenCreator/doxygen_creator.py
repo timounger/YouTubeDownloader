@@ -13,6 +13,9 @@ import subprocess
 import webbrowser
 import requests
 import time
+import argparse
+import shutil
+import zipfile
 from typing import Any
 from threading import Thread
 from doxygen import ConfigParser
@@ -33,6 +36,9 @@ S_MAIN_FOLDER_FOLDER = "../../"
 S_PLANTUML_PATH = "./" # need plantuml.jar in this folder
 S_PLANTUML_JAR_URL = "https://github.com/plantuml/plantuml/releases/download/v1.2022.8/plantuml-1.2022.8.jar"
 S_PLANTUML_JAR_NAME = "plantuml.jar"
+S_DOXYGEN_URL = "https://sourceforge.net/projects/doxygen/files/rel-1.9.2/doxygen-1.9.2.windows.bin.zip/download"
+S_DOXYGEN_ZIP = "doxygen-1.9.2.windows.bin.zip"
+S_DOXYGEN_DLL = "libclang.dll"
 S_WARNING_FILE_PREFIX = "Doxygen_warnings_"
 S_WARNING_FILE_SUFFIX = ".log"
 S_INDEX_FILE = "html/index.html"
@@ -43,7 +49,7 @@ NO = "NO"
 WARNING_FAIL = "FAIL_ON_WARNINGS"
 
 S_PYTHON_PATTERN = '*.py'
-L_DEFAULT_FILE_PATTERN = [S_PYTHON_PATTERN, "*.bat", "*.md"]
+L_DEFAULT_FILE_PATTERN = []
 
 S_GITHUB_CORNER_FIRST = "<a href="
 S_GITHUB_CORNER_LAST = """ class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>"""
@@ -59,8 +65,9 @@ L_OVERRIDE = [S_DEFAULT, S_AUTO] # this values are possible to override with glo
 class OpenNotepad(Thread):
     """!
     @brief  Class to open Notepad in thread to prevent program stop until close file
+    @param  s_file : file to open
     """
-    def __init__(self, s_file):
+    def __init__(self, s_file: str):
         Thread.__init__(self)
         self.s_file = s_file
         self.start()
@@ -76,6 +83,7 @@ class OpenNotepad(Thread):
 class DoxygenCreator():
     """!
     @brief  Class to generate Doxygen documentation for any code documentation with uniform settings and styling.
+    @param  s_webside : URL to website
     """
     d_settings =  {
         'DOXYFILE_ENCODING'       : S_DEFAULT, # UTF-8
@@ -360,7 +368,7 @@ class DoxygenCreator():
         'GENERATE_LEGEND'         : S_DEFAULT,
         'DOT_CLEANUP'             : YES,
     }
-    def __init__(self, s_webside = None):
+    def __init__(self, s_webside: str = None):
         self.s_webside = s_webside
         self.l_warnings = []
         self.s_output_dir = ""
@@ -481,7 +489,7 @@ class DoxygenCreator():
 
     def download_plantuml_jar(self):
         """!
-        @brief Generate Doxygen output depend on existing doxyfile
+        @brief Download PlantUML Jar
         """
         if not os.path.exists(S_PLANTUML_JAR_NAME):
             print(f"Download {S_PLANTUML_JAR_NAME} ...")
@@ -492,6 +500,26 @@ class DoxygenCreator():
                 print(f"Can not downlaad {S_PLANTUML_JAR_NAME}! Generate documentation without PlantUml Graph Support.")
         else:
             print(f"{S_PLANTUML_JAR_NAME} already exist!")
+
+    def download_doxygen(self):
+        """!
+        @brief Download Doxygen
+        """
+        if not os.path.exists(S_DOXYGEN_PATH) or not os.path.exists(S_DOXYGEN_DLL):
+            if not os.path.exists(S_DOXYGEN_ZIP):
+                print(f"Download {S_DOXYGEN_ZIP} ...")
+                try:
+                    response = requests.get(S_DOXYGEN_URL)
+                    open(S_DOXYGEN_ZIP, "wb").write(response.content) # download plantuml.jar
+                except Exception:
+                    print(f"Can not download {S_DOXYGEN_ZIP}! Try to use local installed doxygen.")
+            else:
+                print(f"{S_DOXYGEN_ZIP} already exist!")
+            with zipfile.ZipFile(S_DOXYGEN_ZIP, "r") as zip_ref:
+                zip_ref.extract(S_DOXYGEN_PATH, S_PLANTUML_PATH)
+                zip_ref.extract(S_DOXYGEN_DLL, S_PLANTUML_PATH)
+        else:
+            print(f"{S_DOXYGEN_PATH} and {S_DOXYGEN_DLL} already exist!")
 
     def check_doxygen_warnings(self, b_open_warning_file: bool = True) -> bool:
         """!
@@ -515,12 +543,11 @@ class DoxygenCreator():
 
         return b_warnings
 
-    def generate_doxygen_output(self, b_open_doxygen_output = True):
+    def generate_doxygen_output(self, b_open_doxygen_output: bool = True):
         """!
         @brief Generate Doxygen output depend on existing doxyfile
         @param b_open_doxygen_output : [True] open output in browser; [False] only generate output
         """
-        self.download_plantuml_jar()
         subprocess.call([S_DOXYGEN_PATH, self.s_doxyfile_name])
 
         if b_open_doxygen_output:
@@ -553,6 +580,18 @@ class DoxygenCreator():
                     if s_icon_text is not None:
                         file.write(s_icon_text + "\n")
 
+    def add_images(self):
+        """!
+        @brief Add images to html folder
+        """
+        source_folder = f"{self.s_output_dir}/../../img"
+        destination_folder = f"{self.s_output_dir}html"
+        for filename in os.listdir(source_folder):
+            source_path = os.path.join(source_folder, filename)
+            destination_path = os.path.join(destination_folder, filename)
+            if os.path.isfile(source_path):
+                shutil.copy2(source_path, destination_path)
+
     def add_nojekyll_file(self):
         """!
         @brief Add .nojekyll file that files with underscores visible
@@ -561,10 +600,10 @@ class DoxygenCreator():
         with open(f"{self.s_output_dir}html/{s_file_name}", 'w') as file:
             file.write('')
 
-    def generate_configuration_diff(self, b_open_diff_file: bool = False):
+    def generate_configuration_diff(self):
         """!
         @brief  Generate doxyfile diff to view changes
-        @param  b_open_diff_file : [True] open diff in browser; [False] only generate diff
+                                                                                          
         """
         s_default_doxyfile = f"{self.s_output_dir}/Default.Doxyfile"
 
@@ -586,12 +625,14 @@ class DoxygenCreator():
         with open(s_diff_file_name, 'w', encoding='utf-8') as file:
             file.write(difference)
 
-    def run_doxygen(self, b_open_doxygen_output: bool = True):
+    def run_doxygen(self, b_open_doxygen_output: bool = True) -> bool:
         """!
         @brief  Generate Doxyfile and Doxygen output depend on doxyfile settings
         @param  b_open_doxygen_output : [True] open output in browser; [False] only generate output
         @return status for found doxygen warning
         """
+        self.download_doxygen()
+        self.download_plantuml_jar()
         self.prepare_doxyfile_configuration()
         if not os.path.exists(self.s_output_dir):
             os.makedirs(self.s_output_dir)
@@ -599,6 +640,7 @@ class DoxygenCreator():
         self.edit_select_doxyfile_settings()
         self.generate_doxygen_output(b_open_doxygen_output)
         self.add_github_corner()
+        self.add_images()
         self.add_nojekyll_file()
         self.generate_configuration_diff()
 
@@ -613,7 +655,20 @@ class DoxygenCreator():
 
         return b_warnings
 
+def get_cmd_args() -> argparse.Namespace:
+    """!
+    @brief  Function to define CMD arguments.
+    @return Function returns argument parser.
+    """
+    o_parser = argparse.ArgumentParser(formatter_class = argparse.ArgumentDefaultsHelpFormatter)
+    o_parser.add_argument("-o", "--open",
+                          type = bool,
+                          default = False,
+                          help = "open output files after generation")
+    return o_parser.parse_args()
+
 if __name__ == "__main__":
+    args = get_cmd_args()
     doxygen_creator = DoxygenCreator(S_REPO_LINK)
     doxygen_creator.set_configuration('PROJECT_NAME', mdata.S_YOUTUBE_DOWNLOADER_APPLICATION_NAME)
     doxygen_creator.set_configuration('PROJECT_NUMBER', mdata.S_VERSION)
@@ -621,4 +676,8 @@ if __name__ == "__main__":
     doxygen_creator.set_configuration('PROJECT_LOGO', f"{S_MAIN_FOLDER_FOLDER}{mdata.S_ICON_RESOURCE_PATH}")
     doxygen_creator.set_configuration('INPUT', S_MAIN_FOLDER_FOLDER)
     doxygen_creator.set_configuration('USE_MDFILE_AS_MAINPAGE', f"{S_MAIN_FOLDER_FOLDER}README.md")
-    sys.exit(doxygen_creator.run_doxygen())
+    l_file_pattern = [S_PYTHON_PATTERN, "*.md"]
+    l_exclude_pattern = ["DoxygenCreator", "Installation", "Executable", "Test", "Documentation", "CONTRIBUTING.md"]
+    doxygen_creator.set_configuration('EXCLUDE_PATTERNS', l_exclude_pattern)
+    doxygen_creator.set_configuration('FILE_PATTERNS', l_file_pattern)                                              
+    sys.exit(doxygen_creator.run_doxygen(b_open_doxygen_output = args.open))

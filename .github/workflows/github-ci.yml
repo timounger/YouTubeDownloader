@@ -4,53 +4,122 @@
 #------------------------------------------------------------------------------
 name: YouTubeDownloader CI
 
+#------------------------------------------------------------------------------
+# Token Permission
+#------------------------------------------------------------------------------
+permissions:
+  actions: write
+  checks: none
+  contents: write
+  deployments: none
+  id-token: none
+  issues: none
+  discussions: none
+  packages: none
+  pages: write
+  pull-requests: write
+  repository-projects: none
+  security-events: none
+  statuses: none
+
 #--------------------------------------------------------------------------------
 # WORKFLOW TRIGGER
 #--------------------------------------------------------------------------------
 on:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
     inputs:
-      pylint:
-        description: 'Run PyLint'
+      documentation:
+        description: 'Documentation'
+        type: choice
+        default: check
+        options:
+          - none
+          - check
+          - publish
+          - clean publish
+      build:
+        description: 'Build'
+        type: choice
+        default: exe
+        options:
+          - none
+          - exe
+      tag_name:
+        description: The name of the tag to create. Change only to set tag!
         required: true
+        default: v0.0.0
+      create_release:
+        description: 'Create Release'
         type: boolean
-        default: true
-      exe:
-        description: 'Build Exe'
-        required: true
-        type: boolean
-        default: true
-  #push:
-    #branches: [ master ]
-  #pull_request:
-    #branches: [ master ]
+        default: false
 
 #--------------------------------------------------------------------------------
 # WORKFLOW JOBS
 #--------------------------------------------------------------------------------
 jobs:
-#------------------------------------------------------------------------------
-  test-PyLint:
-    if: inputs.pylint || github.event.inputs.pylint == ''
+  doc-Doxygen:
+    if: inputs.documentation != 'none' || inputs.create_release || github.event.inputs.documentation == ''
     runs-on: windows-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10.10
+          architecture: x64
+      - name: Install Graphviz
+        run: choco install graphviz
       - name: Install Packages
         working-directory: ./Documentation/Installation
         shell: cmd
         run: install_packages.bat
-      - name: Run PyLint
-        working-directory: ./Test
-        shell: cmd
-        run: run_pylint.bat
+      - name: Run Doxygen
+        working-directory: ./Documentation/DoxygenCreator
+        run: python doxygen_creator.py
+      - name: Upload Output_Doxygen
+        uses: actions/upload-artifact@v3
+        with:
+          name: Output_Doxygen
+          path: ./Documentation/DoxygenCreator/Output_Doxygen
 #------------------------------------------------------------------------------
-  build-Exe:
-    if: inputs.exe  || github.event.inputs.exe == ''
+  doc-Pages:
+    if: inputs.documentation == 'publish' || inputs.documentation == 'clean publish' || inputs.create_release
+    needs: doc-Doxygen
     runs-on: windows-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Download Output_Doxygen
+        uses: actions/download-artifact@v3
+        with:
+          name: Output_Doxygen
+          path: ./Documentation/DoxygenCreator/Output_Doxygen
+      - name: Delete gh-pages branch
+        if: inputs.documentation == 'clean publish'
+        run: |
+          git checkout gh-pages
+          git push origin --delete gh-pages
+      - name: Deploy to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./Documentation/DoxygenCreator/Output_Doxygen/html
+#------------------------------------------------------------------------------
+  build-Exe:
+    if: inputs.build != 'none' || inputs.create_release || github.event.inputs.exe == ''
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10.10
+          architecture: x64
       - name: Install Packages
         working-directory: ./Documentation/Installation
         shell: cmd
@@ -59,7 +128,59 @@ jobs:
         working-directory: ./Executable
         shell: cmd
         run: generate_executable.bat
-      - uses: actions/upload-artifact@v2
+      - name: Upload Executable
+        uses: actions/upload-artifact@v3
         with:
           name: YouTubeDownloader.exe
-          path: ./Executable/bin
+          path: ./Executable/bin/YouTubeDownloader.exe
+#------------------------------------------------------------------------------
+  create-Tag:
+    if: inputs.tag_name != 'v0.0.0'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Create tag
+      run: |
+        tag_name="${{ inputs.tag_name }}"
+        git tag "$tag_name"
+        git push origin "$tag_name"
+#------------------------------------------------------------------------------
+  create-Release:
+    if: inputs.create_release
+    needs: [create-Tag, build-Exe]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Download Executable
+      uses: actions/download-artifact@v3
+      with:
+        name: YouTubeDownloader.exe
+        path: ./Executable/bin
+    - name: Get Commit Message
+      id: get_commit_message
+      run: echo "::set-output name=message::$(git log -1 --pretty=%B)"
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ inputs.tag_name }}
+        release_name: "[YouTubeDownloader] ${{ inputs.tag_name }}"
+        body: ${{ steps.get_commit_message.outputs.message }}
+        draft: false
+        prerelease: false
+    - name: Upload Setup to release asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./Executable/bin/YouTubeDownloader.exe
+        asset_name: YouTubeDownloader.exe
+        asset_content_type: application/zip
+

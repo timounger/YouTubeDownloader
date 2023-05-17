@@ -7,113 +7,40 @@
 """
 
 import os
-import sys
-import logging as log
 from typing import List
 import argparse
+import ast
+import astunparse
 
 S_DEFAULT_PATH = "./"
+L_IGNORE_PARAM = ["self", "cls"]
+PARAM_DOC_PREFIX = "@param"
+RETURN_DOC_PREFIX = "@return"
+INIT_FUNCTION = "__init__"
 
-S_FUNC_DEF = "def "
-S_DOC_BRIEF = "@brief "
-S_DOC_PARAM = "@param"
-S_DOC_RETURN = "@return"
-S_FUNC_RETURN = "return"
-L_END_COMMENT = ['"""', "'''"]
-L_IGNORE_PARAM = ["self"]
-S_IGNORE_PARAM_PREFIX = "*"
-S_OPTION_RETURN_CODE = "sys.exit"
+CHECK_TYPING = False
 
-B_CHECK_TYPING = False
-
-B_DEBUG = False
+B_DOXY_PY_DEBUG = False
 L_DEBUG_FILE = ["doxy_py_checker.py"]
-I_DEBUG_END_LINE = None
-
-def get_leading_spaces(s_string: str) -> int:
-    """!
-    @brief  get leading spaces of string
-    @param s_string : string to check
-    @return leading number of spaces
-    """
-    return len(s_string) - len(s_string.lstrip())
-
-def check_doc_end(s_string : str) -> bool:
-    """!
-    @brief  Check if string for documentation end
-    @param  s_string : string to check
-    @return status if string is documentation end
-    """
-    b_end_found = False
-    for s_end_line in L_END_COMMENT:
-        if s_end_line in s_string:
-            b_end_found = True
-            break
-    return b_end_found
-
-def check_param_relevant(func_param: str) -> bool:
-    """!
-    @brief  Check function parameter is relevant to check. "self" and "*" arguments are not relevant.
-    @param  func_param : function parameter
-    @return status if parameter is relevant
-    """
-    b_param_relevant = bool((func_param not in L_IGNORE_PARAM) and not func_param.startswith(S_IGNORE_PARAM_PREFIX))
-    return b_param_relevant
-
-class ParamCompare:
-    """!
-    @brief  Compare parameter class
-    """
-    def __init__(self, l_func_param, l_doc_param):
-        self.l_func_param = l_func_param
-        self.l_doc_param = l_doc_param
-        self.l_report = []
-
-    def check_param_in_doc(self):
-        """!
-        @brief  Check if all function parameters present in documentation
-        """
-        for func_param in self.l_func_param:
-            if (func_param not in self.l_doc_param) and check_param_relevant(func_param):
-                self.l_report.append(f'"{func_param}" is not documented')
-
-    def check_doc_in_param(self):
-        """!
-        @brief  Check if all documented parameters present in function
-        """
-        for doc_param in self.l_doc_param:
-            b_found = False
-            for func_param in self.l_func_param:
-                if doc_param == func_param.lstrip(S_IGNORE_PARAM_PREFIX):
-                    b_found = True
-                    break
-            if not b_found:
-                self.l_report.append(f'"{doc_param}" is not found in the argument list')
-
-    def compare_param(self) -> List[str]:
-        """!
-        @brief  Check for valid specification of function parameter
-        @return list with findings of parameter compare
-        """
-        self.check_param_in_doc()
-        self.check_doc_in_param()
-        return self.l_report
 
 class DoxyPyChecker:
     """!
     @brief  Doxygen documentation checker class
+    @param  path : Check python files located in this path
+    @param  print_checked_files : status if checked files should print
     """
-    def __init__(self, path: str = None):
+    def __init__(self, path: str = None, print_checked_files: bool = True):
+        self.warnings = []
         if path:
             self.s_path = path
         else:
             self.s_path = S_DEFAULT_PATH
-        self.l_findings = []
+        self.print_checked_files = print_checked_files
 
     def get_cmd_args(self) -> argparse.Namespace:
         """!
-        @brief  Function to define CMD arguments.
-        @return Function returns argument parser.
+        @brief  Define CMD arguments.
+        @return argument parser.
         """
         o_parser = argparse.ArgumentParser(formatter_class = argparse.ArgumentDefaultsHelpFormatter)
         o_parser.add_argument("-p", "--path",
@@ -124,18 +51,28 @@ class DoxyPyChecker:
     def run_check(self) -> List[str]:
         """!
         @brief  Run doxygen checker
-        @return list with findings
+        @return list of all files
         """
-        l_files = self.get_file()
-        if B_DEBUG:
+        findings = []
+        l_files = self.get_files()
+        if B_DOXY_PY_DEBUG:
             l_files = L_DEBUG_FILE
         for file in l_files:
-            self.check_file(file)
-        i_number_of_warnings = len(self.l_findings)
-        print(f"Found {i_number_of_warnings} Warnings in {len(l_files)} files.")
-        return self.l_findings
+            if self.print_checked_files:
+                print(f"Check docs for file: {file}", )
+            findings += self.check_file(file)
 
-    def get_file(self) -> List[str]:
+            # print result
+        if findings:
+            print(f"Found {len(findings)} Function with Warnings in {len(l_files)} files.")
+            for text in findings:
+                print(text)
+        else:
+            print("All functions correctly documented.")
+
+        return findings
+
+    def get_files(self) -> List[str]:
         """!
         @brief  Get all python files in folder and subfolders
         @return list of all files
@@ -148,221 +85,109 @@ class DoxyPyChecker:
                     l_files.append(fullpath)
         return l_files
 
-    def create_file_link(self, file: str=None, line: int=None, text: str=None) -> str:
+    def check_function(self, func_def: ast.FunctionDef, class_docstring: str = None) -> List[str]:
         """!
-        @brief  Print link to line in file name
-        @param  file : file name
-        @param  line : line number
-        @param  text : optional text behind link
-        @return string with file link
+        @brief  Check function
+        @param  func_def : function definition
+        @param  class_docstring : docstring of class
+        @return list of findings in function
         """
-        if text is not None:
-            s_text = f" {text}"
-        else:
-            s_text = ""
-        s_file_link = f'{file}:{line} {s_text}'
-        return s_file_link
+        findings = []
+        documented_params = set()
+        docstring = ast.get_docstring(func_def) or class_docstring
+        if docstring:
+            # Get documented parameters and check for duplicate documentation
+            for line in docstring.splitlines():
+                if line.lstrip().startswith(PARAM_DOC_PREFIX):
+                    param_name = line.split()[1].rstrip(":")
+                    if param_name in documented_params:
+                        findings.append(f"{param_name} is documented multiple times")
+                    else:
+                        documented_params.add(param_name)
 
-    def get_function_parameter(self, s_function_line: str) -> List[str]:
-        """!
-        @brief  Get Parameter of function
-        @param  s_function_line : function line
-        @return  list with function parameter
-        """
-        i_start_pos = s_function_line.find("(")
-        i_end_pos = s_function_line.find(")")
-        s_param_string = s_function_line[i_start_pos+1:i_end_pos]
-        log.debug("Func Param String: %s", s_param_string)
-        l_param = []
-        i_start = 0
-        i_open_bracket = 0
-        for i, char in enumerate(s_param_string):
-            b_end = (i == (len(s_param_string) - 1))
-            if (char == "[") and not b_end:
-                i_open_bracket += 1
-            elif (char == "]") and not b_end:
-                i_open_bracket -= 1
-            elif ((char == ",") and (i_open_bracket == 0)) or b_end:
-                if b_end:
-                    i_end = i + 1
-                else:
-                    i_end = i
-                s_param = s_param_string[i_start:i_end].split(":", maxsplit=1)
-                s_param = s_param[0].split("=", maxsplit=1)
-                s_param = s_param[0].strip()
-                l_param.append(s_param)
-                i_start = i + 1
-        log.debug("Func Param: %s", l_param)
-        return l_param
+            # Check that all functional parameters are documented
+            for arg in func_def.args.args:
+                if arg.arg not in L_IGNORE_PARAM:
+                    if arg.arg not in documented_params:
+                        findings.append(f"{arg.arg} is not documented")
+                    if CHECK_TYPING and arg.annotation is None:
+                        findings.append(f"{arg.arg} has no typing")
 
-    def get_doc_param(self, file_content: List[str], i_line_index: int) -> List[str]:
-        """!
-        @brief  Get specified parameter in doc string.
-        @param  file_content : file content
-        @param  i_line_index : line index in file content with brief
-        @return list with specified parameter
-        """
-        l_doc_param = []
-        for s_line_content in file_content[i_line_index:]:
-            l_words = [x.strip() for x in s_line_content.split(maxsplit=2)]
-            if l_words:
-                if l_words[0] == S_DOC_PARAM:
-                    l_doc_param.append(l_words[1].rstrip(":"))
-                else:
-                    if check_doc_end(s_line_content):
-                        break
-        log.debug("Doc  Param: %s", l_doc_param)
-        return l_doc_param
+            # Check that the documented parameters are present
+            for documented_param in documented_params:
+                all_args = [arg.arg for arg in func_def.args.args]
+                if func_def.args.vararg:
+                    all_args.append(func_def.args.vararg.arg)
+                if func_def.args.kwarg:
+                    all_args.append(func_def.args.kwarg.arg)
+                if documented_param not in all_args:
+                    findings.append(f"{documented_param} is documented but not used")
 
-    def get_func_return_status(self, file_content: List[str], i_line_index: int) -> bool:
-        """!
-        @brief  Get status if function has return present in documentation.
-        @param  file_content : file content
-        @param  i_line_index : line index in file content with brief
-        @return status if return present in documentation -> True: return found; False: not return; None: return is optional
-        """
-        b_doc_return_status = False
-        b_doc_end = False
-        i_func_spaces = get_leading_spaces(file_content[i_line_index])
-        for s_line_content in file_content[i_line_index:]:
-            s_line = s_line_content[:-1] # delete new line end
-            i_line_spaces = get_leading_spaces(s_line)
-            if not b_doc_end:
-                if check_doc_end(s_line):
-                    b_doc_end = True
-            else:
-                if (i_line_spaces >= i_func_spaces) and s_line.lstrip().startswith(f"{S_FUNC_RETURN} "):
-                    b_doc_return_status = True
-                    break # return was found in function
-                if (i_line_spaces < i_func_spaces) and (len(s_line) > 0) and not s_line.lstrip().startswith("#"): # Indentation deep is lower than function and no empty or comment line
-                    break # new function -> no return found
-                if (S_OPTION_RETURN_CODE in s_line):
-                    b_doc_return_status = None # sys.exit was found -> documentation is optional
-        log.debug("Func Return: %s", b_doc_return_status)
-        return b_doc_return_status
-
-    def get_doc_return_status(self, file_content: List[str], i_line_index: int) -> bool:
-        """!
-        @brief  Get status if return present in documentation.
-        @param  file_content : file content
-        @param  i_line_index : line index in file content with brief
-        @return status if return present in documentation
-        """
-        b_doc_return_status = False
-        for s_line_content in file_content[i_line_index:]:
-            l_words = [x.strip() for x in s_line_content.split(maxsplit=2)]
-            if l_words:
-                if l_words[0] == S_DOC_RETURN:
-                    b_doc_return_status = True
+            # Check that the function return is correctly specified: True: need doc, False no doc, None: optional doc
+            doc_has_return = RETURN_DOC_PREFIX in docstring
+            func_has_return = False
+            for node in ast.walk(func_def):
+                if isinstance(node, ast.Return) and node.value is not None: # function has no return None
+                    func_has_return = True
                     break
-                i_end_found = False
-                for s_end_line in L_END_COMMENT:
-                    if s_end_line in s_line_content:
-                        i_end_found = True
-                        break
-                if i_end_found:
-                    break
-        log.debug("Doc  Return: %s", b_doc_return_status)
-        return b_doc_return_status
+                if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute) and node.func.attr == "exit":
+                    module = node.func.value
+                    if isinstance(module, ast.Name) and module.id == "sys":
+                        func_has_return = None # documentation of "sys.exit" is optional
+            if func_has_return is not None:
+                if doc_has_return != func_has_return:
+                    if func_has_return:
+                        findings.append("Return type is not documented")
+                    else:
+                        findings.append("Return type is documented but not used")
+            if CHECK_TYPING and func_has_return:
+                return_annotation = astunparse.unparse(func_def.returns).strip() if func_def.returns else None
+                if return_annotation is None:
+                    findings.append("Return type has no typing")
 
-    def check_parameter_typing(self, l_parameter: List[str], s_function_line: str) -> list:
-        """!
-        @brief  Check typing of parameter
-        @param  l_parameter : function parameter
-        @param  s_function_line : function line
-        @return list with function parameter
-        """
-        l_report = []
-        i_start_pos = s_function_line.find("(")
-        i_end_pos = s_function_line.find(")")
-        s_param_string = s_function_line[i_start_pos+1:i_end_pos]
-        for s_param in l_parameter:
-            if check_param_relevant(s_param):
-                b_typing = False
-                i_param_pos = s_param_string.find(s_param)
-                for char in s_param_string[i_param_pos:]:
-                    if char == ",":
-                        break
-                    if char == ":":
-                        b_typing = True
-                if not b_typing:
-                    l_report.append(f'parameter "{s_param}" has no typing')
-        return l_report
+        return findings
 
-    def check_return_typing(self, b_func_return_status: bool, s_function_line: str) -> List[str]:
-        """!
-        @brief  Check typing of return
-        @param  b_func_return_status : status of  present function return status
-        @param  s_function_line : function line
-        @return list with function parameter
-        """
-        l_report = []
-        if b_func_return_status:
-            i_end_pos = s_function_line.find(")")
-            if "->" not in s_function_line[i_end_pos:]:
-                l_report.append('return has no typing')
-        return l_report
-
-    def check_file(self, s_file_name: str):
+    def check_file(self, file_path: str) -> List[str]:
         """!
         @brief  Check file for missing parameter description
-        @param  s_file_name : file name
+        @param  file_path : file name
+        @return list of findings in file
         """
-        with open(s_file_name, 'r', encoding='utf-8') as file:
-            file_content = file.readlines()
-        for i, line in enumerate(file_content):
-            if S_DOC_BRIEF in line:
-                s_function_line = file_content[i-2]
-                if s_function_line.lstrip().startswith(S_FUNC_DEF):
-                    log.debug("=> Function Line: %s", s_function_line[:-1].lstrip())
+        with open(file_path, "r", encoding='utf-8') as file:
+            code = file.read()
 
-                    # check parameter
-                    l_func_param = self.get_function_parameter(s_function_line)
-                    l_doc_param = self.get_doc_param(file_content, i)
-                    param_comp = ParamCompare(l_func_param, l_doc_param)
-                    l_report = param_comp.compare_param()
+        tree = ast.parse(code)
 
-                    # check return
-                    b_func_return_status = self.get_func_return_status(file_content, i)
-                    if b_func_return_status is not None: # documentation is not optional
-                        b_doc_return_status = self.get_doc_return_status(file_content, i)
-                        if b_func_return_status != b_doc_return_status:
-                            if b_func_return_status:
-                                s_report = 'return is not documented'
-                            else:
-                                s_report = 'return not found in function'
-                            l_report.append(s_report)
+        file_findings = []
+        for node in ast.walk(tree):
+            func_def = None
+            check_findings = []
+            if isinstance(node, ast.ClassDef):
+                class_docstring = ast.get_docstring(node)
+                for subnode in node.body:
+                    if isinstance(subnode, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                        if subnode.name == INIT_FUNCTION:
+                            func_def = subnode
+                            check_findings = self.check_function(func_def, class_docstring)
+            elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                func_def = node
+                check_findings = self.check_function(func_def)
 
-                    if B_CHECK_TYPING: # check typing
-                        l_report.extend(self.check_parameter_typing(l_func_param, s_function_line))
-                        l_report.extend(self.check_return_typing(b_func_return_status, s_function_line))
+            # print findings
+            function_finding = ""
+            if func_def and check_findings:
+                function_finding = f"{file_path}:{func_def.lineno} {func_def.name}"
+            for warning in check_findings:
+                function_finding += f"\n  {warning}"
 
-                    # print and save result
-                    if l_report:
-                        s_file_link = self.create_file_link(s_file_name, i+1)
-                        self.l_findings.append(s_file_link)
-                        print(s_file_link)
-                        for result in l_report:
-                            s_report = f"  {result}"
-                            self.l_findings.append(s_report)
-                            print(s_report)
-            if B_DEBUG:
-                if I_DEBUG_END_LINE and (i > I_DEBUG_END_LINE):
-                    sys.exit("DEBUG_END")
+            if function_finding:
+                file_findings.append(function_finding)
+
+        return file_findings
 
 if __name__ == "__main__":
-    if B_DEBUG:
-        # ----- Debug Logging Configuration -----
-        S_LOG_MSG_FORMAT = "%(asctime)s [%(levelname)-5.5s]  %(message)s"
-        log.basicConfig(level=log.DEBUG,
-                        format=S_LOG_MSG_FORMAT,
-                        datefmt='%Y-%m-%d %H:%M:%S',
-                        handlers=[
-                            log.FileHandler("doxygen_checker.log"),
-                            log.StreamHandler()
-                        ])
-    doxy_checker = DoxyPyChecker(path="../")
+    doxy_checker = DoxyPyChecker(path="../../", print_checked_files=False)
     args = doxy_checker.get_cmd_args()
     if args.path:
         doxy_checker.s_path = args.path
-    l_findings = doxy_checker.run_check()
+    doxy_checker.run_check()

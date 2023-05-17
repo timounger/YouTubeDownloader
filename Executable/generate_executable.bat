@@ -30,6 +30,14 @@ IF %ERRORLEVEL% NEQ 0 (
 								 --exclude-module lxml ^
 								 --exclude-module typing_extensions ^
 								 --exclude-module pygments ^
+                 --exclude-module platformdirs ^
+                 --exclude-module charset_normalizer ^
+                 --exclude-module colorama ^
+                 --exclude-module decorator ^
+                 --exclude-module idna ^
+                 --exclude-module imageio ^
+                 --exclude-module imageio_ffmpeg ^
+                 --exclude-module moviepy ^
 								 --name YouTubeDownloader ^
 								 --onefile ^
 								 --noconsole ^
@@ -42,9 +50,12 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 
 %path_python_exe% .\check_included_packages.py
+IF %ERRORLEVEL% NEQ 0 (
+	exit /b %ERRORLEVEL%
+)
 
 :: Cleanup
 del YouTubeDownloader.spec
-::rmdir /s/q "build"
+rmdir /s/q "build"
 set PYTHONHASHSEED=
-pause
+::pause
