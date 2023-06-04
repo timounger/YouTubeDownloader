@@ -676,7 +676,6 @@ if __name__ == "__main__":
     doxygen_creator.set_configuration('PROJECT_BRIEF', mdata.S_YOUTUBE_DOWNLOADER_DESCRIPTION)
     doxygen_creator.set_configuration('PROJECT_LOGO', f"{S_MAIN_FOLDER_FOLDER}{mdata.S_ICON_RESOURCE_PATH}")
     doxygen_creator.set_configuration('INPUT', S_MAIN_FOLDER_FOLDER)
-    doxygen_creator.set_configuration('USE_MDFILE_AS_MAINPAGE', f"{S_MAIN_FOLDER_FOLDER}README.md")
     l_file_pattern = [S_PYTHON_PATTERN, "*.md"]
     l_exclude_pattern = ["DoxygenCreator", "Installation", "Executable", "Test", "Documentation", "CONTRIBUTING.md"]
     doxygen_creator.set_configuration('EXCLUDE_PATTERNS', l_exclude_pattern)
