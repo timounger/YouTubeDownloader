@@ -34,7 +34,7 @@ S_DEFAULT_OUTPUT_FOLDER = "Output_Doxygen"
 S_PUBLISHER = "Timo Unger"
 S_MAIN_FOLDER_FOLDER = "../../"
 S_PLANTUML_PATH = "./" # need plantuml.jar in this folder
-S_PLANTUML_JAR_URL = "https://github.com/plantuml/plantuml/releases/download/v1.2022.8/plantuml-1.2022.8.jar"
+S_PLANTUML_JAR_URL = "https://github.com/plantuml/plantuml/releases/download/v1.2023.8/plantuml-1.2023.8.jar"
 S_PLANTUML_JAR_NAME = "plantuml.jar"
 S_DOXYGEN_URL = "https://sourceforge.net/projects/doxygen/files/rel-1.9.7/doxygen-1.9.7.windows.x64.bin.zip/download"
 S_DOXYGEN_ZIP = "doxygen-1.9.7.windows.x64.bin.zip"
@@ -677,7 +677,7 @@ if __name__ == "__main__":
     doxygen_creator.set_configuration('PROJECT_LOGO', f"{S_MAIN_FOLDER_FOLDER}{mdata.S_ICON_RESOURCE_PATH}")
     doxygen_creator.set_configuration('INPUT', S_MAIN_FOLDER_FOLDER)
     l_file_pattern = [S_PYTHON_PATTERN, "*.md"]
-    l_exclude_pattern = ["DoxygenCreator", "Installation", "Executable", "Test", "Documentation", "CONTRIBUTING.md"]
-    doxygen_creator.set_configuration('EXCLUDE_PATTERNS', l_exclude_pattern)
+    #l_exclude_pattern = ["DoxygenCreator", "Installation", "Executable", "Test", "Documentation", "CONTRIBUTING.md"]
+    #doxygen_creator.set_configuration('EXCLUDE_PATTERNS', l_exclude_pattern)
     doxygen_creator.set_configuration('FILE_PATTERNS', l_file_pattern)                                              
     sys.exit(doxygen_creator.run_doxygen(b_open_doxygen_output = args.open))
