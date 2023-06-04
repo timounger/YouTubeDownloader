@@ -23,7 +23,7 @@ from doxygen import ConfigParser
 
 # user include
 sys.path.append('../../')
-import Source.Util.downloader_data as mdata 
+import Source.Util.downloader_data as mdata
 from Documentation.DoxygenCreator.doxy_py_checker import DoxyPyChecker
 
 B_USE_OWN_STYLE = True
@@ -36,8 +36,8 @@ S_MAIN_FOLDER_FOLDER = "../../"
 S_PLANTUML_PATH = "./" # need plantuml.jar in this folder
 S_PLANTUML_JAR_URL = "https://github.com/plantuml/plantuml/releases/download/v1.2022.8/plantuml-1.2022.8.jar"
 S_PLANTUML_JAR_NAME = "plantuml.jar"
-S_DOXYGEN_URL = "https://sourceforge.net/projects/doxygen/files/rel-1.9.2/doxygen-1.9.2.windows.bin.zip/download"
-S_DOXYGEN_ZIP = "doxygen-1.9.2.windows.bin.zip"
+S_DOXYGEN_URL = "https://sourceforge.net/projects/doxygen/files/rel-1.9.7/doxygen-1.9.7.windows.x64.bin.zip/download"
+S_DOXYGEN_ZIP = "doxygen-1.9.7.windows.x64.bin.zip"
 S_DOXYGEN_DLL = "libclang.dll"
 S_WARNING_FILE_PREFIX = "Doxygen_warnings_"
 S_WARNING_FILE_SUFFIX = ".log"
@@ -223,6 +223,7 @@ class DoxygenCreator():
         'HTML_STYLESHEET'         : S_DEFAULT,
         'HTML_EXTRA_STYLESHEET'   : S_AUTO, # required for Doxygen Awesome
         'HTML_EXTRA_FILES'        : S_AUTO, # required for Doxygen Awesome
+        'HTML_COLORSTYLE'         : "LIGHT", # required with Doxygen >= 1.9.5
         'HTML_COLORSTYLE_HUE'     : 209, # required for Doxygen Awesome
         'HTML_COLORSTYLE_SAT'     : 255, # required for Doxygen Awesome
         'HTML_COLORSTYLE_GAMMA'   : 113, # required for Doxygen Awesome
@@ -265,11 +266,11 @@ class DoxygenCreator():
         'USE_MATHJAX'             : S_DEFAULT,
         'MATHJAX_VERSION'         : S_DEFAULT,
         'MATHJAX_FORMAT'          : S_DEFAULT,
-        'MATHJAX_RELPATH'         : "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/",
+        'MATHJAX_RELPATH'         : "https://cdn.jsdelivr.net/npm/mathjax@2",
         'MATHJAX_EXTENSIONS'      : S_DEFAULT,
         'MATHJAX_CODEFILE'        : S_DEFAULT,
         'SEARCHENGINE'            : YES,
-        'SERVER_BASED_SEARCH'     : YES,
+        'SERVER_BASED_SEARCH'     : NO,
         'EXTERNAL_SEARCH'         : NO,
         'SEARCHENGINE_URL'        : S_DEFAULT,
         'SEARCHDATA_FILE'         : S_DEFAULT,
@@ -445,7 +446,8 @@ class DoxygenCreator():
         l_extra_files = ["doxygen-awesome-darkmode-toggle.js",
                          "doxygen-awesome-fragment-copy-button.js",
                          "doxygen-awesome-paragraph-link.js",
-                         "doxygen-awesome-interactive-toc.js"]
+                         "doxygen-awesome-interactive-toc.js",
+                         "doxygen-awesome-tabs.js"]
         self.set_configuration('HTML_EXTRA_FILES', l_extra_files, b_override=False)
         l_extra_stylesheet = ["doxygen-awesome.css",
                               "doxygen-awesome-sidebar-only.css",
@@ -603,7 +605,6 @@ class DoxygenCreator():
     def generate_configuration_diff(self):
         """!
         @brief  Generate doxyfile diff to view changes
-                                                                                          
         """
         s_default_doxyfile = f"{self.s_output_dir}/Default.Doxyfile"
 

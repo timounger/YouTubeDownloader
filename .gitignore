@@ -7,7 +7,7 @@
 /Source/Download
 
 # Doxygen
-/Documentation/DoxygenCreator/doxygen-1.9.2.windows.bin.zip
+/Documentation/DoxygenCreator/doxygen-1.9.7.windows.x64.bin.zip
 /Documentation/DoxygenCreator/doxygen.exe
 /Documentation/DoxygenCreator/libclang.dll
 /Documentation/DoxygenCreator/plantuml.jar

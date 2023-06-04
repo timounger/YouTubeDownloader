@@ -85,7 +85,7 @@ class YoutubeDownloader:
             s_default_status = "URL aus Zwischenablage wurde eingefügt!"
         else:
             s_default_text = "" # if no YouTube link or invalid set no text as default
-            s_default_status = "URL eingeben und Downlaod starten!"
+            s_default_status = "URL eingeben und Download starten!"
         self.o_url.insert(0, s_default_text) # set content of clipboard as default
         self.o_url.grid()
         o_input_button = Button(self.root,text="Einfügen",width=10,\
