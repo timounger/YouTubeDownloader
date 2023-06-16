@@ -62,7 +62,7 @@ package "Python Libraries (mostly third party)" #lightgreen {
 
 ### Einstiegspunkt
 
-Der Einstiegspunkt in die Anwendung ist die Datei `youtube_downlaoder.py`. Sie startet das Anwendungsfenster.
+Der Einstiegspunkt in die Anwendung ist die Datei `youtube_downloader.py`. Sie startet das Anwendungsfenster.
 
 ### Controller
 
