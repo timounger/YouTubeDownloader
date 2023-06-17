@@ -15,3 +15,9 @@ pylint --rcfile=%CONFIG_FILE% %TARGET_DIR% --reports=y --output=%LOG_FILE% --out
 type %LOG_FILE%
 echo 'pylint exit code: %ERRORLEVEL%'>>%LOG_FILE%
 start notepad %LOG_FILE%
+if errorlevel 1 (
+  echo Pylint failed with error code %errorlevel%.
+  exit /b %errorlevel%
+) else (
+  echo Pylint check passed.
+)
