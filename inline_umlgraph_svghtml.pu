@@ -1,0 +1,49 @@
+@startuml cdYouTubeDownloaderSWComponents.svg
+skinparam titleFontSize 30
+skinparam titleFontStyle bold
+skinparam packageBorderColor black
+skinparam packageFontSize 18
+skinparam groupFontStyle bold
+skinparam componentBorderColor black
+skinparam interfaceBorderColor black
+skinparam CollectionsBorderColor black
+
+title SW components of YouTube Downloader Tool
+
+node "app.ico" as icon #yellow
+
+package "YouTubeDownloader" as YtDl #ededed {
+  component "**youtube_downloader**" as youtube_downloader #63d8ff
+  note left of youtube_downloader
+    Application entry point:
+    Init and startup
+  end note
+  package "Controller" as controller {
+    [main_window]
+  }
+  package "Util" as util {
+    [downloader_data] as data
+  }
+  note top of data
+    Constants (e.g paths, keys) and
+    Functions related to data.
+    Included by most components.
+  end note
+  package "Worker" {
+    [downloader]
+  }
+  [youtube_downloader] -d-> [main_window]
+  [youtube_downloader] -[#black]u--> icon
+}
+
+node "YouTubeDownloader.exe" #plum
+
+package "Python Libraries (mostly third party)" #lightgreen {
+ [PyInstaller]
+ [pytube]
+}
+
+[youtube_downloader] -[#black]-> [downloader]
+[downloader] -[#black]-> [pytube]
+[PyInstaller] -[#black]d-> YouTubeDownloader.exe
+@enduml
