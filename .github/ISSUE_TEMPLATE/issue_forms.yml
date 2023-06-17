@@ -1,0 +1,49 @@
+#------------------------------------------------------------------------------
+# Issue Formular
+# Doc: https://docs.github.com/de/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
+#------------------------------------------------------------------------------
+name: Bug Meldung
+description: Einen Fehlerbericht einreichen
+title: "[Bug]: "
+labels: ["bug"]
+assignees:
+  - timounger
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Vielen Dank, dass Sie sich die Zeit genommen haben, diesen Fehlerbericht auszufüllen!
+  - type: input
+    id: contact
+    attributes:
+      label: Kontakt Details
+      description: Wie können wir mit Ihnen in Kontakt treten, wenn wir mehr Informationen benötigen?
+      placeholder: email@example.com
+    validations:
+      required: false
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Was ist passiert?
+      description: Sagen Sie uns auch, was haben Sie erwartet?
+      placeholder: Sagen Sie uns, was Sie sehen!
+      value: "Ein Fehler ist passiert!"
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version
+      description: Welche Version unserer Software verwenden Sie?
+      options:
+        - 1.0.0
+        - 1.0.0.1
+        - 1.0.0.2
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevante Protokollausgabe
+      description: Bitte kopieren Sie alle relevanten Protokollausgaben und fügen Sie sie ein. Diese werden automatisch in Code formatiert, so dass keine Backticks erforderlich sind.
+      render: shell

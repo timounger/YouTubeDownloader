@@ -12,6 +12,13 @@ set LOG_FILE=%TEST_DIR%\pylint_YouTubeDownloader.log
 
 cd %MAIN_DIR%
 pylint --rcfile=%CONFIG_FILE% %TARGET_DIR% --reports=y --output=%LOG_FILE% --output-format=text --ignore=%IGNORE_LIST%
-type %LOG_FILE%
 echo 'pylint exit code: %ERRORLEVEL%'>>%LOG_FILE%
 start notepad %LOG_FILE%
+if errorlevel 1 (
+  type %LOG_FILE%
+  echo Pylint failed with error code %errorlevel%.
+  exit /b %errorlevel%
+) else (
+  type %LOG_FILE%
+  echo Pylint check passed.
+)
