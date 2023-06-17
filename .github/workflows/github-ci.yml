@@ -37,6 +37,13 @@ on:
           - check
           - publish
           - clean publish
+      test:
+        description: 'Test'
+        type: choice
+        default: static
+        options:
+          - none
+          - static
       build:
         description: 'Build'
         type: choice
@@ -49,7 +56,7 @@ on:
         required: true
         default: v0.0.0
       create_release:
-        description: 'Create Release'
+        description: 'Create Release. All jobs are executed.'
         type: boolean
         default: false
 
@@ -58,7 +65,7 @@ on:
 #--------------------------------------------------------------------------------
 jobs:
   doc-Doxygen:
-    if: inputs.documentation != 'none' || inputs.create_release || github.event.inputs.documentation == ''
+    if: inputs.documentation != 'none' || inputs.create_release
     runs-on: windows-latest
     timeout-minutes: 10
     steps:
@@ -108,8 +115,35 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./Documentation/DoxygenCreator/Output_Doxygen/html
 #------------------------------------------------------------------------------
+  test-PyLint:
+    if: inputs.test == 'static' || inputs.build != 'none' || inputs.create_release
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10.10
+          architecture: x64
+      - name: Install Packages
+        working-directory: ./Documentation/Installation
+        shell: cmd
+        run: install_packages.bat
+      - name: Run PyLint
+        working-directory: ./Test
+        shell: cmd
+        run: run_pylint.bat
+      - name: Upload PyLint report
+        uses: actions/upload-artifact@v3
+        with:
+          name: pylint_YouTubeDownloader.log
+          path: ./Test/pylint_YouTubeDownloader.log
+#------------------------------------------------------------------------------
   build-Exe:
-    if: inputs.build != 'none' || inputs.create_release || github.event.inputs.exe == ''
+    if: inputs.build != 'none' || inputs.create_release
+    needs: [test-PyLint]
     runs-on: windows-latest
     timeout-minutes: 10
     steps:
