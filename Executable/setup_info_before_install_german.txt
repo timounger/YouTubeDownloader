@@ -1,0 +1,3 @@
+############ WICHTIGE INFORMATIONEN ############
+
+Installieren Sie die Software an einem Ort mit Schreibzugriff, z.B. "C:\YouTubeDownloader".

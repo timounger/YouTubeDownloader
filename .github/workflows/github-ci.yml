@@ -47,10 +47,11 @@ on:
       build:
         description: 'Build'
         type: choice
-        default: exe
+        default: setup
         options:
           - none
           - exe
+          - setup
       tag_name:
         description: The name of the tag to create. Change only to set tag!
         required: true
@@ -168,6 +169,29 @@ jobs:
           name: YouTubeDownloader.exe
           path: ./Executable/bin/YouTubeDownloader.exe
 #------------------------------------------------------------------------------
+  build-Setup:
+    needs: build-Exe
+    if: inputs.build == 'setup' || inputs.create_release
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Download Executable
+        uses: actions/download-artifact@v3
+        with:
+          name: YouTubeDownloader.exe
+          path: ./Executable/bin
+      - name: Build Setup
+        working-directory: ./Executable
+        shell: cmd
+        run: generate_setup.bat
+      - name: Upload Setup
+        uses: actions/upload-artifact@v3
+        with:
+          name: setup_YouTubeDownloader.exe
+          path: ./Executable/bin/setup_YouTubeDownloader.exe
+#------------------------------------------------------------------------------
   create-Tag:
     if: inputs.tag_name != 'v0.0.0'
     runs-on: ubuntu-latest
@@ -214,7 +238,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./Executable/bin/YouTubeDownloader.exe
-        asset_name: YouTubeDownloader.exe
+        asset_path: ./Executable/bin/setup_YouTubeDownloader.exe
+        asset_name: setup_YouTubeDownloader.exe
         asset_content_type: application/zip
 

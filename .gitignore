@@ -19,3 +19,6 @@
 /Executable/build
 /Executable/bin
 /Executable/YouTubeDownloader.spec
+
+# Documentation
+/Documentation/Installation/PackageInfos.xlsx

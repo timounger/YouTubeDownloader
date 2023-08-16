@@ -23,21 +23,21 @@ IF %ERRORLEVEL% NEQ 0 (
 
 %path_python_exe% -m PyInstaller --clean ^
 								 --paths ..\..\ ^
-								 --add-data ..\Resources\app.ico;Resources ^
-								 --icon ..\Resources\app.ico ^
+								 --add-data ..\Resources\YouTubeDownloader.ico;Resources ^
+								 --icon ..\Resources\YouTubeDownloader.ico ^
 								 --version-file %workpath%\downloader_version_info.txt ^
 								 --hidden-import html.parser ^
 								 --exclude-module lxml ^
 								 --exclude-module typing_extensions ^
 								 --exclude-module pygments ^
                  --exclude-module platformdirs ^
-                 --exclude-module charset_normalizer ^
-                 --exclude-module colorama ^
-                 --exclude-module decorator ^
-                 --exclude-module idna ^
-                 --exclude-module imageio ^
-                 --exclude-module imageio_ffmpeg ^
-                 --exclude-module moviepy ^
+								 --exclude-module charset_normalizer ^
+								 --exclude-module colorama ^
+								 --exclude-module decorator ^
+								 --exclude-module idna ^
+								 --exclude-module imageio ^
+								 --exclude-module imageio_ffmpeg ^
+								 --exclude-module moviepy ^
 								 --name YouTubeDownloader ^
 								 --onefile ^
 								 --noconsole ^

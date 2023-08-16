@@ -17,7 +17,7 @@ S_YOUTUBE_DOWNLOADER_DESCRIPTION = "YouTube content downloader"
 # Version
 I_VERSION_MAJOR = 1 # major changes/breaks at API (e.g incompatibility)
 I_VERSION_MINOR = 0 # minor changes/does not break the API (e.g new feature)
-I_VERSION_PATCH = 2 # Bug fixes
+I_VERSION_PATCH = 3 # Bug fixes
 I_VERSION_BUILD = 0 # build number (if available)
 S_VERSION = f"{I_VERSION_MAJOR}.{I_VERSION_MINOR}.{I_VERSION_PATCH}"
 S_COPYRIGHT = "Copyright © 2021-2023 Timo Unger"
@@ -41,5 +41,5 @@ def resource_path(s_relative_path: str) -> str:
     return s_resource_path
 
 # Files and Paths
-S_ICON_RESOURCE_PATH = 'Resources/app.ico'
+S_ICON_RESOURCE_PATH = 'Resources/YouTubeDownloader.ico'
 S_ICON_REL_PATH = resource_path(S_ICON_RESOURCE_PATH)

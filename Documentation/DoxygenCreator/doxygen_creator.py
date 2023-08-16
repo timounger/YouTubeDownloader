@@ -11,7 +11,6 @@ import os
 import difflib
 import subprocess
 import webbrowser
-import requests
 import time
 import argparse
 import shutil
@@ -19,12 +18,13 @@ import zipfile
 from typing import Any
 from threading import Thread
 from doxygen import ConfigParser
+import requests
 
 
 # user include
 sys.path.append('../../')
-import Source.Util.downloader_data as mdata
-from Documentation.DoxygenCreator.doxy_py_checker import DoxyPyChecker
+import Source.Util.downloader_data as mdata # pylint: disable=wrong-import-position
+from Documentation.DoxygenCreator.doxy_py_checker import DoxyPyChecker # pylint: disable=wrong-import-position
 
 B_USE_OWN_STYLE = True
 B_SIDEBAR_ONLY = True
@@ -43,6 +43,7 @@ S_WARNING_FILE_PREFIX = "Doxygen_warnings_"
 S_WARNING_FILE_SUFFIX = ".log"
 S_INDEX_FILE = "html/index.html"
 I_WRAP_LENGHT = 100
+I_TIMEOUT = 5 # timeout for tool download
 
 YES = "YES"
 NO = "NO"
@@ -485,7 +486,7 @@ class DoxygenCreator():
         @brief  Add warnings to warning file
         """
         if self.l_warnings:
-            with open(self.s_warning_name, 'a', encoding='utf-8') as file:
+            with open(self.s_warning_name, mode='a', encoding='utf-8') as file:
                 for s_warning in self.l_warnings:
                     file.write(s_warning + "\n")
 
@@ -496,10 +497,14 @@ class DoxygenCreator():
         if not os.path.exists(S_PLANTUML_JAR_NAME):
             print(f"Download {S_PLANTUML_JAR_NAME} ...")
             try:
-                response = requests.get(S_PLANTUML_JAR_URL)
-                open(S_PLANTUML_JAR_NAME, "wb").write(response.content) # download plantuml.jar
-            except Exception:
-                print(f"Can not downlaad {S_PLANTUML_JAR_NAME}! Generate documentation without PlantUml Graph Support.")
+                with requests.get(S_PLANTUML_JAR_URL, timeout=I_TIMEOUT) as response:
+                    response.raise_for_status()
+                    with open(S_PLANTUML_JAR_NAME, mode='wb') as file: # download plantuml.jar
+                        file.write(response.content) # download plantuml.jar
+            except requests.Timeout:
+                print(f"Timeout for download {S_PLANTUML_JAR_NAME}!")
+            except requests.RequestException as e:
+                print(f"Can not download {S_PLANTUML_JAR_NAME}! {e}")
         else:
             print(f"{S_PLANTUML_JAR_NAME} already exist!")
 
@@ -511,13 +516,17 @@ class DoxygenCreator():
             if not os.path.exists(S_DOXYGEN_ZIP):
                 print(f"Download {S_DOXYGEN_ZIP} ...")
                 try:
-                    response = requests.get(S_DOXYGEN_URL)
-                    open(S_DOXYGEN_ZIP, "wb").write(response.content) # download plantuml.jar
-                except Exception:
-                    print(f"Can not download {S_DOXYGEN_ZIP}! Try to use local installed doxygen.")
+                    with requests.get(S_DOXYGEN_URL, timeout=I_TIMEOUT) as response:
+                        response.raise_for_status()
+                        with open(S_DOXYGEN_ZIP, mode='wb') as file: # download doxygen
+                            file.write(response.content)
+                except requests.Timeout:
+                    print(f"Timeout for download {S_DOXYGEN_ZIP}!")
+                except requests.RequestException as e:
+                    print(f"Can not download {S_DOXYGEN_ZIP}! {e}")
             else:
                 print(f"{S_DOXYGEN_ZIP} already exist!")
-            with zipfile.ZipFile(S_DOXYGEN_ZIP, "r") as zip_ref:
+            with zipfile.ZipFile(S_DOXYGEN_ZIP, mode='r') as zip_ref:
                 zip_ref.extract(S_DOXYGEN_PATH, S_PLANTUML_PATH)
                 zip_ref.extract(S_DOXYGEN_DLL, S_PLANTUML_PATH)
         else:
@@ -532,7 +541,7 @@ class DoxygenCreator():
         b_warnings = False
 
         if os.path.exists(self.s_warning_name):
-            with open(self.s_warning_name, encoding='utf-8') as file:
+            with open(self.s_warning_name, mode='r', encoding='utf-8') as file:
                 lines = file.readlines()
                 if len(lines) != 0:
                     b_warnings = True
@@ -576,7 +585,7 @@ class DoxygenCreator():
         s_folder = f"{self.s_output_dir}html/"
         for file in os.listdir(s_folder):
             if file.endswith(".html"):
-                with open(f"{s_folder}{file}", "a") as file:
+                with open(f"{s_folder}{file}", mode='a', encoding='utf-8') as file:
                     if s_corner_text is not None:
                         file.write(s_corner_text + "\n")
                     if s_icon_text is not None:
@@ -599,7 +608,7 @@ class DoxygenCreator():
         @brief Add .nojekyll file that files with underscores visible
         """
         s_file_name = ".nojekyll"
-        with open(f"{self.s_output_dir}html/{s_file_name}", 'w') as file:
+        with open(f"{self.s_output_dir}html/{s_file_name}", mode='w', encoding='utf-8') as file:
             file.write('')
 
     def generate_configuration_diff(self):
@@ -613,17 +622,17 @@ class DoxygenCreator():
         config_parser = ConfigParser()
         configuration = config_parser.load_configuration(s_default_doxyfile)
         config_parser.store_configuration(configuration, s_default_doxyfile)
-        with open(s_default_doxyfile, 'r', encoding='utf-8') as file:
+        with open(s_default_doxyfile, mode='r', encoding='utf-8') as file:
             s_default_config = file.read()
         os.remove(s_default_doxyfile)
 
         # read modified doxyfile
-        with open(self.s_doxyfile_name, 'r', encoding='utf-8') as file:
+        with open(self.s_doxyfile_name, mode='r', encoding='utf-8') as file:
             s_modified_config = file.read()
 
         s_diff_file_name = f'{self.s_output_dir}DoxyfileDiff.html'
         difference = difflib.HtmlDiff(wrapcolumn=I_WRAP_LENGHT).make_file(s_default_config.splitlines(), s_modified_config.splitlines(), "Default", "Modified")
-        with open(s_diff_file_name, 'w', encoding='utf-8') as file:
+        with open(s_diff_file_name, mode='w', encoding='utf-8') as file:
             file.write(difference)
 
     def run_doxygen(self, b_open_doxygen_output: bool = True) -> bool:
@@ -679,5 +688,5 @@ if __name__ == "__main__":
     l_file_pattern = [S_PYTHON_PATTERN, "*.md"]
     #l_exclude_pattern = ["DoxygenCreator", "Installation", "Executable", "Test", "Documentation", "CONTRIBUTING.md"]
     #doxygen_creator.set_configuration('EXCLUDE_PATTERNS', l_exclude_pattern)
-    doxygen_creator.set_configuration('FILE_PATTERNS', l_file_pattern)                                              
+    doxygen_creator.set_configuration('FILE_PATTERNS', l_file_pattern)
     sys.exit(doxygen_creator.run_doxygen(b_open_doxygen_output = args.open))

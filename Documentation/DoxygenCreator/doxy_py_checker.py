@@ -153,7 +153,7 @@ class DoxyPyChecker:
         @param  file_path : file name
         @return list of findings in file
         """
-        with open(file_path, "r", encoding='utf-8') as file:
+        with open(file_path, mode='r', encoding='utf-8') as file:
             code = file.read()
 
         tree = ast.parse(code)
