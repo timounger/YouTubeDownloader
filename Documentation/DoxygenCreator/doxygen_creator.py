@@ -85,6 +85,7 @@ class DoxygenCreator():
     """!
     @brief  Class to generate Doxygen documentation for any code documentation with uniform settings and styling.
     @param  s_webside : URL to website
+    @param  s_logo : optional logo for webbrowser logo
     """
     d_settings =  {
         'DOXYFILE_ENCODING'       : S_DEFAULT, # UTF-8
@@ -370,8 +371,9 @@ class DoxygenCreator():
         'GENERATE_LEGEND'         : S_DEFAULT,
         'DOT_CLEANUP'             : YES,
     }
-    def __init__(self, s_webside: str = None):
+    def __init__(self, s_webside: str = None, s_logo: str = None):
         self.s_webside = s_webside
+        self.s_logo = s_logo
         self.l_warnings = []
         self.s_output_dir = ""
         self.s_doxyfile_name = ""
@@ -574,8 +576,11 @@ class DoxygenCreator():
             s_corner_text = S_GITHUB_CORNER_FIRST + self.s_webside + S_GITHUB_CORNER_LAST
         else:
             s_corner_text = None
-        if self.d_settings['PROJECT_LOGO'] != "":
-            s_icon_file = self.d_settings['PROJECT_LOGO']
+        if (self.d_settings['PROJECT_LOGO'] != "") or (self.s_logo is not None):
+            if self.s_logo is not None:
+                s_icon_file = self.s_logo
+            else:
+                s_icon_file = self.d_settings['PROJECT_LOGO']
             if '/' in s_icon_file:
                 i_index = s_icon_file.rfind('/')
                 s_icon_file = s_icon_file[i_index + 1:]
@@ -602,6 +607,8 @@ class DoxygenCreator():
             destination_path = os.path.join(destination_folder, filename)
             if os.path.isfile(source_path):
                 shutil.copy2(source_path, destination_path)
+        if self.s_logo is not None:
+            shutil.copy2(self.s_logo, os.path.join(destination_folder, os.path.basename(self.s_logo)))
 
     def add_nojekyll_file(self):
         """!
@@ -679,7 +686,7 @@ def get_cmd_args() -> argparse.Namespace:
 
 if __name__ == "__main__":
     args = get_cmd_args()
-    doxygen_creator = DoxygenCreator(S_REPO_LINK)
+    doxygen_creator = DoxygenCreator(S_REPO_LINK, f"{S_MAIN_FOLDER_FOLDER}{mdata.S_ICON_32_RESOURCE_PATH}")
     doxygen_creator.set_configuration('PROJECT_NAME', mdata.S_YOUTUBE_DOWNLOADER_APPLICATION_NAME)
     doxygen_creator.set_configuration('PROJECT_NUMBER', mdata.S_VERSION)
     doxygen_creator.set_configuration('PROJECT_BRIEF', mdata.S_YOUTUBE_DOWNLOADER_DESCRIPTION)
