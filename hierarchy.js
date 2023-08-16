@@ -8,5 +8,8 @@ var hierarchy =
     ] ],
     [ "Thread", null, [
       [ "OpenNotepad", "classdoxygen__creator_1_1_open_notepad.html", null ]
+    ] ],
+    [ "NamedTuple", null, [
+      [ "PackageInfo", "classupdate__py__requirements_1_1_package_info.html", null ]
     ] ]
 ];

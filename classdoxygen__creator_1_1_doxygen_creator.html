@@ -28,9 +28,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="app.ico"/></td>
+  <td id="projectlogo"><img alt="Logo" src="YouTubeDownloader.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTube Downloader<span id="projectnumber">&#160;v1.0.2</span>
+   <div id="projectname">YouTube Downloader<span id="projectnumber">&#160;v1.0.3</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -235,7 +235,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00083">83</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00084">84</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af85233de1ff7f8d663d01a5d3a72306d" name="af85233de1ff7f8d663d01a5d3a72306d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af85233de1ff7f8d663d01a5d3a72306d">&#9670;&#160;</a></span>__init__()</h2>
@@ -263,14 +263,14 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00372">372</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  372</span>    <span class="keyword">def </span>__init__(self, s_webside: str = <span class="keywordtype">None</span>):</div>
-<div class="line"><span class="lineno">  373</span>        self.s_webside = s_webside</div>
-<div class="line"><span class="lineno">  374</span>        self.l_warnings = []</div>
-<div class="line"><span class="lineno">  375</span>        self.s_output_dir = <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  376</span>        self.s_doxyfile_name = <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  377</span>        self.s_warning_name = <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  378</span> </div>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00373">373</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  373</span>    <span class="keyword">def </span>__init__(self, s_webside: str = <span class="keywordtype">None</span>):</div>
+<div class="line"><span class="lineno">  374</span>        self.s_webside = s_webside</div>
+<div class="line"><span class="lineno">  375</span>        self.l_warnings = []</div>
+<div class="line"><span class="lineno">  376</span>        self.s_output_dir = <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  377</span>        self.s_doxyfile_name = <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  378</span>        self.s_warning_name = <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  379</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -293,32 +293,32 @@ Static Public Attributes</h2></td></tr>
 
 <p>Add Github corner and tab icon. </p>
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00560">560</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  560</span>    <span class="keyword">def </span>add_github_corner(self):</div>
-<div class="line"><span class="lineno">  561</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  562</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Add Github corner <span class="keywordflow">and</span> tab icon</div>
-<div class="line"><span class="lineno">  563</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  564</span><span class="stringliteral">        </span><span class="keywordflow">if</span> self.s_webside <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
-<div class="line"><span class="lineno">  565</span>            s_corner_text = S_GITHUB_CORNER_FIRST + self.s_webside + S_GITHUB_CORNER_LAST</div>
-<div class="line"><span class="lineno">  566</span>        <span class="keywordflow">else</span>:</div>
-<div class="line"><span class="lineno">  567</span>            s_corner_text = <span class="keywordtype">None</span></div>
-<div class="line"><span class="lineno">  568</span>        <span class="keywordflow">if</span> self.d_settings[<span class="stringliteral">&#39;PROJECT_LOGO&#39;</span>] != <span class="stringliteral">&quot;&quot;</span>:</div>
-<div class="line"><span class="lineno">  569</span>            s_icon_file = self.d_settings[<span class="stringliteral">&#39;PROJECT_LOGO&#39;</span>]</div>
-<div class="line"><span class="lineno">  570</span>            <span class="keywordflow">if</span> <span class="stringliteral">&#39;/&#39;</span> <span class="keywordflow">in</span> s_icon_file:</div>
-<div class="line"><span class="lineno">  571</span>                i_index = s_icon_file.rfind(<span class="stringliteral">&#39;/&#39;</span>)</div>
-<div class="line"><span class="lineno">  572</span>                s_icon_file = s_icon_file[i_index + 1:]</div>
-<div class="line"><span class="lineno">  573</span>            s_icon_text = S_ICON_FIRST + s_icon_file + S_ICON_LAST</div>
-<div class="line"><span class="lineno">  574</span>        <span class="keywordflow">else</span>:</div>
-<div class="line"><span class="lineno">  575</span>            s_icon_text = <span class="keywordtype">None</span></div>
-<div class="line"><span class="lineno">  576</span>        s_folder = f<span class="stringliteral">&quot;{self.s_output_dir}html/&quot;</span></div>
-<div class="line"><span class="lineno">  577</span>        <span class="keywordflow">for</span> file <span class="keywordflow">in</span> os.listdir(s_folder):</div>
-<div class="line"><span class="lineno">  578</span>            <span class="keywordflow">if</span> file.endswith(<span class="stringliteral">&quot;.html&quot;</span>):</div>
-<div class="line"><span class="lineno">  579</span>                <span class="keyword">with</span> open(f<span class="stringliteral">&quot;{s_folder}{file}&quot;</span>, <span class="stringliteral">&quot;a&quot;</span>) <span class="keyword">as</span> file:</div>
-<div class="line"><span class="lineno">  580</span>                    <span class="keywordflow">if</span> s_corner_text <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
-<div class="line"><span class="lineno">  581</span>                        file.write(s_corner_text + <span class="stringliteral">&quot;\n&quot;</span>)</div>
-<div class="line"><span class="lineno">  582</span>                    <span class="keywordflow">if</span> s_icon_text <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
-<div class="line"><span class="lineno">  583</span>                        file.write(s_icon_text + <span class="stringliteral">&quot;\n&quot;</span>)</div>
-<div class="line"><span class="lineno">  584</span> </div>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00569">569</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  569</span>    <span class="keyword">def </span>add_github_corner(self):</div>
+<div class="line"><span class="lineno">  570</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">  571</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Add Github corner <span class="keywordflow">and</span> tab icon</div>
+<div class="line"><span class="lineno">  572</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  573</span><span class="stringliteral">        </span><span class="keywordflow">if</span> self.s_webside <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><span class="lineno">  574</span>            s_corner_text = S_GITHUB_CORNER_FIRST + self.s_webside + S_GITHUB_CORNER_LAST</div>
+<div class="line"><span class="lineno">  575</span>        <span class="keywordflow">else</span>:</div>
+<div class="line"><span class="lineno">  576</span>            s_corner_text = <span class="keywordtype">None</span></div>
+<div class="line"><span class="lineno">  577</span>        <span class="keywordflow">if</span> self.d_settings[<span class="stringliteral">&#39;PROJECT_LOGO&#39;</span>] != <span class="stringliteral">&quot;&quot;</span>:</div>
+<div class="line"><span class="lineno">  578</span>            s_icon_file = self.d_settings[<span class="stringliteral">&#39;PROJECT_LOGO&#39;</span>]</div>
+<div class="line"><span class="lineno">  579</span>            <span class="keywordflow">if</span> <span class="stringliteral">&#39;/&#39;</span> <span class="keywordflow">in</span> s_icon_file:</div>
+<div class="line"><span class="lineno">  580</span>                i_index = s_icon_file.rfind(<span class="stringliteral">&#39;/&#39;</span>)</div>
+<div class="line"><span class="lineno">  581</span>                s_icon_file = s_icon_file[i_index + 1:]</div>
+<div class="line"><span class="lineno">  582</span>            s_icon_text = S_ICON_FIRST + s_icon_file + S_ICON_LAST</div>
+<div class="line"><span class="lineno">  583</span>        <span class="keywordflow">else</span>:</div>
+<div class="line"><span class="lineno">  584</span>            s_icon_text = <span class="keywordtype">None</span></div>
+<div class="line"><span class="lineno">  585</span>        s_folder = f<span class="stringliteral">&quot;{self.s_output_dir}html/&quot;</span></div>
+<div class="line"><span class="lineno">  586</span>        <span class="keywordflow">for</span> file <span class="keywordflow">in</span> os.listdir(s_folder):</div>
+<div class="line"><span class="lineno">  587</span>            <span class="keywordflow">if</span> file.endswith(<span class="stringliteral">&quot;.html&quot;</span>):</div>
+<div class="line"><span class="lineno">  588</span>                <span class="keyword">with</span> open(f<span class="stringliteral">&quot;{s_folder}{file}&quot;</span>, mode=<span class="stringliteral">&#39;a&#39;</span>, encoding=<span class="stringliteral">&#39;utf-8&#39;</span>) <span class="keyword">as</span> file:</div>
+<div class="line"><span class="lineno">  589</span>                    <span class="keywordflow">if</span> s_corner_text <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><span class="lineno">  590</span>                        file.write(s_corner_text + <span class="stringliteral">&quot;\n&quot;</span>)</div>
+<div class="line"><span class="lineno">  591</span>                    <span class="keywordflow">if</span> s_icon_text <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><span class="lineno">  592</span>                        file.write(s_icon_text + <span class="stringliteral">&quot;\n&quot;</span>)</div>
+<div class="line"><span class="lineno">  593</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -340,19 +340,19 @@ Static Public Attributes</h2></td></tr>
 
 <p>Add images to html folder. </p>
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00585">585</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  585</span>    <span class="keyword">def </span>add_images(self):</div>
-<div class="line"><span class="lineno">  586</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  587</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Add images to html folder</div>
-<div class="line"><span class="lineno">  588</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  589</span><span class="stringliteral">        source_folder = f&quot;{self.s_output_dir}/../../img&quot;</span></div>
-<div class="line"><span class="lineno">  590</span>        destination_folder = f<span class="stringliteral">&quot;{self.s_output_dir}html&quot;</span></div>
-<div class="line"><span class="lineno">  591</span>        <span class="keywordflow">for</span> filename <span class="keywordflow">in</span> os.listdir(source_folder):</div>
-<div class="line"><span class="lineno">  592</span>            source_path = os.path.join(source_folder, filename)</div>
-<div class="line"><span class="lineno">  593</span>            destination_path = os.path.join(destination_folder, filename)</div>
-<div class="line"><span class="lineno">  594</span>            <span class="keywordflow">if</span> os.path.isfile(source_path):</div>
-<div class="line"><span class="lineno">  595</span>                shutil.copy2(source_path, destination_path)</div>
-<div class="line"><span class="lineno">  596</span> </div>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00594">594</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  594</span>    <span class="keyword">def </span>add_images(self):</div>
+<div class="line"><span class="lineno">  595</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">  596</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Add images to html folder</div>
+<div class="line"><span class="lineno">  597</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  598</span><span class="stringliteral">        source_folder = f&quot;{self.s_output_dir}/../../img&quot;</span></div>
+<div class="line"><span class="lineno">  599</span>        destination_folder = f<span class="stringliteral">&quot;{self.s_output_dir}html&quot;</span></div>
+<div class="line"><span class="lineno">  600</span>        <span class="keywordflow">for</span> filename <span class="keywordflow">in</span> os.listdir(source_folder):</div>
+<div class="line"><span class="lineno">  601</span>            source_path = os.path.join(source_folder, filename)</div>
+<div class="line"><span class="lineno">  602</span>            destination_path = os.path.join(destination_folder, filename)</div>
+<div class="line"><span class="lineno">  603</span>            <span class="keywordflow">if</span> os.path.isfile(source_path):</div>
+<div class="line"><span class="lineno">  604</span>                shutil.copy2(source_path, destination_path)</div>
+<div class="line"><span class="lineno">  605</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -374,15 +374,15 @@ Static Public Attributes</h2></td></tr>
 
 <p>Add .nojekyll file that files with underscores visible. </p>
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00597">597</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  597</span>    <span class="keyword">def </span>add_nojekyll_file(self):</div>
-<div class="line"><span class="lineno">  598</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  599</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Add .nojekyll file that files <span class="keyword">with</span> underscores visible</div>
-<div class="line"><span class="lineno">  600</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  601</span><span class="stringliteral">        s_file_name = &quot;.nojekyll&quot;</span></div>
-<div class="line"><span class="lineno">  602</span>        <span class="keyword">with</span> open(f<span class="stringliteral">&quot;{self.s_output_dir}html/{s_file_name}&quot;</span>, <span class="stringliteral">&#39;w&#39;</span>) <span class="keyword">as</span> file:</div>
-<div class="line"><span class="lineno">  603</span>            file.write(<span class="stringliteral">&#39;&#39;</span>)</div>
-<div class="line"><span class="lineno">  604</span> </div>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00606">606</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  606</span>    <span class="keyword">def </span>add_nojekyll_file(self):</div>
+<div class="line"><span class="lineno">  607</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">  608</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Add .nojekyll file that files <span class="keyword">with</span> underscores visible</div>
+<div class="line"><span class="lineno">  609</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  610</span><span class="stringliteral">        s_file_name = &quot;.nojekyll&quot;</span></div>
+<div class="line"><span class="lineno">  611</span>        <span class="keyword">with</span> open(f<span class="stringliteral">&quot;{self.s_output_dir}html/{s_file_name}&quot;</span>, mode=<span class="stringliteral">&#39;w&#39;</span>, encoding=<span class="stringliteral">&#39;utf-8&#39;</span>) <span class="keyword">as</span> file:</div>
+<div class="line"><span class="lineno">  612</span>            file.write(<span class="stringliteral">&#39;&#39;</span>)</div>
+<div class="line"><span class="lineno">  613</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -404,16 +404,16 @@ Static Public Attributes</h2></td></tr>
 
 <p>Add warnings to warning file. </p>
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00483">483</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  483</span>    <span class="keyword">def </span>add_warnings(self):</div>
-<div class="line"><span class="lineno">  484</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  485</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span>  Add warnings to warning file</div>
-<div class="line"><span class="lineno">  486</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  487</span><span class="stringliteral">        </span><span class="keywordflow">if</span> self.l_warnings:</div>
-<div class="line"><span class="lineno">  488</span>            <span class="keyword">with</span> open(self.s_warning_name, <span class="stringliteral">&#39;a&#39;</span>, encoding=<span class="stringliteral">&#39;utf-8&#39;</span>) <span class="keyword">as</span> file:</div>
-<div class="line"><span class="lineno">  489</span>                <span class="keywordflow">for</span> s_warning <span class="keywordflow">in</span> self.l_warnings:</div>
-<div class="line"><span class="lineno">  490</span>                    file.write(s_warning + <span class="stringliteral">&quot;\n&quot;</span>)</div>
-<div class="line"><span class="lineno">  491</span> </div>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00484">484</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  484</span>    <span class="keyword">def </span>add_warnings(self):</div>
+<div class="line"><span class="lineno">  485</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">  486</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span>  Add warnings to warning file</div>
+<div class="line"><span class="lineno">  487</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  488</span><span class="stringliteral">        </span><span class="keywordflow">if</span> self.l_warnings:</div>
+<div class="line"><span class="lineno">  489</span>            <span class="keyword">with</span> open(self.s_warning_name, mode=<span class="stringliteral">&#39;a&#39;</span>, encoding=<span class="stringliteral">&#39;utf-8&#39;</span>) <span class="keyword">as</span> file:</div>
+<div class="line"><span class="lineno">  490</span>                <span class="keywordflow">for</span> s_warning <span class="keywordflow">in</span> self.l_warnings:</div>
+<div class="line"><span class="lineno">  491</span>                    file.write(s_warning + <span class="stringliteral">&quot;\n&quot;</span>)</div>
+<div class="line"><span class="lineno">  492</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -452,29 +452,29 @@ Static Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status if doxygen warnings exist </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00526">526</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  526</span>    <span class="keyword">def </span>check_doxygen_warnings(self, b_open_warning_file: bool = <span class="keyword">True</span>) -&gt; bool:</div>
-<div class="line"><span class="lineno">  527</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  528</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span>  Check <span class="keywordflow">for</span> doxygen Warnings</div>
-<div class="line"><span class="lineno">  529</span>        <span class="preprocessor">@param</span>  b_open_warning_file : [<span class="keyword">True</span>] open warning file; [<span class="keyword">False</span>] only check <span class="keywordflow">for</span> warnings</div>
-<div class="line"><span class="lineno">  530</span>        <span class="preprocessor">@return</span> status <span class="keywordflow">if</span> doxygen warnings exist</div>
-<div class="line"><span class="lineno">  531</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  532</span><span class="stringliteral">        b_warnings = </span><span class="keyword">False</span></div>
-<div class="line"><span class="lineno">  533</span> </div>
-<div class="line"><span class="lineno">  534</span>        <span class="keywordflow">if</span> os.path.exists(self.s_warning_name):</div>
-<div class="line"><span class="lineno">  535</span>            <span class="keyword">with</span> open(self.s_warning_name, encoding=<span class="stringliteral">&#39;utf-8&#39;</span>) <span class="keyword">as</span> file:</div>
-<div class="line"><span class="lineno">  536</span>                lines = file.readlines()</div>
-<div class="line"><span class="lineno">  537</span>                <span class="keywordflow">if</span> len(lines) != 0:</div>
-<div class="line"><span class="lineno">  538</span>                    b_warnings = <span class="keyword">True</span></div>
-<div class="line"><span class="lineno">  539</span>                    print(<span class="stringliteral">&quot;Doxygen Warnings found!!!&quot;</span>)</div>
-<div class="line"><span class="lineno">  540</span>                    <span class="keywordflow">for</span> s_line <span class="keywordflow">in</span> lines:</div>
-<div class="line"><span class="lineno">  541</span>                        print(f<span class="stringliteral">&quot;  {s_line}&quot;</span>)</div>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00535">535</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  535</span>    <span class="keyword">def </span>check_doxygen_warnings(self, b_open_warning_file: bool = <span class="keyword">True</span>) -&gt; bool:</div>
+<div class="line"><span class="lineno">  536</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">  537</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span>  Check <span class="keywordflow">for</span> doxygen Warnings</div>
+<div class="line"><span class="lineno">  538</span>        <span class="preprocessor">@param</span>  b_open_warning_file : [<span class="keyword">True</span>] open warning file; [<span class="keyword">False</span>] only check <span class="keywordflow">for</span> warnings</div>
+<div class="line"><span class="lineno">  539</span>        <span class="preprocessor">@return</span> status <span class="keywordflow">if</span> doxygen warnings exist</div>
+<div class="line"><span class="lineno">  540</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  541</span><span class="stringliteral">        b_warnings = </span><span class="keyword">False</span></div>
 <div class="line"><span class="lineno">  542</span> </div>
-<div class="line"><span class="lineno">  543</span>        <span class="keywordflow">if</span> b_open_warning_file <span class="keywordflow">and</span> b_warnings:</div>
-<div class="line"><span class="lineno">  544</span>            OpenNotepad(self.s_warning_name)</div>
-<div class="line"><span class="lineno">  545</span> </div>
-<div class="line"><span class="lineno">  546</span>        <span class="keywordflow">return</span> b_warnings</div>
-<div class="line"><span class="lineno">  547</span> </div>
+<div class="line"><span class="lineno">  543</span>        <span class="keywordflow">if</span> os.path.exists(self.s_warning_name):</div>
+<div class="line"><span class="lineno">  544</span>            <span class="keyword">with</span> open(self.s_warning_name, mode=<span class="stringliteral">&#39;r&#39;</span>, encoding=<span class="stringliteral">&#39;utf-8&#39;</span>) <span class="keyword">as</span> file:</div>
+<div class="line"><span class="lineno">  545</span>                lines = file.readlines()</div>
+<div class="line"><span class="lineno">  546</span>                <span class="keywordflow">if</span> len(lines) != 0:</div>
+<div class="line"><span class="lineno">  547</span>                    b_warnings = <span class="keyword">True</span></div>
+<div class="line"><span class="lineno">  548</span>                    print(<span class="stringliteral">&quot;Doxygen Warnings found!!!&quot;</span>)</div>
+<div class="line"><span class="lineno">  549</span>                    <span class="keywordflow">for</span> s_line <span class="keywordflow">in</span> lines:</div>
+<div class="line"><span class="lineno">  550</span>                        print(f<span class="stringliteral">&quot;  {s_line}&quot;</span>)</div>
+<div class="line"><span class="lineno">  551</span> </div>
+<div class="line"><span class="lineno">  552</span>        <span class="keywordflow">if</span> b_open_warning_file <span class="keywordflow">and</span> b_warnings:</div>
+<div class="line"><span class="lineno">  553</span>            OpenNotepad(self.s_warning_name)</div>
+<div class="line"><span class="lineno">  554</span> </div>
+<div class="line"><span class="lineno">  555</span>        <span class="keywordflow">return</span> b_warnings</div>
+<div class="line"><span class="lineno">  556</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -512,14 +512,14 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00379">379</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  379</span>    <span class="keyword">def </span>create_default_doxyfile(self, s_file_name: str):</div>
-<div class="line"><span class="lineno">  380</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  381</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Create default doxyfile</div>
-<div class="line"><span class="lineno">  382</span>        <span class="preprocessor">@param</span>  s_file_name : doxygen file name</div>
-<div class="line"><span class="lineno">  383</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  384</span><span class="stringliteral">        subprocess.call([S_DOXYGEN_PATH, &quot;-g&quot;</span>, s_file_name])</div>
-<div class="line"><span class="lineno">  385</span> </div>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00380">380</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  380</span>    <span class="keyword">def </span>create_default_doxyfile(self, s_file_name: str):</div>
+<div class="line"><span class="lineno">  381</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">  382</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Create default doxyfile</div>
+<div class="line"><span class="lineno">  383</span>        <span class="preprocessor">@param</span>  s_file_name : doxygen file name</div>
+<div class="line"><span class="lineno">  384</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  385</span><span class="stringliteral">        subprocess.call([S_DOXYGEN_PATH, &quot;-g&quot;</span>, s_file_name])</div>
+<div class="line"><span class="lineno">  386</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -541,27 +541,31 @@ Static Public Attributes</h2></td></tr>
 
 <p>Download Doxygen. </p>
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00506">506</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  506</span>    <span class="keyword">def </span>download_doxygen(self):</div>
-<div class="line"><span class="lineno">  507</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  508</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Download Doxygen</div>
-<div class="line"><span class="lineno">  509</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  510</span><span class="stringliteral">        </span><span class="keywordflow">if</span> <span class="keywordflow">not</span> os.path.exists(S_DOXYGEN_PATH) <span class="keywordflow">or</span> <span class="keywordflow">not</span> os.path.exists(S_DOXYGEN_DLL):</div>
-<div class="line"><span class="lineno">  511</span>            <span class="keywordflow">if</span> <span class="keywordflow">not</span> os.path.exists(S_DOXYGEN_ZIP):</div>
-<div class="line"><span class="lineno">  512</span>                print(f<span class="stringliteral">&quot;Download {S_DOXYGEN_ZIP} ...&quot;</span>)</div>
-<div class="line"><span class="lineno">  513</span>                <span class="keywordflow">try</span>:</div>
-<div class="line"><span class="lineno">  514</span>                    response = requests.get(S_DOXYGEN_URL)</div>
-<div class="line"><span class="lineno">  515</span>                    open(S_DOXYGEN_ZIP, <span class="stringliteral">&quot;wb&quot;</span>).write(response.content) <span class="comment"># download plantuml.jar</span></div>
-<div class="line"><span class="lineno">  516</span>                <span class="keywordflow">except</span> Exception:</div>
-<div class="line"><span class="lineno">  517</span>                    print(f<span class="stringliteral">&quot;Can not download {S_DOXYGEN_ZIP}! Try to use local installed doxygen.&quot;</span>)</div>
-<div class="line"><span class="lineno">  518</span>            <span class="keywordflow">else</span>:</div>
-<div class="line"><span class="lineno">  519</span>                print(f<span class="stringliteral">&quot;{S_DOXYGEN_ZIP} already exist!&quot;</span>)</div>
-<div class="line"><span class="lineno">  520</span>            <span class="keyword">with</span> zipfile.ZipFile(S_DOXYGEN_ZIP, <span class="stringliteral">&quot;r&quot;</span>) <span class="keyword">as</span> zip_ref:</div>
-<div class="line"><span class="lineno">  521</span>                zip_ref.extract(S_DOXYGEN_PATH, S_PLANTUML_PATH)</div>
-<div class="line"><span class="lineno">  522</span>                zip_ref.extract(S_DOXYGEN_DLL, S_PLANTUML_PATH)</div>
-<div class="line"><span class="lineno">  523</span>        <span class="keywordflow">else</span>:</div>
-<div class="line"><span class="lineno">  524</span>            print(f<span class="stringliteral">&quot;{S_DOXYGEN_PATH} and {S_DOXYGEN_DLL} already exist!&quot;</span>)</div>
-<div class="line"><span class="lineno">  525</span> </div>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00511">511</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  511</span>    <span class="keyword">def </span>download_doxygen(self):</div>
+<div class="line"><span class="lineno">  512</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">  513</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Download Doxygen</div>
+<div class="line"><span class="lineno">  514</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  515</span><span class="stringliteral">        </span><span class="keywordflow">if</span> <span class="keywordflow">not</span> os.path.exists(S_DOXYGEN_PATH) <span class="keywordflow">or</span> <span class="keywordflow">not</span> os.path.exists(S_DOXYGEN_DLL):</div>
+<div class="line"><span class="lineno">  516</span>            <span class="keywordflow">if</span> <span class="keywordflow">not</span> os.path.exists(S_DOXYGEN_ZIP):</div>
+<div class="line"><span class="lineno">  517</span>                print(f<span class="stringliteral">&quot;Download {S_DOXYGEN_ZIP} ...&quot;</span>)</div>
+<div class="line"><span class="lineno">  518</span>                <span class="keywordflow">try</span>:</div>
+<div class="line"><span class="lineno">  519</span>                    <span class="keyword">with</span> requests.get(S_DOXYGEN_URL, timeout=I_TIMEOUT) <span class="keyword">as</span> response:</div>
+<div class="line"><span class="lineno">  520</span>                        response.raise_for_status()</div>
+<div class="line"><span class="lineno">  521</span>                        <span class="keyword">with</span> open(S_DOXYGEN_ZIP, mode=<span class="stringliteral">&#39;wb&#39;</span>) <span class="keyword">as</span> file: <span class="comment"># download doxygen</span></div>
+<div class="line"><span class="lineno">  522</span>                            file.write(response.content)</div>
+<div class="line"><span class="lineno">  523</span>                <span class="keywordflow">except</span> requests.Timeout:</div>
+<div class="line"><span class="lineno">  524</span>                    print(f<span class="stringliteral">&quot;Timeout for download {S_DOXYGEN_ZIP}!&quot;</span>)</div>
+<div class="line"><span class="lineno">  525</span>                <span class="keywordflow">except</span> requests.RequestException <span class="keyword">as</span> e:</div>
+<div class="line"><span class="lineno">  526</span>                    print(f<span class="stringliteral">&quot;Can not download {S_DOXYGEN_ZIP}! {e}&quot;</span>)</div>
+<div class="line"><span class="lineno">  527</span>            <span class="keywordflow">else</span>:</div>
+<div class="line"><span class="lineno">  528</span>                print(f<span class="stringliteral">&quot;{S_DOXYGEN_ZIP} already exist!&quot;</span>)</div>
+<div class="line"><span class="lineno">  529</span>            <span class="keyword">with</span> zipfile.ZipFile(S_DOXYGEN_ZIP, mode=<span class="stringliteral">&#39;r&#39;</span>) <span class="keyword">as</span> zip_ref:</div>
+<div class="line"><span class="lineno">  530</span>                zip_ref.extract(S_DOXYGEN_PATH, S_PLANTUML_PATH)</div>
+<div class="line"><span class="lineno">  531</span>                zip_ref.extract(S_DOXYGEN_DLL, S_PLANTUML_PATH)</div>
+<div class="line"><span class="lineno">  532</span>        <span class="keywordflow">else</span>:</div>
+<div class="line"><span class="lineno">  533</span>            print(f<span class="stringliteral">&quot;{S_DOXYGEN_PATH} and {S_DOXYGEN_DLL} already exist!&quot;</span>)</div>
+<div class="line"><span class="lineno">  534</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -583,21 +587,25 @@ Static Public Attributes</h2></td></tr>
 
 <p>Download PlantUML Jar. </p>
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00492">492</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  492</span>    <span class="keyword">def </span>download_plantuml_jar(self):</div>
-<div class="line"><span class="lineno">  493</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  494</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Download PlantUML Jar</div>
-<div class="line"><span class="lineno">  495</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  496</span><span class="stringliteral">        </span><span class="keywordflow">if</span> <span class="keywordflow">not</span> os.path.exists(S_PLANTUML_JAR_NAME):</div>
-<div class="line"><span class="lineno">  497</span>            print(f<span class="stringliteral">&quot;Download {S_PLANTUML_JAR_NAME} ...&quot;</span>)</div>
-<div class="line"><span class="lineno">  498</span>            <span class="keywordflow">try</span>:</div>
-<div class="line"><span class="lineno">  499</span>                response = requests.get(S_PLANTUML_JAR_URL)</div>
-<div class="line"><span class="lineno">  500</span>                open(S_PLANTUML_JAR_NAME, <span class="stringliteral">&quot;wb&quot;</span>).write(response.content) <span class="comment"># download plantuml.jar</span></div>
-<div class="line"><span class="lineno">  501</span>            <span class="keywordflow">except</span> Exception:</div>
-<div class="line"><span class="lineno">  502</span>                print(f<span class="stringliteral">&quot;Can not downlaad {S_PLANTUML_JAR_NAME}! Generate documentation without PlantUml Graph Support.&quot;</span>)</div>
-<div class="line"><span class="lineno">  503</span>        <span class="keywordflow">else</span>:</div>
-<div class="line"><span class="lineno">  504</span>            print(f<span class="stringliteral">&quot;{S_PLANTUML_JAR_NAME} already exist!&quot;</span>)</div>
-<div class="line"><span class="lineno">  505</span> </div>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00493">493</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  493</span>    <span class="keyword">def </span>download_plantuml_jar(self):</div>
+<div class="line"><span class="lineno">  494</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">  495</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Download PlantUML Jar</div>
+<div class="line"><span class="lineno">  496</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  497</span><span class="stringliteral">        </span><span class="keywordflow">if</span> <span class="keywordflow">not</span> os.path.exists(S_PLANTUML_JAR_NAME):</div>
+<div class="line"><span class="lineno">  498</span>            print(f<span class="stringliteral">&quot;Download {S_PLANTUML_JAR_NAME} ...&quot;</span>)</div>
+<div class="line"><span class="lineno">  499</span>            <span class="keywordflow">try</span>:</div>
+<div class="line"><span class="lineno">  500</span>                <span class="keyword">with</span> requests.get(S_PLANTUML_JAR_URL, timeout=I_TIMEOUT) <span class="keyword">as</span> response:</div>
+<div class="line"><span class="lineno">  501</span>                    response.raise_for_status()</div>
+<div class="line"><span class="lineno">  502</span>                    <span class="keyword">with</span> open(S_PLANTUML_JAR_NAME, mode=<span class="stringliteral">&#39;wb&#39;</span>) <span class="keyword">as</span> file: <span class="comment"># download plantuml.jar</span></div>
+<div class="line"><span class="lineno">  503</span>                        file.write(response.content) <span class="comment"># download plantuml.jar</span></div>
+<div class="line"><span class="lineno">  504</span>            <span class="keywordflow">except</span> requests.Timeout:</div>
+<div class="line"><span class="lineno">  505</span>                print(f<span class="stringliteral">&quot;Timeout for download {S_PLANTUML_JAR_NAME}!&quot;</span>)</div>
+<div class="line"><span class="lineno">  506</span>            <span class="keywordflow">except</span> requests.RequestException <span class="keyword">as</span> e:</div>
+<div class="line"><span class="lineno">  507</span>                print(f<span class="stringliteral">&quot;Can not download {S_PLANTUML_JAR_NAME}! {e}&quot;</span>)</div>
+<div class="line"><span class="lineno">  508</span>        <span class="keywordflow">else</span>:</div>
+<div class="line"><span class="lineno">  509</span>            print(f<span class="stringliteral">&quot;{S_PLANTUML_JAR_NAME} already exist!&quot;</span>)</div>
+<div class="line"><span class="lineno">  510</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -619,32 +627,32 @@ Static Public Attributes</h2></td></tr>
 
 <p>Override default settings in doxyfile with selected settings. </p>
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00458">458</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  458</span>    <span class="keyword">def </span>edit_select_doxyfile_settings(self):</div>
-<div class="line"><span class="lineno">  459</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  460</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span>  Override default settings <span class="keywordflow">in</span> doxyfile <span class="keyword">with</span> selected settings.</div>
-<div class="line"><span class="lineno">  461</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  462</span><span class="stringliteral">        </span><span class="comment"># load the default doxygen template file</span></div>
-<div class="line"><span class="lineno">  463</span>        config_parser = ConfigParser()</div>
-<div class="line"><span class="lineno">  464</span>        configuration = config_parser.load_configuration(self.s_doxyfile_name)</div>
-<div class="line"><span class="lineno">  465</span> </div>
-<div class="line"><span class="lineno">  466</span>        <span class="comment"># write doxygen settings</span></div>
-<div class="line"><span class="lineno">  467</span>        <span class="keywordflow">for</span> key, value <span class="keywordflow">in</span> self.d_settings.items():</div>
-<div class="line"><span class="lineno">  468</span>            <span class="keywordflow">if</span> value <span class="keywordflow">not</span> <span class="keywordflow">in</span> L_OVERRIDE:</div>
-<div class="line"><span class="lineno">  469</span>                <span class="keywordflow">if</span> isinstance(value, list):</div>
-<div class="line"><span class="lineno">  470</span>                    configuration[key] = []</div>
-<div class="line"><span class="lineno">  471</span>                    <span class="keywordflow">for</span> entry <span class="keywordflow">in</span> value:</div>
-<div class="line"><span class="lineno">  472</span>                        configuration[key].append(entry)</div>
-<div class="line"><span class="lineno">  473</span>                <span class="keywordflow">else</span>:</div>
-<div class="line"><span class="lineno">  474</span>                    <span class="keywordflow">if</span> isinstance(value, int):</div>
-<div class="line"><span class="lineno">  475</span>                        value = str(value) <span class="comment"># integer can only write as string to doxyfile</span></div>
-<div class="line"><span class="lineno">  476</span>                    configuration[key] = value</div>
-<div class="line"><span class="lineno">  477</span>            <span class="keywordflow">elif</span> value == S_AUTO:</div>
-<div class="line"><span class="lineno">  478</span>                self.l_warnings.append(f<span class="stringliteral">&quot;Setting not written: {key}: {value}&quot;</span>) <span class="comment"># warn if setting that should override is not set</span></div>
-<div class="line"><span class="lineno">  479</span> </div>
-<div class="line"><span class="lineno">  480</span>        <span class="comment"># store the configuration in doxyfile</span></div>
-<div class="line"><span class="lineno">  481</span>        config_parser.store_configuration(configuration, self.s_doxyfile_name)</div>
-<div class="line"><span class="lineno">  482</span> </div>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00459">459</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  459</span>    <span class="keyword">def </span>edit_select_doxyfile_settings(self):</div>
+<div class="line"><span class="lineno">  460</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">  461</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span>  Override default settings <span class="keywordflow">in</span> doxyfile <span class="keyword">with</span> selected settings.</div>
+<div class="line"><span class="lineno">  462</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  463</span><span class="stringliteral">        </span><span class="comment"># load the default doxygen template file</span></div>
+<div class="line"><span class="lineno">  464</span>        config_parser = ConfigParser()</div>
+<div class="line"><span class="lineno">  465</span>        configuration = config_parser.load_configuration(self.s_doxyfile_name)</div>
+<div class="line"><span class="lineno">  466</span> </div>
+<div class="line"><span class="lineno">  467</span>        <span class="comment"># write doxygen settings</span></div>
+<div class="line"><span class="lineno">  468</span>        <span class="keywordflow">for</span> key, value <span class="keywordflow">in</span> self.d_settings.items():</div>
+<div class="line"><span class="lineno">  469</span>            <span class="keywordflow">if</span> value <span class="keywordflow">not</span> <span class="keywordflow">in</span> L_OVERRIDE:</div>
+<div class="line"><span class="lineno">  470</span>                <span class="keywordflow">if</span> isinstance(value, list):</div>
+<div class="line"><span class="lineno">  471</span>                    configuration[key] = []</div>
+<div class="line"><span class="lineno">  472</span>                    <span class="keywordflow">for</span> entry <span class="keywordflow">in</span> value:</div>
+<div class="line"><span class="lineno">  473</span>                        configuration[key].append(entry)</div>
+<div class="line"><span class="lineno">  474</span>                <span class="keywordflow">else</span>:</div>
+<div class="line"><span class="lineno">  475</span>                    <span class="keywordflow">if</span> isinstance(value, int):</div>
+<div class="line"><span class="lineno">  476</span>                        value = str(value) <span class="comment"># integer can only write as string to doxyfile</span></div>
+<div class="line"><span class="lineno">  477</span>                    configuration[key] = value</div>
+<div class="line"><span class="lineno">  478</span>            <span class="keywordflow">elif</span> value == S_AUTO:</div>
+<div class="line"><span class="lineno">  479</span>                self.l_warnings.append(f<span class="stringliteral">&quot;Setting not written: {key}: {value}&quot;</span>) <span class="comment"># warn if setting that should override is not set</span></div>
+<div class="line"><span class="lineno">  480</span> </div>
+<div class="line"><span class="lineno">  481</span>        <span class="comment"># store the configuration in doxyfile</span></div>
+<div class="line"><span class="lineno">  482</span>        config_parser.store_configuration(configuration, self.s_doxyfile_name)</div>
+<div class="line"><span class="lineno">  483</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -666,31 +674,31 @@ Static Public Attributes</h2></td></tr>
 
 <p>Generate doxyfile diff to view changes. </p>
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00605">605</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  605</span>    <span class="keyword">def </span>generate_configuration_diff(self):</div>
-<div class="line"><span class="lineno">  606</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  607</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span>  Generate doxyfile diff to view changes</div>
-<div class="line"><span class="lineno">  608</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  609</span><span class="stringliteral">        s_default_doxyfile = f&quot;{self.s_output_dir}/Default.Doxyfile&quot;</span></div>
-<div class="line"><span class="lineno">  610</span> </div>
-<div class="line"><span class="lineno">  611</span>        <span class="comment"># create and read default doxyfile</span></div>
-<div class="line"><span class="lineno">  612</span>        self.create_default_doxyfile(s_default_doxyfile)</div>
-<div class="line"><span class="lineno">  613</span>        config_parser = ConfigParser()</div>
-<div class="line"><span class="lineno">  614</span>        configuration = config_parser.load_configuration(s_default_doxyfile)</div>
-<div class="line"><span class="lineno">  615</span>        config_parser.store_configuration(configuration, s_default_doxyfile)</div>
-<div class="line"><span class="lineno">  616</span>        <span class="keyword">with</span> open(s_default_doxyfile, <span class="stringliteral">&#39;r&#39;</span>, encoding=<span class="stringliteral">&#39;utf-8&#39;</span>) <span class="keyword">as</span> file:</div>
-<div class="line"><span class="lineno">  617</span>            s_default_config = file.read()</div>
-<div class="line"><span class="lineno">  618</span>        os.remove(s_default_doxyfile)</div>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00614">614</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  614</span>    <span class="keyword">def </span>generate_configuration_diff(self):</div>
+<div class="line"><span class="lineno">  615</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">  616</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span>  Generate doxyfile diff to view changes</div>
+<div class="line"><span class="lineno">  617</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  618</span><span class="stringliteral">        s_default_doxyfile = f&quot;{self.s_output_dir}/Default.Doxyfile&quot;</span></div>
 <div class="line"><span class="lineno">  619</span> </div>
-<div class="line"><span class="lineno">  620</span>        <span class="comment"># read modified doxyfile</span></div>
-<div class="line"><span class="lineno">  621</span>        <span class="keyword">with</span> open(self.s_doxyfile_name, <span class="stringliteral">&#39;r&#39;</span>, encoding=<span class="stringliteral">&#39;utf-8&#39;</span>) <span class="keyword">as</span> file:</div>
-<div class="line"><span class="lineno">  622</span>            s_modified_config = file.read()</div>
-<div class="line"><span class="lineno">  623</span> </div>
-<div class="line"><span class="lineno">  624</span>        s_diff_file_name = f<span class="stringliteral">&#39;{self.s_output_dir}DoxyfileDiff.html&#39;</span></div>
-<div class="line"><span class="lineno">  625</span>        difference = difflib.HtmlDiff(wrapcolumn=I_WRAP_LENGHT).make_file(s_default_config.splitlines(), s_modified_config.splitlines(), <span class="stringliteral">&quot;Default&quot;</span>, <span class="stringliteral">&quot;Modified&quot;</span>)</div>
-<div class="line"><span class="lineno">  626</span>        <span class="keyword">with</span> open(s_diff_file_name, <span class="stringliteral">&#39;w&#39;</span>, encoding=<span class="stringliteral">&#39;utf-8&#39;</span>) <span class="keyword">as</span> file:</div>
-<div class="line"><span class="lineno">  627</span>            file.write(difference)</div>
+<div class="line"><span class="lineno">  620</span>        <span class="comment"># create and read default doxyfile</span></div>
+<div class="line"><span class="lineno">  621</span>        self.create_default_doxyfile(s_default_doxyfile)</div>
+<div class="line"><span class="lineno">  622</span>        config_parser = ConfigParser()</div>
+<div class="line"><span class="lineno">  623</span>        configuration = config_parser.load_configuration(s_default_doxyfile)</div>
+<div class="line"><span class="lineno">  624</span>        config_parser.store_configuration(configuration, s_default_doxyfile)</div>
+<div class="line"><span class="lineno">  625</span>        <span class="keyword">with</span> open(s_default_doxyfile, mode=<span class="stringliteral">&#39;r&#39;</span>, encoding=<span class="stringliteral">&#39;utf-8&#39;</span>) <span class="keyword">as</span> file:</div>
+<div class="line"><span class="lineno">  626</span>            s_default_config = file.read()</div>
+<div class="line"><span class="lineno">  627</span>        os.remove(s_default_doxyfile)</div>
 <div class="line"><span class="lineno">  628</span> </div>
+<div class="line"><span class="lineno">  629</span>        <span class="comment"># read modified doxyfile</span></div>
+<div class="line"><span class="lineno">  630</span>        <span class="keyword">with</span> open(self.s_doxyfile_name, mode=<span class="stringliteral">&#39;r&#39;</span>, encoding=<span class="stringliteral">&#39;utf-8&#39;</span>) <span class="keyword">as</span> file:</div>
+<div class="line"><span class="lineno">  631</span>            s_modified_config = file.read()</div>
+<div class="line"><span class="lineno">  632</span> </div>
+<div class="line"><span class="lineno">  633</span>        s_diff_file_name = f<span class="stringliteral">&#39;{self.s_output_dir}DoxyfileDiff.html&#39;</span></div>
+<div class="line"><span class="lineno">  634</span>        difference = difflib.HtmlDiff(wrapcolumn=I_WRAP_LENGHT).make_file(s_default_config.splitlines(), s_modified_config.splitlines(), <span class="stringliteral">&quot;Default&quot;</span>, <span class="stringliteral">&quot;Modified&quot;</span>)</div>
+<div class="line"><span class="lineno">  635</span>        <span class="keyword">with</span> open(s_diff_file_name, mode=<span class="stringliteral">&#39;w&#39;</span>, encoding=<span class="stringliteral">&#39;utf-8&#39;</span>) <span class="keyword">as</span> file:</div>
+<div class="line"><span class="lineno">  636</span>            file.write(difference)</div>
+<div class="line"><span class="lineno">  637</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -728,19 +736,19 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00548">548</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  548</span>    <span class="keyword">def </span>generate_doxygen_output(self, b_open_doxygen_output: bool = <span class="keyword">True</span>):</div>
-<div class="line"><span class="lineno">  549</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  550</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Generate Doxygen output depend on existing doxyfile</div>
-<div class="line"><span class="lineno">  551</span>        <span class="preprocessor">@param</span> b_open_doxygen_output : [<span class="keyword">True</span>] open output <span class="keywordflow">in</span> browser; [<span class="keyword">False</span>] only generate output</div>
-<div class="line"><span class="lineno">  552</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  553</span><span class="stringliteral">        subprocess.call([S_DOXYGEN_PATH, self.s_doxyfile_name])</span></div>
-<div class="line"><span class="lineno">  554</span><span class="stringliteral"></span> </div>
-<div class="line"><span class="lineno">  555</span><span class="stringliteral">        </span><span class="keywordflow">if</span> b_open_doxygen_output:</div>
-<div class="line"><span class="lineno">  556</span>            <span class="comment"># open doxygen output</span></div>
-<div class="line"><span class="lineno">  557</span>            filename = f<span class="stringliteral">&quot;file:///{os.getcwd()}/{self.s_output_dir}{S_INDEX_FILE}&quot;</span></div>
-<div class="line"><span class="lineno">  558</span>            webbrowser.open_new_tab(filename)</div>
-<div class="line"><span class="lineno">  559</span> </div>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00557">557</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  557</span>    <span class="keyword">def </span>generate_doxygen_output(self, b_open_doxygen_output: bool = <span class="keyword">True</span>):</div>
+<div class="line"><span class="lineno">  558</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">  559</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span> Generate Doxygen output depend on existing doxyfile</div>
+<div class="line"><span class="lineno">  560</span>        <span class="preprocessor">@param</span> b_open_doxygen_output : [<span class="keyword">True</span>] open output <span class="keywordflow">in</span> browser; [<span class="keyword">False</span>] only generate output</div>
+<div class="line"><span class="lineno">  561</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  562</span><span class="stringliteral">        subprocess.call([S_DOXYGEN_PATH, self.s_doxyfile_name])</span></div>
+<div class="line"><span class="lineno">  563</span><span class="stringliteral"></span> </div>
+<div class="line"><span class="lineno">  564</span><span class="stringliteral">        </span><span class="keywordflow">if</span> b_open_doxygen_output:</div>
+<div class="line"><span class="lineno">  565</span>            <span class="comment"># open doxygen output</span></div>
+<div class="line"><span class="lineno">  566</span>            filename = f<span class="stringliteral">&quot;file:///{os.getcwd()}/{self.s_output_dir}{S_INDEX_FILE}&quot;</span></div>
+<div class="line"><span class="lineno">  567</span>            webbrowser.open_new_tab(filename)</div>
+<div class="line"><span class="lineno">  568</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -779,20 +787,20 @@ Static Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>configuration settings </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00404">404</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  404</span>    <span class="keyword">def </span>get_configuration(self, s_type: str):</div>
-<div class="line"><span class="lineno">  405</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  406</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span>  Get type <span class="keywordflow">in</span> doxygen configuration.</div>
-<div class="line"><span class="lineno">  407</span>        <span class="preprocessor">@param</span>  s_type : type <span class="keywordflow">in</span> configuration get setting</div>
-<div class="line"><span class="lineno">  408</span>        <span class="preprocessor">@return</span> configuration settings</div>
-<div class="line"><span class="lineno">  409</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  410</span><span class="stringliteral">        </span><span class="keywordflow">if</span> s_type <span class="keywordflow">in</span> self.d_settings:</div>
-<div class="line"><span class="lineno">  411</span>            value = self.d_settings[s_type]</div>
-<div class="line"><span class="lineno">  412</span>        <span class="keywordflow">else</span>:</div>
-<div class="line"><span class="lineno">  413</span>            value = <span class="stringliteral">&quot;Invalid&quot;</span></div>
-<div class="line"><span class="lineno">  414</span>            self.l_warnings.append(f<span class="stringliteral">&quot;{s_type} not in configuration to get&quot;</span>)</div>
-<div class="line"><span class="lineno">  415</span>        <span class="keywordflow">return</span> value</div>
-<div class="line"><span class="lineno">  416</span> </div>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00405">405</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  405</span>    <span class="keyword">def </span>get_configuration(self, s_type: str):</div>
+<div class="line"><span class="lineno">  406</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">  407</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span>  Get type <span class="keywordflow">in</span> doxygen configuration.</div>
+<div class="line"><span class="lineno">  408</span>        <span class="preprocessor">@param</span>  s_type : type <span class="keywordflow">in</span> configuration get setting</div>
+<div class="line"><span class="lineno">  409</span>        <span class="preprocessor">@return</span> configuration settings</div>
+<div class="line"><span class="lineno">  410</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  411</span><span class="stringliteral">        </span><span class="keywordflow">if</span> s_type <span class="keywordflow">in</span> self.d_settings:</div>
+<div class="line"><span class="lineno">  412</span>            value = self.d_settings[s_type]</div>
+<div class="line"><span class="lineno">  413</span>        <span class="keywordflow">else</span>:</div>
+<div class="line"><span class="lineno">  414</span>            value = <span class="stringliteral">&quot;Invalid&quot;</span></div>
+<div class="line"><span class="lineno">  415</span>            self.l_warnings.append(f<span class="stringliteral">&quot;{s_type} not in configuration to get&quot;</span>)</div>
+<div class="line"><span class="lineno">  416</span>        <span class="keywordflow">return</span> value</div>
+<div class="line"><span class="lineno">  417</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -815,48 +823,48 @@ Static Public Attributes</h2></td></tr>
 <p>Prepare doxfile configuration with default settings that depend on other parameters. </p>
 <p>Parameters that set before as fix parameter or by user will not override. This allows the user to make settings that differ from the default configuration. </p>
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00417">417</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  417</span>    <span class="keyword">def </span>prepare_doxyfile_configuration(self):</div>
-<div class="line"><span class="lineno">  418</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  419</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span>  Prepare doxfile configuration <span class="keyword">with</span> default settings that depend on other parameters.</div>
-<div class="line"><span class="lineno">  420</span>                Parameters that set before <span class="keyword">as</span> fix parameter <span class="keywordflow">or</span> by user will <span class="keywordflow">not</span> override.</div>
-<div class="line"><span class="lineno">  421</span>                This allows the user to make settings that differ <span class="keyword">from</span> the default configuration.</div>
-<div class="line"><span class="lineno">  422</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  423</span><span class="stringliteral">        </span><span class="comment"># save filenames and directory witch need so save/open files</span></div>
-<div class="line"><span class="lineno">  424</span>        self.s_output_dir = f<span class="stringliteral">&quot;{self.get_configuration(&#39;OUTPUT_DIRECTORY&#39;)}/&quot;</span> <span class="comment"># save output directory witch used for other file names</span></div>
-<div class="line"><span class="lineno">  425</span>        s_project_name = self.get_configuration(<span class="stringliteral">&#39;PROJECT_NAME&#39;</span>)</div>
-<div class="line"><span class="lineno">  426</span>        self.s_doxyfile_name = f<span class="stringliteral">&quot;{self.s_output_dir}{s_project_name}.Doxyfile&quot;</span></div>
-<div class="line"><span class="lineno">  427</span>        self.s_warning_name = f<span class="stringliteral">&quot;{self.s_output_dir}{S_WARNING_FILE_PREFIX}{s_project_name}{S_WARNING_FILE_SUFFIX}&quot;</span></div>
-<div class="line"><span class="lineno">  428</span> </div>
-<div class="line"><span class="lineno">  429</span>        <span class="comment"># set uniform doxygen configuration with depend on other parameters</span></div>
-<div class="line"><span class="lineno">  430</span>        self.set_configuration(<span class="stringliteral">&#39;PROJECT_BRIEF&#39;</span>, f<span class="stringliteral">&quot;{s_project_name}-Documentation&quot;</span>, b_override=<span class="keyword">False</span>) <span class="comment"># use project name as default if nothing defined</span></div>
-<div class="line"><span class="lineno">  431</span>        self.set_configuration(<span class="stringliteral">&#39;WARN_LOGFILE&#39;</span>, self.s_warning_name, b_override=<span class="keyword">False</span>)</div>
-<div class="line"><span class="lineno">  432</span>        self.set_configuration(<span class="stringliteral">&#39;EXCLUDE_PATTERNS&#39;</span>, [self.s_output_dir], b_override=<span class="keyword">False</span>)</div>
-<div class="line"><span class="lineno">  433</span> </div>
-<div class="line"><span class="lineno">  434</span>        <span class="comment"># write version prefix for version numbers as project number</span></div>
-<div class="line"><span class="lineno">  435</span>        s_version = self.get_configuration(<span class="stringliteral">&#39;PROJECT_NUMBER&#39;</span>)</div>
-<div class="line"><span class="lineno">  436</span>        <span class="keywordflow">if</span> s_version <span class="keywordflow">not</span> <span class="keywordflow">in</span> L_OVERRIDE:</div>
-<div class="line"><span class="lineno">  437</span>            b_is_version = <span class="keyword">True</span></div>
-<div class="line"><span class="lineno">  438</span>            <span class="keywordflow">for</span> s_char <span class="keywordflow">in</span> s_version:</div>
-<div class="line"><span class="lineno">  439</span>                <span class="keywordflow">if</span> <span class="keywordflow">not</span> (s_char.isdigit <span class="keywordflow">or</span> (s_char == <span class="stringliteral">&quot;.&quot;</span>)):</div>
-<div class="line"><span class="lineno">  440</span>                    b_is_version = <span class="keyword">False</span></div>
-<div class="line"><span class="lineno">  441</span>                    <span class="keywordflow">break</span></div>
-<div class="line"><span class="lineno">  442</span>            <span class="keywordflow">if</span> b_is_version:</div>
-<div class="line"><span class="lineno">  443</span>                self.set_configuration(<span class="stringliteral">&#39;PROJECT_NUMBER&#39;</span>, f<span class="stringliteral">&quot;v{s_version}&quot;</span>)</div>
-<div class="line"><span class="lineno">  444</span> </div>
-<div class="line"><span class="lineno">  445</span>        <span class="comment"># set doxygen awesome settings witch depends on path</span></div>
-<div class="line"><span class="lineno">  446</span>        l_extra_files = [<span class="stringliteral">&quot;doxygen-awesome-darkmode-toggle.js&quot;</span>,</div>
-<div class="line"><span class="lineno">  447</span>                         <span class="stringliteral">&quot;doxygen-awesome-fragment-copy-button.js&quot;</span>,</div>
-<div class="line"><span class="lineno">  448</span>                         <span class="stringliteral">&quot;doxygen-awesome-paragraph-link.js&quot;</span>,</div>
-<div class="line"><span class="lineno">  449</span>                         <span class="stringliteral">&quot;doxygen-awesome-interactive-toc.js&quot;</span>,</div>
-<div class="line"><span class="lineno">  450</span>                         <span class="stringliteral">&quot;doxygen-awesome-tabs.js&quot;</span>]</div>
-<div class="line"><span class="lineno">  451</span>        self.set_configuration(<span class="stringliteral">&#39;HTML_EXTRA_FILES&#39;</span>, l_extra_files, b_override=<span class="keyword">False</span>)</div>
-<div class="line"><span class="lineno">  452</span>        l_extra_stylesheet = [<span class="stringliteral">&quot;doxygen-awesome.css&quot;</span>,</div>
-<div class="line"><span class="lineno">  453</span>                              <span class="stringliteral">&quot;doxygen-awesome-sidebar-only.css&quot;</span>,</div>
-<div class="line"><span class="lineno">  454</span>                              <span class="stringliteral">&quot;doxygen-awesome-sidebar-only-darkmode-toggle.css&quot;</span>]</div>
-<div class="line"><span class="lineno">  455</span>        self.set_configuration(<span class="stringliteral">&#39;HTML_EXTRA_STYLESHEET&#39;</span>, l_extra_stylesheet, b_override=<span class="keyword">False</span>) <span class="comment"># doxygen styling code</span></div>
-<div class="line"><span class="lineno">  456</span>        self.set_configuration(<span class="stringliteral">&#39;HTML_HEADER&#39;</span>, <span class="stringliteral">&quot;header.html&quot;</span>, b_override=<span class="keyword">False</span>) <span class="comment"># use own doxygen header</span></div>
-<div class="line"><span class="lineno">  457</span> </div>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00418">418</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  418</span>    <span class="keyword">def </span>prepare_doxyfile_configuration(self):</div>
+<div class="line"><span class="lineno">  419</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">  420</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span>  Prepare doxfile configuration <span class="keyword">with</span> default settings that depend on other parameters.</div>
+<div class="line"><span class="lineno">  421</span>                Parameters that set before <span class="keyword">as</span> fix parameter <span class="keywordflow">or</span> by user will <span class="keywordflow">not</span> override.</div>
+<div class="line"><span class="lineno">  422</span>                This allows the user to make settings that differ <span class="keyword">from</span> the default configuration.</div>
+<div class="line"><span class="lineno">  423</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  424</span><span class="stringliteral">        </span><span class="comment"># save filenames and directory witch need so save/open files</span></div>
+<div class="line"><span class="lineno">  425</span>        self.s_output_dir = f<span class="stringliteral">&quot;{self.get_configuration(&#39;OUTPUT_DIRECTORY&#39;)}/&quot;</span> <span class="comment"># save output directory witch used for other file names</span></div>
+<div class="line"><span class="lineno">  426</span>        s_project_name = self.get_configuration(<span class="stringliteral">&#39;PROJECT_NAME&#39;</span>)</div>
+<div class="line"><span class="lineno">  427</span>        self.s_doxyfile_name = f<span class="stringliteral">&quot;{self.s_output_dir}{s_project_name}.Doxyfile&quot;</span></div>
+<div class="line"><span class="lineno">  428</span>        self.s_warning_name = f<span class="stringliteral">&quot;{self.s_output_dir}{S_WARNING_FILE_PREFIX}{s_project_name}{S_WARNING_FILE_SUFFIX}&quot;</span></div>
+<div class="line"><span class="lineno">  429</span> </div>
+<div class="line"><span class="lineno">  430</span>        <span class="comment"># set uniform doxygen configuration with depend on other parameters</span></div>
+<div class="line"><span class="lineno">  431</span>        self.set_configuration(<span class="stringliteral">&#39;PROJECT_BRIEF&#39;</span>, f<span class="stringliteral">&quot;{s_project_name}-Documentation&quot;</span>, b_override=<span class="keyword">False</span>) <span class="comment"># use project name as default if nothing defined</span></div>
+<div class="line"><span class="lineno">  432</span>        self.set_configuration(<span class="stringliteral">&#39;WARN_LOGFILE&#39;</span>, self.s_warning_name, b_override=<span class="keyword">False</span>)</div>
+<div class="line"><span class="lineno">  433</span>        self.set_configuration(<span class="stringliteral">&#39;EXCLUDE_PATTERNS&#39;</span>, [self.s_output_dir], b_override=<span class="keyword">False</span>)</div>
+<div class="line"><span class="lineno">  434</span> </div>
+<div class="line"><span class="lineno">  435</span>        <span class="comment"># write version prefix for version numbers as project number</span></div>
+<div class="line"><span class="lineno">  436</span>        s_version = self.get_configuration(<span class="stringliteral">&#39;PROJECT_NUMBER&#39;</span>)</div>
+<div class="line"><span class="lineno">  437</span>        <span class="keywordflow">if</span> s_version <span class="keywordflow">not</span> <span class="keywordflow">in</span> L_OVERRIDE:</div>
+<div class="line"><span class="lineno">  438</span>            b_is_version = <span class="keyword">True</span></div>
+<div class="line"><span class="lineno">  439</span>            <span class="keywordflow">for</span> s_char <span class="keywordflow">in</span> s_version:</div>
+<div class="line"><span class="lineno">  440</span>                <span class="keywordflow">if</span> <span class="keywordflow">not</span> (s_char.isdigit <span class="keywordflow">or</span> (s_char == <span class="stringliteral">&quot;.&quot;</span>)):</div>
+<div class="line"><span class="lineno">  441</span>                    b_is_version = <span class="keyword">False</span></div>
+<div class="line"><span class="lineno">  442</span>                    <span class="keywordflow">break</span></div>
+<div class="line"><span class="lineno">  443</span>            <span class="keywordflow">if</span> b_is_version:</div>
+<div class="line"><span class="lineno">  444</span>                self.set_configuration(<span class="stringliteral">&#39;PROJECT_NUMBER&#39;</span>, f<span class="stringliteral">&quot;v{s_version}&quot;</span>)</div>
+<div class="line"><span class="lineno">  445</span> </div>
+<div class="line"><span class="lineno">  446</span>        <span class="comment"># set doxygen awesome settings witch depends on path</span></div>
+<div class="line"><span class="lineno">  447</span>        l_extra_files = [<span class="stringliteral">&quot;doxygen-awesome-darkmode-toggle.js&quot;</span>,</div>
+<div class="line"><span class="lineno">  448</span>                         <span class="stringliteral">&quot;doxygen-awesome-fragment-copy-button.js&quot;</span>,</div>
+<div class="line"><span class="lineno">  449</span>                         <span class="stringliteral">&quot;doxygen-awesome-paragraph-link.js&quot;</span>,</div>
+<div class="line"><span class="lineno">  450</span>                         <span class="stringliteral">&quot;doxygen-awesome-interactive-toc.js&quot;</span>,</div>
+<div class="line"><span class="lineno">  451</span>                         <span class="stringliteral">&quot;doxygen-awesome-tabs.js&quot;</span>]</div>
+<div class="line"><span class="lineno">  452</span>        self.set_configuration(<span class="stringliteral">&#39;HTML_EXTRA_FILES&#39;</span>, l_extra_files, b_override=<span class="keyword">False</span>)</div>
+<div class="line"><span class="lineno">  453</span>        l_extra_stylesheet = [<span class="stringliteral">&quot;doxygen-awesome.css&quot;</span>,</div>
+<div class="line"><span class="lineno">  454</span>                              <span class="stringliteral">&quot;doxygen-awesome-sidebar-only.css&quot;</span>,</div>
+<div class="line"><span class="lineno">  455</span>                              <span class="stringliteral">&quot;doxygen-awesome-sidebar-only-darkmode-toggle.css&quot;</span>]</div>
+<div class="line"><span class="lineno">  456</span>        self.set_configuration(<span class="stringliteral">&#39;HTML_EXTRA_STYLESHEET&#39;</span>, l_extra_stylesheet, b_override=<span class="keyword">False</span>) <span class="comment"># doxygen styling code</span></div>
+<div class="line"><span class="lineno">  457</span>        self.set_configuration(<span class="stringliteral">&#39;HTML_HEADER&#39;</span>, <span class="stringliteral">&quot;header.html&quot;</span>, b_override=<span class="keyword">False</span>) <span class="comment"># use own doxygen header</span></div>
+<div class="line"><span class="lineno">  458</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -895,37 +903,37 @@ Static Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status for found doxygen warning </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00629">629</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  629</span>    <span class="keyword">def </span>run_doxygen(self, b_open_doxygen_output: bool = <span class="keyword">True</span>) -&gt; bool:</div>
-<div class="line"><span class="lineno">  630</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  631</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span>  Generate Doxyfile <span class="keywordflow">and</span> Doxygen output depend on doxyfile settings</div>
-<div class="line"><span class="lineno">  632</span>        <span class="preprocessor">@param</span>  b_open_doxygen_output : [<span class="keyword">True</span>] open output <span class="keywordflow">in</span> browser; [<span class="keyword">False</span>] only generate output</div>
-<div class="line"><span class="lineno">  633</span>        <span class="preprocessor">@return</span> status <span class="keywordflow">for</span> found doxygen warning</div>
-<div class="line"><span class="lineno">  634</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  635</span><span class="stringliteral">        self.download_doxygen()</span></div>
-<div class="line"><span class="lineno">  636</span><span class="stringliteral">        self.download_plantuml_jar()</span></div>
-<div class="line"><span class="lineno">  637</span><span class="stringliteral">        self.prepare_doxyfile_configuration()</span></div>
-<div class="line"><span class="lineno">  638</span><span class="stringliteral">        </span><span class="keywordflow">if</span> <span class="keywordflow">not</span> os.path.exists(self.s_output_dir):</div>
-<div class="line"><span class="lineno">  639</span>            os.makedirs(self.s_output_dir)</div>
-<div class="line"><span class="lineno">  640</span>        self.create_default_doxyfile(self.s_doxyfile_name)</div>
-<div class="line"><span class="lineno">  641</span>        self.edit_select_doxyfile_settings()</div>
-<div class="line"><span class="lineno">  642</span>        self.generate_doxygen_output(b_open_doxygen_output)</div>
-<div class="line"><span class="lineno">  643</span>        self.add_github_corner()</div>
-<div class="line"><span class="lineno">  644</span>        self.add_images()</div>
-<div class="line"><span class="lineno">  645</span>        self.add_nojekyll_file()</div>
-<div class="line"><span class="lineno">  646</span>        self.generate_configuration_diff()</div>
-<div class="line"><span class="lineno">  647</span> </div>
-<div class="line"><span class="lineno">  648</span>        <span class="comment"># additional script to check for valid doxygen specification in python files</span></div>
-<div class="line"><span class="lineno">  649</span>        <span class="keywordflow">if</span> S_PYTHON_PATTERN <span class="keywordflow">in</span> self.d_settings[<span class="stringliteral">&#39;FILE_PATTERNS&#39;</span>]:</div>
-<div class="line"><span class="lineno">  650</span>            doxy_checker = DoxyPyChecker(S_MAIN_FOLDER_FOLDER)</div>
-<div class="line"><span class="lineno">  651</span>            l_finding = doxy_checker.run_check()</div>
-<div class="line"><span class="lineno">  652</span>            self.l_warnings.extend(l_finding)</div>
-<div class="line"><span class="lineno">  653</span> </div>
-<div class="line"><span class="lineno">  654</span>        self.add_warnings() <span class="comment"># add own warnings to warning file</span></div>
-<div class="line"><span class="lineno">  655</span>        b_warnings = self.check_doxygen_warnings(b_open_doxygen_output)</div>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00638">638</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  638</span>    <span class="keyword">def </span>run_doxygen(self, b_open_doxygen_output: bool = <span class="keyword">True</span>) -&gt; bool:</div>
+<div class="line"><span class="lineno">  639</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">  640</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span>  Generate Doxyfile <span class="keywordflow">and</span> Doxygen output depend on doxyfile settings</div>
+<div class="line"><span class="lineno">  641</span>        <span class="preprocessor">@param</span>  b_open_doxygen_output : [<span class="keyword">True</span>] open output <span class="keywordflow">in</span> browser; [<span class="keyword">False</span>] only generate output</div>
+<div class="line"><span class="lineno">  642</span>        <span class="preprocessor">@return</span> status <span class="keywordflow">for</span> found doxygen warning</div>
+<div class="line"><span class="lineno">  643</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  644</span><span class="stringliteral">        self.download_doxygen()</span></div>
+<div class="line"><span class="lineno">  645</span><span class="stringliteral">        self.download_plantuml_jar()</span></div>
+<div class="line"><span class="lineno">  646</span><span class="stringliteral">        self.prepare_doxyfile_configuration()</span></div>
+<div class="line"><span class="lineno">  647</span><span class="stringliteral">        </span><span class="keywordflow">if</span> <span class="keywordflow">not</span> os.path.exists(self.s_output_dir):</div>
+<div class="line"><span class="lineno">  648</span>            os.makedirs(self.s_output_dir)</div>
+<div class="line"><span class="lineno">  649</span>        self.create_default_doxyfile(self.s_doxyfile_name)</div>
+<div class="line"><span class="lineno">  650</span>        self.edit_select_doxyfile_settings()</div>
+<div class="line"><span class="lineno">  651</span>        self.generate_doxygen_output(b_open_doxygen_output)</div>
+<div class="line"><span class="lineno">  652</span>        self.add_github_corner()</div>
+<div class="line"><span class="lineno">  653</span>        self.add_images()</div>
+<div class="line"><span class="lineno">  654</span>        self.add_nojekyll_file()</div>
+<div class="line"><span class="lineno">  655</span>        self.generate_configuration_diff()</div>
 <div class="line"><span class="lineno">  656</span> </div>
-<div class="line"><span class="lineno">  657</span>        <span class="keywordflow">return</span> b_warnings</div>
-<div class="line"><span class="lineno">  658</span> </div>
+<div class="line"><span class="lineno">  657</span>        <span class="comment"># additional script to check for valid doxygen specification in python files</span></div>
+<div class="line"><span class="lineno">  658</span>        <span class="keywordflow">if</span> S_PYTHON_PATTERN <span class="keywordflow">in</span> self.d_settings[<span class="stringliteral">&#39;FILE_PATTERNS&#39;</span>]:</div>
+<div class="line"><span class="lineno">  659</span>            doxy_checker = DoxyPyChecker(S_MAIN_FOLDER_FOLDER)</div>
+<div class="line"><span class="lineno">  660</span>            l_finding = doxy_checker.run_check()</div>
+<div class="line"><span class="lineno">  661</span>            self.l_warnings.extend(l_finding)</div>
+<div class="line"><span class="lineno">  662</span> </div>
+<div class="line"><span class="lineno">  663</span>        self.add_warnings() <span class="comment"># add own warnings to warning file</span></div>
+<div class="line"><span class="lineno">  664</span>        b_warnings = self.check_doxygen_warnings(b_open_doxygen_output)</div>
+<div class="line"><span class="lineno">  665</span> </div>
+<div class="line"><span class="lineno">  666</span>        <span class="keywordflow">return</span> b_warnings</div>
+<div class="line"><span class="lineno">  667</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -977,25 +985,25 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00386">386</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  386</span>    <span class="keyword">def </span>set_configuration(self, s_type: str, value: Any, b_override: bool = <span class="keyword">True</span>):</div>
-<div class="line"><span class="lineno">  387</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  388</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span>  Set doxygen configuration.</div>
-<div class="line"><span class="lineno">  389</span>        <span class="preprocessor">@param</span>  s_type : type to set <span class="keywordflow">in</span> configuration</div>
-<div class="line"><span class="lineno">  390</span>        <span class="preprocessor">@param</span>  value : value to set <span class="keywordflow">for</span> s_type <span class="keywordflow">in</span> configuration</div>
-<div class="line"><span class="lineno">  391</span>        <span class="preprocessor">@param</span>  b_override : info <span class="keywordflow">if</span> selected default setting should override</div>
-<div class="line"><span class="lineno">  392</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  393</span><span class="stringliteral">        </span><span class="keywordflow">if</span> b_override <span class="keywordflow">or</span> (self.get_configuration(s_type) <span class="keywordflow">in</span> L_OVERRIDE):</div>
-<div class="line"><span class="lineno">  394</span>            <span class="keywordflow">if</span> s_type <span class="keywordflow">in</span> self.d_settings:</div>
-<div class="line"><span class="lineno">  395</span>                <span class="keywordflow">if</span> isinstance(value, list):</div>
-<div class="line"><span class="lineno">  396</span>                    <span class="keywordflow">if</span> self.d_settings[s_type] <span class="keywordflow">in</span> L_OVERRIDE:</div>
-<div class="line"><span class="lineno">  397</span>                        self.d_settings[s_type] = []</div>
-<div class="line"><span class="lineno">  398</span>                    self.d_settings[s_type].extend(value)</div>
-<div class="line"><span class="lineno">  399</span>                <span class="keywordflow">else</span>:</div>
-<div class="line"><span class="lineno">  400</span>                    self.d_settings[s_type] = value</div>
-<div class="line"><span class="lineno">  401</span>            <span class="keywordflow">else</span>:</div>
-<div class="line"><span class="lineno">  402</span>                self.l_warnings.append(f<span class="stringliteral">&quot;{s_type} not in configuration to set&quot;</span>)</div>
-<div class="line"><span class="lineno">  403</span> </div>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00387">387</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  387</span>    <span class="keyword">def </span>set_configuration(self, s_type: str, value: Any, b_override: bool = <span class="keyword">True</span>):</div>
+<div class="line"><span class="lineno">  388</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">  389</span><span class="stringliteral">        </span><span class="preprocessor">@brief</span>  Set doxygen configuration.</div>
+<div class="line"><span class="lineno">  390</span>        <span class="preprocessor">@param</span>  s_type : type to set <span class="keywordflow">in</span> configuration</div>
+<div class="line"><span class="lineno">  391</span>        <span class="preprocessor">@param</span>  value : value to set <span class="keywordflow">for</span> s_type <span class="keywordflow">in</span> configuration</div>
+<div class="line"><span class="lineno">  392</span>        <span class="preprocessor">@param</span>  b_override : info <span class="keywordflow">if</span> selected default setting should override</div>
+<div class="line"><span class="lineno">  393</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  394</span><span class="stringliteral">        </span><span class="keywordflow">if</span> b_override <span class="keywordflow">or</span> (self.get_configuration(s_type) <span class="keywordflow">in</span> L_OVERRIDE):</div>
+<div class="line"><span class="lineno">  395</span>            <span class="keywordflow">if</span> s_type <span class="keywordflow">in</span> self.d_settings:</div>
+<div class="line"><span class="lineno">  396</span>                <span class="keywordflow">if</span> isinstance(value, list):</div>
+<div class="line"><span class="lineno">  397</span>                    <span class="keywordflow">if</span> self.d_settings[s_type] <span class="keywordflow">in</span> L_OVERRIDE:</div>
+<div class="line"><span class="lineno">  398</span>                        self.d_settings[s_type] = []</div>
+<div class="line"><span class="lineno">  399</span>                    self.d_settings[s_type].extend(value)</div>
+<div class="line"><span class="lineno">  400</span>                <span class="keywordflow">else</span>:</div>
+<div class="line"><span class="lineno">  401</span>                    self.d_settings[s_type] = value</div>
+<div class="line"><span class="lineno">  402</span>            <span class="keywordflow">else</span>:</div>
+<div class="line"><span class="lineno">  403</span>                self.l_warnings.append(f<span class="stringliteral">&quot;{s_type} not in configuration to set&quot;</span>)</div>
+<div class="line"><span class="lineno">  404</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1020,7 +1028,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00088">88</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00089">89</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -1036,7 +1044,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00374">374</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00375">375</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -1052,7 +1060,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00376">376</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00377">377</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -1068,7 +1076,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00375">375</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00376">376</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -1084,7 +1092,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00377">377</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00378">378</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -1100,7 +1108,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00373">373</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00374">374</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -1113,10 +1121,10 @@ Static Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacedoxygen__creator.html">doxygen_creator</a></li><li class="navelem"><a class="el" href="classdoxygen__creator_1_1_doxygen_creator.html">DoxygenCreator</a></li>
-    <li class="footer">Generated on Sun Jul 9 2023 13:13:28 for YouTube Downloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Wed Aug 16 2023 21:21:42 for YouTube Downloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>
 </html>
 <a href=https://github.com/timounger/YouTubeDownloader class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
-<link rel="icon" href=app.ico>
+<link rel="icon" href=YouTubeDownloader.ico>

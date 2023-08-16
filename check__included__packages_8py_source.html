@@ -28,9 +28,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="app.ico"/></td>
+  <td id="projectlogo"><img alt="Logo" src="YouTubeDownloader.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTube Downloader<span id="projectnumber">&#160;v1.0.2</span>
+   <div id="projectname">YouTube Downloader<span id="projectnumber">&#160;v1.0.3</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -147,7 +147,7 @@ $(document).ready(function(){initNavTree('check__included__packages_8py_source.h
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="stringliteral">*****************************************************************************</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="stringliteral"> @file    check_included_packages.py</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="stringliteral"> </span><span class="preprocessor">@brief</span>   YouTubeDownloader - Utility Script to list <span class="keywordflow">and</span> check <span class="keywordflow">if</span> the build executable only</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>                              constains specified third party packages</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>                       constains specified third party packages</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>*****************************************************************************</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="stringliteral">&quot;&quot;&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="stringliteral"></span> </div>
@@ -158,33 +158,33 @@ $(document).ready(function(){initNavTree('check__included__packages_8py_source.h
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="stringliteral"># List of third party packages that may be contained in the PyInstaller executable.</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="stringliteral"># Has to be manually extended if a new package gets added to the tool.</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#a854a4b28517b6a2676c148ebf4f6f6fd">   16</a></span><span class="stringliteral">L_ALLOWED_THIRD_PARTY_PACKAGES = [</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="stringliteral">    &quot;PyInstaller&quot;,</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="stringliteral">    &quot;_pyinstaller_hooks_contrib&quot;,</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="stringliteral">    &quot;PIL&quot;,</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="stringliteral">    &quot;clipboard&quot;,</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="stringliteral">    &quot;pyperclip&quot;,</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="stringliteral">    &quot;pytube&quot;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="stringliteral">]</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#a80afe4fc0567250c84bb38661cb308f7">   25</a></span><span class="stringliteral">S_RELATIVE_PATH = r&#39;build\YouTubeDownloader\xref-YouTubeDownloader.html&#39;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="stringliteral">if __name__ == &quot;__main__&quot;:</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#a815161390be8f1bd37f2f03d724cf358">   30</a></span><span class="stringliteral">    d_third_party = {}</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#ac8135e9be97731bd415584ddb7c735da">   31</a></span><span class="stringliteral">    d_buildin = {}</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#a2cc7a35e2ab0fcbae8e86055049ba7dd">   32</a></span><span class="stringliteral">    d_own_packs = {}</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="stringliteral">    # Regular Expressions</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#a1e537f8a25fc78b6fb81060d28399eeb">   35</a></span><span class="stringliteral">    regex_third_party = re.compile(r&quot;Python[0-9]*\/lib\/site-packages.*.py&quot;, re.IGNORECASE)</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#a48a0e67dfbdbffc5831bc49fdacae7be">   36</a></span><span class="stringliteral">    regex_third_party_name = re.compile(r&quot;(?&lt;=site-packages\/).*&quot;, re.IGNORECASE)</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#a4959b69dbdae8f5530e581688d99b05b">   37</a></span><span class="stringliteral">    regex_builtin = re.compile(r&quot;Python[0-9]*\/lib\/.*.py&quot;, re.IGNORECASE)</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#a8cef0431fbdd8c9621162c399dd5586e">   38</a></span><span class="stringliteral">    regex_builtin_name = re.compile(r&quot;(?&lt;=lib\/).*&quot;, re.IGNORECASE)</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#a09937e882cfe822702a26d896ff3c4fc">   39</a></span><span class="stringliteral">    regex_own_packs = re.compile(r&quot;YouTubeDownloader\/.*&quot;)</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="stringliteral">    # read PyInstaller modulegraph cross reference HTML</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#ab1000d1f2ea9878f60bc119650013894">   42</a></span><span class="stringliteral">    with open(S_RELATIVE_PATH, encoding=&#39;utf-8&#39;) as o_html_file:</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#af457ce050bccf72c8940f84d0c74fc67">   43</a></span><span class="stringliteral">        soup = BeautifulSoup(o_html_file, &#39;html.parser&#39;</span>)</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="stringliteral">    &quot;PyInstaller&quot;</span>,</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="stringliteral">&quot;_pyinstaller_hooks_contrib&quot;</span>,</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="stringliteral">&quot;PIL&quot;</span>,</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="stringliteral">&quot;clipboard&quot;</span>,</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="stringliteral">&quot;pyperclip&quot;</span>,</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="stringliteral">&quot;pytube&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>]</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#a80afe4fc0567250c84bb38661cb308f7">   25</a></span>S_RELATIVE_PATH = <span class="stringliteral">r&#39;build\YouTubeDownloader\xref-YouTubeDownloader.html&#39;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keywordflow">if</span> __name__ == <span class="stringliteral">&quot;__main__&quot;</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#a815161390be8f1bd37f2f03d724cf358">   30</a></span>    d_third_party = {}</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#ac8135e9be97731bd415584ddb7c735da">   31</a></span>    d_buildin = {}</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#a2cc7a35e2ab0fcbae8e86055049ba7dd">   32</a></span>    d_own_packs = {}</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="comment"># Regular Expressions</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#a1e537f8a25fc78b6fb81060d28399eeb">   35</a></span>    regex_third_party = re.compile(<span class="stringliteral">r&quot;Python[0-9]*\/lib\/site-packages.*.py&quot;</span>, re.IGNORECASE)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#a48a0e67dfbdbffc5831bc49fdacae7be">   36</a></span>    regex_third_party_name = re.compile(<span class="stringliteral">r&quot;(?&lt;=site-packages\/).*&quot;</span>, re.IGNORECASE)</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#a4959b69dbdae8f5530e581688d99b05b">   37</a></span>    regex_builtin = re.compile(<span class="stringliteral">r&quot;Python[0-9]*\/lib\/.*.py&quot;</span>, re.IGNORECASE)</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#a8cef0431fbdd8c9621162c399dd5586e">   38</a></span>    regex_builtin_name = re.compile(<span class="stringliteral">r&quot;(?&lt;=lib\/).*&quot;</span>, re.IGNORECASE)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#a09937e882cfe822702a26d896ff3c4fc">   39</a></span>    regex_own_packs = re.compile(<span class="stringliteral">r&quot;YouTubeDownloader\/.*&quot;</span>)</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment"># read PyInstaller modulegraph cross reference HTML</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#ab1000d1f2ea9878f60bc119650013894">   42</a></span>    <span class="keyword">with</span> open(S_RELATIVE_PATH, mode=<span class="stringliteral">&#39;r&#39;</span>, encoding=<span class="stringliteral">&#39;utf-8&#39;</span>) <span class="keyword">as</span> o_html_file:</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#af457ce050bccf72c8940f84d0c74fc67">   43</a></span>        soup = BeautifulSoup(o_html_file, <span class="stringliteral">&#39;html.parser&#39;</span>)</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment"># parse HTML</span></div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#a6034a6cf8eefd56b7c2f5e695f18989e">   46</a></span>    l_nodes = soup.find_all(<span class="stringliteral">&#39;div&#39;</span>, class_=<span class="stringliteral">&#39;node&#39;</span>)</div>
@@ -202,33 +202,31 @@ $(document).ready(function(){initNavTree('check__included__packages_8py_source.h
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment"># print included packages</span></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    print(<span class="stringliteral">&quot;\nThird party packages:&quot;</span>)</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    print(<span class="stringliteral">&quot;\n&quot;</span>.join(list(d_third_party.keys())))</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="stringliteral">    print(&quot;\nOwn packages:&quot;)</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="stringliteral">    print(&quot;\n&quot;.join(list(d_own_packs.keys())))</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="stringliteral">    print(&quot;\nPython buildin packages:&quot;)</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="stringliteral">    print(&quot;\n&quot;.join(list(d_buildin.keys())))</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment"># check third party packages</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#ad26789ebd4a9d719475ef318e21a10d5">   69</a></span>    b_result = <span class="keyword">True</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordflow">for</span> s_package <span class="keywordflow">in</span> list(d_third_party.keys()):</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">if</span> s_package <span class="keywordflow">not</span> <span class="keywordflow">in</span> L_ALLOWED_THIRD_PARTY_PACKAGES:</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            print(f<span class="stringliteral">&#39;\nERROR PyInstaller included an unknown package in the executable: \&quot;{s_package}\&quot;&#39;</span>)</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            b_result = <span class="keyword">False</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordflow">if</span> b_result:</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        print(<span class="stringliteral">&#39;\nSUCCESS: Included packages are ok.&#39;</span>)</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    sys.exit(<span class="keywordflow">not</span> b_result)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">#print(&quot;\nOwn packages:&quot;)</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">#print(&quot;\n&quot;.join(list(d_own_packs.keys())))</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">#print(&quot;\nPython buildin packages:&quot;)</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">#print(&quot;\n&quot;.join(list(d_buildin.keys())))</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment"># check third party packages</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="namespacecheck__included__packages.html#ad26789ebd4a9d719475ef318e21a10d5">   67</a></span>    b_result = <span class="keyword">True</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">for</span> s_package <span class="keywordflow">in</span> list(d_third_party.keys()):</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordflow">if</span> s_package <span class="keywordflow">not</span> <span class="keywordflow">in</span> L_ALLOWED_THIRD_PARTY_PACKAGES:</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            print(f<span class="stringliteral">&#39;\nERROR PyInstaller included an unknown package in the executable: \&quot;{s_package}\&quot;&#39;</span>)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            b_result = <span class="keyword">False</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordflow">if</span> b_result:</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        print(<span class="stringliteral">&#39;\nSUCCESS: Included packages are ok.&#39;</span>)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    sys.exit(<span class="keywordflow">not</span> b_result)</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_7b3fabe2584a7a404cce81bafb4f8564.html">Executable</a></li><li class="navelem"><a class="el" href="check__included__packages_8py.html">check_included_packages.py</a></li>
-    <li class="footer">Generated on Sun Jul 9 2023 13:13:28 for YouTube Downloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Wed Aug 16 2023 21:21:42 for YouTube Downloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>
 </html>
 <a href=https://github.com/timounger/YouTubeDownloader class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
-<link rel="icon" href=app.ico>
+<link rel="icon" href=YouTubeDownloader.ico>

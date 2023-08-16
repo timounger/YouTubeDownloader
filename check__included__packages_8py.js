@@ -8,6 +8,7 @@ var check__included__packages_8py =
     [ "L_ALLOWED_THIRD_PARTY_PACKAGES", "check__included__packages_8py.html#a854a4b28517b6a2676c148ebf4f6f6fd", null ],
     [ "l_nodes", "check__included__packages_8py.html#a6034a6cf8eefd56b7c2f5e695f18989e", null ],
     [ "l_targets", "check__included__packages_8py.html#af792155b2086d9bfd9f0bb4cfd744605", null ],
+    [ "mode", "check__included__packages_8py.html#a1a6b6fb557d8d37d59700faf4e4c9167", null ],
     [ "regex_builtin", "check__included__packages_8py.html#a4959b69dbdae8f5530e581688d99b05b", null ],
     [ "regex_builtin_name", "check__included__packages_8py.html#a8cef0431fbdd8c9621162c399dd5586e", null ],
     [ "regex_own_packs", "check__included__packages_8py.html#a09937e882cfe822702a26d896ff3c4fc", null ],

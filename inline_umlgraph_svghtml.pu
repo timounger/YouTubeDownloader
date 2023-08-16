@@ -10,7 +10,7 @@ skinparam CollectionsBorderColor black
 
 title SW components of YouTube Downloader Tool
 
-node "app.ico" as icon #yellow
+node "YouTubeDownloader.ico" as icon #yellow
 
 package "YouTubeDownloader" as YtDl #ededed {
   component "**youtube_downloader**" as youtube_downloader #63d8ff

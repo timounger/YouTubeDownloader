@@ -18,5 +18,8 @@ var annotated_dup =
           [ "DownloadThread", "class_source_1_1_worker_1_1downloader_1_1_download_thread.html", "class_source_1_1_worker_1_1downloader_1_1_download_thread" ]
         ] ]
       ] ]
+    ] ],
+    [ "update_py_requirements", "namespaceupdate__py__requirements.html", [
+      [ "PackageInfo", "classupdate__py__requirements_1_1_package_info.html", null ]
     ] ]
 ];

@@ -7,5 +7,6 @@ var searchData=
   ['copy_4',['copy',['../class_source_1_1_controller_1_1main__window_1_1_youtube_downloader.html#ad76cef38b925f4b77773e555faeee5d6',1,'Source::Controller::main_window::YoutubeDownloader']]],
   ['copy_5fselected_5ftext_5fto_5fclipboard_5',['copy_selected_text_to_clipboard',['../namespace_source_1_1_controller_1_1main__window.html#a17d8422c96461570a819b5d6576e0591',1,'Source::Controller::main_window']]],
   ['create_5fdefault_5fdoxyfile_6',['create_default_doxyfile',['../classdoxygen__creator_1_1_doxygen_creator.html#a9d5b6ad78faff5de25bf902e09b30042',1,'doxygen_creator::DoxygenCreator']]],
-  ['cut_7',['cut',['../class_source_1_1_controller_1_1main__window_1_1_youtube_downloader.html#a0db1b1bf73bb7878d1e2cdad7cd1ceb1',1,'Source::Controller::main_window::YoutubeDownloader']]]
+  ['create_5fpackage_5fsummary_5fxls_7',['create_package_summary_xls',['../namespaceupdate__py__requirements.html#af0136ed897ae97b64ed54d08cdacb77c',1,'update_py_requirements']]],
+  ['cut_8',['cut',['../class_source_1_1_controller_1_1main__window_1_1_youtube_downloader.html#a0db1b1bf73bb7878d1e2cdad7cd1ceb1',1,'Source::Controller::main_window::YoutubeDownloader']]]
 ];

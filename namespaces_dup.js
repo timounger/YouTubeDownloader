@@ -9,6 +9,7 @@ var namespaces_dup =
       [ "L_ALLOWED_THIRD_PARTY_PACKAGES", "namespacecheck__included__packages.html#a854a4b28517b6a2676c148ebf4f6f6fd", null ],
       [ "l_nodes", "namespacecheck__included__packages.html#a6034a6cf8eefd56b7c2f5e695f18989e", null ],
       [ "l_targets", "namespacecheck__included__packages.html#af792155b2086d9bfd9f0bb4cfd744605", null ],
+      [ "mode", "namespacecheck__included__packages.html#a1a6b6fb557d8d37d59700faf4e4c9167", null ],
       [ "regex_builtin", "namespacecheck__included__packages.html#a4959b69dbdae8f5530e581688d99b05b", null ],
       [ "regex_builtin_name", "namespacecheck__included__packages.html#a8cef0431fbdd8c9621162c399dd5586e", null ],
       [ "regex_own_packs", "namespacecheck__included__packages.html#a09937e882cfe822702a26d896ff3c4fc", null ],
@@ -26,5 +27,6 @@ var namespaces_dup =
       [ "s_workpath", "namespacegenerate__version__file.html#a63ab728f6762fb8daa02d537e7d2a3a5", null ],
       [ "versionInfo", "namespacegenerate__version__file.html#a1327147992659825670f49d3b73a265d", null ]
     ] ],
-    [ "Source", "namespace_source.html", "namespace_source" ]
+    [ "Source", "namespace_source.html", "namespace_source" ],
+    [ "update_py_requirements", "namespaceupdate__py__requirements.html", "namespaceupdate__py__requirements" ]
 ];

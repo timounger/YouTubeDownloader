@@ -28,9 +28,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="app.ico"/></td>
+  <td id="projectlogo"><img alt="Logo" src="YouTubeDownloader.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTube Downloader<span id="projectnumber">&#160;v1.0.2</span>
+   <div id="projectname">YouTube Downloader<span id="projectnumber">&#160;v1.0.3</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -172,6 +172,8 @@ Variables</h2></td></tr>
 <tr class="separator:ac195c305a359b2abc5c0e20653d38fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f097dceec84a5f0579e4fecb6590dd7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedoxygen__creator.html#a8f097dceec84a5f0579e4fecb6590dd7">doxygen_creator</a> = <a class="el" href="classdoxygen__creator_1_1_doxygen_creator.html">DoxygenCreator</a>(<a class="el" href="namespacedoxygen__creator.html#a94244ddf33d122d9f42ee7ac6d550a75">S_REPO_LINK</a>)</td></tr>
 <tr class="separator:a8f097dceec84a5f0579e4fecb6590dd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2724f847bf5d0896aa258d1411869875"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedoxygen__creator.html#a2724f847bf5d0896aa258d1411869875">I_TIMEOUT</a> = 5</td></tr>
+<tr class="separator:a2724f847bf5d0896aa258d1411869875"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad04fb35c34ac92cc2cb1ef7667b2f0af"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedoxygen__creator.html#ad04fb35c34ac92cc2cb1ef7667b2f0af">I_WRAP_LENGHT</a> = 100</td></tr>
 <tr class="separator:ad04fb35c34ac92cc2cb1ef7667b2f0af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a994dd1314dc652fa3be4fb3c9091bba5"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedoxygen__creator.html#a994dd1314dc652fa3be4fb3c9091bba5">L_DEFAULT_FILE_PATTERN</a> = []</td></tr>
@@ -253,19 +255,19 @@ Variables</h2></td></tr>
 <p>Function to define CMD arguments. </p>
 <dl class="section return"><dt>Returns</dt><dd>Function returns argument parser. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00659">659</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  659</span><span class="keyword">def </span>get_cmd_args() -&gt; argparse.Namespace:</div>
-<div class="line"><span class="lineno">  660</span>    <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  661</span><span class="stringliteral">    </span><span class="preprocessor">@brief</span>  Function to define CMD arguments.</div>
-<div class="line"><span class="lineno">  662</span>    <span class="preprocessor">@return</span> Function returns argument parser.</div>
-<div class="line"><span class="lineno">  663</span>    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  664</span><span class="stringliteral">    o_parser = argparse.ArgumentParser(formatter_class = argparse.ArgumentDefaultsHelpFormatter)</span></div>
-<div class="line"><span class="lineno">  665</span><span class="stringliteral">    o_parser.add_argument(&quot;-o&quot;</span>, <span class="stringliteral">&quot;--open&quot;</span>,</div>
-<div class="line"><span class="lineno">  666</span>                          type = bool,</div>
-<div class="line"><span class="lineno">  667</span>                          default = <span class="keyword">False</span>,</div>
-<div class="line"><span class="lineno">  668</span>                          help = <span class="stringliteral">&quot;open output files after generation&quot;</span>)</div>
-<div class="line"><span class="lineno">  669</span>    <span class="keywordflow">return</span> o_parser.parse_args()</div>
-<div class="line"><span class="lineno">  670</span> </div>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00668">668</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  668</span><span class="keyword">def </span>get_cmd_args() -&gt; argparse.Namespace:</div>
+<div class="line"><span class="lineno">  669</span>    <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">  670</span><span class="stringliteral">    </span><span class="preprocessor">@brief</span>  Function to define CMD arguments.</div>
+<div class="line"><span class="lineno">  671</span>    <span class="preprocessor">@return</span> Function returns argument parser.</div>
+<div class="line"><span class="lineno">  672</span>    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  673</span><span class="stringliteral">    o_parser = argparse.ArgumentParser(formatter_class = argparse.ArgumentDefaultsHelpFormatter)</span></div>
+<div class="line"><span class="lineno">  674</span><span class="stringliteral">    o_parser.add_argument(&quot;-o&quot;</span>, <span class="stringliteral">&quot;--open&quot;</span>,</div>
+<div class="line"><span class="lineno">  675</span>                          type = bool,</div>
+<div class="line"><span class="lineno">  676</span>                          default = <span class="keyword">False</span>,</div>
+<div class="line"><span class="lineno">  677</span>                          help = <span class="stringliteral">&quot;open output files after generation&quot;</span>)</div>
+<div class="line"><span class="lineno">  678</span>    <span class="keywordflow">return</span> o_parser.parse_args()</div>
+<div class="line"><span class="lineno">  679</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -282,7 +284,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00672">672</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00681">681</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -330,7 +332,23 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00673">673</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00682">682</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+
+</div>
+</div>
+<a id="a2724f847bf5d0896aa258d1411869875" name="a2724f847bf5d0896aa258d1411869875"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2724f847bf5d0896aa258d1411869875">&#9670;&#160;</a></span>I_TIMEOUT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I_TIMEOUT = 5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00046">46</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -362,7 +380,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00052">52</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00053">53</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -378,7 +396,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00679">679</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00688">688</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -394,7 +412,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00063">63</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00064">64</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -410,7 +428,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00048">48</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00049">49</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -426,7 +444,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00062">62</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00063">63</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -442,7 +460,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00061">61</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00062">62</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -538,7 +556,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00054">54</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00055">55</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -554,7 +572,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00055">55</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00056">56</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -570,7 +588,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00056">56</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00057">57</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -586,7 +604,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00057">57</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00058">58</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -698,7 +716,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00051">51</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00052">52</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -714,7 +732,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00059">59</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00060">60</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -762,7 +780,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00049">49</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00050">50</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -778,7 +796,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00047">47</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="doxygen__creator_8py_source.html#l00048">48</a> of file <a class="el" href="doxygen__creator_8py_source.html">doxygen_creator.py</a>.</p>
 
 </div>
 </div>
@@ -788,10 +806,10 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacedoxygen__creator.html">doxygen_creator</a></li>
-    <li class="footer">Generated on Sun Jul 9 2023 13:13:28 for YouTube Downloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Wed Aug 16 2023 21:21:42 for YouTube Downloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>
 </html>
 <a href=https://github.com/timounger/YouTubeDownloader class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
-<link rel="icon" href=app.ico>
+<link rel="icon" href=YouTubeDownloader.ico>
