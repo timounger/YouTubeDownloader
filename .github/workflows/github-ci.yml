@@ -22,6 +22,13 @@ permissions:
   security-events: none
   statuses: none
 
+defaults:
+  run:
+    shell: cmd
+
+env:
+  PYTHON_VERSION: 3.10.10
+
 #--------------------------------------------------------------------------------
 # WORKFLOW TRIGGER
 #--------------------------------------------------------------------------------
@@ -75,13 +82,12 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.10.10
+          python-version: ${{ env.PYTHON_VERSION }}
           architecture: x64
       - name: Install Graphviz
         run: choco install graphviz
       - name: Install Packages
         working-directory: ./Documentation/Installation
-        shell: cmd
         run: install_packages.bat
       - name: Run Doxygen
         working-directory: ./Documentation/DoxygenCreator
@@ -126,15 +132,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.10.10
+          python-version: ${{ env.PYTHON_VERSION }}
           architecture: x64
       - name: Install Packages
         working-directory: ./Documentation/Installation
-        shell: cmd
         run: install_packages.bat
       - name: Run PyLint
         working-directory: ./Test
-        shell: cmd
         run: run_pylint.bat
       - name: Upload PyLint report
         uses: actions/upload-artifact@v3
@@ -153,15 +157,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.10.10
+          python-version: ${{ env.PYTHON_VERSION }}
           architecture: x64
       - name: Install Packages
         working-directory: ./Documentation/Installation
-        shell: cmd
         run: install_packages.bat
       - name: Build Executable
         working-directory: ./Executable
-        shell: cmd
         run: generate_executable.bat
       - name: Upload Executable
         uses: actions/upload-artifact@v3
@@ -184,7 +186,6 @@ jobs:
           path: ./Executable/bin
       - name: Build Setup
         working-directory: ./Executable
-        shell: cmd
         run: generate_setup.bat
       - name: Upload Setup
         uses: actions/upload-artifact@v3
