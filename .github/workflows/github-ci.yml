@@ -208,7 +208,7 @@ jobs:
 #------------------------------------------------------------------------------
   create-Release:
     if: inputs.create_release
-    needs: [create-Tag, build-Exe]
+    needs: [create-Tag, build-Setup]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -242,4 +242,3 @@ jobs:
         asset_path: ./Executable/bin/setup_YouTubeDownloader.exe
         asset_name: setup_YouTubeDownloader.exe
         asset_content_type: application/zip
-
