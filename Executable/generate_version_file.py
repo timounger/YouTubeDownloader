@@ -41,7 +41,7 @@ versionInfo = VSVersionInfo(
                     [
                         StringStruct('FileDescription', version.__description__),
                         StringStruct('FileVersion', version.__version__),
-                        StringStruct('LegalCopyright', version.__copyright__.replace("©", "(c)")),
+                        StringStruct('LegalCopyright', version.__copyright__),
                         StringStruct('ProductName', version.__title__),
                         StringStruct('ProductVersion', version.__version__)
                     ])

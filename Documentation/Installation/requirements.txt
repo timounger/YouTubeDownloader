@@ -8,7 +8,7 @@ bs4==0.0.1
 moviepy==1.0.3
 
 # Executable
-pyinstaller==5.13.0
+pyinstaller==5.13.1
 
 # Test
 pylint==2.17.5

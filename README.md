@@ -1,4 +1,4 @@
-\mainpage YouTubeDownloader
+\mainpage YouTube Downloader
 
 \tableofcontents
 
@@ -10,7 +10,7 @@
 
 ## Über ℹ️
 
-Das YouTubeDownloader Tool läd Inhalte von YouTube herunter.
+Das YouTube Downloader Tool läd Inhalte von YouTube herunter.
 
 ![](app.png)
 ![](Documentation/img/app.png)
