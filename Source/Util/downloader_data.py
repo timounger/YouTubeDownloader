@@ -11,21 +11,6 @@ import os
 
 B_DEBUG = True
 
-S_YOUTUBE_DOWNLOADER_APPLICATION_NAME = "YouTube Downloader"
-S_YOUTUBE_DOWNLOADER_DESCRIPTION = "YouTube content downloader"
-
-# Version
-I_VERSION_MAJOR = 1 # major changes/breaks at API (e.g incompatibility)
-I_VERSION_MINOR = 0 # minor changes/does not break the API (e.g new feature)
-I_VERSION_PATCH = 3 # Bug fixes
-I_VERSION_BUILD = 0 # build number (if available)
-S_VERSION = f"{I_VERSION_MAJOR}.{I_VERSION_MINOR}.{I_VERSION_PATCH}"
-S_COPYRIGHT = "Copyright © 2021-2023 Timo Unger"
-S_LICENSE = "GNU General Public License"
-S_HOME = "https://timounger.github.io/YouTubeDownloader"
-
-S_APP_ID = S_YOUTUBE_DOWNLOADER_APPLICATION_NAME + '.' + S_VERSION
-
 def resource_path(s_relative_path: str) -> str:
     """!
     @brief Returns the absolute path to a resource given by a relative path depending on the environment (EXE or Python)

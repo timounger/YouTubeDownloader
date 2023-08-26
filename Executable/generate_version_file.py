@@ -6,20 +6,20 @@
 *****************************************************************************
 """
 
-import os
 import sys
+import os
 
-from PyInstaller.utils.win32.versioninfo import *
+from PyInstaller.utils.win32.versioninfo import VSVersionInfo, FixedFileInfo, StringFileInfo, StringTable, StringStruct, VarFileInfo, VarStruct
 
 sys.path.append('../')
-import Source.Util.downloader_data as mdata
+from Source import version # pylint: disable=wrong-import-position
 
 versionInfo = VSVersionInfo(
     ffi=FixedFileInfo(
         # filevers and prodvers should be always a tuple with four items: (1, 2, 3, 4)
         # Set not needed items to zero 0.
-        filevers=(mdata.I_VERSION_MAJOR, mdata.I_VERSION_MINOR, mdata.I_VERSION_PATCH, mdata.I_VERSION_BUILD),
-        prodvers=(mdata.I_VERSION_MAJOR, mdata.I_VERSION_MINOR, mdata.I_VERSION_PATCH, mdata.I_VERSION_BUILD),
+        filevers=(version.VERSION_MAJOR, version.VERSION_MINOR, version.VERSION_PATCH, version.VERSION_BUILD),
+        prodvers=(version.VERSION_MAJOR, version.VERSION_MINOR, version.VERSION_PATCH, version.VERSION_BUILD),
         # Contains a bitmask that specifies the Boolean attributes of the file
         mask=0x0,
         # Contains a bitmask that specifies the Boolean attributes of the file.
@@ -37,25 +37,29 @@ versionInfo = VSVersionInfo(
         StringFileInfo(
             [
                 StringTable(
-                    u'040904E4',
+                    '040904E4',
                     [
-                        StringStruct(u'FileDescription', mdata.S_YOUTUBE_DOWNLOADER_DESCRIPTION),
-                        StringStruct(u'FileVersion', mdata.S_VERSION),
-                        StringStruct(u'LegalCopyright', mdata.S_COPYRIGHT.replace("©", "(c)")),
-                        StringStruct(u'ProductName', mdata.S_YOUTUBE_DOWNLOADER_APPLICATION_NAME),
-                        StringStruct(u'ProductVersion', mdata.S_VERSION)
+                        StringStruct('FileDescription', version.__description__),
+                        StringStruct('FileVersion', version.__version__),
+                        StringStruct('LegalCopyright', version.__copyright__.replace("©", "(c)")),
+                        StringStruct('ProductName', version.__title__),
+                        StringStruct('ProductVersion', version.__version__)
                     ])
                 ]),
-        VarFileInfo([VarStruct(u'Translation', [1033, 1252])])
+        VarFileInfo([VarStruct('Translation', [1033, 1252])])
         ]
     )
 
 if __name__ == "__main__":
     s_workpath = sys.argv[1]
+    #s_workpath = "build"
     s_filename = "downloader_version_info.txt"
     s_version_file = os.path.join(s_workpath, s_filename)
-    print(f'Generate version file {s_version_file} (Version: {mdata.S_VERSION})')
-    os.mkdir(s_workpath) if not os.path.exists(s_workpath) else print(f'Directory {s_workpath} already exists')
-    with open(s_version_file, "w") as version_file:
+    print(f'Generate version file {s_version_file} (Version: {version.__version__})')
+    if not os.path.exists(s_workpath):
+        os.mkdir(s_workpath)
+    else:
+        print(f'Directory {s_workpath} already exists')
+    with open(s_version_file, mode='w', encoding='utf-8') as version_file:
         version_file.write(str(versionInfo))
     sys.exit()

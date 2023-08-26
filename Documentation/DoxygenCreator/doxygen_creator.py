@@ -25,6 +25,7 @@ import requests
 sys.path.append('../../')
 import Source.Util.downloader_data as mdata # pylint: disable=wrong-import-position
 from Documentation.DoxygenCreator.doxy_py_checker import DoxyPyChecker # pylint: disable=wrong-import-position
+from Source import version # pylint: disable=wrong-import-position
 
 B_USE_OWN_STYLE = True
 B_SIDEBAR_ONLY = True
@@ -687,9 +688,9 @@ def get_cmd_args() -> argparse.Namespace:
 if __name__ == "__main__":
     args = get_cmd_args()
     doxygen_creator = DoxygenCreator(S_REPO_LINK, f"{S_MAIN_FOLDER_FOLDER}{mdata.S_ICON_32_RESOURCE_PATH}")
-    doxygen_creator.set_configuration('PROJECT_NAME', mdata.S_YOUTUBE_DOWNLOADER_APPLICATION_NAME)
-    doxygen_creator.set_configuration('PROJECT_NUMBER', mdata.S_VERSION)
-    doxygen_creator.set_configuration('PROJECT_BRIEF', mdata.S_YOUTUBE_DOWNLOADER_DESCRIPTION)
+    doxygen_creator.set_configuration('PROJECT_NAME', version.__title__)
+    doxygen_creator.set_configuration('PROJECT_NUMBER', version.__version__)
+    doxygen_creator.set_configuration('PROJECT_BRIEF', version.__description__)
     doxygen_creator.set_configuration('PROJECT_LOGO', f"{S_MAIN_FOLDER_FOLDER}{mdata.S_ICON_RESOURCE_PATH}")
     doxygen_creator.set_configuration('INPUT', S_MAIN_FOLDER_FOLDER)
     l_file_pattern = [S_PYTHON_PATTERN, "*.md"]

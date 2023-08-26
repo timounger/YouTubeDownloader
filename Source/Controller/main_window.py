@@ -16,6 +16,8 @@ import pytube
 import Source.Util.downloader_data as mdata
 from Source.Worker.downloader import DownloadThread
 
+from Source import version
+
 S_DOWNLOAD_FOLDER = "Download"
 
 L_FORMAT = [
@@ -58,7 +60,7 @@ class YoutubeDownloader:
     """
     def __init__(self): # pylint: disable=R0914
         self.root = Tk()
-        self.root.title(mdata.S_YOUTUBE_DOWNLOADER_APPLICATION_NAME + f" v{mdata.S_VERSION}\n")
+        self.root.title(version.__title__ + f" v{version.__version__}\n")
         self.root.wm_iconbitmap(mdata.S_ICON_REL_PATH) # set icon
         self.root.geometry("350x320") #set window
         self.root.resizable(0, 0) # Don't allow resizing
@@ -127,7 +129,7 @@ class YoutubeDownloader:
                                    bg="grey",fg="white",command=self.open_download_folder)
         o_folder_button.grid()
         #developer Label
-        o_developer_label = Label(self.root,text=mdata.S_COPYRIGHT,font=("Calibri",12))
+        o_developer_label = Label(self.root,text=version.__copyright__,font=("Calibri",12))
         o_developer_label.grid()
         # right click content menu
         self.menu = Menu(self.root, tearoff = 0)
