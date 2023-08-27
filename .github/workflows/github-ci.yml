@@ -33,6 +33,9 @@ env:
   PYTHON_PACKAGE_INST_FILE: install_packages.bat
   DOXYGEN_OUTPUT_NAME: Output_Doxygen
   DOXYGEN_OUTPUT_PATH: ./Documentation/DoxygenCreator/Output_Doxygen
+  BINARY_EXE_NAME: bin_Exe
+  BINARY_SETUP_NAME: bin_Setup
+  BINARY_PATH: ./Executable/bin
 
 #--------------------------------------------------------------------------------
 # WORKFLOW TRIGGER
@@ -43,7 +46,7 @@ on:
       documentation:
         description: 'Documentation'
         type: choice
-        default: none
+        default: check
         options:
           - none
           - check
@@ -52,7 +55,7 @@ on:
       test:
         description: 'Test'
         type: choice
-        default: none
+        default: static
         options:
           - none
           - static
@@ -64,10 +67,6 @@ on:
           - none
           - exe
           - setup
-      tag_name:
-        description: The name of the tag to create. Change only to set tag!
-        required: true
-        default: v0.0.0
       create_release:
         description: 'Create Release. All jobs are executed.'
         type: boolean
@@ -78,7 +77,7 @@ on:
 #--------------------------------------------------------------------------------
 jobs:
   doc-Doxygen:
-    if: inputs.documentation != 'none'
+    if: inputs.documentation != 'none' || inputs.create_release
     runs-on: windows-latest
     timeout-minutes: 10
     steps:
@@ -97,21 +96,21 @@ jobs:
       - name: Run Doxygen
         working-directory: ./Documentation/DoxygenCreator
         run: python doxygen_creator.py
-      - name: Upload Output_Doxygen
+      - name: Upload Doxygen Output
         uses: actions/upload-artifact@v3
         with:
           name: ${{ env.DOXYGEN_OUTPUT_NAME }}
           path: ${{ env.DOXYGEN_OUTPUT_PATH }}
 #------------------------------------------------------------------------------
   doc-Pages:
-    if: inputs.documentation == 'publish' || inputs.documentation == 'clean publish'
+    if: inputs.documentation == 'publish' || inputs.documentation == 'clean publish' || inputs.create_release
     needs: doc-Doxygen
     runs-on: windows-latest
     timeout-minutes: 10
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Download Output_Doxygen
+      - name: Download Doxygen Output
         uses: actions/download-artifact@v3
         with:
           name: ${{ env.DOXYGEN_OUTPUT_NAME }}
@@ -128,7 +127,7 @@ jobs:
           publish_dir: ${{ env.DOXYGEN_OUTPUT_PATH }}/html
 #------------------------------------------------------------------------------
   test-PyLint:
-    if: inputs.test == 'static'
+    if: inputs.test == 'static' || inputs.build != 'none' || inputs.create_release
     runs-on: windows-latest
     timeout-minutes: 10
     steps:
@@ -153,6 +152,7 @@ jobs:
 #------------------------------------------------------------------------------
   build-Exe:
     if: inputs.build != 'none' || inputs.create_release
+    needs: [test-PyLint]
     runs-on: windows-latest
     timeout-minutes: 10
     steps:
@@ -172,8 +172,8 @@ jobs:
       - name: Upload Executable
         uses: actions/upload-artifact@v3
         with:
-          name: bin_exe
-          path: ./Executable/bin
+          name: ${{ env.BINARY_EXE_NAME }}
+          path: ${{ env.BINARY_PATH }}
 #------------------------------------------------------------------------------
   build-Setup:
     needs: build-Exe
@@ -186,33 +186,19 @@ jobs:
       - name: Download Executable
         uses: actions/download-artifact@v3
         with:
-          name: bin_exe
-          path: ./Executable/bin
+          name: ${{ env.BINARY_EXE_NAME }}
+          path: ${{ env.BINARY_PATH }}
       - name: Build Setup
         working-directory: ./Executable
         run: generate_setup.bat
       - name: Delete Executable file
         run: |
-          rm -f ./Executable/bin/YouTubeDownloader.exe
+          rm -f ${{ env.BINARY_PATH }}/YouTubeDownloader.exe
       - name: Upload Setup
         uses: actions/upload-artifact@v3
         with:
-          name: bin_setup
-          path: ./Executable/bin
-#------------------------------------------------------------------------------
-  create-Tag:
-    if: inputs.tag_name != 'v0.0.0'
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-    - name: Create tag
-      shell: bash
-      run: |
-        tag_name="${{ inputs.tag_name }}"
-        git tag "$tag_name"
-        git push origin "$tag_name"
+          name: ${{ env.BINARY_SETUP_NAME }}
+          path: ${{ env.BINARY_PATH }}
 #------------------------------------------------------------------------------
   create-Release:
     if: inputs.create_release
@@ -220,38 +206,45 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-    - name: Download Setup
-      uses: actions/download-artifact@v3
-      with:
-        name: bin_setup
-        path: ./Executable/bin
-    - name: Get Commit Message
-      shell: bash
-      id: get_commit_message
-      run: echo "::set-output name=message::$(git log -1 --pretty=%B)"
-    - name: Create release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ inputs.tag_name }}
-        release_name: "[YouTubeDownloader] ${{ inputs.tag_name }}"
-        body: ${{ steps.get_commit_message.outputs.message }}
-        draft: false
-        prerelease: false
-    - name: List contents of the folder
-      shell: bash
-      run: ls -la ./Executable/bin/
-    - name: Upload Setup files to release assets
-      shell: bash
-      run: |
-        for file in ./Executable/bin/*; do
-          filename=$(basename "$file")
-          curl -X POST "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ steps.create_release.outputs.id }}/assets?name=$filename" \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Content-Type: $(file -b --mime-type $file)" \
-            --data-binary @"$file"
-        done
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Download Setup
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ env.BINARY_SETUP_NAME }}
+          path: ${{ env.BINARY_PATH }}
+      - name: Get Commit Message
+        shell: bash
+        run: echo "commit_message=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+      - name: Get version from Python file
+        shell: bash
+        run: |
+          version=$(python -c 'from Source.version import __version__; print(__version__)')
+          echo "file_version=${version}" >> $GITHUB_ENV
+      - name: Create tag
+        shell: bash
+        run: |
+          tag_name="${{ env.file_version }}"
+          git tag "$tag_name"
+          git push origin "$tag_name"
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.file_version }}
+          release_name: "[YouTubeDownloader] ${{ env.file_version }}"
+          body: ${{ env.commit_message }}
+          draft: false
+          prerelease: false
+      - name: Upload Setup files to release assets
+        shell: bash
+        run: |
+          for file in ${{ env.BINARY_PATH }}/*; do
+            filename=$(basename "$file")
+            curl -X POST "https://uploads.github.com/repos/${{ github.repository }}/releases/${{ steps.create_release.outputs.id }}/assets?name=$filename" \
+              -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Content-Type: $(file -b --mime-type $file)" \
+              --data-binary @"$file"
+          done
