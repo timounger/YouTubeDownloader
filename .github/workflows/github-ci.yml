@@ -29,6 +29,10 @@ defaults:
 env:
   PYTHON_VERSION: 3.10.10
   PYTHON_ARCH: x64
+  PYTHON_PACKAGE_INST_PATH: ./Documentation/Installation
+  PYTHON_PACKAGE_INST_FILE: install_packages.bat
+  DOXYGEN_OUTPUT_NAME: Output_Doxygen
+  DOXYGEN_OUTPUT_PATH: ./Documentation/DoxygenCreator/Output_Doxygen
 
 #--------------------------------------------------------------------------------
 # WORKFLOW TRIGGER
@@ -84,20 +88,20 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          architecture: ${{ env.PYTHON_ARCH}}
+          architecture: ${{ env.PYTHON_ARCH }}
       - name: Install Graphviz
         run: choco install graphviz
       - name: Install Packages
-        working-directory: ./Documentation/Installation
-        run: install_packages.bat
+        working-directory: ${{ env.PYTHON_PACKAGE_INST_PATH }}
+        run: ${{ env.PYTHON_PACKAGE_INST_FILE }}
       - name: Run Doxygen
         working-directory: ./Documentation/DoxygenCreator
         run: python doxygen_creator.py
       - name: Upload Output_Doxygen
         uses: actions/upload-artifact@v3
         with:
-          name: Output_Doxygen
-          path: ./Documentation/DoxygenCreator/Output_Doxygen
+          name: ${{ env.DOXYGEN_OUTPUT_NAME }}
+          path: ${{ env.DOXYGEN_OUTPUT_PATH }}
 #------------------------------------------------------------------------------
   doc-Pages:
     if: inputs.documentation == 'publish' || inputs.documentation == 'clean publish'
@@ -110,8 +114,8 @@ jobs:
       - name: Download Output_Doxygen
         uses: actions/download-artifact@v3
         with:
-          name: Output_Doxygen
-          path: ./Documentation/DoxygenCreator/Output_Doxygen
+          name: ${{ env.DOXYGEN_OUTPUT_NAME }}
+          path: ${{ env.DOXYGEN_OUTPUT_PATH }}
       - name: Delete gh-pages branch
         if: inputs.documentation == 'clean publish'
         run: |
@@ -121,7 +125,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./Documentation/DoxygenCreator/Output_Doxygen/html
+          publish_dir: ${{ env.DOXYGEN_OUTPUT_PATH }}/html
 #------------------------------------------------------------------------------
   test-PyLint:
     if: inputs.test == 'static'
@@ -134,10 +138,10 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          architecture: ${{ env.PYTHON_ARCH}}
+          architecture: ${{ env.PYTHON_ARCH }}
       - name: Install Packages
-        working-directory: ./Documentation/Installation
-        run: install_packages.bat
+        working-directory: ${{ env.PYTHON_PACKAGE_INST_PATH }}
+        run: ${{ env.PYTHON_PACKAGE_INST_FILE }}
       - name: Run PyLint
         working-directory: ./Test
         run: run_pylint.bat
@@ -158,10 +162,10 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          architecture: ${{ env.PYTHON_ARCH}}
+          architecture: ${{ env.PYTHON_ARCH }}
       - name: Install Packages
-        working-directory: ./Documentation/Installation
-        run: install_packages.bat
+        working-directory: ${{ env.PYTHON_PACKAGE_INST_PATH }}
+        run: ${{ env.PYTHON_PACKAGE_INST_FILE }}
       - name: Build Executable
         working-directory: ./Executable
         run: generate_executable.bat
