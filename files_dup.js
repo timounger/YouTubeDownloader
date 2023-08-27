@@ -1,8 +1,11 @@
 var files_dup =
 [
-    [ "Executable", "dir_7b3fabe2584a7a404cce81bafb4f8564.html", "dir_7b3fabe2584a7a404cce81bafb4f8564" ],
-    [ "Installation", "dir_6d698909b8fec338f4c4b378f6294549.html", "dir_6d698909b8fec338f4c4b378f6294549" ],
-    [ "Source", "dir_74389ed8173ad57b461b9d623a1f3867.html", "dir_74389ed8173ad57b461b9d623a1f3867" ],
-    [ "doxy_py_checker.py", "doxy__py__checker_8py.html", "doxy__py__checker_8py" ],
-    [ "doxygen_creator.py", "doxygen__creator_8py.html", "doxygen__creator_8py" ]
+    [ "__init__.py", "____init_____8py.html", null ],
+    [ "Controller/__init__.py", "_controller_2____init_____8py.html", null ],
+    [ "Util/__init__.py", "_util_2____init_____8py.html", null ],
+    [ "Worker/__init__.py", "_worker_2____init_____8py.html", null ],
+    [ "main_window.py", "main__window_8py.html", "main__window_8py" ],
+    [ "downloader_data.py", "downloader__data_8py.html", "downloader__data_8py" ],
+    [ "downloader.py", "downloader_8py.html", "downloader_8py" ],
+    [ "youtube_downloader.py", "youtube__downloader_8py.html", "youtube__downloader_8py" ]
 ];
