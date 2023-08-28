@@ -41,6 +41,11 @@ env:
 # WORKFLOW TRIGGER
 #--------------------------------------------------------------------------------
 on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'Source/version.py'
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
     inputs:
       documentation:
@@ -77,7 +82,7 @@ on:
 #--------------------------------------------------------------------------------
 jobs:
   doc-Doxygen:
-    if: inputs.documentation != 'none' || inputs.create_release
+    if: (inputs.documentation != 'none') || inputs.create_release || (github.event_name == 'push')
     runs-on: windows-latest
     timeout-minutes: 10
     steps:
@@ -103,7 +108,7 @@ jobs:
           path: ${{ env.DOXYGEN_OUTPUT_PATH }}
 #------------------------------------------------------------------------------
   doc-Pages:
-    if: inputs.documentation == 'publish' || inputs.documentation == 'clean publish' || inputs.create_release
+    if: (inputs.documentation == 'publish') || (inputs.documentation == 'clean publish') || inputs.create_release || (github.event_name == 'push')
     needs: doc-Doxygen
     runs-on: windows-latest
     timeout-minutes: 10
@@ -120,14 +125,27 @@ jobs:
         run: |
           git checkout gh-pages
           git push origin --delete gh-pages
+      - name: Set up Python
+        if: github.event_name == 'push'
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          architecture: ${{ env.PYTHON_ARCH }}
+      - name: Get prerelease status
+        if: github.event_name == 'push'
+        shell: powershell
+        run: |
+          $version = $(python -c "from Source.version import PRERELEASE_BUILD; print(PRERELEASE_BUILD)")
+          echo "prerelease_version=$version" >> $env:GITHUB_ENV
       - name: Deploy to Github Pages
+        if: (github.event_name != 'push') || (env.prerelease_version == 'false')
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ${{ env.DOXYGEN_OUTPUT_PATH }}/html
 #------------------------------------------------------------------------------
   test-PyLint:
-    if: inputs.test == 'static' || inputs.build != 'none' || inputs.create_release
+    if: (inputs.test == 'static') || (inputs.build != 'none') || inputs.create_release || (github.event_name == 'push')
     runs-on: windows-latest
     timeout-minutes: 10
     steps:
@@ -151,7 +169,7 @@ jobs:
           path: ./Test/pylint_YouTubeDownloader.log
 #------------------------------------------------------------------------------
   build-Exe:
-    if: inputs.build != 'none' || inputs.create_release
+    if: (inputs.build != 'none') || inputs.create_release || (github.event_name == 'push')
     needs: [test-PyLint]
     runs-on: windows-latest
     timeout-minutes: 10
@@ -177,7 +195,7 @@ jobs:
 #------------------------------------------------------------------------------
   build-Setup:
     needs: build-Exe
-    if: inputs.build == 'setup' || inputs.create_release
+    if: (inputs.build == 'setup') || inputs.create_release || (github.event_name == 'push')
     runs-on: windows-latest
     timeout-minutes: 10
     steps:
@@ -201,7 +219,7 @@ jobs:
           path: ${{ env.BINARY_PATH }}
 #------------------------------------------------------------------------------
   create-Release:
-    if: inputs.create_release
+    if: inputs.create_release || (github.event_name == 'push')
     needs: build-Setup
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -221,13 +239,20 @@ jobs:
         run: |
           version=$(python -c 'from Source.version import __version__; print(__version__)')
           echo "file_version=${version}" >> $GITHUB_ENV
+      - name: Get prerelease status
+        shell: bash
+        run: |
+          prerelease=$(python -c 'from Source.version import PRERELEASE_BUILD; print(PRERELEASE_BUILD)')
+          echo "prerelease_version=${prerelease}" >> $GITHUB_ENV
       - name: Create tag
+        if: (github.event_name != 'push') || (env.prerelease_version == 'false')
         shell: bash
         run: |
           tag_name="${{ env.file_version }}"
           git tag "$tag_name"
           git push origin "$tag_name"
       - name: Create release
+        if: (github.event_name != 'push') || (env.prerelease_version == 'false')
         id: create_release
         uses: actions/create-release@v1
         env:
@@ -239,6 +264,7 @@ jobs:
           draft: false
           prerelease: false
       - name: Upload Setup files to release assets
+        if: (github.event_name != 'push') || (env.prerelease_version == 'false')
         shell: bash
         run: |
           for file in ${{ env.BINARY_PATH }}/*; do
