@@ -585,17 +585,23 @@ class DoxygenCreator():
             if '/' in s_icon_file:
                 i_index = s_icon_file.rfind('/')
                 s_icon_file = s_icon_file[i_index + 1:]
-            s_icon_text = f'{S_ICON_FIRST}"{s_icon_file}"{S_ICON_LAST}'
+            favicon_link = f'{S_ICON_FIRST}"{s_icon_file}"{S_ICON_LAST}'
         else:
-            s_icon_text = None
+            favicon_link = None
         s_folder = f"{self.s_output_dir}html/"
-        for file in os.listdir(s_folder):
-            if file.endswith(".html"):
-                with open(f"{s_folder}{file}", mode='a', encoding='utf-8') as file:
+        for html_file in os.listdir(s_folder):
+            if html_file.endswith(".html"):
+                file_path = f"{s_folder}{html_file}"
+                with open(file_path, mode='a', encoding='utf-8') as file:
                     if s_corner_text is not None:
                         file.write(s_corner_text + "\n")
-                    if s_icon_text is not None:
-                        file.write(s_icon_text + "\n")
+                with open(file_path, mode='r', encoding='utf-8') as file:
+                    content = file.read()
+                if favicon_link is not None:
+                    head_position = content.find('<head>')
+                    content = content[:head_position + len('<head>')] + '\n' + favicon_link + content[head_position + len('<head>'):]
+                with open(file_path, mode='w', encoding='utf-8') as file:
+                    file.write(content)
 
     def add_images(self):
         """!
