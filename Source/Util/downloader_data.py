@@ -27,5 +27,5 @@ def resource_path(s_relative_path: str) -> str:
 
 # Files and Paths
 S_ICON_RESOURCE_PATH = 'Resources/YouTubeDownloader.ico'
-S_ICON_32_RESOURCE_PATH = 'Resources/YouTubeDownloader_32.ico'
+S_ICON_32_RESOURCE_PATH = 'Resources/favicon.ico'
 S_ICON_REL_PATH = resource_path(S_ICON_RESOURCE_PATH)

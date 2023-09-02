@@ -10,7 +10,7 @@
 VERSION_MAJOR = 1 # major changes/breaks at API (e.g incompatibility)
 VERSION_MINOR = 0 # minor changes/does not break the API (e.g new feature)
 VERSION_PATCH = 2 # Bug fixes
-VERSION_BUILD = 1 # build number (if available)
+VERSION_BUILD = 2 # build number (if available)
 
 
 __title__ = "YouTube Downloader"
