@@ -60,7 +60,7 @@ class YoutubeDownloader:
     """
     def __init__(self): # pylint: disable=R0914
         self.root = Tk()
-        self.root.title(version.__title__ + f" v{version.__version__}\n")
+        self.root.title(version.__title__ + f" v{version.__version__}")
         self.root.wm_iconbitmap(mdata.S_ICON_REL_PATH) # set icon
         self.root.geometry("350x320") #set window
         self.root.resizable(0, 0) # Don't allow resizing

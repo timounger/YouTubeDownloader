@@ -9,7 +9,6 @@
 import sys
 
 sys.path.append('../')
-import Source.Util.downloader_data as mdata # pylint: disable=wrong-import-position
 from Source.Controller.main_window import YoutubeDownloader # pylint: disable=wrong-import-position
 from Source import version # pylint: disable=wrong-import-position
 
