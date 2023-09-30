@@ -248,7 +248,7 @@ jobs:
         if: (github.event_name != 'push') || (env.prerelease_version == 'false')
         shell: bash
         run: |
-          tag_name="${{ env.file_version }}"
+          tag_name="v${{ env.file_version }}"
           git tag "$tag_name"
           git push origin "$tag_name"
       - name: Create release
@@ -258,8 +258,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ env.file_version }}
-          release_name: "[YouTubeDownloader] ${{ env.file_version }}"
+          tag_name: v${{ env.file_version }}
+          release_name: "[YouTubeDownloader] v${{ env.file_version }}"
           body: ${{ env.commit_message }}
           draft: false
           prerelease: false
