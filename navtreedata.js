@@ -25,58 +25,60 @@
 var NAVTREE =
 [
   [ "YouTube Downloader", "index.html", [
-    [ "YouTube Downloader", "index.html#autotoc_md52", [
-      [ "Über ℹ️", "index.html#autotoc_md53", null ],
-      [ "Download ☁️ ⬇️", "index.html#autotoc_md54", null ],
-      [ "OS Support", "index.html#autotoc_md55", null ],
-      [ "Credits", "index.html#autotoc_md56", null ]
+    [ "YouTube Downloader", "index.html#autotoc_md54", [
+      [ "Über ℹ️", "index.html#autotoc_md55", null ],
+      [ "Download ☁️ ⬇️", "index.html#autotoc_md56", null ],
+      [ "OS Support", "index.html#autotoc_md57", null ],
+      [ "Credits", "index.html#autotoc_md58", null ]
     ] ],
     [ "Changelog", "_c_h_a_n_g_e_l_o_g.html", [
       [ "YouTube Downloader changelog 📋️", "_c_h_a_n_g_e_l_o_g.html#autotoc_md0", [
-        [ "[v1.0.1]", "_c_h_a_n_g_e_l_o_g.html#autotoc_md1", null ],
-        [ "[v1.0.0]", "_c_h_a_n_g_e_l_o_g.html#autotoc_md2", null ],
-        [ "[V0.2]", "_c_h_a_n_g_e_l_o_g.html#autotoc_md3", null ],
-        [ "[V0.1]", "_c_h_a_n_g_e_l_o_g.html#autotoc_md4", null ]
+        [ "v1.0.3", "_c_h_a_n_g_e_l_o_g.html#autotoc_md1", null ],
+        [ "v1.0.2", "_c_h_a_n_g_e_l_o_g.html#autotoc_md2", null ],
+        [ "v1.0.1", "_c_h_a_n_g_e_l_o_g.html#autotoc_md3", null ],
+        [ "v1.0.0", "_c_h_a_n_g_e_l_o_g.html#autotoc_md4", null ],
+        [ "V0.2", "_c_h_a_n_g_e_l_o_g.html#autotoc_md5", null ],
+        [ "V0.1", "_c_h_a_n_g_e_l_o_g.html#autotoc_md6", null ]
       ] ]
     ] ],
     [ "Contributing", "_c_o_n_t_r_i_b_u_t_i_n_g.html", null ],
     [ "Doxygen", "doxygen_creator.html", [
-      [ "DoxygenCreator", "doxygen_creator.html#autotoc_md21", [
-        [ "Über ℹ️", "doxygen_creator.html#autotoc_md22", null ],
-        [ "Voraussetzungen ⚠️", "doxygen_creator.html#autotoc_md23", null ],
-        [ "Verwendung 👆️", "doxygen_creator.html#autotoc_md24", null ],
-        [ "Styling 👀", "doxygen_creator.html#autotoc_md25", [
-          [ "Awesome Design", "doxygen_creator.html#autotoc_md26", null ],
-          [ "GitHub Corners", "doxygen_creator.html#autotoc_md27", null ],
-          [ "PlantUml", "doxygen_creator.html#autotoc_md28", null ],
-          [ "Emoji 😀", "doxygen_creator.html#autotoc_md29", null ]
+      [ "DoxygenCreator", "doxygen_creator.html#autotoc_md23", [
+        [ "Über ℹ️", "doxygen_creator.html#autotoc_md24", null ],
+        [ "Voraussetzungen ⚠️", "doxygen_creator.html#autotoc_md25", null ],
+        [ "Verwendung 👆️", "doxygen_creator.html#autotoc_md26", null ],
+        [ "Styling 👀", "doxygen_creator.html#autotoc_md27", [
+          [ "Awesome Design", "doxygen_creator.html#autotoc_md28", null ],
+          [ "GitHub Corners", "doxygen_creator.html#autotoc_md29", null ],
+          [ "PlantUml", "doxygen_creator.html#autotoc_md30", null ],
+          [ "Emoji 😀", "doxygen_creator.html#autotoc_md31", null ]
         ] ]
       ] ]
     ] ],
     [ "License", "_l_i_c_e_n_s_e.html", [
-      [ "GNU General Public License", "_l_i_c_e_n_s_e.html#autotoc_md30", [
-        [ "Preamble", "_l_i_c_e_n_s_e.html#autotoc_md31", null ],
-        [ "TERMS AND CONDITIONS", "_l_i_c_e_n_s_e.html#autotoc_md32", [
-          [ "0. Definitions", "_l_i_c_e_n_s_e.html#autotoc_md33", null ],
-          [ "1. Source Code", "_l_i_c_e_n_s_e.html#autotoc_md34", null ],
-          [ "2. Basic Permissions", "_l_i_c_e_n_s_e.html#autotoc_md35", null ],
-          [ "3. Protecting Users' Legal Rights From Anti-Circumvention Law", "_l_i_c_e_n_s_e.html#autotoc_md36", null ],
-          [ "4. Conveying Verbatim Copies", "_l_i_c_e_n_s_e.html#autotoc_md37", null ],
-          [ "5. Conveying Modified Source Versions", "_l_i_c_e_n_s_e.html#autotoc_md38", null ],
-          [ "6. Conveying Non-Source Forms", "_l_i_c_e_n_s_e.html#autotoc_md39", null ],
-          [ "7. Additional Terms", "_l_i_c_e_n_s_e.html#autotoc_md40", null ],
-          [ "8. Termination", "_l_i_c_e_n_s_e.html#autotoc_md41", null ],
-          [ "9. Acceptance Not Required for Having Copies", "_l_i_c_e_n_s_e.html#autotoc_md42", null ],
-          [ "10. Automatic Licensing of Downstream Recipients", "_l_i_c_e_n_s_e.html#autotoc_md43", null ],
-          [ "11. Patents", "_l_i_c_e_n_s_e.html#autotoc_md44", null ],
-          [ "12. No Surrender of Others' Freedom", "_l_i_c_e_n_s_e.html#autotoc_md45", null ],
-          [ "13. Use with the GNU Affero General Public License", "_l_i_c_e_n_s_e.html#autotoc_md46", null ],
-          [ "14. Revised Versions of this License", "_l_i_c_e_n_s_e.html#autotoc_md47", null ],
-          [ "15. Disclaimer of Warranty", "_l_i_c_e_n_s_e.html#autotoc_md48", null ],
-          [ "16. Limitation of Liability", "_l_i_c_e_n_s_e.html#autotoc_md49", null ],
-          [ "17. Interpretation of Sections 15 and 16", "_l_i_c_e_n_s_e.html#autotoc_md50", null ]
+      [ "GNU General Public License", "_l_i_c_e_n_s_e.html#autotoc_md32", [
+        [ "Preamble", "_l_i_c_e_n_s_e.html#autotoc_md33", null ],
+        [ "TERMS AND CONDITIONS", "_l_i_c_e_n_s_e.html#autotoc_md34", [
+          [ "0. Definitions", "_l_i_c_e_n_s_e.html#autotoc_md35", null ],
+          [ "1. Source Code", "_l_i_c_e_n_s_e.html#autotoc_md36", null ],
+          [ "2. Basic Permissions", "_l_i_c_e_n_s_e.html#autotoc_md37", null ],
+          [ "3. Protecting Users' Legal Rights From Anti-Circumvention Law", "_l_i_c_e_n_s_e.html#autotoc_md38", null ],
+          [ "4. Conveying Verbatim Copies", "_l_i_c_e_n_s_e.html#autotoc_md39", null ],
+          [ "5. Conveying Modified Source Versions", "_l_i_c_e_n_s_e.html#autotoc_md40", null ],
+          [ "6. Conveying Non-Source Forms", "_l_i_c_e_n_s_e.html#autotoc_md41", null ],
+          [ "7. Additional Terms", "_l_i_c_e_n_s_e.html#autotoc_md42", null ],
+          [ "8. Termination", "_l_i_c_e_n_s_e.html#autotoc_md43", null ],
+          [ "9. Acceptance Not Required for Having Copies", "_l_i_c_e_n_s_e.html#autotoc_md44", null ],
+          [ "10. Automatic Licensing of Downstream Recipients", "_l_i_c_e_n_s_e.html#autotoc_md45", null ],
+          [ "11. Patents", "_l_i_c_e_n_s_e.html#autotoc_md46", null ],
+          [ "12. No Surrender of Others' Freedom", "_l_i_c_e_n_s_e.html#autotoc_md47", null ],
+          [ "13. Use with the GNU Affero General Public License", "_l_i_c_e_n_s_e.html#autotoc_md48", null ],
+          [ "14. Revised Versions of this License", "_l_i_c_e_n_s_e.html#autotoc_md49", null ],
+          [ "15. Disclaimer of Warranty", "_l_i_c_e_n_s_e.html#autotoc_md50", null ],
+          [ "16. Limitation of Liability", "_l_i_c_e_n_s_e.html#autotoc_md51", null ],
+          [ "17. Interpretation of Sections 15 and 16", "_l_i_c_e_n_s_e.html#autotoc_md52", null ]
         ] ],
-        [ "How to Apply These Terms to Your New Programs", "_l_i_c_e_n_s_e.html#autotoc_md51", null ]
+        [ "How to Apply These Terms to Your New Programs", "_l_i_c_e_n_s_e.html#autotoc_md53", null ]
       ] ]
     ] ],
     [ "Packages", "namespaces.html", [
@@ -106,7 +108,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "____init_____8py.html",
-"doxygen__creator_8py.html#a8ecb0f3828a350fc4604f0664fcc2173"
+"doxygen__creator_8py.html#a7fd0714eeb5219a2d7e72e11c3253d9b"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
