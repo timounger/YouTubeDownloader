@@ -11,7 +11,7 @@ Der Bericht wird geöffnet und auch vorhandene Warnungen werden angezeigt.
 
 ## Voraussetzungen ⚠️
 
-[Doxygen 1.9.7](https://sourceforge.net/projects/doxygen/files/rel-1.9.7/doxygen-1.9.7.windows.x64.bin.zip/download) wird zur Installation empfohlen.
+[Doxygen 1.9.8](https://sourceforge.net/projects/doxygen/files/rel-1.9.8/doxygen-1.9.8.windows.x64.bin.zip/download) wird zur Installation empfohlen.
 
 Der Doxygen bin-Pfad muss in den Systemumgebungsvariablen der Variable `Path` hinzugefügt werden.
 

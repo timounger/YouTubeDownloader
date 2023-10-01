@@ -35,10 +35,12 @@ S_DEFAULT_OUTPUT_FOLDER = "Output_Doxygen"
 S_PUBLISHER = "Timo Unger"
 S_MAIN_FOLDER_FOLDER = "../../"
 S_PLANTUML_PATH = "./" # need plantuml.jar in this folder
-S_PLANTUML_JAR_URL = "https://github.com/plantuml/plantuml/releases/download/v1.2023.8/plantuml-1.2023.8.jar"
+DOXYGEN_VERSION = "1.9.8"
+PLANT_UML_VERSION = "1.2023.11"
+S_PLANTUML_JAR_URL = f"https://github.com/plantuml/plantuml/releases/download/v{PLANT_UML_VERSION}/plantuml-{PLANT_UML_VERSION}.jar"
 S_PLANTUML_JAR_NAME = "plantuml.jar"
-S_DOXYGEN_URL = "https://sourceforge.net/projects/doxygen/files/rel-1.9.7/doxygen-1.9.7.windows.x64.bin.zip/download"
-S_DOXYGEN_ZIP = "doxygen-1.9.7.windows.x64.bin.zip"
+S_DOXYGEN_URL = f"https://sourceforge.net/projects/doxygen/files/rel-{DOXYGEN_VERSION}/doxygen-{DOXYGEN_VERSION}.windows.x64.bin.zip/download"
+S_DOXYGEN_ZIP = f"doxygen-{DOXYGEN_VERSION}.windows.x64.bin.zip"
 S_DOXYGEN_DLL = "libclang.dll"
 S_WARNING_FILE_PREFIX = "Doxygen_warnings_"
 S_WARNING_FILE_SUFFIX = ".log"
@@ -230,7 +232,6 @@ class DoxygenCreator():
         'HTML_COLORSTYLE_HUE'     : 209, # required for Doxygen Awesome
         'HTML_COLORSTYLE_SAT'     : 255, # required for Doxygen Awesome
         'HTML_COLORSTYLE_GAMMA'   : 113, # required for Doxygen Awesome
-        'HTML_TIMESTAMP'          : YES,
         'HTML_DYNAMIC_MENUS'      : S_DEFAULT,
         'HTML_DYNAMIC_SECTIONS'   : YES,
         'HTML_INDEX_NUM_ENTRIES'  : S_DEFAULT,
@@ -367,7 +368,6 @@ class DoxygenCreator():
         'PLANTUML_INCLUDE_PATH'   : S_PLANTUML_PATH,
         'DOT_GRAPH_MAX_NODES'     : S_DEFAULT,
         'MAX_DOT_GRAPH_DEPTH'     : S_DEFAULT,
-        'DOT_TRANSPARENT'         : YES,
         'DOT_MULTI_TARGETS'       : YES,
         'GENERATE_LEGEND'         : S_DEFAULT,
         'DOT_CLEANUP'             : YES,
