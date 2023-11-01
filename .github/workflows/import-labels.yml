@@ -3,8 +3,8 @@ name: Import Labels
 on:
   push:
     branches:
-      - master  # Hier verwenden wir "master" als Branch
-  workflow_dispatch:  # Dies ermöglicht das manuelle Auslösen des Workflows
+      - master
+  workflow_dispatch
 
 jobs:
   import_labels:
@@ -17,25 +17,25 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14  # Wählen Sie die gewünschte Node.js-Version aus
+          node-version: 14
 
-      - name: Install dependencies
-        run: npm install @octokit/rest
-
-      - name: Import Labels
+      - name: Install dependencies and run workflow
         run: |
+          npm install @octokit/rest
+          node -e "
           const core = require('@actions/core');
           const { Octokit } = require('@octokit/rest');
           const fs = require('fs');
-
-          const token = core.getInput('github-token');
+          
+          const token = process.env.GITHUB_TOKEN;
           const octokit = new Octokit({ auth: token });
           const owner = process.env.GITHUB_REPOSITORY_OWNER;
           const repo = process.env.GITHUB_REPOSITORY;
-
+          
           try {
+            const yaml = require('js-yaml');
             const labels = yaml.safeLoad(fs.readFileSync('.github/issues/labels.yml', 'utf8'));
-
+            
             for (const label of labels.labels) {
               octokit.issues.createLabel({
                 owner,
@@ -48,6 +48,7 @@ jobs:
           } catch (error) {
             core.setFailed(error.message);
           }
+          "
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
