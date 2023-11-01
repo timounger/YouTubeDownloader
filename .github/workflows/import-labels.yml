@@ -10,6 +10,11 @@ jobs:
   import_labels:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ github.workspace }}
+      
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -19,9 +24,11 @@ jobs:
         with:
           node-version: 16
 
-      - name: Install dependencies and run workflow
+      - name: Install dependencies
+        run: npm install @octokit/rest
+
+      - name: Import Labels
         run: |
-          npm install @octokit/rest
           node -e "
           const core = require('@actions/core');
           const { Octokit } = require('@octokit/rest');
