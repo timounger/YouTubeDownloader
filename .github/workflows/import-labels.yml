@@ -3,7 +3,8 @@ name: Import Labels
 on:
   push:
     branches:
-      - main  # Choose the desired branch
+      - master  # Hier verwenden wir "master" als Branch
+  workflow_dispatch:  # Dies ermöglicht das manuelle Auslösen des Workflows
 
 jobs:
   import_labels:
@@ -16,7 +17,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14  # Choose the desired Node.js version
+          node-version: 14  # Wählen Sie die gewünschte Node.js-Version aus
 
       - name: Install dependencies
         run: npm install @octokit/rest
