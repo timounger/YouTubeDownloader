@@ -1,43 +1,10 @@
-#------------------------------------------------------------------------------
-# Import labels to GitHub project
-# File to Import: '.github/issues/labels.yml'
-#------------------------------------------------------------------------------
 name: Import Labels
 
-#------------------------------------------------------------------------------
-# Token Permission
-#------------------------------------------------------------------------------
-permissions:
-  actions: write
-  checks: write
-  contents: write
-  deployments: none
-  id-token: none
-  issues: write
-  discussions: none
-  packages: none
-  pages: write
-  pull-requests: write
-  repository-projects: none
-  security-events: none
-  statuses: write
-
-defaults:
-  run:
-    shell: cmd
-
-env:
-  LABELS_FILE: .github/issues/labels.yml
-
-#--------------------------------------------------------------------------------
-# WORKFLOW TRIGGER
-#--------------------------------------------------------------------------------
 on:
-  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+  push:
+    branches:
+      - main  # Choose the desired branch
 
-#--------------------------------------------------------------------------------
-# WORKFLOW JOBS
-#--------------------------------------------------------------------------------
 jobs:
   import_labels:
     runs-on: ubuntu-latest
@@ -49,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14  # Wählen Sie die gewünschte Node.js-Version aus
+          node-version: 14  # Choose the desired Node.js version
 
       - name: Install dependencies
         run: npm install @octokit/rest
@@ -62,11 +29,11 @@ jobs:
 
           const token = core.getInput('github-token');
           const octokit = new Octokit({ auth: token });
-          const owner = core.getInput('repository-owner');
-          const repo = core.getInput('repository-name');
+          const owner = process.env.GITHUB_REPOSITORY_OWNER;
+          const repo = process.env.GITHUB_REPOSITORY;
 
           try {
-            const labels = yaml.safeLoad(fs.readFileSync(${{ env.LABELS_FILE }}, 'utf8'));
+            const labels = yaml.safeLoad(fs.readFileSync('.github/issues/labels.yml', 'utf8'));
 
             for (const label of labels.labels) {
               octokit.issues.createLabel({
@@ -83,6 +50,3 @@ jobs:
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          repository-owner: Timo Unger  # GitHub-Benutzername des Repository-Eigentümers
-          repository-name: YouTubeDownloader # Name Ihres Repositories
