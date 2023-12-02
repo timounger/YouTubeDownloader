@@ -22,7 +22,6 @@ body:
     attributes:
       label: Was ist geschehen?
       description: Beschreiben Sie welcher Fehler aufgetreten ist.
-      placeholder: Sagen Sie uns, was passiert ist!
     validations:
       required: true
   - type: input
@@ -38,7 +37,6 @@ body:
     attributes:
       label: Gibt es eine Lösungsmöglichkeit?
       description: Beschreiben Sie wie eine Lösung aussehen könnte.
-      placeholder: Sagen Sie uns, wie ien Lösungsmöglichkeit aussehen kann!
     validations:
       required: true
   - type: textarea
