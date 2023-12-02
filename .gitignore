@@ -19,6 +19,7 @@
 /Executable/build
 /Executable/bin
 /Executable/YouTubeDownloader.spec
+/Executable/PyInstaller_warnings.txt
 
 # Documentation
 /Documentation/Installation/PackageInfos.xlsx

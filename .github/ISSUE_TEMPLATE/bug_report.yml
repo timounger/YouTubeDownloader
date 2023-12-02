@@ -1,0 +1,47 @@
+name: Bug Report
+description: Einen Fehlerbericht erstellen
+title: "[Bug] "
+labels: ["Bug"]
+projects: []
+assignees:
+  - timounger
+body:
+  - type: markdown
+    attributes:
+      value: Details zum Fehlerbericht eingeben!
+  - type: input
+    id: contact
+    attributes:
+      label: Kontaktdaten
+      description: Wie können wir Sie erreichen, wenn wir weitere Informationen benötigen?
+      placeholder: z.B. email@example.com
+    validations:
+      required: false
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Was ist passiert?
+      description: Beschreiben Sie welcher Fehler aufgetreten ist.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Welche Version der Software verwenden Sie?
+      placeholder: "vX.X.X  (Git SHA: XXXXXXXX)"
+    validations:
+      required: false
+  - type: textarea
+    id: solution
+    attributes:
+      label: Gibt es eine Lösung?
+      description: Beschreiben Sie wie eine Lösung aussehen könnte.
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevante Log-Ausgaben
+      description: Bitte kopieren und fügen Sie alle relevanten Log-Ausgaben ein.
+      render: python

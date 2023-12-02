@@ -1,3 +1,4 @@
+---
 #------------------------------------------------------------------------------
 # Central YouTubeDownloader GitHub CI
 # Doc: https://docs.github.com/de/actions
@@ -45,11 +46,11 @@ on:
     branches:
       - master
     paths:
-      - 'Source/version.py'
+      - "Source/version.py"
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
     inputs:
       documentation:
-        description: 'Documentation'
+        description: "Documentation"
         type: choice
         default: check
         options:
@@ -58,14 +59,14 @@ on:
           - publish
           - clean publish
       test:
-        description: 'Test'
+        description: "Test"
         type: choice
         default: static
         options:
           - none
           - static
       build:
-        description: 'Build'
+        description: "Build"
         type: choice
         default: setup
         options:
@@ -73,7 +74,7 @@ on:
           - exe
           - setup
       create_release:
-        description: 'Create Release. All jobs are executed.'
+        description: "Create Release. All jobs are executed."
         type: boolean
         default: false
 
@@ -106,7 +107,7 @@ jobs:
         with:
           name: ${{ env.DOXYGEN_OUTPUT_NAME }}
           path: ${{ env.DOXYGEN_OUTPUT_PATH }}
-#------------------------------------------------------------------------------
+  #------------------------------------------------------------------------------
   doc-Pages:
     if: (inputs.documentation == 'publish') || (inputs.documentation == 'clean publish') || inputs.create_release || (github.event_name == 'push')
     needs: doc-Doxygen
@@ -143,7 +144,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ${{ env.DOXYGEN_OUTPUT_PATH }}/html
-#------------------------------------------------------------------------------
+  #------------------------------------------------------------------------------
   test-PyLint:
     if: (inputs.test == 'static') || (inputs.build != 'none') || inputs.create_release || (github.event_name == 'push')
     runs-on: windows-latest
@@ -167,7 +168,7 @@ jobs:
         with:
           name: pylint_YouTubeDownloader.log
           path: ./Test/pylint_YouTubeDownloader.log
-#------------------------------------------------------------------------------
+  #------------------------------------------------------------------------------
   build-Exe:
     if: (inputs.build != 'none') || inputs.create_release || (github.event_name == 'push')
     needs: [test-PyLint]
@@ -192,7 +193,7 @@ jobs:
         with:
           name: ${{ env.BINARY_EXE_NAME }}
           path: ${{ env.BINARY_PATH }}
-#------------------------------------------------------------------------------
+  #------------------------------------------------------------------------------
   build-Setup:
     needs: build-Exe
     if: (inputs.build == 'setup') || inputs.create_release || (github.event_name == 'push')
@@ -217,7 +218,7 @@ jobs:
         with:
           name: ${{ env.BINARY_SETUP_NAME }}
           path: ${{ env.BINARY_PATH }}
-#------------------------------------------------------------------------------
+  #------------------------------------------------------------------------------
   create-Release:
     if: inputs.create_release || (github.event_name == 'push')
     needs: build-Setup

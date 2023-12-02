@@ -2,22 +2,26 @@
 """
 *****************************************************************************
  @file    version.py
- @brief   YouTubeDownloader - Version and general information
+ @brief   Version and general information
 *****************************************************************************
 """
 
 # Version
-VERSION_MAJOR = 1 # major changes/breaks at API (e.g incompatibility)
-VERSION_MINOR = 0 # minor changes/does not break the API (e.g new feature)
-VERSION_PATCH = 4 # Bug fixes
-VERSION_BUILD = 0 # build number (if available)
+VERSION_MAJOR = 1  # major changes/breaks at API (e.g incompatibility)
+VERSION_MINOR = 0  # minor changes/does not break the API (e.g new feature)
+VERSION_PATCH = 4  # Bug fixes
+VERSION_BUILD = 0  # build number (if available)
 
 
-__title__ = "YouTube Downloader"
+__title__ = "YouTubeDownloader"
 __description__ = "YouTube content downloader"
-__copyright__ = "Copyright © 2021-2023 Timo Unger"
+__author__ = "Timo Unger"
+__owner__ = "timounger"
+__repo__ = "YouTubeDownloader"
+__copyright__ = f"Copyright © 2021-2024 {__author__}"
 __license__ = "GNU General Public License"
-__home__ = "https://timounger.github.io/YouTubeDownloader"
+__home__ = f"https://{__owner__}.github.io/{__repo__}"
+
 
 if VERSION_BUILD == 0:
     PRERELEASE_BUILD = False

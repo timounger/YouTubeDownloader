@@ -1,4 +1,2 @@
-:: "generate_setup.bat"
-:: generate setup_YouTubeDownloader.exe
-
+:: generate setup file
 ISCC.exe setup_youtubedownloader.iss

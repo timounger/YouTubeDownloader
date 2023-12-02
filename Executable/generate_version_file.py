@@ -2,24 +2,27 @@
 """
 *****************************************************************************
  @file    generate_version_file.py
- @brief   YouTubeDownloader - Utility Script to generate a version info .txt file for the executable
+ @brief   Utility script to create a version info .txt file for the executable.
 *****************************************************************************
 """
 
+# autopep8: off
 import sys
 import os
 
 from PyInstaller.utils.win32.versioninfo import VSVersionInfo, FixedFileInfo, StringFileInfo, StringTable, StringStruct, VarFileInfo, VarStruct
 
-sys.path.append('../')
-from Source import version # pylint: disable=wrong-import-position
+if __name__ == "__main__":
+    sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+from Source.version import VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_BUILD, __title__, __description__, __version__, __copyright__ # pylint: disable=wrong-import-position
+# autopep8: on
 
 versionInfo = VSVersionInfo(
     ffi=FixedFileInfo(
         # filevers and prodvers should be always a tuple with four items: (1, 2, 3, 4)
         # Set not needed items to zero 0.
-        filevers=(version.VERSION_MAJOR, version.VERSION_MINOR, version.VERSION_PATCH, version.VERSION_BUILD),
-        prodvers=(version.VERSION_MAJOR, version.VERSION_MINOR, version.VERSION_PATCH, version.VERSION_BUILD),
+        filevers=(VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_BUILD),
+        prodvers=(VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_BUILD),
         # Contains a bitmask that specifies the Boolean attributes of the file
         mask=0x0,
         # Contains a bitmask that specifies the Boolean attributes of the file.
@@ -32,34 +35,43 @@ versionInfo = VSVersionInfo(
         subtype=0x0,
         # Creation date and time stamp.
         date=(0, 0)
-        ),
+    ),
     kids=[
         StringFileInfo(
             [
                 StringTable(
-                    '040904E4',
+                    "040904E4",
                     [
-                        StringStruct('FileDescription', version.__description__),
-                        StringStruct('FileVersion', version.__version__),
-                        StringStruct('LegalCopyright', version.__copyright__),
-                        StringStruct('ProductName', version.__title__),
-                        StringStruct('ProductVersion', version.__version__)
+                        StringStruct("FileDescription", __description__),
+                        StringStruct("FileVersion", __version__),
+                        StringStruct("LegalCopyright", __copyright__),
+                        StringStruct("ProductName", __title__),
+                        StringStruct("ProductVersion", __version__)
                     ])
-                ]),
-        VarFileInfo([VarStruct('Translation', [1033, 1252])])
-        ]
-    )
+            ]),
+        VarFileInfo([VarStruct("Translation", [1033, 1252])])
+    ]
+)
 
-if __name__ == "__main__":
-    s_workpath = sys.argv[1]
-    #s_workpath = "build"
-    s_filename = "downloader_version_info.txt"
+
+def generate_version_file(s_filename: str, s_workpath: str):
+    """!
+    @brief Generate version file
+    @param s_filename : version file name
+    @param s_workpath : workpath
+    """
     s_version_file = os.path.join(s_workpath, s_filename)
-    print(f'Generate version file {s_version_file} (Version: {version.__version__})')
+    print(f"Generate version file {s_version_file} (Version: {__version__})")
     if not os.path.exists(s_workpath):
         os.mkdir(s_workpath)
     else:
-        print(f'Directory {s_workpath} already exists')
-    with open(s_version_file, mode='w', encoding='utf-8') as version_file:
+        print(f"Directory {s_workpath} already exists")
+    with open(s_version_file, mode="w", encoding="utf-8") as version_file:
         version_file.write(str(versionInfo))
+
+
+if __name__ == "__main__":
+    workpath = sys.argv[1]
+    filename = "downloader_version_info.txt"
+    generate_version_file(filename, workpath)
     sys.exit()

@@ -11,7 +11,8 @@ set CONFIG_FILE=%TEST_DIR%\.pylintrc
 set LOG_FILE=%TEST_DIR%\pylint_YouTubeDownloader.log
 
 cd %MAIN_DIR%
-pylint --rcfile=%CONFIG_FILE% %TARGET_DIR% --reports=y --output=%LOG_FILE% --output-format=text --ignore=%IGNORE_LIST%
+
+pylint --rcfile=%CONFIG_FILE% --reports=y --output-format=text --output=%LOG_FILE% --output-format=text --ignore=%IGNORE_LIST% %TARGET_DIR%
 echo 'pylint exit code: %ERRORLEVEL%'>>%LOG_FILE%
 start notepad %LOG_FILE%
 if errorlevel 1 (

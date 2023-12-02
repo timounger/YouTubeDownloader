@@ -7,7 +7,7 @@
 """
 
 import re
-from typing import NamedTuple
+from typing import NamedTuple, List
 import requests
 from openpyxl import Workbook
 from openpyxl.utils import get_column_letter
@@ -16,31 +16,33 @@ from openpyxl.worksheet.worksheet import Worksheet
 from openpyxl.styles import Font, PatternFill, Alignment
 from openpyxl.styles.borders import Border
 
-L_FILES = ['requirements.txt'] # files to update
+L_FILES = ["requirements.txt", "constraints.txt"]  # files to update
 L_IGNORE_PACKAGES = []
 MAX_COLUMN_WIDTH = 30
 FONT_SIZE = 11
-FONT_NAME = 'Consolas'
-I_TIMEOUT = 2 # timeout to get pip data
+FONT_NAME = "Consolas"
+I_TIMEOUT = 2  # timeout to get pip data
 
 B_PRINT_PACAKGES = False
 B_PRINT_UPDATES_PACKAGES = True
 
 L_PACKAGE_INFO_TITLE = ["Package", "Version", "Author", "Author_Mail", "License", "Homepage", "Package URL", "Requires", "Requires Py"]
 
+
 class PackageInfo(NamedTuple):
     """!
     @brief Package Information.
     """
-    package        : str
-    version        : int
-    author         : str
-    author_mail    : str
-    license_info   : str
-    home_page      : str
-    package_url    : str
-    requires_dist  : str
-    requires_py    : str
+    package: str
+    version: int
+    author: str
+    author_mail: str
+    license_info: str
+    home_page: str
+    package_url: str
+    requires_dist: str
+    requires_py: str
+
 
 def set_column_autowidth(worksheet: Worksheet, b_limit: bool = True):
     """!
@@ -52,19 +54,21 @@ def set_column_autowidth(worksheet: Worksheet, b_limit: bool = True):
         i_max_col_len = 0
         for j, cell in enumerate(col_cells):
             if b_limit:
-                if j != 0: # do use not use first line description
-                    i_max_col_len = max(i_max_col_len, len(str(cell.value).split('n', maxsplit=1)[0]))
+                if j != 0:  # do use not use first line description
+                    i_max_col_len = max(i_max_col_len, len(str(cell.value).split("n", maxsplit=1)[0]))
             else:
-                for s_line in str(cell.value).split('/n'):
+                for s_line in str(cell.value).split("/n"):
                     i_max_col_len = max(i_max_col_len, len(s_line))
         if b_limit:
             i_max_col_len = min(i_max_col_len, MAX_COLUMN_WIDTH)
         if i_max_col_len == 0:
-            worksheet.column_dimensions[get_column_letter(i)].hidden = True # hide empty lines
+            worksheet.column_dimensions[get_column_letter(i)].hidden = True  # hide empty lines
         else:
-            worksheet.column_dimensions[get_column_letter(i)].width = ((i_max_col_len + 1) * 0.10 * FONT_SIZE)
+            worksheet.column_dimensions[get_column_letter(i)].width = (i_max_col_len + 1) * 0.10 * FONT_SIZE
 
-def set_cell(ws: Worksheet, i_row: int, i_column: int, value: any = None, b_bold: bool = False, b_italic: bool = False, b_underline: bool = False, i_font_size: int = 12, s_font: str = FONT_NAME, fill_color: str = None, align: str = None, s_format: str = None, s_border: Border = None):
+
+def set_cell(ws: Worksheet, i_row: int, i_column: int, value: any = None, b_bold: bool = False, b_italic: bool = False, b_underline: bool = False,
+             i_font_size: int = 12, s_font: str = FONT_NAME, fill_color: str = None, align: str = None, s_format: str = None, s_border: Border = None):
     """!
     @brief Set cell data
     @param ws : actual worksheet
@@ -85,12 +89,12 @@ def set_cell(ws: Worksheet, i_row: int, i_column: int, value: any = None, b_bold
     if value is not None:
         cell.value = value
     if b_underline:
-        s_underline = 'single'
+        s_underline = "single"
     else:
-        s_underline = 'none'
-    cell.font = Font(name = s_font, size = str(i_font_size), bold=b_bold, italic=b_italic, underline=s_underline)
+        s_underline = "none"
+    cell.font = Font(name=s_font, size=str(i_font_size), bold=b_bold, italic=b_italic, underline=s_underline)
     if fill_color is not None:
-        cell.fill = PatternFill(start_color=fill_color, end_color=fill_color, fill_type = "solid")
+        cell.fill = PatternFill(start_color=fill_color, end_color=fill_color, fill_type="solid")
     if align is not None:
         cell.alignment = Alignment(horizontal=align)
     if s_format is not None:
@@ -98,7 +102,8 @@ def set_cell(ws: Worksheet, i_row: int, i_column: int, value: any = None, b_bold
     if s_border is not None:
         cell.border = s_border
 
-def create_package_summary_xls(l_package_info):
+
+def create_package_summary_xls(l_package_info: List):
     """!
     @brief Update xls fiel with package summary
     @param l_package_info : list with package infos
@@ -107,7 +112,7 @@ def create_package_summary_xls(l_package_info):
     worksheet = workbook.active
     worksheet.title = "PackageInfo"
     for i, title in enumerate(L_PACKAGE_INFO_TITLE):
-        set_cell(worksheet, 1, i+1, title, b_bold=True)
+        set_cell(worksheet, 1, i + 1, title, b_bold=True)
     l_added_package = []
     i_package = 0
     for package in l_package_info:
@@ -123,21 +128,22 @@ def create_package_summary_xls(l_package_info):
                     pass
                 elif not value:
                     value = ""
-                set_cell(worksheet, i_package+2, i+1, str(value))
+                set_cell(worksheet, i_package + 2, i + 1, str(value))
             i_package += 1
-    table_style = table.TableStyleInfo(name='TableStyleLight15',
+    table_style = table.TableStyleInfo(name="TableStyleLight15",
                                        showRowStripes=True)
     s_end_cell = get_column_letter(len(l_added_package[0])) + str(len(l_added_package) + 1)
-    report_table = table.Table(ref=f'A1:{s_end_cell}',
+    report_table = table.Table(ref=f"A1:{s_end_cell}",
                                displayName=worksheet.title,
                                tableStyleInfo=table_style)
     worksheet.add_table(report_table)
     set_column_autowidth(worksheet)
-    worksheet.freeze_panes = 'C2'
-    workbook.save(filename = "PackageInfos.xlsx")
+    worksheet.freeze_panes = "C2"
+    workbook.save(filename="PackageInfos.xlsx")
     print(f"Write {len(l_added_package)} package infos to file")
 
-def get_package_info(package):
+
+def get_package_info(package: str) -> PackageInfo:
     """!
     @brief Upgrade package from text file to latest version
     @param  package : check latest version of this package
@@ -168,23 +174,26 @@ def get_package_info(package):
                                    package_info["info"]["requires_python"])
     return package_info
 
-def update_packages(filename):
+
+def update_packages(filename: str) -> List:
     """!
     @brief  Upgrade package from text file to latest version
     @param  filename : file name
     @return  list with updated packages
     """
-    with open(filename, mode='r', encoding='utf-8') as file:
+    with open(filename, mode="r", encoding="utf-8") as file:
         lines = file.readlines()
 
     i_update_cnt = 0
     l_package_info = []
     updated_lines = []
     for line in lines:
-        if re.match(r'^\s*#', line):  # comment line
+        if re.match(r"^\s*#", line):  # comment line
             updated_lines.append(line)
-        elif re.match(r'^\s*([\w\-]+)==([\w\.\-]+)\s*(#.*)?$', line):  # check for fix version 'package==version'
-            package, version, comment = re.findall(r'^\s*([\w\-]+)==([\w\.\-]+)\s*(#.*)?$', line)[0]
+        elif re.match(r"^\s*([\w\-]+)==([\w\.\-]+)\s*(#.*)?$", line):  # check for fix version 'package==version'
+            package, version, comment = re.findall(r"^\s*([\w\-]+)==([\w\.\-]+)\s*(#.*)?$", line)[0]
+            if comment != "":
+                comment = f" {comment}"
             package_info = get_package_info(package)
             l_package_info.append(package_info)
             if (package not in L_IGNORE_PACKAGES) and package_info.version and (package_info.version != version):
@@ -196,7 +205,7 @@ def update_packages(filename):
                 updated_lines.append(line)
                 if B_PRINT_PACAKGES:
                     print(line)
-        else: # package without version
+        else:  # package without version
             updated_lines.append(line)
             if line.strip():
                 package_info = get_package_info(line)
@@ -204,10 +213,11 @@ def update_packages(filename):
                 if B_PRINT_PACAKGES:
                     print(line)
 
-    with open(filename, mode='w', encoding='utf-8') as file:
+    with open(filename, mode="w", encoding="utf-8") as file:
         file.writelines(updated_lines)
         print(f"{i_update_cnt} packages updates in {filename}\n")
     return l_package_info
+
 
 if __name__ == "__main__":
     l_all_package_info = []
