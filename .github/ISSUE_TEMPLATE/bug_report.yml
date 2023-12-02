@@ -18,15 +18,6 @@ body:
       placeholder: ex. email@example.com
     validations:
       required: false
-  - type: textarea
-    id: what-happened
-    attributes:
-      label: Was ist geschehen?
-      description: Beschreiben Sie welcher Fehler aufgetreten ist.
-      placeholder: Sagen Sie uns, was passiert ist!
-      value: "Ein Fehler ist aufgetreten!"
-    validations:
-      required: true
   - type: input
     id: version
     attributes:
