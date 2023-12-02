@@ -19,6 +19,23 @@ body:
     validations:
       required: false
   - type: textarea
+    id: what-happened
+    attributes:
+      label: Was ist geschehen?
+      description: Beschreiben Sie welcher Fehler aufgetreten ist.
+      placeholder: Sagen Sie uns, was passiert ist!
+      value: "Ein Fehler ist aufgetreten!"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Welche Version der BonPrinter Software verwenden Sie?
+      placeholder: vX.X.X (Git SHA: XXXXXXXX)
+    validations:
+      required: true
+  - type: textarea
     id: solution
     attributes:
       label: Gibt es eine Lösungsmöglichkeit?
