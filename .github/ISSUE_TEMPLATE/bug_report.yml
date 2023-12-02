@@ -9,21 +9,22 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        Details zum Fehlerbericht eingeben!
   - type: input
     id: contact
     attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
+      label: Kontaktangaben
+      description: Wie können wir mit Ihnen in Kontakt treten, wenn wir mehr Informationen benötigen?
+      placeholder: z.B. email@example.com
     validations:
       required: false
-  - type: input
-    id: version
+  - type: textarea
+    id: what-happened
     attributes:
-      label: Version
-      description: Welche Version der BonPrinter Software verwenden Sie?
-      placeholder: vX.X.X (Git SHA: XXXXXXXX)
+      label: Was ist geschehen?
+      description: Beschreiben Sie welcher Fehler aufgetreten ist.
+      placeholder: Sagen Sie uns, was passiert ist!
+      value: "Ein Fehler ist aufgetreten!"
     validations:
       required: true
   - type: textarea
