@@ -12,15 +12,15 @@ body:
   - type: input
     id: contact
     attributes:
-      label: Kontaktangaben
-      description: Wie können wir mit Ihnen in Kontakt treten, wenn wir mehr Informationen benötigen?
+      label: Kontaktdaten
+      description: Wie können wir Sie erreichen, wenn wir weitere Informationen benötigen?
       placeholder: z.B. email@example.com
     validations:
       required: false
   - type: textarea
     id: what-happened
     attributes:
-      label: Was ist geschehen?
+      label: Was ist passiert?
       description: Beschreiben Sie welcher Fehler aufgetreten ist.
     validations:
       required: true
@@ -35,13 +35,13 @@ body:
   - type: textarea
     id: solution
     attributes:
-      label: Gibt es eine Lösungsmöglichkeit?
+      label: Gibt es eine Lösung?
       description: Beschreiben Sie wie eine Lösung aussehen könnte.
     validations:
-      required: true
+      required: false
   - type: textarea
     id: logs
     attributes:
       label: Relevante Log-Ausgaben
-      description: Bitte kopieren Sie alle relevanten Protokollausgaben und fügen Sie sie ein.
+      description: Bitte kopieren und fügen Sie alle relevanten Log-Ausgaben ein.
       render: python
