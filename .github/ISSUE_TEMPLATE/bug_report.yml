@@ -9,4 +9,4 @@ body:
   - type: markdown
     attributes:
       value: |
-        Details zum Fehlerbericht eingeben!
+        Thanks for taking the time to fill out this bug report!
