@@ -1,5 +1,5 @@
 name: Bug Report
-description: Einen Fehlerbericht einreichen
+description: Einen Fehlerbericht erstellen
 title: "[Bug]: "
 labels: ["Bug"]
 projects: []
@@ -24,7 +24,6 @@ body:
       label: Was ist geschehen?
       description: Beschreiben Sie welcher Fehler aufgetreten ist.
       placeholder: Sagen Sie uns, was passiert ist!
-      value: "Ein Fehler ist aufgetreten!"
     validations:
       required: true
   - type: input
@@ -41,7 +40,6 @@ body:
       label: Gibt es eine Lösungsmöglichkeit?
       description: Beschreiben Sie wie eine Lösung aussehen könnte.
       placeholder: Sagen Sie uns, wie ien Lösungsmöglichkeit aussehen kann!
-      value: "Das Problem kann wie folgt gelöst werden:"
     validations:
       required: true
   - type: textarea
