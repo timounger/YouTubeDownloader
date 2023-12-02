@@ -1,0 +1,25 @@
+name: Feature request
+description: Eine Projektidee vorschlagen
+title: "[Feat] "
+labels: ["Feature"]
+projects: []
+assignees:
+  - timounger
+body:
+  - type: markdown
+    attributes:
+      value: Details zur Projektidee eingeben!
+  - type: textarea
+    id: functionality
+    attributes:
+      label: Was ist Ihr Vorschlag?
+      description: Beschreiben Sie die Akzeptanzkriterien für die Umsetzung Ihrer Idee.
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: Welche Aufgaben sind zu erfüllen?
+      description: Beschreiben Sie die Aufgaben, die zur Umsetzung Ihrer Idee durchgeführt werden müssen.
+    validations:
+      required: false
