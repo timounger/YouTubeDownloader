@@ -31,7 +31,7 @@ body:
       description: Welche Version der Software verwenden Sie?
       placeholder: "vX.X.X  (Git SHA: XXXXXXXX)"
     validations:
-      required: true
+      required: false
   - type: textarea
     id: solution
     attributes:
