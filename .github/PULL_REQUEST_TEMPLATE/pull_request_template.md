@@ -1,9 +1,9 @@
 ---
-name: Issue report
+name: Merge Request
 about: Create a report to help us improve
 title: ''
 labels: ''
-assignees: ''
+assignees: 'timounger'
 
 ---
 
@@ -36,3 +36,27 @@ If applicable, add screenshots to help explain your problem.
 
 **Additional context**
 Add any other context about the problem here.
+
+
+## Merge Request
+
+### Änderungsbeschreibung
+
+_Welches Feature/Bugfix (Issue ID + Kurzbeschreibung) wird integriert_
+_(= kurze funktionale Zusammenfassung der durchgeführten Änderungen)_
+
+### Checkliste
+
+* Implementierung:
+  * [ ] Versionierung hochzählen
+  * [ ] DEBUG Flags deaktivert
+* Testes:
+  * [ ] PyLint Fehler behoben
+  * [ ] PyTest läuft erfolgreich
+* Build:
+  * [ ] Nicht verwendete Python Packete ausgeschlossen
+  * [ ] Exe wird erfolgreich gebaut
+  * [ ] Setup wird erfolgreich gebaut
+* Dokumentation:
+  * [ ] Neue Python Pakete in Installation aufgenommen
+  * [ ] Doxygen Dokumentation erfolgreich
