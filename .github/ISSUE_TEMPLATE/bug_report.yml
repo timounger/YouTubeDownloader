@@ -1,6 +1,6 @@
 name: Bug Report
 description: Einen Fehlerbericht erstellen
-title: "[Bug]: "
+title: "[Bug] "
 labels: ["Bug"]
 projects: []
 assignees:
@@ -8,8 +8,7 @@ assignees:
 body:
   - type: markdown
     attributes:
-      value: |
-        Details zum Fehlerbericht eingeben!
+      value: Details zum Fehlerbericht eingeben!
   - type: input
     id: contact
     attributes:
