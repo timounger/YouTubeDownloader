@@ -32,7 +32,7 @@ body:
     attributes:
       label: Version
       description: Welche Version der BonPrinter Software verwenden Sie?
-      placeholder: vX.X.X
+      placeholder: "vX.X.X  (Git SHA: XXXXXXXX)"
     validations:
       required: true
   - type: textarea
