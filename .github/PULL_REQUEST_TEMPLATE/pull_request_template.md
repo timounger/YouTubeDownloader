@@ -1,62 +1,40 @@
----
-name: Merge Request
-about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: 'timounger'
+# Pull Request
 
----
+## Änderungen
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+Beschreibe hier die Änderungen, die du vorgenommen hast.
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+- Welche neuen Funktionen wurden hinzugefügt?
+- Welche Fehler wurden behoben?
+- Welche bestehenden Funktionen wurden verbessert?
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+## Verwandte Issue
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+Falls vorhanden, verlinke hier die Issue, die dieses Pull Request behebt oder umsetzt.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+## Überprüfung
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+- [ ] Ich habe meine Änderungen lokal getestet.
+- [ ] Mein Code folgt den Style-Guidelines des Projekts.
+- [ ] Alle Tests sind bestanden.
 
-**Additional context**
-Add any other context about the problem here.
+## Screenshots
 
+Falls relevant, füge hier Screenshots oder GIFs hinzu, um die visuellen Änderungen zu zeigen.
 
-## Merge Request
+## Zusammenfassung der Änderungen
 
-### Änderungsbeschreibung
+Gib eine kurze Zusammenfassung der Änderungen, die du vorgenommen hast.
 
-_Welches Feature/Bugfix (Issue ID + Kurzbeschreibung) wird integriert_
-_(= kurze funktionale Zusammenfassung der durchgeführten Änderungen)_
+## Überprüfung
 
-### Checkliste
+- [ ] Ich habe den Code auf Rechtschreibfehler überprüft.
+- [ ] Die Dokumentation wurde aktualisiert, um Änderungen widerzuspiegeln.
 
-* Implementierung:
-  * [ ] Versionierung hochzählen
-  * [ ] DEBUG Flags deaktivert
-* Testes:
-  * [ ] PyLint Fehler behoben
-  * [ ] PyTest läuft erfolgreich
-* Build:
-  * [ ] Nicht verwendete Python Packete ausgeschlossen
-  * [ ] Exe wird erfolgreich gebaut
-  * [ ] Setup wird erfolgreich gebaut
-* Dokumentation:
-  * [ ] Neue Python Pakete in Installation aufgenommen
-  * [ ] Doxygen Dokumentation erfolgreich
+## Weitere Informationen
+
+Falls es sonst noch etwas gibt, das du hinzufügen möchtest, füge es hier hinzu.
+
+## @Mention von Reviewern
+
+Falls es spezifische Personen gibt, die du um eine Überprüfung bittest, füge ihre GitHub-Benutzernamen hier hinzu.
