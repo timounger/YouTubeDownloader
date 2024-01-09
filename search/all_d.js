@@ -1,7 +1,7 @@
 var searchData=
 [
   ['changelog_0',['Changelog',['../_c_h_a_n_g_e_l_o_g.html',1,'']]],
-  ['changelog_20📋️_1',['YouTube Downloader changelog 📋️',['../_c_h_a_n_g_e_l_o_g.html#autotoc_md0',1,'']]],
+  ['changelog_20📋️_1',['YouTubeDownloader changelog 📋️',['../_c_h_a_n_g_e_l_o_g.html#autotoc_md0',1,'']]],
   ['changelog_2emd_2',['CHANGELOG.md',['../_c_h_a_n_g_e_l_o_g_8md.html',1,'']]],
   ['check_5fdoxygen_5fwarnings_3',['check_doxygen_warnings',['../classdoxygen__creator_1_1_doxygen_creator.html#ada008e8339c50060ae0382448ae15708',1,'doxygen_creator::DoxygenCreator']]],
   ['check_5ffile_4',['check_file',['../classdoxy__py__checker_1_1_doxy_py_checker.html#a281a3ba7eb54b904dba9692aebb12305',1,'doxy_py_checker::DoxyPyChecker']]],

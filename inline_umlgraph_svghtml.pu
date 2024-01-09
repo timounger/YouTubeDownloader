@@ -8,7 +8,7 @@ skinparam componentBorderColor black
 skinparam interfaceBorderColor black
 skinparam CollectionsBorderColor black
 
-title SW components of YouTube Downloader Tool
+title SW components of YouTubeDownloader Tool
 
 node "YouTubeDownloader.ico" as icon #yellow
 
