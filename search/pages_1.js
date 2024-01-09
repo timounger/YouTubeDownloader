@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['doxygen_0',['Doxygen',['../doxygen_creator.html',1,'']]]
+  ['downloader_0',['YouTube Downloader',['../index.html',1,'']]]
 ];

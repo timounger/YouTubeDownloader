@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main_5fwindow_2epy_0',['main_window.py',['../main__window_8py.html',1,'']]]
+  ['license_2emd_0',['LICENSE.md',['../_l_i_c_e_n_s_e_8md.html',1,'']]]
 ];

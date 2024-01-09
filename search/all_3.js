@@ -1,20 +1,5 @@
 var searchData=
 [
-  ['_5f_5finit_5f_5f_2epy_0',['__init__.py',['../_controller_2____init_____8py.html',1,'']]],
-  ['changelog_1',['Changelog',['../_c_h_a_n_g_e_l_o_g.html',1,'']]],
-  ['changelog_2emd_2',['CHANGELOG.md',['../_c_h_a_n_g_e_l_o_g_8md.html',1,'']]],
-  ['check_5fdoxygen_5fwarnings_3',['check_doxygen_warnings',['../classdoxygen__creator_1_1_doxygen_creator.html#ada008e8339c50060ae0382448ae15708',1,'doxygen_creator::DoxygenCreator']]],
-  ['check_5ffile_4',['check_file',['../classdoxy__py__checker_1_1_doxy_py_checker.html#a281a3ba7eb54b904dba9692aebb12305',1,'doxy_py_checker::DoxyPyChecker']]],
-  ['check_5ffunction_5',['check_function',['../classdoxy__py__checker_1_1_doxy_py_checker.html#a35e048a82447fd07f3b9342ae0ca0f13',1,'doxy_py_checker::DoxyPyChecker']]],
-  ['check_5fincluded_5fpackages_6',['check_included_packages',['../namespacecheck__included__packages.html',1,'']]],
-  ['check_5fincluded_5fpackages_2epy_7',['check_included_packages.py',['../check__included__packages_8py.html',1,'']]],
-  ['check_5ftyping_8',['CHECK_TYPING',['../namespacedoxy__py__checker.html#ad8f563187527c827d936291facf00386',1,'doxy_py_checker']]],
-  ['clear_5fdata_9',['clear_data',['../class_source_1_1_worker_1_1downloader_1_1_download_thread.html#a152e133996f7ef314d99c1dd04385982',1,'Source::Worker::downloader::DownloadThread']]],
-  ['contributing_10',['Contributing',['../_c_o_n_t_r_i_b_u_t_i_n_g.html',1,'']]],
-  ['contributing_2emd_11',['CONTRIBUTING.md',['../_c_o_n_t_r_i_b_u_t_i_n_g_8md.html',1,'']]],
-  ['copy_12',['copy',['../class_source_1_1_controller_1_1main__window_1_1_youtube_downloader.html#ad76cef38b925f4b77773e555faeee5d6',1,'Source::Controller::main_window::YoutubeDownloader']]],
-  ['copy_5fselected_5ftext_5fto_5fclipboard_13',['copy_selected_text_to_clipboard',['../namespace_source_1_1_controller_1_1main__window.html#a17d8422c96461570a819b5d6576e0591',1,'Source::Controller::main_window']]],
-  ['create_5fdefault_5fdoxyfile_14',['create_default_doxyfile',['../classdoxygen__creator_1_1_doxygen_creator.html#a9d5b6ad78faff5de25bf902e09b30042',1,'doxygen_creator::DoxygenCreator']]],
-  ['create_5fpackage_5fsummary_5fxls_15',['create_package_summary_xls',['../namespaceupdate__py__requirements.html#af0136ed897ae97b64ed54d08cdacb77c',1,'update_py_requirements']]],
-  ['cut_16',['cut',['../class_source_1_1_controller_1_1main__window_1_1_youtube_downloader.html#a0db1b1bf73bb7878d1e2cdad7cd1ceb1',1,'Source::Controller::main_window::YoutubeDownloader']]]
+  ['3_0',['v1.0.3',['../_c_h_a_n_g_e_l_o_g.html#autotoc_md2',1,'']]],
+  ['3_20protecting_20users_20legal_20rights_20from_20anti_20circumvention_20law_1',['3. Protecting Users&apos; Legal Rights From Anti-Circumvention Law',['../_l_i_c_e_n_s_e.html#autotoc_md29',1,'']]]
 ];

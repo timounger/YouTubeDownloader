@@ -1,11 +1,15 @@
 var searchData=
 [
-  ['add_5fgithub_5fcorner_0',['add_github_corner',['../classdoxygen__creator_1_1_doxygen_creator.html#a8f9bb9d37c58a3555fbf3b8e66c0f08d',1,'doxygen_creator::DoxygenCreator']]],
-  ['add_5fimages_1',['add_images',['../classdoxygen__creator_1_1_doxygen_creator.html#af42073509872fc58a6ce65acb604922d',1,'doxygen_creator::DoxygenCreator']]],
-  ['add_5fnojekyll_5ffile_2',['add_nojekyll_file',['../classdoxygen__creator_1_1_doxygen_creator.html#a36614f01316ad0adad4c9b446a644f7d',1,'doxygen_creator::DoxygenCreator']]],
-  ['add_5fwarnings_3',['add_warnings',['../classdoxygen__creator_1_1_doxygen_creator.html#a5c716d58e42f78db7ba73a6940fc24ba',1,'doxygen_creator::DoxygenCreator']]],
-  ['app_5fid_4',['app_id',['../namespace_source_1_1youtube__downloader.html#aa839e1aa1a104fcc40c2072ca7882022',1,'Source::youtube_downloader']]],
-  ['args_5',['args',['../namespacedoxy__py__checker.html#a8187411843a6284ffb964ef3fb9fcab3',1,'doxy_py_checker.args'],['../namespacedoxygen__creator.html#ada3cebef2bb36a7c20a97ace5c6ef56a',1,'doxygen_creator.args']]],
-  ['author_6',['author',['../classupdate__py__requirements_1_1_package_info.html#a1937a86490fb99a263665267266cbe30',1,'update_py_requirements::PackageInfo']]],
-  ['author_5fmail_7',['author_mail',['../classupdate__py__requirements_1_1_package_info.html#aca75cd4d6392cf5361d4e932dc9afa5d',1,'update_py_requirements::PackageInfo']]]
+  ['1_0',['1',['../_c_h_a_n_g_e_l_o_g.html#autotoc_md7',1,'V0.1'],['../_c_h_a_n_g_e_l_o_g.html#autotoc_md4',1,'v1.0.1']]],
+  ['1_20source_20code_1',['1. Source Code',['../_l_i_c_e_n_s_e.html#autotoc_md27',1,'']]],
+  ['10_20automatic_20licensing_20of_20downstream_20recipients_2',['10. Automatic Licensing of Downstream Recipients',['../_l_i_c_e_n_s_e.html#autotoc_md36',1,'']]],
+  ['11_20patents_3',['11. Patents',['../_l_i_c_e_n_s_e.html#autotoc_md37',1,'']]],
+  ['12_20no_20surrender_20of_20others_20freedom_4',['12. No Surrender of Others&apos; Freedom',['../_l_i_c_e_n_s_e.html#autotoc_md38',1,'']]],
+  ['13_20use_20with_20the_20gnu_20affero_20general_20public_20license_5',['13. Use with the GNU Affero General Public License',['../_l_i_c_e_n_s_e.html#autotoc_md39',1,'']]],
+  ['14_20revised_20versions_20of_20this_20license_6',['14. Revised Versions of this License',['../_l_i_c_e_n_s_e.html#autotoc_md40',1,'']]],
+  ['15_20and_2016_7',['17. Interpretation of Sections 15 and 16',['../_l_i_c_e_n_s_e.html#autotoc_md43',1,'']]],
+  ['15_20disclaimer_20of_20warranty_8',['15. Disclaimer of Warranty',['../_l_i_c_e_n_s_e.html#autotoc_md41',1,'']]],
+  ['16_9',['17. Interpretation of Sections 15 and 16',['../_l_i_c_e_n_s_e.html#autotoc_md43',1,'']]],
+  ['16_20limitation_20of_20liability_10',['16. Limitation of Liability',['../_l_i_c_e_n_s_e.html#autotoc_md42',1,'']]],
+  ['17_20interpretation_20of_20sections_2015_20and_2016_11',['17. Interpretation of Sections 15 and 16',['../_l_i_c_e_n_s_e.html#autotoc_md43',1,'']]]
 ];

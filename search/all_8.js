@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['home_5fpage_0',['home_page',['../classupdate__py__requirements_1_1_package_info.html#a931d3218bf27c415b4b3619d16ae7799',1,'update_py_requirements::PackageInfo']]]
+  ['8_20termination_0',['8. Termination',['../_l_i_c_e_n_s_e.html#autotoc_md34',1,'']]]
 ];

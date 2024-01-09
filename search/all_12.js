@@ -1,10 +1,7 @@
 var searchData=
 [
-  ['version_0',['version',['../classupdate__py__requirements_1_1_package_info.html#aad880fc4455c253781e8968f2239d56f',1,'update_py_requirements::PackageInfo']]],
-  ['version_2epy_1',['version.py',['../version_8py.html',1,'']]],
-  ['version_5fbuild_2',['VERSION_BUILD',['../namespace_source_1_1version.html#a69972f6a94129228bbfc02cd95c161b3',1,'Source::version']]],
-  ['version_5fmajor_3',['VERSION_MAJOR',['../namespace_source_1_1version.html#a1ed4a2ce02bc5fe28ff2b82d647e53a2',1,'Source::version']]],
-  ['version_5fminor_4',['VERSION_MINOR',['../namespace_source_1_1version.html#a1e9e7f5a63ba7d52c3a44990665ad119',1,'Source::version']]],
-  ['version_5fpatch_5',['VERSION_PATCH',['../namespace_source_1_1version.html#ae156febe985b76c53397252b25ddc5b5',1,'Source::version']]],
-  ['versioninfo_6',['versionInfo',['../namespacegenerate__version__file.html#a1327147992659825670f49d3b73a265d',1,'generate_version_file']]]
+  ['having_20copies_0',['9. Acceptance Not Required for Having Copies',['../_l_i_c_e_n_s_e.html#autotoc_md35',1,'']]],
+  ['hiddel_5fimport_1',['hiddel_import',['../namespacegenerate__executable.html#a4ce214e3d62e6d15684498481b678614',1,'generate_executable']]],
+  ['home_5fpage_2',['home_page',['../classupdate__py__requirements_1_1_package_info.html#a931d3218bf27c415b4b3619d16ae7799',1,'update_py_requirements::PackageInfo']]],
+  ['how_20to_20apply_20these_20terms_20to_20your_20new_20programs_3',['How to Apply These Terms to Your New Programs',['../_l_i_c_e_n_s_e.html#autotoc_md44',1,'']]]
 ];

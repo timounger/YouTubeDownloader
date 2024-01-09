@@ -1,33 +1,37 @@
 var namespaces_dup =
 [
     [ "check_included_packages", "namespacecheck__included__packages.html", [
-      [ "b_result", "namespacecheck__included__packages.html#ad26789ebd4a9d719475ef318e21a10d5", null ],
-      [ "d_buildin", "namespacecheck__included__packages.html#ac8135e9be97731bd415584ddb7c735da", null ],
-      [ "d_own_packs", "namespacecheck__included__packages.html#a2cc7a35e2ab0fcbae8e86055049ba7dd", null ],
-      [ "d_third_party", "namespacecheck__included__packages.html#a815161390be8f1bd37f2f03d724cf358", null ],
-      [ "encoding", "namespacecheck__included__packages.html#ab1000d1f2ea9878f60bc119650013894", null ],
+      [ "check_included_packages", "namespacecheck__included__packages.html#ac9c288b311b10a194e77f90bf91ee4bb", null ],
+      [ "APP_NAME", "namespacecheck__included__packages.html#adf1fe76e2eccbdc32d1d5b9f52ca5aa3", null ],
       [ "L_ALLOWED_THIRD_PARTY_PACKAGES", "namespacecheck__included__packages.html#a854a4b28517b6a2676c148ebf4f6f6fd", null ],
-      [ "l_nodes", "namespacecheck__included__packages.html#a6034a6cf8eefd56b7c2f5e695f18989e", null ],
-      [ "l_targets", "namespacecheck__included__packages.html#af792155b2086d9bfd9f0bb4cfd744605", null ],
-      [ "mode", "namespacecheck__included__packages.html#a1a6b6fb557d8d37d59700faf4e4c9167", null ],
-      [ "regex_builtin", "namespacecheck__included__packages.html#a4959b69dbdae8f5530e581688d99b05b", null ],
-      [ "regex_builtin_name", "namespacecheck__included__packages.html#a8cef0431fbdd8c9621162c399dd5586e", null ],
-      [ "regex_own_packs", "namespacecheck__included__packages.html#a09937e882cfe822702a26d896ff3c4fc", null ],
-      [ "regex_third_party", "namespacecheck__included__packages.html#a1e537f8a25fc78b6fb81060d28399eeb", null ],
-      [ "regex_third_party_name", "namespacecheck__included__packages.html#a48a0e67dfbdbffc5831bc49fdacae7be", null ],
-      [ "s_package_path", "namespacecheck__included__packages.html#a4eab68481563d8099a479d5a6e08bb2d", null ],
-      [ "S_RELATIVE_PATH", "namespacecheck__included__packages.html#a80afe4fc0567250c84bb38661cb308f7", null ],
-      [ "soup", "namespacecheck__included__packages.html#af457ce050bccf72c8940f84d0c74fc67", null ]
+      [ "S_RELATIVE_PATH", "namespacecheck__included__packages.html#a900940494558d461e5175e428afdb261", null ]
     ] ],
     [ "doxy_py_checker", "namespacedoxy__py__checker.html", "namespacedoxy__py__checker" ],
     [ "doxygen_creator", "namespacedoxygen__creator.html", "namespacedoxygen__creator" ],
+    [ "generate_executable", "namespacegenerate__executable.html", [
+      [ "get_type_list", "namespacegenerate__executable.html#acd436ead38adfc8a8310931960e9f6b3", null ],
+      [ "add_data", "namespacegenerate__executable.html#adfa5ce48c34673a10946668d1f048440", null ],
+      [ "build_warnings", "namespacegenerate__executable.html#a79bfcca83cdfb9473f7ffe009b44d175", null ],
+      [ "command", "namespacegenerate__executable.html#a60b6bd6c82e7e003776d8b6558d08e06", null ],
+      [ "encoding", "namespacegenerate__executable.html#ab1000d1f2ea9878f60bc119650013894", null ],
+      [ "hiddel_import", "namespacegenerate__executable.html#a4ce214e3d62e6d15684498481b678614", null ],
+      [ "L_EXCLUDE_MODULES", "namespacegenerate__executable.html#ae51f6ad7850682ee4da42be76fdc413d", null ],
+      [ "l_not_allowed_packages", "namespacegenerate__executable.html#a022b9ca6a18d2bd06a6ccfd41707112f", null ],
+      [ "mode", "namespacegenerate__executable.html#a1a6b6fb557d8d37d59700faf4e4c9167", null ],
+      [ "report", "namespacegenerate__executable.html#ac97b78e7c161c178a23a3d1478f74aa5", null ],
+      [ "result", "namespacegenerate__executable.html#a937d4dd628a8858b443a399410d2600b", null ],
+      [ "result_report", "namespacegenerate__executable.html#a4aa63dd1781d70f36f4b61cd99713958", null ],
+      [ "ret_value", "namespacegenerate__executable.html#aabe89482a17bf30a40e9c316bc5a2bb9", null ],
+      [ "s_spec_file", "namespacegenerate__executable.html#a05453b274ae2ccae1bef10244f3825ba", null ],
+      [ "VERSION_FILE_NAME", "namespacegenerate__executable.html#ab4eebde576250e5b51ac86b875ee5aab", null ],
+      [ "WARNING_FILE", "namespacegenerate__executable.html#a51fe0a69b6582924d93ecb9ad59863dd", null ],
+      [ "WORKPATH", "namespacegenerate__executable.html#a24f90b1401d1ba03b43dcadbf12b78d6", null ]
+    ] ],
     [ "generate_version_file", "namespacegenerate__version__file.html", [
-      [ "encoding", "namespacegenerate__version__file.html#ab1000d1f2ea9878f60bc119650013894", null ],
-      [ "mode", "namespacegenerate__version__file.html#a1a6b6fb557d8d37d59700faf4e4c9167", null ],
-      [ "s_filename", "namespacegenerate__version__file.html#ab4c0af0a450e2f50c733675b758fd1eb", null ],
-      [ "s_version_file", "namespacegenerate__version__file.html#aa32ca323cf8105e3565ee74ca5a6d5f1", null ],
-      [ "s_workpath", "namespacegenerate__version__file.html#a63ab728f6762fb8daa02d537e7d2a3a5", null ],
-      [ "versionInfo", "namespacegenerate__version__file.html#a1327147992659825670f49d3b73a265d", null ]
+      [ "generate_version_file", "namespacegenerate__version__file.html#afa3445b1e3a4a81a99df697dbeb129b1", null ],
+      [ "filename", "namespacegenerate__version__file.html#a0a9e9c5c3eae62014f8951f1c926fd22", null ],
+      [ "versionInfo", "namespacegenerate__version__file.html#a1327147992659825670f49d3b73a265d", null ],
+      [ "workpath", "namespacegenerate__version__file.html#a0a6a448a5c921889ae09f985bd5da50e", null ]
     ] ],
     [ "Source", "namespace_source.html", "namespace_source" ],
     [ "update_py_requirements", "namespaceupdate__py__requirements.html", "namespaceupdate__py__requirements" ]

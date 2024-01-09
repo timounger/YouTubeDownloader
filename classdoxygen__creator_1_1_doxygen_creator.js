@@ -2,7 +2,6 @@ var classdoxygen__creator_1_1_doxygen_creator =
 [
     [ "__init__", "classdoxygen__creator_1_1_doxygen_creator.html#ac4411d0fc82d9f84320fed93e8d6b72b", null ],
     [ "add_github_corner", "classdoxygen__creator_1_1_doxygen_creator.html#a8f9bb9d37c58a3555fbf3b8e66c0f08d", null ],
-    [ "add_images", "classdoxygen__creator_1_1_doxygen_creator.html#af42073509872fc58a6ce65acb604922d", null ],
     [ "add_nojekyll_file", "classdoxygen__creator_1_1_doxygen_creator.html#a36614f01316ad0adad4c9b446a644f7d", null ],
     [ "add_warnings", "classdoxygen__creator_1_1_doxygen_creator.html#a5c716d58e42f78db7ba73a6940fc24ba", null ],
     [ "check_doxygen_warnings", "classdoxygen__creator_1_1_doxygen_creator.html#ada008e8339c50060ae0382448ae15708", null ],
@@ -12,7 +11,7 @@ var classdoxygen__creator_1_1_doxygen_creator =
     [ "edit_select_doxyfile_settings", "classdoxygen__creator_1_1_doxygen_creator.html#a0dfc687b25b3de28ba5aad147f835451", null ],
     [ "generate_configuration_diff", "classdoxygen__creator_1_1_doxygen_creator.html#af39bd69bca2a7ba234547b1f05284158", null ],
     [ "generate_doxygen_output", "classdoxygen__creator_1_1_doxygen_creator.html#af856b132f23ba9d77e405077b61928a6", null ],
-    [ "get_configuration", "classdoxygen__creator_1_1_doxygen_creator.html#a6ee93fb345e76b8eae3b87708419b0b5", null ],
+    [ "get_configuration", "classdoxygen__creator_1_1_doxygen_creator.html#ae8f9b80ec8c07450d14e225ee39f06a8", null ],
     [ "prepare_doxyfile_configuration", "classdoxygen__creator_1_1_doxygen_creator.html#a3bb485cca4bfef04aa188587a5e3ee39", null ],
     [ "run_doxygen", "classdoxygen__creator_1_1_doxygen_creator.html#aaf7414963b7520c601633ac8818b00c2", null ],
     [ "set_configuration", "classdoxygen__creator_1_1_doxygen_creator.html#a1093605732045db09d6a071537e73ade", null ],
