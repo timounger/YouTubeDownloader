@@ -6,9 +6,6 @@
 
 Das YouTubeDownloader Tool ist nach dem Model-View-Controller (MVC) Pattern aufgebaut, wobei eine klare Trennung zwischen View und Controller nicht möglich ist.
 
-> In Qt land the distinction between the View & Controller gets a little murky. Qt accepts input events from the user (via the OS) and delegates these to the widgets (Controller) to handle. However, widgets also handle presentation of the current state to the user, putting them squarely in the View. Rather than agonize over where to draw the line, in Qt-speak the View and Controller are instead merged together creating a Model/ViewController architecture — called "Model View" for simplicity sake. [Quelle](https://pythonguis.com/tutorials/modelview-architecture/)
-> <br>
-
 @startuml cdYouTubeDownloaderSWComponents
 skinparam titleFontSize 30
 skinparam titleFontStyle bold
@@ -66,7 +63,7 @@ Der Einstiegspunkt in die Anwendung ist die Datei `youtube_downloader.py`. Sie s
 
 ### Controller
 
-Das gestartete Anwendungsfenster wird von den verschiedenen View Controllern (`Source/Controller`) gesteuert. Diese verarbeiten die Benutzereingaben, aktualisieren die im Model gespeicherten Daten und aktualisieren auf dieser Basis die View. Es ist eine Mischung aus View und Controller. Für jeden Teil der Anwendung gibt es einen eigenen Controller, z.B. steuert der `MainWindowController` das Hauptfenster der Anwendung inklusive Menüleiste, Verbindung zur Hardware, etc. Jeder Reiter oder Dialog wird von einem eigenen Controller gesteuert.
+Das gestartete Anwendungsfenster wird von den verschiedenen View Controllern (`Source/Controller`) gesteuert. Diese verarbeiten die Benutzereingaben, aktualisieren die im Model gespeicherten Daten und aktualisieren auf dieser Basis die View. Es ist eine Mischung aus View und Controller.
 
 ### Background-Worker
 
@@ -74,13 +71,13 @@ Ressourcenintensive Operationen wie z.B. der Download von YouTube Inhalten werde
 
 ### Util
 
-Anwendungsweite, globale Konstanten und andere Daten werden in `Util/downloader_data.py` gespeichert. Die Log-Konfiguration wird von der Klasse `LogConfig` in `Util/bonprinter_log.py` verwaltet. Der globale Exception Handler befindet sich in `Util/bonprinter_err_handler.py`.
+Anwendungsweite, globale Konstanten und andere Daten werden in `Util/downloader_data.py` gespeichert.
 
 ---
 
 ## Versionsverwaltung
 
-Die Version ist in `Source/Util/downloader_data.py` gespeichert und wird manuell aktualisiert. Im Ordner `Executable` befindet sich ein Hilfsskript (`Executable/generate_version_file.py`), welches die aktuelle Versionsinfo-Datei erzeugt, die für die Generierung der Exe-Datei benötigt wird.
+Die Version ist in `Source/version.py` gespeichert und wird manuell aktualisiert. Im Ordner `Executable` befindet sich ein Hilfsskript (`Executable/generate_version_file.py`), welches die aktuelle Versionsinfo-Datei erzeugt, die für die Generierung der Exe-Datei benötigt wird.
 
 ---
 
@@ -90,7 +87,7 @@ Die Generierung der EXE erfolgt mit Hilfe des `pyinstallers`. In der Datei `Exec
 
 ## Setup-Generierung 🔧
 
-Die Generierung des Installers erfolgt mit Hilfe von [InnoSetup6](https://jrsoftware.org/isdl.php). In der Datei `Executable/setup_bonprinter.iss` sind die notwendigen Parameter spezifiziert. Durch Ausführen des Batch-Skripts `Executable/generate_setup.bat` wird der Installer EXE im Ordner `Executable/bin` erzeugt.
+Die Generierung des Installers erfolgt mit Hilfe von [InnoSetup6](https://jrsoftware.org/isdl.php). In der Datei `Executable/setup_youtubedownloader.iss` sind die notwendigen Parameter spezifiziert. Durch Ausführen des Batch-Skripts `Executable/generate_setup.bat` wird der Installer EXE im Ordner `Executable/bin` erzeugt.
 
 ---
 
@@ -100,7 +97,7 @@ Die Generierung des Installers erfolgt mit Hilfe von [InnoSetup6](https://jrsoft
 
 - [ ] Versionierung hochzählen
 - [ ] `B_DEBUG` im Code auf `False` setzen
-- [ ] Versionen der Pakete von Drittanbietern (`Documentation/Installation/requirements.txt`, `Documentation/Installation/constraints.txt`) (und optional Python-Version) aktualisieren (wenn die PyQT-Version aktualisiert wird, müssen die Views anschließend neu generiert werden)
+- [ ] Versionen der Pakete von Drittanbietern (`Documentation/Installation/requirements.txt`, `Documentation/Installation/constraints.txt`) (und optional Python-Version) aktualisieren
 - [ ] Liste der erlaubten, in EXE eingebundenen Pakete aktualisieren (`L_ALLOWED_THIRD_PARTY_PACKAGES` in `Executable/check_included_packages.py`)
 - [ ] Nicht benötigte Pakete explizit ausschließen (`L_EXCLUDE_MODULES` in `Executable/generate_executable.py`).
 

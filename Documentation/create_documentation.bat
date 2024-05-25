@@ -1,4 +1,4 @@
 :: create Doxygen documentation
 cd DoxygenCreator
-python doxygen_creator.py -o True
+..\..\.env\Scripts\python doxygen_creator.py -o True
 pause

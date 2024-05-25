@@ -1,2 +1,2 @@
 cd ./Source
-python youtube_downloader.py
+..\.env\Scripts\python youtube_downloader.py

@@ -8,8 +8,6 @@
 [![Code style: autopep8](https://img.shields.io/badge/code%20style-autopep8-green.svg)](https://github.com/hhatto/autopep8)
 ![GitHub Repo stars](https://img.shields.io/github/stars/timounger/YouTubeDownloader)
 
-# YouTubeDownloader
-
 ## Über ℹ️
 
 Das YouTube Downloader Tool läd Inhalte von YouTube herunter.

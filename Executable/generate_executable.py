@@ -54,7 +54,7 @@ def get_type_list(type_name: str, l_type_values: List) -> List:
 
 WARNING_FILE = "PyInstaller_warnings.txt"
 
-command = ["python.exe", "-m", "PyInstaller", "--clean"]
+command = ["..\.env\Scripts\python", "-m", "PyInstaller", "--clean"]
 command.extend(["--paths", "..\\"])
 command.extend(get_type_list("add-data", add_data))
 command.extend(["--icon", "..\\Resources\\YouTubeDownloader.ico"])

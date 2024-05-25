@@ -1,4 +1,4 @@
 :: "generate_default_pylintrc.bat"
 :: generate default pylintrc file
 
-pylint --generate-rcfile > .pylintrc
+..\.env\Scripts\python -m pylint --generate-rcfile > .pylintrc

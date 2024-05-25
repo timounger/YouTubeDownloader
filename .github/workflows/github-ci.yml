@@ -45,8 +45,8 @@ on:
   push:
     branches:
       - master
-    paths:
-      - "Source/version.py"
+    #paths:
+      #- "Source/version.py"
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
     inputs:
       documentation:
@@ -88,9 +88,9 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           architecture: ${{ env.PYTHON_ARCH }}
@@ -101,9 +101,9 @@ jobs:
         run: ${{ env.PYTHON_PACKAGE_INST_FILE }}
       - name: Run Doxygen
         working-directory: ./Documentation/DoxygenCreator
-        run: python doxygen_creator.py
+        run: ..\..\.env\Scripts\python doxygen_creator.py
       - name: Upload Doxygen Output
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.DOXYGEN_OUTPUT_NAME }}
           path: ${{ env.DOXYGEN_OUTPUT_PATH }}
@@ -115,9 +115,9 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Download Doxygen Output
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ${{ env.DOXYGEN_OUTPUT_NAME }}
           path: ${{ env.DOXYGEN_OUTPUT_PATH }}
@@ -128,7 +128,7 @@ jobs:
           git push origin --delete gh-pages
       - name: Set up Python
         if: github.event_name == 'push'
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           architecture: ${{ env.PYTHON_ARCH }}
@@ -140,7 +140,7 @@ jobs:
           echo "prerelease_version=$version" >> $env:GITHUB_ENV
       - name: Deploy to Github Pages
         if: (github.event_name != 'push') || (env.prerelease_version == 'false')
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ${{ env.DOXYGEN_OUTPUT_PATH }}/html
@@ -151,9 +151,9 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           architecture: ${{ env.PYTHON_ARCH }}
@@ -164,7 +164,7 @@ jobs:
         working-directory: ./Test
         run: run_pylint.bat
       - name: Upload PyLint report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: pylint_YouTubeDownloader.log
           path: ./Test/pylint_YouTubeDownloader.log
@@ -176,9 +176,9 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           architecture: ${{ env.PYTHON_ARCH }}
@@ -189,7 +189,7 @@ jobs:
         working-directory: ./Executable
         run: generate_executable.bat
       - name: Upload Executable
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.BINARY_EXE_NAME }}
           path: ${{ env.BINARY_PATH }}
@@ -201,9 +201,9 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Download Executable
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ${{ env.BINARY_EXE_NAME }}
           path: ${{ env.BINARY_PATH }}
@@ -214,7 +214,7 @@ jobs:
         run: |
           rm -f ${{ env.BINARY_PATH }}/YouTubeDownloader.exe
       - name: Upload Setup
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.BINARY_SETUP_NAME }}
           path: ${{ env.BINARY_PATH }}
@@ -226,15 +226,15 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Download Setup
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ${{ env.BINARY_SETUP_NAME }}
           path: ${{ env.BINARY_PATH }}
       - name: Get Commit Message
         shell: bash
-        run: echo "commit_message=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+        run: echo "commit_message=$(git log -1 --pretty=format:"%s")" >> $GITHUB_ENV
       - name: Get version from Python file
         shell: bash
         run: |
@@ -261,7 +261,7 @@ jobs:
         with:
           tag_name: v${{ env.file_version }}
           release_name: "[YouTubeDownloader] v${{ env.file_version }}"
-          body: ${{ env.commit_message }}
+          body: "Git SHA: ${{ github.sha }}\n\n${{ env.commit_message }}"
           draft: false
           prerelease: false
       - name: Upload Setup files to release assets

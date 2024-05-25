@@ -17,6 +17,7 @@ L_IGNORE_PARAM = ["self", "cls"]
 PARAM_DOC_PREFIX = "@param"
 RETURN_DOC_PREFIX = "@return"
 INIT_FUNCTION = "__init__"
+L_EXCLUDE_FOLDER = [".env"]
 
 CHECK_TYPING = False
 
@@ -80,7 +81,8 @@ class DoxyPyChecker:
         @return list of all files
         """
         l_files = []
-        for root, _dirs, files in os.walk(self.s_path):
+        for root, dirs, files in os.walk(self.s_path):
+            dirs[:] = [d for d in dirs if os.path.basename(d) not in L_EXCLUDE_FOLDER]  # Remove the directories to be excluded from the walk
             for f in files:
                 _file_name, file_type = os.path.splitext(f)
                 if file_type == ".py":

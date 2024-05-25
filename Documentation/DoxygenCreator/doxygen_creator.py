@@ -705,6 +705,8 @@ if __name__ == "__main__":
     doxygen_creator.set_configuration("PROJECT_BRIEF", __description__)
     doxygen_creator.set_configuration("PROJECT_LOGO", f"{S_MAIN_FOLDER_FOLDER}{S_ICON_RESOURCE_PATH}")
     doxygen_creator.set_configuration("INPUT", S_MAIN_FOLDER_FOLDER)
+    l_exclude_pattern = [".env"]
+    doxygen_creator.set_configuration("EXCLUDE_PATTERNS", l_exclude_pattern)
     l_file_pattern = [S_PYTHON_PATTERN, "*.md", "*.bat", "*.pyproject", "*.iss", "*.yml", "*.txt"]
     doxygen_creator.set_configuration("FILE_PATTERNS", l_file_pattern)
     sys.exit(doxygen_creator.run_doxygen(b_open_doxygen_output=args.open))

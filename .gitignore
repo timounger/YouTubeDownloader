@@ -2,6 +2,7 @@
 *.log
 *.pyc
 /.settings
+/.env
 
 # Source
 /Source/Download

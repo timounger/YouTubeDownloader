@@ -99,6 +99,7 @@ class DownloadThread(threading.Thread):
                     elif i_choice == 3:
                         o_stream = o_youtube.streams.filter(only_audio=True).first()
                     else:
+                        o_stream = None  # TODO
                         self.gui.o_status.config(text="Unerwarteter Fehler!", fg="red")
                     try:
                         self.gui.o_status.config(text="Download läuft...", fg="blue")
