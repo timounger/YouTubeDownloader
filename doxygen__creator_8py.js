@@ -9,6 +9,7 @@ var doxygen__creator_8py =
     [ "I_TIMEOUT", "doxygen__creator_8py.html#a2724f847bf5d0896aa258d1411869875", null ],
     [ "I_WRAP_LENGHT", "doxygen__creator_8py.html#ad04fb35c34ac92cc2cb1ef7667b2f0af", null ],
     [ "L_DEFAULT_FILE_PATTERN", "doxygen__creator_8py.html#a994dd1314dc652fa3be4fb3c9091bba5", null ],
+    [ "l_exclude_pattern", "doxygen__creator_8py.html#a14146a445e7377d33374f74636ef62c1", null ],
     [ "l_file_pattern", "doxygen__creator_8py.html#ab3fd704054bc4667088f6a737e9bd430", null ],
     [ "L_OVERRIDE", "doxygen__creator_8py.html#a1b880c939d51d2d5e1c7b1de103aae42", null ],
     [ "NO", "doxygen__creator_8py.html#aa60ea323476713901c3d941289485531", null ],

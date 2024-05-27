@@ -32,7 +32,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="YouTubeDownloader.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.0.4</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.0.5</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -153,19 +153,23 @@ $(function(){initNavTree('uninstall__packages_8bat_source.html',''); initResizab
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span>:: uninstall all packages</div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>@echo off</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>set package_file=installed_packages.txt</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>python -m pip freeze &gt; %package_file%</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>python -m pip uninstall -r %package_file% -y</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>del %package_file%</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>pause</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>set ENV_PATH=..\..\.env</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>set PY_PATH=%ENV_PATH%\Scripts\python</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>set package_file=installed_packages.txt</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>%PY_PATH% -m pip freeze &gt; %package_file%</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>%PY_PATH% -m pip uninstall -r %package_file% -y</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>del %package_file%</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>pause</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_6d698909b8fec338f4c4b378f6294549.html">Installation</a></li><li class="navelem"><a class="el" href="uninstall__packages_8bat.html">uninstall_packages.bat</a></li>
-    <li class="footer">Generated on Tue Jan 9 2024 22:23:05 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+    <li class="footer">Generated on Mon May 27 2024 07:36:51 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>

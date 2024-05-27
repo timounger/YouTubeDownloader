@@ -9,6 +9,7 @@ var namespacedoxygen__creator =
     [ "I_TIMEOUT", "namespacedoxygen__creator.html#a2724f847bf5d0896aa258d1411869875", null ],
     [ "I_WRAP_LENGHT", "namespacedoxygen__creator.html#ad04fb35c34ac92cc2cb1ef7667b2f0af", null ],
     [ "L_DEFAULT_FILE_PATTERN", "namespacedoxygen__creator.html#a994dd1314dc652fa3be4fb3c9091bba5", null ],
+    [ "l_exclude_pattern", "namespacedoxygen__creator.html#a14146a445e7377d33374f74636ef62c1", null ],
     [ "l_file_pattern", "namespacedoxygen__creator.html#ab3fd704054bc4667088f6a737e9bd430", null ],
     [ "L_OVERRIDE", "namespacedoxygen__creator.html#a1b880c939d51d2d5e1c7b1de103aae42", null ],
     [ "NO", "namespacedoxygen__creator.html#aa60ea323476713901c3d941289485531", null ],

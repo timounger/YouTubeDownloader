@@ -25,14 +25,12 @@
 var NAVTREE =
 [
   [ "YouTubeDownloader", "index.html", [
-    [ "YouTubeDownloader", "index.html#autotoc_md45", [
-      [ "Über ℹ️", "index.html#autotoc_md46", null ],
-      [ "Download ☁️ ⬇️", "index.html#autotoc_md47", null ],
-      [ "OS Support", "index.html#autotoc_md48", null ],
-      [ "Credits", "index.html#autotoc_md49", null ]
-    ] ],
-    [ "Changelog", "_c_h_a_n_g_e_l_o_g.html", [
-      [ "YouTubeDownloader changelog 📋️", "_c_h_a_n_g_e_l_o_g.html#autotoc_md0", [
+    [ "Changelog 📋️", "_c_h_a_n_g_e_l_o_g.html", [
+      [ "Über ℹ️", "index.html#autotoc_md45", null ],
+      [ "Download ☁️ ⬇️", "index.html#autotoc_md46", null ],
+      [ "OS Support", "index.html#autotoc_md47", null ],
+      [ "Credits", "index.html#autotoc_md48", [
+        [ "v1.0.5", "_c_h_a_n_g_e_l_o_g.html#autotoc_md0", null ],
         [ "v1.0.4", "_c_h_a_n_g_e_l_o_g.html#autotoc_md1", null ],
         [ "v1.0.3", "_c_h_a_n_g_e_l_o_g.html#autotoc_md2", null ],
         [ "v1.0.2", "_c_h_a_n_g_e_l_o_g.html#autotoc_md3", null ],
@@ -100,7 +98,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "____init_____8py.html",
-"doxygen__creator_8py.html#aa1a6b6d8b631c79765881b29cd26ce4a"
+"doxygen__creator_8py.html#a94244ddf33d122d9f42ee7ac6d550a75"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

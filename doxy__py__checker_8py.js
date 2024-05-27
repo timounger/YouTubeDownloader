@@ -7,6 +7,7 @@ var doxy__py__checker_8py =
     [ "doxy_checker", "doxy__py__checker_8py.html#a12bca60ef93f7afa06263e39e76ab906", null ],
     [ "INIT_FUNCTION", "doxy__py__checker_8py.html#ade78692db54b43468e08a93edcdc13eb", null ],
     [ "L_DEBUG_FILE", "doxy__py__checker_8py.html#a240ce8da69c96c929d236e9f7665c784", null ],
+    [ "L_EXCLUDE_FOLDER", "doxy__py__checker_8py.html#ad23ba9780ff9251189bdbf262bc64840", null ],
     [ "L_IGNORE_PARAM", "doxy__py__checker_8py.html#a247acf9c1d1a0b45fa0e7b449983b6c8", null ],
     [ "PARAM_DOC_PREFIX", "doxy__py__checker_8py.html#af236cf907eb59300c9e354df102f4ba0", null ],
     [ "RETURN_DOC_PREFIX", "doxy__py__checker_8py.html#a4737ea29b588224bf6b552fabd6235ed", null ],

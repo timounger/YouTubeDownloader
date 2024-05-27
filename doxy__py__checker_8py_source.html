@@ -32,7 +32,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="YouTubeDownloader.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.0.4</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.0.5</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -168,246 +168,248 @@ $(function(){initNavTree('doxy__py__checker_8py_source.html',''); initResizable(
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="namespacedoxy__py__checker.html#af236cf907eb59300c9e354df102f4ba0">   17</a></span>PARAM_DOC_PREFIX = <span class="stringliteral">&quot;@param&quot;</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="namespacedoxy__py__checker.html#a4737ea29b588224bf6b552fabd6235ed">   18</a></span>RETURN_DOC_PREFIX = <span class="stringliteral">&quot;@return&quot;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="namespacedoxy__py__checker.html#ade78692db54b43468e08a93edcdc13eb">   19</a></span>INIT_FUNCTION = <span class="stringliteral">&quot;__init__&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="namespacedoxy__py__checker.html#ad8f563187527c827d936291facf00386">   21</a></span>CHECK_TYPING = <span class="keyword">False</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="namespacedoxy__py__checker.html#a65a7257550a6df3755ba5fe1f365b34b">   23</a></span>B_DOXY_PY_DEBUG = <span class="keyword">False</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="namespacedoxy__py__checker.html#a240ce8da69c96c929d236e9f7665c784">   24</a></span>L_DEBUG_FILE = [<span class="stringliteral">&quot;doxy_py_checker.py&quot;</span>]</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="namespacedoxy__py__checker.html#ad23ba9780ff9251189bdbf262bc64840">   20</a></span>L_EXCLUDE_FOLDER = [<span class="stringliteral">&quot;.env&quot;</span>]</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="namespacedoxy__py__checker.html#ad8f563187527c827d936291facf00386">   22</a></span>CHECK_TYPING = <span class="keyword">False</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="namespacedoxy__py__checker.html#a65a7257550a6df3755ba5fe1f365b34b">   24</a></span>B_DOXY_PY_DEBUG = <span class="keyword">False</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="namespacedoxy__py__checker.html#a240ce8da69c96c929d236e9f7665c784">   25</a></span>L_DEBUG_FILE = [<span class="stringliteral">&quot;doxy_py_checker.py&quot;</span>]</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="foldopen" id="foldopen00027" data-start="" data-end="">
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html">   27</a></span><span class="keyword">class </span><a class="code hl_class" href="classdoxy__py__checker_1_1_doxy_py_checker.html">DoxyPyChecker</a>:</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="stringliteral">    @brief  Doxygen documentation checker class</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="stringliteral">    @param  path : Check python files located in this path</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="stringliteral">    @param  print_checked_files : status if checked files should print</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="foldopen" id="foldopen00034" data-start="" data-end="">
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#aa5952b4b539c8ca1313c61389ab48493">   34</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#aa5952b4b539c8ca1313c61389ab48493">__init__</a>(self, path: str = <span class="keywordtype">None</span>, print_checked_files: bool = <span class="keyword">True</span>):</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a358458a48e4f29f470b0f718746fed5e">   35</a></span>        self.<a class="code hl_variable" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a358458a48e4f29f470b0f718746fed5e">warnings</a> = []</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordflow">if</span> path:</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#acf90fed603823f6ceec89babf5fed4db">   37</a></span>            self.<a class="code hl_variable" href="classdoxy__py__checker_1_1_doxy_py_checker.html#acf90fed603823f6ceec89babf5fed4db">s_path</a> = path</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordflow">else</span>:</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            self.<a class="code hl_variable" href="classdoxy__py__checker_1_1_doxy_py_checker.html#acf90fed603823f6ceec89babf5fed4db">s_path</a> = S_DEFAULT_PATH</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#af5b34b2f46ddab1c8699ebd45640885d">   40</a></span>        self.<a class="code hl_variable" href="classdoxy__py__checker_1_1_doxy_py_checker.html#af5b34b2f46ddab1c8699ebd45640885d">print_checked_files</a> = print_checked_files</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="foldopen" id="foldopen00028" data-start="" data-end="">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html">   28</a></span><span class="keyword">class </span><a class="code hl_class" href="classdoxy__py__checker_1_1_doxy_py_checker.html">DoxyPyChecker</a>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="stringliteral">    @brief  Doxygen documentation checker class</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="stringliteral">    @param  path : Check python files located in this path</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="stringliteral">    @param  print_checked_files : status if checked files should print</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="foldopen" id="foldopen00035" data-start="" data-end="">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#aa5952b4b539c8ca1313c61389ab48493">   35</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#aa5952b4b539c8ca1313c61389ab48493">__init__</a>(self, path: str = <span class="keywordtype">None</span>, print_checked_files: bool = <span class="keyword">True</span>):</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a358458a48e4f29f470b0f718746fed5e">   36</a></span>        self.<a class="code hl_variable" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a358458a48e4f29f470b0f718746fed5e">warnings</a> = []</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordflow">if</span> path:</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#acf90fed603823f6ceec89babf5fed4db">   38</a></span>            self.<a class="code hl_variable" href="classdoxy__py__checker_1_1_doxy_py_checker.html#acf90fed603823f6ceec89babf5fed4db">s_path</a> = path</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordflow">else</span>:</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            self.<a class="code hl_variable" href="classdoxy__py__checker_1_1_doxy_py_checker.html#acf90fed603823f6ceec89babf5fed4db">s_path</a> = S_DEFAULT_PATH</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#af5b34b2f46ddab1c8699ebd45640885d">   41</a></span>        self.<a class="code hl_variable" href="classdoxy__py__checker_1_1_doxy_py_checker.html#af5b34b2f46ddab1c8699ebd45640885d">print_checked_files</a> = print_checked_files</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 </div>
-<div class="foldopen" id="foldopen00042" data-start="" data-end="">
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#af9e4b92cbec9cce6185645d69fd13d06">   42</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#af9e4b92cbec9cce6185645d69fd13d06">get_cmd_args</a>(self) -&gt; argparse.Namespace:</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="stringliteral">        @brief  Define CMD arguments.</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="stringliteral">        @return argument parser.</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        o_parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        o_parser.add_argument(<span class="stringliteral">&quot;-p&quot;</span>, <span class="stringliteral">&quot;--path&quot;</span>,</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                              type=str,</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                              help=<span class="stringliteral">&quot;set relative path to check for python files&quot;</span>)</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordflow">return</span> o_parser.parse_args()</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="foldopen" id="foldopen00043" data-start="" data-end="">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#af9e4b92cbec9cce6185645d69fd13d06">   43</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#af9e4b92cbec9cce6185645d69fd13d06">get_cmd_args</a>(self) -&gt; argparse.Namespace:</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="stringliteral">        @brief  Define CMD arguments.</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="stringliteral">        @return argument parser.</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        o_parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        o_parser.add_argument(<span class="stringliteral">&quot;-p&quot;</span>, <span class="stringliteral">&quot;--path&quot;</span>,</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                              type=str,</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                              help=<span class="stringliteral">&quot;set relative path to check for python files&quot;</span>)</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordflow">return</span> o_parser.parse_args()</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 </div>
-<div class="foldopen" id="foldopen00053" data-start="" data-end="">
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a42ba3983d11dc0d89e2d59b3b86c50cb">   53</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a42ba3983d11dc0d89e2d59b3b86c50cb">run_check</a>(self) -&gt; List[str]:</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="stringliteral">        @brief  Run doxygen checker</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="stringliteral">        @return list of all files</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        findings = []</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        l_files = self.<a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a40270e940cf3ebfcc1dc8b0646d021e0">get_files</a>()</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordflow">if</span> B_DOXY_PY_DEBUG:</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            l_files = L_DEBUG_FILE</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordflow">for</span> file <span class="keywordflow">in</span> l_files:</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordflow">if</span> self.<a class="code hl_variable" href="classdoxy__py__checker_1_1_doxy_py_checker.html#af5b34b2f46ddab1c8699ebd45640885d">print_checked_files</a>:</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                print(f<span class="stringliteral">&quot;Check docs for file: {file}&quot;</span>, )</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            findings += self.<a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a281a3ba7eb54b904dba9692aebb12305">check_file</a>(file)</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            <span class="comment"># print result</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordflow">if</span> findings:</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            print(f<span class="stringliteral">&quot;Found {len(findings)} Function with Warnings in {len(l_files)} files.&quot;</span>)</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="keywordflow">for</span> text <span class="keywordflow">in</span> findings:</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                print(text)</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordflow">else</span>:</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            print(<span class="stringliteral">&quot;All functions correctly documented.&quot;</span>)</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keywordflow">return</span> findings</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="foldopen" id="foldopen00054" data-start="" data-end="">
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a42ba3983d11dc0d89e2d59b3b86c50cb">   54</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a42ba3983d11dc0d89e2d59b3b86c50cb">run_check</a>(self) -&gt; List[str]:</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="stringliteral">        @brief  Run doxygen checker</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="stringliteral">        @return list of all files</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        findings = []</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        l_files = self.<a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a40270e940cf3ebfcc1dc8b0646d021e0">get_files</a>()</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordflow">if</span> B_DOXY_PY_DEBUG:</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            l_files = L_DEBUG_FILE</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordflow">for</span> file <span class="keywordflow">in</span> l_files:</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            <span class="keywordflow">if</span> self.<a class="code hl_variable" href="classdoxy__py__checker_1_1_doxy_py_checker.html#af5b34b2f46ddab1c8699ebd45640885d">print_checked_files</a>:</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                print(f<span class="stringliteral">&quot;Check docs for file: {file}&quot;</span>, )</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            findings += self.<a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a281a3ba7eb54b904dba9692aebb12305">check_file</a>(file)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <span class="comment"># print result</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordflow">if</span> findings:</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            print(f<span class="stringliteral">&quot;Found {len(findings)} Function with Warnings in {len(l_files)} files.&quot;</span>)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keywordflow">for</span> text <span class="keywordflow">in</span> findings:</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                print(text)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordflow">else</span>:</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            print(<span class="stringliteral">&quot;All functions correctly documented.&quot;</span>)</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordflow">return</span> findings</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
 </div>
-<div class="foldopen" id="foldopen00077" data-start="" data-end="">
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a40270e940cf3ebfcc1dc8b0646d021e0">   77</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a40270e940cf3ebfcc1dc8b0646d021e0">get_files</a>(self) -&gt; List[str]:</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="stringliteral">        @brief  Get all python files in folder and subfolders</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="stringliteral">        @return list of all files</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        l_files = []</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordflow">for</span> root, _dirs, files <span class="keywordflow">in</span> os.walk(self.<a class="code hl_variable" href="classdoxy__py__checker_1_1_doxy_py_checker.html#acf90fed603823f6ceec89babf5fed4db">s_path</a>):</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            <span class="keywordflow">for</span> f <span class="keywordflow">in</span> files:</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                _file_name, file_type = os.path.splitext(f)</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                <span class="keywordflow">if</span> file_type == <span class="stringliteral">&quot;.py&quot;</span>:</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                    fullpath = os.path.join(root, f)</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                    l_files.append(fullpath)</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordflow">return</span> l_files</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="foldopen" id="foldopen00078" data-start="" data-end="">
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a40270e940cf3ebfcc1dc8b0646d021e0">   78</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a40270e940cf3ebfcc1dc8b0646d021e0">get_files</a>(self) -&gt; List[str]:</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="stringliteral">        @brief  Get all python files in folder and subfolders</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="stringliteral">        @return list of all files</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        l_files = []</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">for</span> root, dirs, files <span class="keywordflow">in</span> os.walk(self.<a class="code hl_variable" href="classdoxy__py__checker_1_1_doxy_py_checker.html#acf90fed603823f6ceec89babf5fed4db">s_path</a>):</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            dirs[:] = [d <span class="keywordflow">for</span> d <span class="keywordflow">in</span> dirs <span class="keywordflow">if</span> os.path.basename(d) <span class="keywordflow">not</span> <span class="keywordflow">in</span> L_EXCLUDE_FOLDER]  <span class="comment"># Remove the directories to be excluded from the walk</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <span class="keywordflow">for</span> f <span class="keywordflow">in</span> files:</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                _file_name, file_type = os.path.splitext(f)</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                <span class="keywordflow">if</span> file_type == <span class="stringliteral">&quot;.py&quot;</span>:</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                    fullpath = os.path.join(root, f)</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                    l_files.append(fullpath)</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">return</span> l_files</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
 </div>
-<div class="foldopen" id="foldopen00091" data-start="" data-end="">
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#ae2ca154b502383773f841776e7f1d375">   91</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#ae2ca154b502383773f841776e7f1d375">get_doc_params</a>(self, docstring: str, findings: List) -&gt; set:</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="stringliteral">        @brief  Get documented parameters from docstring</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="stringliteral">        @param  docstring : docstring of class</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="stringliteral">        @param  findings : list to add doc warnings</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="stringliteral">        @return collection with documented parameters</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        documented_params = set()</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="keywordflow">for</span> line <span class="keywordflow">in</span> docstring.splitlines():</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            <span class="keywordflow">if</span> line.lstrip().startswith(PARAM_DOC_PREFIX):</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                param_name = line.split()</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                <span class="keywordflow">if</span> len(param_name) &gt;= 2:  <span class="comment"># minimum two names: @param, param_name</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                    param_name = param_name[1].rstrip(<span class="stringliteral">&quot;:&quot;</span>)</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                    <span class="keywordflow">if</span> param_name <span class="keywordflow">in</span> documented_params:</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                        findings.append(f<span class="stringliteral">&quot;{param_name} is documented multiple times&quot;</span>)</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                    <span class="keywordflow">else</span>:</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                        documented_params.add(param_name)</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                <span class="keywordflow">else</span>:</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                    findings.append(f<span class="stringliteral">&quot;No parameter name found. Line content &#39;{line}&#39;&quot;</span>)</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="keywordflow">return</span> documented_params</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="foldopen" id="foldopen00093" data-start="" data-end="">
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#ae2ca154b502383773f841776e7f1d375">   93</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#ae2ca154b502383773f841776e7f1d375">get_doc_params</a>(self, docstring: str, findings: List) -&gt; set:</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="stringliteral">        @brief  Get documented parameters from docstring</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="stringliteral">        @param  docstring : docstring of class</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="stringliteral">        @param  findings : list to add doc warnings</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="stringliteral">        @return collection with documented parameters</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        documented_params = set()</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keywordflow">for</span> line <span class="keywordflow">in</span> docstring.splitlines():</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            <span class="keywordflow">if</span> line.lstrip().startswith(PARAM_DOC_PREFIX):</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                param_name = line.split()</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                <span class="keywordflow">if</span> len(param_name) &gt;= 2:  <span class="comment"># minimum two names: @param, param_name</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                    param_name = param_name[1].rstrip(<span class="stringliteral">&quot;:&quot;</span>)</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                    <span class="keywordflow">if</span> param_name <span class="keywordflow">in</span> documented_params:</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                        findings.append(f<span class="stringliteral">&quot;{param_name} is documented multiple times&quot;</span>)</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                    <span class="keywordflow">else</span>:</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                        documented_params.add(param_name)</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                <span class="keywordflow">else</span>:</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                    findings.append(f<span class="stringliteral">&quot;No parameter name found. Line content &#39;{line}&#39;&quot;</span>)</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keywordflow">return</span> documented_params</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
 </div>
-<div class="foldopen" id="foldopen00112" data-start="" data-end="">
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a1e1d775704779e0b24102db974048bff">  112</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a1e1d775704779e0b24102db974048bff">check_return</a>(self, func_def: ast.FunctionDef, docstring: str) -&gt; List[str]:</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="stringliteral">        @brief  Check for documented return value</span></div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="stringliteral">        @param  func_def : function definition</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="stringliteral">        @param  docstring : docstring of function</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="stringliteral">        @return list of return findings in function</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        findings = []</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        doc_has_return = RETURN_DOC_PREFIX <span class="keywordflow">in</span> docstring</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        func_has_return = <span class="keyword">False</span>  <span class="comment"># True: need doc, False: no doc, None: optional doc</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keywordflow">for</span> node <span class="keywordflow">in</span> ast.walk(func_def):</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            <span class="keywordflow">if</span> isinstance(node, ast.Return) <span class="keywordflow">and</span> node.value <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:  <span class="comment"># function has no return None</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>                func_has_return = <span class="keyword">True</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>                <span class="keywordflow">break</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            <span class="keywordflow">if</span> isinstance(node, ast.Call) <span class="keywordflow">and</span> isinstance(node.func, ast.Attribute) <span class="keywordflow">and</span> (node.func.attr == <span class="stringliteral">&quot;exit&quot;</span>):</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                module = node.func.value</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                <span class="keywordflow">if</span> isinstance(module, ast.Name) <span class="keywordflow">and</span> (module.id == <span class="stringliteral">&quot;sys&quot;</span>):</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                    func_has_return = <span class="keywordtype">None</span>  <span class="comment"># documentation of &quot;sys.exit&quot; is optional</span></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="keywordflow">if</span> func_has_return <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            <span class="keywordflow">if</span> doc_has_return != func_has_return:</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                <span class="keywordflow">if</span> func_has_return:</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>                    findings.append(<span class="stringliteral">&quot;Return type is not documented&quot;</span>)</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                <span class="keywordflow">else</span>:</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                    findings.append(<span class="stringliteral">&quot;Return type is documented but not used&quot;</span>)</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="keywordflow">if</span> CHECK_TYPING <span class="keywordflow">and</span> func_has_return:</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>            return_annotation = astunparse.unparse(func_def.returns).strip() <span class="keywordflow">if</span> func_def.returns <span class="keywordflow">else</span> <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            <span class="keywordflow">if</span> return_annotation <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>                findings.append(<span class="stringliteral">&quot;Return type has no typing&quot;</span>)</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="keywordflow">return</span> findings</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="foldopen" id="foldopen00114" data-start="" data-end="">
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a1e1d775704779e0b24102db974048bff">  114</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a1e1d775704779e0b24102db974048bff">check_return</a>(self, func_def: ast.FunctionDef, docstring: str) -&gt; List[str]:</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="stringliteral">        @brief  Check for documented return value</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="stringliteral">        @param  func_def : function definition</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="stringliteral">        @param  docstring : docstring of function</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="stringliteral">        @return list of return findings in function</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        findings = []</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        doc_has_return = RETURN_DOC_PREFIX <span class="keywordflow">in</span> docstring</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        func_has_return = <span class="keyword">False</span>  <span class="comment"># True: need doc, False: no doc, None: optional doc</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">for</span> node <span class="keywordflow">in</span> ast.walk(func_def):</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            <span class="keywordflow">if</span> isinstance(node, ast.Return) <span class="keywordflow">and</span> node.value <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:  <span class="comment"># function has no return None</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                func_has_return = <span class="keyword">True</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                <span class="keywordflow">break</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            <span class="keywordflow">if</span> isinstance(node, ast.Call) <span class="keywordflow">and</span> isinstance(node.func, ast.Attribute) <span class="keywordflow">and</span> (node.func.attr == <span class="stringliteral">&quot;exit&quot;</span>):</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                module = node.func.value</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                <span class="keywordflow">if</span> isinstance(module, ast.Name) <span class="keywordflow">and</span> (module.id == <span class="stringliteral">&quot;sys&quot;</span>):</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                    func_has_return = <span class="keywordtype">None</span>  <span class="comment"># documentation of &quot;sys.exit&quot; is optional</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keywordflow">if</span> func_has_return <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            <span class="keywordflow">if</span> doc_has_return != func_has_return:</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                <span class="keywordflow">if</span> func_has_return:</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                    findings.append(<span class="stringliteral">&quot;Return type is not documented&quot;</span>)</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>                <span class="keywordflow">else</span>:</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                    findings.append(<span class="stringliteral">&quot;Return type is documented but not used&quot;</span>)</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <span class="keywordflow">if</span> CHECK_TYPING <span class="keywordflow">and</span> func_has_return:</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            return_annotation = astunparse.unparse(func_def.returns).strip() <span class="keywordflow">if</span> func_def.returns <span class="keywordflow">else</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>            <span class="keywordflow">if</span> return_annotation <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>                findings.append(<span class="stringliteral">&quot;Return type has no typing&quot;</span>)</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <span class="keywordflow">return</span> findings</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
 </div>
-<div class="foldopen" id="foldopen00142" data-start="" data-end="">
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a35e048a82447fd07f3b9342ae0ca0f13">  142</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a35e048a82447fd07f3b9342ae0ca0f13">check_function</a>(self, func_def: ast.FunctionDef, class_docstring: str = <span class="keywordtype">None</span>) -&gt; List[str]:</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="stringliteral">        @brief  Check function</span></div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="stringliteral">        @param  func_def : function definition</span></div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="stringliteral">        @param  class_docstring : docstring of class</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="stringliteral">        @return list of findings in function</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        findings = []</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        docstring = ast.get_docstring(func_def) <span class="keywordflow">or</span> class_docstring</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keywordflow">if</span> docstring:</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            <span class="comment"># Get documented parameters and check for duplicate documentation</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>            documented_params = self.<a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#ae2ca154b502383773f841776e7f1d375">get_doc_params</a>(docstring, findings)</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            <span class="comment"># Check that all functional parameters are documented</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            <span class="keywordflow">for</span> arg <span class="keywordflow">in</span> func_def.args.args:</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>                <span class="keywordflow">if</span> arg.arg <span class="keywordflow">not</span> <span class="keywordflow">in</span> L_IGNORE_PARAM:</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>                    <span class="keywordflow">if</span> arg.arg <span class="keywordflow">not</span> <span class="keywordflow">in</span> documented_params:</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>                        findings.append(f<span class="stringliteral">&quot;{arg.arg} is not documented&quot;</span>)</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>                    <span class="keywordflow">if</span> CHECK_TYPING <span class="keywordflow">and</span> arg.annotation <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                        findings.append(f<span class="stringliteral">&quot;{arg.arg} has no typing&quot;</span>)</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>            <span class="comment"># Check that the documented parameters are present</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>            <span class="keywordflow">for</span> documented_param <span class="keywordflow">in</span> documented_params:</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                all_args = [arg.arg <span class="keywordflow">for</span> arg <span class="keywordflow">in</span> func_def.args.args]</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>                <span class="keywordflow">if</span> func_def.args.vararg:</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>                    all_args.append(func_def.args.vararg.arg)</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>                <span class="keywordflow">if</span> func_def.args.kwarg:</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                    all_args.append(func_def.args.kwarg.arg)</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                <span class="keywordflow">if</span> documented_param <span class="keywordflow">not</span> <span class="keywordflow">in</span> all_args:</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>                    findings.append(f<span class="stringliteral">&quot;{documented_param} is documented but not used&quot;</span>)</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>            <span class="comment"># Check that the function return is correctly specified</span></div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            findings += self.<a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a1e1d775704779e0b24102db974048bff">check_return</a>(func_def, docstring)</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        <span class="keywordflow">return</span> findings</div>
+<div class="foldopen" id="foldopen00144" data-start="" data-end="">
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a35e048a82447fd07f3b9342ae0ca0f13">  144</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a35e048a82447fd07f3b9342ae0ca0f13">check_function</a>(self, func_def: ast.FunctionDef, class_docstring: str = <span class="keywordtype">None</span>) -&gt; List[str]:</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="stringliteral">        @brief  Check function</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="stringliteral">        @param  func_def : function definition</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="stringliteral">        @param  class_docstring : docstring of class</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="stringliteral">        @return list of findings in function</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        findings = []</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        docstring = ast.get_docstring(func_def) <span class="keywordflow">or</span> class_docstring</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="keywordflow">if</span> docstring:</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            <span class="comment"># Get documented parameters and check for duplicate documentation</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            documented_params = self.<a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#ae2ca154b502383773f841776e7f1d375">get_doc_params</a>(docstring, findings)</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            <span class="comment"># Check that all functional parameters are documented</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>            <span class="keywordflow">for</span> arg <span class="keywordflow">in</span> func_def.args.args:</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>                <span class="keywordflow">if</span> arg.arg <span class="keywordflow">not</span> <span class="keywordflow">in</span> L_IGNORE_PARAM:</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>                    <span class="keywordflow">if</span> arg.arg <span class="keywordflow">not</span> <span class="keywordflow">in</span> documented_params:</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                        findings.append(f<span class="stringliteral">&quot;{arg.arg} is not documented&quot;</span>)</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>                    <span class="keywordflow">if</span> CHECK_TYPING <span class="keywordflow">and</span> arg.annotation <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>                        findings.append(f<span class="stringliteral">&quot;{arg.arg} has no typing&quot;</span>)</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>            <span class="comment"># Check that the documented parameters are present</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>            <span class="keywordflow">for</span> documented_param <span class="keywordflow">in</span> documented_params:</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>                all_args = [arg.arg <span class="keywordflow">for</span> arg <span class="keywordflow">in</span> func_def.args.args]</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>                <span class="keywordflow">if</span> func_def.args.vararg:</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                    all_args.append(func_def.args.vararg.arg)</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                <span class="keywordflow">if</span> func_def.args.kwarg:</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>                    all_args.append(func_def.args.kwarg.arg)</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>                <span class="keywordflow">if</span> documented_param <span class="keywordflow">not</span> <span class="keywordflow">in</span> all_args:</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                    findings.append(f<span class="stringliteral">&quot;{documented_param} is documented but not used&quot;</span>)</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            <span class="comment"># Check that the function return is correctly specified</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>            findings += self.<a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a1e1d775704779e0b24102db974048bff">check_return</a>(func_def, docstring)</div>
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        <span class="keywordflow">return</span> findings</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
 </div>
-<div class="foldopen" id="foldopen00178" data-start="" data-end="">
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a281a3ba7eb54b904dba9692aebb12305">  178</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a281a3ba7eb54b904dba9692aebb12305">check_file</a>(self, file_path: str) -&gt; List[str]:</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="stringliteral">        @brief  Check file for missing parameter description</span></div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="stringliteral">        @param  file_path : file name</span></div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="stringliteral">        @return list of findings in file</span></div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <span class="keyword">with</span> open(file_path, mode=<span class="stringliteral">&quot;r&quot;</span>, encoding=<span class="stringliteral">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>            code = file.read()</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        tree = ast.parse(code)</div>
+<div class="foldopen" id="foldopen00180" data-start="" data-end="">
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno"><a class="line" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a281a3ba7eb54b904dba9692aebb12305">  180</a></span>    <span class="keyword">def </span><a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a281a3ba7eb54b904dba9692aebb12305">check_file</a>(self, file_path: str) -&gt; List[str]:</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="stringliteral">        @brief  Check file for missing parameter description</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="stringliteral">        @param  file_path : file name</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="stringliteral">        @return list of findings in file</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        <span class="keyword">with</span> open(file_path, mode=<span class="stringliteral">&quot;r&quot;</span>, encoding=<span class="stringliteral">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>            code = file.read()</div>
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        file_findings = []</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        <span class="keywordflow">for</span> node <span class="keywordflow">in</span> ast.walk(tree):</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            func_def = <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            check_findings = []</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>            <span class="keywordflow">if</span> isinstance(node, ast.ClassDef):</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>                class_docstring = ast.get_docstring(node)</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                <span class="keywordflow">for</span> subnode <span class="keywordflow">in</span> node.body:</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>                    <span class="keywordflow">if</span> isinstance(subnode, (ast.FunctionDef, ast.AsyncFunctionDef)):</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>                        <span class="keywordflow">if</span> subnode.name == INIT_FUNCTION:</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                            func_def = subnode</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                            check_findings = self.<a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a35e048a82447fd07f3b9342ae0ca0f13">check_function</a>(func_def, class_docstring)</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>            <span class="keywordflow">elif</span> isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>                func_def = node</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>                check_findings = self.<a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a35e048a82447fd07f3b9342ae0ca0f13">check_function</a>(func_def)</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>            <span class="comment"># print findings</span></div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>            function_finding = <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>            <span class="keywordflow">if</span> func_def <span class="keywordflow">and</span> check_findings:</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>                function_finding = f<span class="stringliteral">&quot;{file_path}:{func_def.lineno} {func_def.name}&quot;</span></div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>            <span class="keywordflow">for</span> warning <span class="keywordflow">in</span> check_findings:</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>                function_finding += f<span class="stringliteral">&quot;\n  {warning}&quot;</span></div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>            <span class="keywordflow">if</span> function_finding:</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>                file_findings.append(function_finding)</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        <span class="keywordflow">return</span> file_findings</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        tree = ast.parse(code)</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        file_findings = []</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        <span class="keywordflow">for</span> node <span class="keywordflow">in</span> ast.walk(tree):</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>            func_def = <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>            check_findings = []</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>            <span class="keywordflow">if</span> isinstance(node, ast.ClassDef):</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>                class_docstring = ast.get_docstring(node)</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>                <span class="keywordflow">for</span> subnode <span class="keywordflow">in</span> node.body:</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                    <span class="keywordflow">if</span> isinstance(subnode, (ast.FunctionDef, ast.AsyncFunctionDef)):</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                        <span class="keywordflow">if</span> subnode.name == INIT_FUNCTION:</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                            func_def = subnode</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>                            check_findings = self.<a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a35e048a82447fd07f3b9342ae0ca0f13">check_function</a>(func_def, class_docstring)</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>            <span class="keywordflow">elif</span> isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>                func_def = node</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>                check_findings = self.<a class="code hl_function" href="classdoxy__py__checker_1_1_doxy_py_checker.html#a35e048a82447fd07f3b9342ae0ca0f13">check_function</a>(func_def)</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>            <span class="comment"># print findings</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>            function_finding = <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>            <span class="keywordflow">if</span> func_def <span class="keywordflow">and</span> check_findings:</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>                function_finding = f<span class="stringliteral">&quot;{file_path}:{func_def.lineno} {func_def.name}&quot;</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>            <span class="keywordflow">for</span> warning <span class="keywordflow">in</span> check_findings:</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>                function_finding += f<span class="stringliteral">&quot;\n  {warning}&quot;</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>            <span class="keywordflow">if</span> function_finding:</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>                file_findings.append(function_finding)</div>
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span> </div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        <span class="keywordflow">return</span> file_findings</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span> </div>
 </div>
 </div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="keywordflow">if</span> __name__ == <span class="stringliteral">&quot;__main__&quot;</span>:</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno"><a class="line" href="namespacedoxy__py__checker.html#a12bca60ef93f7afa06263e39e76ab906">  218</a></span>    doxy_checker = <a class="code hl_class" href="classdoxy__py__checker_1_1_doxy_py_checker.html">DoxyPyChecker</a>(path=<span class="stringliteral">&quot;../../&quot;</span>, print_checked_files=<span class="keyword">False</span>)</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno"><a class="line" href="namespacedoxy__py__checker.html#a8187411843a6284ffb964ef3fb9fcab3">  219</a></span>    args = doxy_checker.get_cmd_args()</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    <span class="keywordflow">if</span> args.path:</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno"><a class="line" href="namespacedoxy__py__checker.html#acf90fed603823f6ceec89babf5fed4db">  221</a></span>        doxy_checker.s_path = args.path</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    doxy_checker.run_check()</div>
-<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html">doxy_py_checker.DoxyPyChecker</a></div><div class="ttdoc">Doxygen documentation checker class.</div><div class="ttdef"><b>Definition</b> <a href="#l00027">doxy_py_checker.py:27</a></div></div>
-<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_a1e1d775704779e0b24102db974048bff"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#a1e1d775704779e0b24102db974048bff">doxy_py_checker.DoxyPyChecker.check_return</a></div><div class="ttdeci">List[str] check_return(self, ast.FunctionDef func_def, str docstring)</div><div class="ttdoc">Check for documented return value.</div><div class="ttdef"><b>Definition</b> <a href="#l00112">doxy_py_checker.py:112</a></div></div>
-<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_a281a3ba7eb54b904dba9692aebb12305"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#a281a3ba7eb54b904dba9692aebb12305">doxy_py_checker.DoxyPyChecker.check_file</a></div><div class="ttdeci">List[str] check_file(self, str file_path)</div><div class="ttdoc">Check file for missing parameter description.</div><div class="ttdef"><b>Definition</b> <a href="#l00178">doxy_py_checker.py:178</a></div></div>
-<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_a358458a48e4f29f470b0f718746fed5e"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#a358458a48e4f29f470b0f718746fed5e">doxy_py_checker.DoxyPyChecker.warnings</a></div><div class="ttdeci">warnings</div><div class="ttdef"><b>Definition</b> <a href="#l00035">doxy_py_checker.py:35</a></div></div>
-<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_a35e048a82447fd07f3b9342ae0ca0f13"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#a35e048a82447fd07f3b9342ae0ca0f13">doxy_py_checker.DoxyPyChecker.check_function</a></div><div class="ttdeci">List[str] check_function(self, ast.FunctionDef func_def, str class_docstring=None)</div><div class="ttdoc">Check function.</div><div class="ttdef"><b>Definition</b> <a href="#l00142">doxy_py_checker.py:142</a></div></div>
-<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_a40270e940cf3ebfcc1dc8b0646d021e0"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#a40270e940cf3ebfcc1dc8b0646d021e0">doxy_py_checker.DoxyPyChecker.get_files</a></div><div class="ttdeci">List[str] get_files(self)</div><div class="ttdoc">Get all python files in folder and subfolders.</div><div class="ttdef"><b>Definition</b> <a href="#l00077">doxy_py_checker.py:77</a></div></div>
-<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_a42ba3983d11dc0d89e2d59b3b86c50cb"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#a42ba3983d11dc0d89e2d59b3b86c50cb">doxy_py_checker.DoxyPyChecker.run_check</a></div><div class="ttdeci">List[str] run_check(self)</div><div class="ttdoc">Run doxygen checker.</div><div class="ttdef"><b>Definition</b> <a href="#l00053">doxy_py_checker.py:53</a></div></div>
-<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_aa5952b4b539c8ca1313c61389ab48493"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#aa5952b4b539c8ca1313c61389ab48493">doxy_py_checker.DoxyPyChecker.__init__</a></div><div class="ttdeci">__init__(self, str path=None, bool print_checked_files=True)</div><div class="ttdef"><b>Definition</b> <a href="#l00034">doxy_py_checker.py:34</a></div></div>
-<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_acf90fed603823f6ceec89babf5fed4db"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#acf90fed603823f6ceec89babf5fed4db">doxy_py_checker.DoxyPyChecker.s_path</a></div><div class="ttdeci">s_path</div><div class="ttdef"><b>Definition</b> <a href="#l00037">doxy_py_checker.py:37</a></div></div>
-<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_ae2ca154b502383773f841776e7f1d375"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#ae2ca154b502383773f841776e7f1d375">doxy_py_checker.DoxyPyChecker.get_doc_params</a></div><div class="ttdeci">set get_doc_params(self, str docstring, List findings)</div><div class="ttdoc">Get documented parameters from docstring.</div><div class="ttdef"><b>Definition</b> <a href="#l00091">doxy_py_checker.py:91</a></div></div>
-<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_af5b34b2f46ddab1c8699ebd45640885d"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#af5b34b2f46ddab1c8699ebd45640885d">doxy_py_checker.DoxyPyChecker.print_checked_files</a></div><div class="ttdeci">print_checked_files</div><div class="ttdef"><b>Definition</b> <a href="#l00040">doxy_py_checker.py:40</a></div></div>
-<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_af9e4b92cbec9cce6185645d69fd13d06"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#af9e4b92cbec9cce6185645d69fd13d06">doxy_py_checker.DoxyPyChecker.get_cmd_args</a></div><div class="ttdeci">argparse.Namespace get_cmd_args(self)</div><div class="ttdoc">Define CMD arguments.</div><div class="ttdef"><b>Definition</b> <a href="#l00042">doxy_py_checker.py:42</a></div></div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="keywordflow">if</span> __name__ == <span class="stringliteral">&quot;__main__&quot;</span>:</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno"><a class="line" href="namespacedoxy__py__checker.html#a12bca60ef93f7afa06263e39e76ab906">  220</a></span>    doxy_checker = <a class="code hl_class" href="classdoxy__py__checker_1_1_doxy_py_checker.html">DoxyPyChecker</a>(path=<span class="stringliteral">&quot;../../&quot;</span>, print_checked_files=<span class="keyword">False</span>)</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno"><a class="line" href="namespacedoxy__py__checker.html#a8187411843a6284ffb964ef3fb9fcab3">  221</a></span>    args = doxy_checker.get_cmd_args()</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    <span class="keywordflow">if</span> args.path:</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno"><a class="line" href="namespacedoxy__py__checker.html#acf90fed603823f6ceec89babf5fed4db">  223</a></span>        doxy_checker.s_path = args.path</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    doxy_checker.run_check()</div>
+<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html">doxy_py_checker.DoxyPyChecker</a></div><div class="ttdoc">Doxygen documentation checker class.</div><div class="ttdef"><b>Definition</b> <a href="#l00028">doxy_py_checker.py:28</a></div></div>
+<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_a1e1d775704779e0b24102db974048bff"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#a1e1d775704779e0b24102db974048bff">doxy_py_checker.DoxyPyChecker.check_return</a></div><div class="ttdeci">List[str] check_return(self, ast.FunctionDef func_def, str docstring)</div><div class="ttdoc">Check for documented return value.</div><div class="ttdef"><b>Definition</b> <a href="#l00114">doxy_py_checker.py:114</a></div></div>
+<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_a281a3ba7eb54b904dba9692aebb12305"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#a281a3ba7eb54b904dba9692aebb12305">doxy_py_checker.DoxyPyChecker.check_file</a></div><div class="ttdeci">List[str] check_file(self, str file_path)</div><div class="ttdoc">Check file for missing parameter description.</div><div class="ttdef"><b>Definition</b> <a href="#l00180">doxy_py_checker.py:180</a></div></div>
+<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_a358458a48e4f29f470b0f718746fed5e"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#a358458a48e4f29f470b0f718746fed5e">doxy_py_checker.DoxyPyChecker.warnings</a></div><div class="ttdeci">warnings</div><div class="ttdef"><b>Definition</b> <a href="#l00036">doxy_py_checker.py:36</a></div></div>
+<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_a35e048a82447fd07f3b9342ae0ca0f13"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#a35e048a82447fd07f3b9342ae0ca0f13">doxy_py_checker.DoxyPyChecker.check_function</a></div><div class="ttdeci">List[str] check_function(self, ast.FunctionDef func_def, str class_docstring=None)</div><div class="ttdoc">Check function.</div><div class="ttdef"><b>Definition</b> <a href="#l00144">doxy_py_checker.py:144</a></div></div>
+<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_a40270e940cf3ebfcc1dc8b0646d021e0"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#a40270e940cf3ebfcc1dc8b0646d021e0">doxy_py_checker.DoxyPyChecker.get_files</a></div><div class="ttdeci">List[str] get_files(self)</div><div class="ttdoc">Get all python files in folder and subfolders.</div><div class="ttdef"><b>Definition</b> <a href="#l00078">doxy_py_checker.py:78</a></div></div>
+<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_a42ba3983d11dc0d89e2d59b3b86c50cb"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#a42ba3983d11dc0d89e2d59b3b86c50cb">doxy_py_checker.DoxyPyChecker.run_check</a></div><div class="ttdeci">List[str] run_check(self)</div><div class="ttdoc">Run doxygen checker.</div><div class="ttdef"><b>Definition</b> <a href="#l00054">doxy_py_checker.py:54</a></div></div>
+<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_aa5952b4b539c8ca1313c61389ab48493"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#aa5952b4b539c8ca1313c61389ab48493">doxy_py_checker.DoxyPyChecker.__init__</a></div><div class="ttdeci">__init__(self, str path=None, bool print_checked_files=True)</div><div class="ttdef"><b>Definition</b> <a href="#l00035">doxy_py_checker.py:35</a></div></div>
+<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_acf90fed603823f6ceec89babf5fed4db"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#acf90fed603823f6ceec89babf5fed4db">doxy_py_checker.DoxyPyChecker.s_path</a></div><div class="ttdeci">s_path</div><div class="ttdef"><b>Definition</b> <a href="#l00038">doxy_py_checker.py:38</a></div></div>
+<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_ae2ca154b502383773f841776e7f1d375"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#ae2ca154b502383773f841776e7f1d375">doxy_py_checker.DoxyPyChecker.get_doc_params</a></div><div class="ttdeci">set get_doc_params(self, str docstring, List findings)</div><div class="ttdoc">Get documented parameters from docstring.</div><div class="ttdef"><b>Definition</b> <a href="#l00093">doxy_py_checker.py:93</a></div></div>
+<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_af5b34b2f46ddab1c8699ebd45640885d"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#af5b34b2f46ddab1c8699ebd45640885d">doxy_py_checker.DoxyPyChecker.print_checked_files</a></div><div class="ttdeci">print_checked_files</div><div class="ttdef"><b>Definition</b> <a href="#l00041">doxy_py_checker.py:41</a></div></div>
+<div class="ttc" id="aclassdoxy__py__checker_1_1_doxy_py_checker_html_af9e4b92cbec9cce6185645d69fd13d06"><div class="ttname"><a href="classdoxy__py__checker_1_1_doxy_py_checker.html#af9e4b92cbec9cce6185645d69fd13d06">doxy_py_checker.DoxyPyChecker.get_cmd_args</a></div><div class="ttdeci">argparse.Namespace get_cmd_args(self)</div><div class="ttdoc">Define CMD arguments.</div><div class="ttdef"><b>Definition</b> <a href="#l00043">doxy_py_checker.py:43</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="doxy__py__checker_8py.html">doxy_py_checker.py</a></li>
-    <li class="footer">Generated on Tue Jan 9 2024 22:23:05 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+    <li class="footer">Generated on Mon May 27 2024 07:36:51 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>

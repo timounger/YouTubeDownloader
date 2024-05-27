@@ -5,5 +5,6 @@ var searchData=
   ['0_202_2',['v1.0.2',['../_c_h_a_n_g_e_l_o_g.html#autotoc_md3',1,'']]],
   ['0_203_3',['v1.0.3',['../_c_h_a_n_g_e_l_o_g.html#autotoc_md2',1,'']]],
   ['0_204_4',['v1.0.4',['../_c_h_a_n_g_e_l_o_g.html#autotoc_md1',1,'']]],
-  ['0_20definitions_5',['0. Definitions',['../_l_i_c_e_n_s_e.html#autotoc_md26',1,'']]]
+  ['0_205_5',['v1.0.5',['../_c_h_a_n_g_e_l_o_g.html#autotoc_md0',1,'']]],
+  ['0_20definitions_6',['0. Definitions',['../_l_i_c_e_n_s_e.html#autotoc_md26',1,'']]]
 ];

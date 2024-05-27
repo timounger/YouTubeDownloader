@@ -60,6 +60,6 @@ var searchData=
   ['source_3a_3ayoutube_5fdownloader_57',['youtube_downloader',['../namespace_source_1_1youtube__downloader.html',1,'Source']]],
   ['start_5fdownload_58',['start_download',['../class_source_1_1_controller_1_1main__window_1_1_youtube_downloader.html#a366a4eb07c06437fae8716afbc3a997c',1,'Source::Controller::main_window::YoutubeDownloader']]],
   ['style_59',['style',['../class_source_1_1_controller_1_1main__window_1_1_youtube_downloader.html#aa510d394c6f2524f1fd21d373143d08d',1,'Source::Controller::main_window::YoutubeDownloader']]],
-  ['support_60',['OS Support',['../index.html#autotoc_md48',1,'']]],
+  ['support_60',['OS Support',['../index.html#autotoc_md47',1,'']]],
   ['surrender_20of_20others_20freedom_61',['12. No Surrender of Others&apos; Freedom',['../_l_i_c_e_n_s_e.html#autotoc_md38',1,'']]]
 ];

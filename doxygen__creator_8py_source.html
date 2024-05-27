@@ -32,7 +32,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="YouTubeDownloader.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.0.4</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.0.5</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -896,9 +896,11 @@ $(function(){initNavTree('doxygen__creator_8py_source.html',''); initResizable()
 <div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span>    doxygen_creator.set_configuration(<span class="stringliteral">&quot;PROJECT_BRIEF&quot;</span>, __description__)</div>
 <div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span>    doxygen_creator.set_configuration(<span class="stringliteral">&quot;PROJECT_LOGO&quot;</span>, f<span class="stringliteral">&quot;{S_MAIN_FOLDER_FOLDER}{S_ICON_RESOURCE_PATH}&quot;</span>)</div>
 <div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>    doxygen_creator.set_configuration(<span class="stringliteral">&quot;INPUT&quot;</span>, S_MAIN_FOLDER_FOLDER)</div>
-<div class="line"><a id="l00708" name="l00708"></a><span class="lineno"><a class="line" href="namespacedoxygen__creator.html#ab3fd704054bc4667088f6a737e9bd430">  708</a></span>    l_file_pattern = [S_PYTHON_PATTERN, <span class="stringliteral">&quot;*.md&quot;</span>, <span class="stringliteral">&quot;*.bat&quot;</span>, <span class="stringliteral">&quot;*.pyproject&quot;</span>, <span class="stringliteral">&quot;*.iss&quot;</span>, <span class="stringliteral">&quot;*.yml&quot;</span>, <span class="stringliteral">&quot;*.txt&quot;</span>]</div>
-<div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span>    doxygen_creator.set_configuration(<span class="stringliteral">&quot;FILE_PATTERNS&quot;</span>, l_file_pattern)</div>
-<div class="line"><a id="l00710" name="l00710"></a><span class="lineno">  710</span>    sys.exit(doxygen_creator.run_doxygen(b_open_doxygen_output=args.open))</div>
+<div class="line"><a id="l00708" name="l00708"></a><span class="lineno"><a class="line" href="namespacedoxygen__creator.html#a14146a445e7377d33374f74636ef62c1">  708</a></span>    l_exclude_pattern = [<span class="stringliteral">&quot;.env&quot;</span>]</div>
+<div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span>    doxygen_creator.set_configuration(<span class="stringliteral">&quot;EXCLUDE_PATTERNS&quot;</span>, l_exclude_pattern)</div>
+<div class="line"><a id="l00710" name="l00710"></a><span class="lineno"><a class="line" href="namespacedoxygen__creator.html#ab3fd704054bc4667088f6a737e9bd430">  710</a></span>    l_file_pattern = [S_PYTHON_PATTERN, <span class="stringliteral">&quot;*.md&quot;</span>, <span class="stringliteral">&quot;*.bat&quot;</span>, <span class="stringliteral">&quot;*.pyproject&quot;</span>, <span class="stringliteral">&quot;*.iss&quot;</span>, <span class="stringliteral">&quot;*.yml&quot;</span>, <span class="stringliteral">&quot;*.txt&quot;</span>]</div>
+<div class="line"><a id="l00711" name="l00711"></a><span class="lineno">  711</span>    doxygen_creator.set_configuration(<span class="stringliteral">&quot;FILE_PATTERNS&quot;</span>, l_file_pattern)</div>
+<div class="line"><a id="l00712" name="l00712"></a><span class="lineno">  712</span>    sys.exit(doxygen_creator.run_doxygen(b_open_doxygen_output=args.open))</div>
 <div class="ttc" id="aclassdoxygen__creator_1_1_doxygen_creator_html"><div class="ttname"><a href="classdoxygen__creator_1_1_doxygen_creator.html">doxygen_creator.DoxygenCreator</a></div><div class="ttdoc">Class to generate Doxygen documentation for any code documentation with uniform settings and styling.</div><div class="ttdef"><b>Definition</b> <a href="#l00088">doxygen_creator.py:88</a></div></div>
 <div class="ttc" id="aclassdoxygen__creator_1_1_doxygen_creator_html_a0dfc687b25b3de28ba5aad147f835451"><div class="ttname"><a href="classdoxygen__creator_1_1_doxygen_creator.html#a0dfc687b25b3de28ba5aad147f835451">doxygen_creator.DoxygenCreator.edit_select_doxyfile_settings</a></div><div class="ttdeci">edit_select_doxyfile_settings(self)</div><div class="ttdoc">Override default settings in doxyfile with selected settings.</div><div class="ttdef"><b>Definition</b> <a href="#l00480">doxygen_creator.py:480</a></div></div>
 <div class="ttc" id="aclassdoxygen__creator_1_1_doxygen_creator_html_a1093605732045db09d6a071537e73ade"><div class="ttname"><a href="classdoxygen__creator_1_1_doxygen_creator.html#a1093605732045db09d6a071537e73ade">doxygen_creator.DoxygenCreator.set_configuration</a></div><div class="ttdeci">set_configuration(self, str s_type, Any value, bool b_override=True)</div><div class="ttdoc">Set doxygen configuration.</div><div class="ttdef"><b>Definition</b> <a href="#l00408">doxygen_creator.py:408</a></div></div>
@@ -935,7 +937,7 @@ $(function(){initNavTree('doxygen__creator_8py_source.html',''); initResizable()
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="doxygen__creator_8py.html">doxygen_creator.py</a></li>
-    <li class="footer">Generated on Tue Jan 9 2024 22:23:05 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+    <li class="footer">Generated on Mon May 27 2024 07:36:51 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>

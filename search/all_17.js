@@ -15,6 +15,6 @@ var searchData=
   ['of_20warranty_12',['15. Disclaimer of Warranty',['../_l_i_c_e_n_s_e.html#autotoc_md41',1,'']]],
   ['open_5fdownload_5ffolder_13',['open_download_folder',['../class_source_1_1_controller_1_1main__window_1_1_youtube_downloader.html#ae0c6f79be48f5efbc7e7e3362622ed35',1,'Source::Controller::main_window::YoutubeDownloader']]],
   ['opennotepad_14',['OpenNotepad',['../classdoxygen__creator_1_1_open_notepad.html',1,'doxygen_creator']]],
-  ['os_20support_15',['OS Support',['../index.html#autotoc_md48',1,'']]],
+  ['os_20support_15',['OS Support',['../index.html#autotoc_md47',1,'']]],
   ['others_20freedom_16',['12. No Surrender of Others&apos; Freedom',['../_l_i_c_e_n_s_e.html#autotoc_md38',1,'']]]
 ];

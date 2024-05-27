@@ -32,7 +32,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="YouTubeDownloader.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.0.4</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.0.5</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -165,10 +165,6 @@ $(function(){initNavTree('_c_o_n_t_r_i_b_u_t_i_n_g.html',''); initResizable(); }
 <div class="textblock"><h2><a class="anchor" id="autotoc_md8"></a>
 Architektur 🏭️</h2>
 <p>Das YouTubeDownloader Tool ist nach dem Model-View-Controller (MVC) Pattern aufgebaut, wobei eine klare Trennung zwischen View und Controller nicht möglich ist.</p>
-<blockquote class="doxtable">
-<p>&zwj;In Qt land the distinction between the View &amp; Controller gets a little murky. Qt accepts input events from the user (via the OS) and delegates these to the widgets (Controller) to handle. However, widgets also handle presentation of the current state to the user, putting them squarely in the View. Rather than agonize over where to draw the line, in Qt-speak the View and Controller are instead merged together creating a Model/ViewController architecture — called "Model View" for simplicity sake. <a href="https://pythonguis.com/tutorials/modelview-architecture/">Quelle</a> <br  />
- </p>
-</blockquote>
 <div class="plantumlgraph">
 <object type="image/svg+xml" data="cdYouTubeDownloaderSWComponents.svg"></object>
 </div>
@@ -177,24 +173,24 @@ Einstiegspunkt</h3>
 <p>Der Einstiegspunkt in die Anwendung ist die Datei <code><a class="el" href="youtube__downloader_8py.html">youtube_downloader.py</a></code>. Sie startet den Startbildschirm und dann das Anwendungsfenster.</p>
 <h3><a class="anchor" id="autotoc_md10"></a>
 Controller</h3>
-<p>Das gestartete Anwendungsfenster wird von den verschiedenen View Controllern (<code>Source/Controller</code>) gesteuert. Diese verarbeiten die Benutzereingaben, aktualisieren die im Model gespeicherten Daten und aktualisieren auf dieser Basis die View. Es ist eine Mischung aus View und Controller. Für jeden Teil der Anwendung gibt es einen eigenen Controller, z.B. steuert der <code>MainWindowController</code> das Hauptfenster der Anwendung inklusive Menüleiste, Verbindung zur Hardware, etc. Jeder Reiter oder Dialog wird von einem eigenen Controller gesteuert.</p>
+<p>Das gestartete Anwendungsfenster wird von den verschiedenen View Controllern (<code>Source/Controller</code>) gesteuert. Diese verarbeiten die Benutzereingaben, aktualisieren die im Model gespeicherten Daten und aktualisieren auf dieser Basis die View. Es ist eine Mischung aus View und Controller.</p>
 <h3><a class="anchor" id="autotoc_md11"></a>
 Background-Worker</h3>
 <p>Ressourcenintensive Operationen wie z.B. der Download von YouTube Inhalten werden in Threads ausgelagert und befinden sich unter <code>Source/Worker</code>. Dadurch wird der Main-Thread nicht blockiert, so dass die GUI nicht einfriert.</p>
 <h3><a class="anchor" id="autotoc_md12"></a>
 Util</h3>
-<p>Anwendungsweite, globale Konstanten und andere Daten werden in <code><a class="el" href="downloader__data_8py.html">Util/downloader_data.py</a></code> gespeichert. Die Log-Konfiguration wird von der Klasse <code>LogConfig</code> in <code>Util/bonprinter_log.py</code> verwaltet. Der globale Exception Handler befindet sich in <code>Util/bonprinter_err_handler.py</code>.</p>
+<p>Anwendungsweite, globale Konstanten und andere Daten werden in <code><a class="el" href="downloader__data_8py.html">Util/downloader_data.py</a></code> gespeichert.</p>
 <hr  />
 <h2><a class="anchor" id="autotoc_md14"></a>
 Versionsverwaltung</h2>
-<p>Die Version ist in <code><a class="el" href="downloader__data_8py.html">Source/Util/downloader_data.py</a></code> gespeichert und wird manuell aktualisiert. Im Ordner <code>Executable</code> befindet sich ein Hilfsskript (<code><a class="el" href="generate__version__file_8py.html">Executable/generate_version_file.py</a></code>), welches die aktuelle Versionsinfo-Datei erzeugt, die für die Generierung der Exe-Datei benötigt wird.</p>
+<p>Die Version ist in <code><a class="el" href="version_8py.html">Source/version.py</a></code> gespeichert und wird manuell aktualisiert. Im Ordner <code>Executable</code> befindet sich ein Hilfsskript (<code><a class="el" href="generate__version__file_8py.html">Executable/generate_version_file.py</a></code>), welches die aktuelle Versionsinfo-Datei erzeugt, die für die Generierung der Exe-Datei benötigt wird.</p>
 <hr  />
 <h2><a class="anchor" id="autotoc_md16"></a>
 Exe-Generierung 🔧</h2>
 <p>Die Generierung der EXE erfolgt mit Hilfe des <code>pyinstallers</code>. In der Datei <code><a class="el" href="generate__executable_8py.html">Executable/generate_executable.py</a></code> werden die notwendigen Parameter angegeben. Durch Ausführen des Batch-Skripts wird die EXE im Verzeichnis <code>Executable/bin</code> erzeugt.</p>
 <h2><a class="anchor" id="autotoc_md17"></a>
 Setup-Generierung 🔧</h2>
-<p>Die Generierung des Installers erfolgt mit Hilfe von <a href="https://jrsoftware.org/isdl.php">InnoSetup6</a>. In der Datei <code>Executable/setup_bonprinter.iss</code> sind die notwendigen Parameter spezifiziert. Durch Ausführen des Batch-Skripts <code><a class="el" href="generate__setup_8bat.html">Executable/generate_setup.bat</a></code> wird der Installer EXE im Ordner <code>Executable/bin</code> erzeugt.</p>
+<p>Die Generierung des Installers erfolgt mit Hilfe von <a href="https://jrsoftware.org/isdl.php">InnoSetup6</a>. In der Datei <code><a class="el" href="setup__youtubedownloader_8iss.html">Executable/setup_youtubedownloader.iss</a></code> sind die notwendigen Parameter spezifiziert. Durch Ausführen des Batch-Skripts <code><a class="el" href="generate__setup_8bat.html">Executable/generate_setup.bat</a></code> wird der Installer EXE im Ordner <code>Executable/bin</code> erzeugt.</p>
 <hr  />
 <h2><a class="anchor" id="autotoc_md19"></a>
 GitHub Release Schritte</h2>
@@ -203,7 +199,7 @@ Vorbereitung</h3>
 <ul>
 <li>[ ] Versionierung hochzählen</li>
 <li>[ ] <code>B_DEBUG</code> im Code auf <code>False</code> setzen</li>
-<li>[ ] Versionen der Pakete von Drittanbietern (<code><a class="el" href="requirements_8txt.html">Documentation/Installation/requirements.txt</a></code>, <code><a class="el" href="constraints_8txt.html">Documentation/Installation/constraints.txt</a></code>) (und optional Python-Version) aktualisieren (wenn die PyQT-Version aktualisiert wird, müssen die Views anschließend neu generiert werden)</li>
+<li>[ ] Versionen der Pakete von Drittanbietern (<code><a class="el" href="requirements_8txt.html">Documentation/Installation/requirements.txt</a></code>, <code><a class="el" href="constraints_8txt.html">Documentation/Installation/constraints.txt</a></code>) (und optional Python-Version) aktualisieren</li>
 <li>[ ] Liste der erlaubten, in EXE eingebundenen Pakete aktualisieren (<code>L_ALLOWED_THIRD_PARTY_PACKAGES</code> in <code><a class="el" href="check__included__packages_8py.html">Executable/check_included_packages.py</a></code>)</li>
 <li>[ ] Nicht benötigte Pakete explizit ausschließen (<code>L_EXCLUDE_MODULES</code> in <code><a class="el" href="generate__executable_8py.html">Executable/generate_executable.py</a></code>).</li>
 </ul>
@@ -224,7 +220,7 @@ Freigabe</h3>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jan 9 2024 22:23:05 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+    <li class="footer">Generated on Mon May 27 2024 07:36:51 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>
