@@ -9,12 +9,15 @@
 # autopep8: off
 import sys
 import os
+import logging
 
 from PyInstaller.utils.win32.versioninfo import VSVersionInfo, FixedFileInfo, StringFileInfo, StringTable, StringStruct, VarFileInfo, VarStruct
 
 if __name__ == "__main__":
     sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from Source.version import VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_BUILD, __title__, __description__, __version__, __copyright__ # pylint: disable=wrong-import-position
+
+log = logging.getLogger("GenerateVersionFile")
 # autopep8: on
 
 versionInfo = VSVersionInfo(
@@ -61,11 +64,11 @@ def generate_version_file(s_filename: str, s_workpath: str):
     @param s_workpath : workpath
     """
     s_version_file = os.path.join(s_workpath, s_filename)
-    print(f"Generate version file {s_version_file} (Version: {__version__})")
+    log.info("Generate version file %s (Version: %s)", s_version_file, __version__)
     if not os.path.exists(s_workpath):
         os.mkdir(s_workpath)
     else:
-        print(f"Directory {s_workpath} already exists")
+        log.info("Directory %s already exists", s_workpath)
     with open(s_version_file, mode="w", encoding="utf-8") as version_file:
         version_file.write(str(versionInfo))
 

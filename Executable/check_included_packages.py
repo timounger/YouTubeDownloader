@@ -8,9 +8,12 @@
 """
 
 import sys
+import logging
 import re
 from typing import List
 from bs4 import BeautifulSoup
+
+log = logging.getLogger("CheckIncludedPackages")
 
 # List of third party packages that may be contained in the PyInstaller executable.
 # Has to be manually extended if a new package gets added to the tool.
@@ -56,19 +59,19 @@ def check_included_packages() -> List:
         for o_target in l_targets:
             s_package_path = o_target["href"]
             if regex_third_party.search(s_package_path):
-                d_third_party[regex_third_party_name.search(s_package_path).group().split("/")[0].replace(".py", "")] = ""
+                d_third_party[regex_third_party_name.search(s_package_path).group().split("/", maxsplit=1)[0].replace(".py", "")] = ""
             elif regex_builtin.search(s_package_path):
                 d_buildin[regex_builtin_name.search(s_package_path).group().replace(".py", "")] = ""
             elif regex_own_packs.search(s_package_path):
                 d_own_packs[regex_own_packs.search(s_package_path).group()] = ""
 
     # print included packages
-    print("\nThird party packages:")
-    print("\n".join(list(d_third_party.keys())))
-    # print("\nOwn packages:")
-    # print("\n".join(list(d_own_packs.keys())))
-    # print("\nPython buildin packages:")
-    # print("\n".join(list(d_buildin.keys())))
+    log.info("\nThird party packages:")
+    log.info("\n".join(list(d_third_party.keys())))
+    # log.info("\nOwn packages:")
+    # log.info("\n".join(list(d_own_packs.keys())))
+    # log.info("\nPython buildin packages:")
+    # log.info("\n".join(list(d_buildin.keys())))
 
     # check third party packages
     l_not_allowed_packages = []

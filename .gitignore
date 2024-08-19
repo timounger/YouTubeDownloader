@@ -6,6 +6,7 @@
 
 # Source
 /Source/Download
+/Source/Util/git_version.py
 
 # Doxygen
 /Documentation/DoxygenCreator/doxygen-*.windows.x64.bin.zip

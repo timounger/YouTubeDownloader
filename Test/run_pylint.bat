@@ -1,25 +1,24 @@
 :: "run_pylint.bat"
-:: run pylint over YouTubeDownloader code
+:: run pylint over code
 
 @echo off
 
 set MAIN_DIR=..\
 set TEST_DIR=Test
 set TARGET_DIR=Source
-set IGNORE_LIST=
 set CONFIG_FILE=%TEST_DIR%\.pylintrc
 set LOG_FILE=%TEST_DIR%\pylint_YouTubeDownloader.log
 set PY_PATH=.env\Scripts\python
 
 cd %MAIN_DIR%
 
-%PY_PATH% -m pylint --rcfile=%CONFIG_FILE% --reports=y --output-format=text --output=%LOG_FILE% --output-format=text --ignore=%IGNORE_LIST% %TARGET_DIR%
+%PY_PATH% -m pylint --rcfile=%CONFIG_FILE% --reports=y --output-format=text --output=%LOG_FILE% %TARGET_DIR%
 echo 'pylint exit code: %ERRORLEVEL%'>>%LOG_FILE%
 start notepad %LOG_FILE%
-if errorlevel 1 (
+if %ERRORLEVEL% NEQ 0 (
   type %LOG_FILE%
-  echo Pylint failed with error code %errorlevel%.
-  exit /b %errorlevel%
+  echo Pylint failed with error code %ERRORLEVEL%.
+  exit /b %ERRORLEVEL%
 ) else (
   type %LOG_FILE%
   echo Pylint check passed.

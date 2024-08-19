@@ -7,10 +7,13 @@
 """
 
 import os
+import logging
 from typing import List
 import argparse
 import ast
 import astunparse
+
+log = logging.getLogger("DoxyPyChecker")
 
 S_DEFAULT_PATH = "./"
 L_IGNORE_PARAM = ["self", "cls"]
@@ -62,16 +65,16 @@ class DoxyPyChecker:
             l_files = L_DEBUG_FILE
         for file in l_files:
             if self.print_checked_files:
-                print(f"Check docs for file: {file}", )
+                log.info("Check docs for file: %s", file)
             findings += self.check_file(file)
 
             # print result
         if findings:
-            print(f"Found {len(findings)} Function with Warnings in {len(l_files)} files.")
+            log.warning("Found %s Function with Warnings in %s files.", len(findings), len(l_files))
             for text in findings:
-                print(text)
+                log.warning(text)
         else:
-            print("All functions correctly documented.")
+            log.info("All functions correctly documented.")
 
         return findings
 
