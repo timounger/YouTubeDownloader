@@ -6,6 +6,10 @@
 *****************************************************************************
 """
 
+# autopep8: off
+import sys
+import os
+import logging
 import re
 from typing import NamedTuple, List
 import requests
@@ -16,15 +20,19 @@ from openpyxl.worksheet.worksheet import Worksheet
 from openpyxl.styles import Font, PatternFill, Alignment
 from openpyxl.styles.borders import Border
 
+sys.path.append(os.path.join(os.path.dirname(__file__), "../../"))
+from Source.Util.colored_log import init_console_logging  # pylint: disable=wrong-import-position
+# autopep8: on
+
+log = logging.getLogger("UpdatePyRequirements")
+init_console_logging(logging.INFO)
+
 L_FILES = ["requirements.txt", "constraints.txt"]  # files to update
 L_IGNORE_PACKAGES = []
 MAX_COLUMN_WIDTH = 30
 FONT_SIZE = 11
 FONT_NAME = "Consolas"
 I_TIMEOUT = 2  # timeout to get pip data
-
-B_PRINT_PACAKGES = False
-B_PRINT_UPDATES_PACKAGES = True
 
 L_PACKAGE_INFO_TITLE = ["Package", "Version", "Author", "Author_Mail", "License", "Homepage", "Package URL", "Requires", "Requires Py"]
 
@@ -80,7 +88,7 @@ def set_cell(ws: Worksheet, i_row: int, i_column: int, value: any = None, b_bold
     @param b_underline : status if cell content should be underlined
     @param i_font_size : font size
     @param s_font : font art
-    @param fill_color : backgourn fill color of cell
+    @param fill_color : background fill color of cell
     @param align : text align of cell
     @param s_format : format of cell
     @param s_border : boarder of cell
@@ -140,7 +148,7 @@ def create_package_summary_xls(l_package_info: List):
     set_column_autowidth(worksheet)
     worksheet.freeze_panes = "C2"
     workbook.save(filename="PackageInfos.xlsx")
-    print(f"Write {len(l_added_package)} package infos to file")
+    log.info("Write %s package infos to file", len(l_added_package))
 
 
 def get_package_info(package: str) -> PackageInfo:
@@ -155,7 +163,7 @@ def get_package_info(package: str) -> PackageInfo:
         response.raise_for_status()
         package_info = response.json()
     except requests.exceptions.RequestException as e:
-        print(f"Error occurred: {e}")
+        log.error("Error occurred: %s", e)
         package_info = None
     else:
         l_requires_dist = []
@@ -177,7 +185,7 @@ def get_package_info(package: str) -> PackageInfo:
 
 def update_packages(filename: str) -> List:
     """!
-    @brief  Upgrade package from text file to latest version
+    @brief  Update package from text file to latest version
     @param  filename : file name
     @return  list with updated packages
     """
@@ -195,27 +203,29 @@ def update_packages(filename: str) -> List:
             if comment != "":
                 comment = f" {comment}"
             package_info = get_package_info(package)
-            l_package_info.append(package_info)
-            if (package not in L_IGNORE_PACKAGES) and package_info.version and (package_info.version != version):
-                updated_lines.append(f"{package}=={package_info.version}{comment}\n")
-                i_update_cnt += 1
-                if B_PRINT_PACAKGES or B_PRINT_UPDATES_PACKAGES:
-                    print(f"Updated: {package} {package_info.version}")
+            if (package_info is not None) and (package not in L_IGNORE_PACKAGES):
+                if package_info.version and (package_info.version != version):
+                    updated_lines.append(f"{package}=={package_info.version}{comment}\n")
+                    i_update_cnt += 1
+                    log.info("Updated: %s %s", package, package_info.version)
+                else:
+                    updated_lines.append(line)
+                    log.debug(line)
+                l_package_info.append(package_info)
             else:
                 updated_lines.append(line)
-                if B_PRINT_PACAKGES:
-                    print(line)
+                log.debug(line)
         else:  # package without version
             updated_lines.append(line)
             if line.strip():
                 package_info = get_package_info(line)
-                l_package_info.append(package_info)
-                if B_PRINT_PACAKGES:
-                    print(line)
+                if package_info is not None:
+                    l_package_info.append(package_info)
+                    log.debug(line)
 
     with open(filename, mode="w", encoding="utf-8") as file:
         file.writelines(updated_lines)
-        print(f"{i_update_cnt} packages updates in {filename}\n")
+        log.info("%s packages updates in %s\n", i_update_cnt, filename)
     return l_package_info
 
 
@@ -226,4 +236,4 @@ if __name__ == "__main__":
         l_all_package_info += l_file_package
     if l_all_package_info:
         create_package_summary_xls(l_all_package_info)
-    print("All packages checked and updated!")
+    log.info("All packages checked and updated!")
