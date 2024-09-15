@@ -1,9 +1,8 @@
-# This Python file uses the following encoding: utf-8
-"""
-*****************************************************************************
- @file    generate_version_file.py
- @brief   Utility script to create a version info .txt file for the executable.
-*****************************************************************************
+"""!
+********************************************************************************
+@file    generate_version_file.py
+@brief   Utility script to create a version info .txt file for the executable.
+********************************************************************************
 """
 
 # autopep8: off

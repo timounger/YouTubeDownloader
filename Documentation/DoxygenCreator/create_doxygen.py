@@ -1,9 +1,8 @@
-# This Python file uses the following encoding: utf-8
-"""
-*****************************************************************************
- @file    create_doxygen.py
- @brief   create doxygen documentation for project
-*****************************************************************************
+"""!
+********************************************************************************
+@file    create_doxygen.py
+@brief   create doxygen documentation for project
+********************************************************************************
 """
 
 # autopep8: off

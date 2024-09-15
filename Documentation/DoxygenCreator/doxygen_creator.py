@@ -1,9 +1,8 @@
-# This Python file uses the following encoding: utf-8
-"""
-*****************************************************************************
- @file    doxygen_creator.py
- @brief   create doxygen documentation
-*****************************************************************************
+"""!
+********************************************************************************
+@file    doxygen_creator.py
+@brief   create doxygen documentation
+********************************************************************************
 """
 
 import os
@@ -14,12 +13,13 @@ import webbrowser
 import time
 import argparse
 import zipfile
-from typing import Any
+from typing import Any, Optional
 from threading import Thread
 from difflib import get_close_matches
-from doxygen import ConfigParser
 import requests
 import packaging.version
+
+from Documentation.DoxygenCreator.configParser import ConfigParser
 
 B_PLANTUML_SUPPORT = True
 B_GITHUB_CORNER_SUPPORT = True
@@ -36,20 +36,13 @@ log = logging.getLogger("DoxygenCreator")
 YES = "YES"
 NO = "NO"
 WARNING_FAIL = "FAIL_ON_WARNINGS"
-S_DEFAULT = "_DEFAULT_KEY"  # this values not set in doxyfile
-S_REQUIRED = "_REQUIRED_KEY"  # this values not set in doxyfile and you will get a warning if forget to override this value
-L_OVERRIDE = [S_DEFAULT, S_REQUIRED]  # this values are possible to override with global settings
 
 S_DOXYGEN_PATH = "doxygen.exe"  # required: add doxygen bin path to file path in system variables
 S_DEFAULT_OUTPUT_FOLDER = "Output_Doxygen"
 
 S_MAIN_FOLDER_FOLDER = "../../"
-if B_FOOTER_SUPPORT:
-    S_FOOTER = S_REQUIRED
-else:
-    S_FOOTER = S_DEFAULT
 
-DOXYGEN_VERSION = "1.11.0"
+DOXYGEN_VERSION = "1.12.0"
 S_DOXYGEN_URL = f"https://sourceforge.net/projects/doxygen/files/rel-{DOXYGEN_VERSION}/doxygen-{DOXYGEN_VERSION}.windows.x64.bin.zip/download"
 S_DOXYGEN_ZIP = f"doxygen-{DOXYGEN_VERSION}.windows.x64.bin.zip"
 S_DOXYGEN_DLL = "libclang.dll"
@@ -60,20 +53,20 @@ S_INDEX_FILE = "html/index.html"
 I_TIMEOUT = 5  # timeout for tool download
 
 S_PYTHON_PATTERN = "*.py"
-L_DEFAULT_FILE_PATTERN = []
+L_DEFAULT_FILE_PATTERN: list[str] = []
 
 if B_PLANTUML_SUPPORT:
-    PLANT_UML_VERSION = "1.2024.5"
+    PLANT_UML_VERSION = "1.2024.7"
     S_PLANTUML_JAR_URL = f"https://github.com/plantuml/plantuml/releases/download/v{PLANT_UML_VERSION}/plantuml-{PLANT_UML_VERSION}.jar"
     S_PLANTUML_JAR_NAME = "plantuml.jar"
     S_PLANTUML_PATH = "./"  # need plantuml.jar in this folder
 else:
-    S_PLANTUML_PATH = S_DEFAULT
+    S_PLANTUML_PATH = ""
 
 if B_DOXY_CONFIG_DIFF_SUPPORT:
     S_DOXY_DIFF_HTML_NAME = "DoxyfileDiff.html"
     S_DOXY_FILE_DEFAULT_NAME = "Default.Doxyfile"
-    I_WRAP_LENGHT = 100
+    I_WRAP_LENGTH = 100
 
 if B_GITHUB_CORNER_SUPPORT:
     S_GITHUB_CORNER_FIRST = "<a href="
@@ -106,309 +99,54 @@ class DoxygenCreator():
     @param  s_webside : URL to website
     """
     d_settings = {
-        "DOXYFILE_ENCODING": S_DEFAULT,  # UTF-8
         "PROJECT_NAME": "MyProject",  # important to define default user name to create output folder and files
-        "PROJECT_NUMBER": S_DEFAULT,
-        "PROJECT_BRIEF": S_REQUIRED,
-        "PROJECT_LOGO": S_REQUIRED,
-        "PROJECT_ICON": S_DEFAULT,
         "OUTPUT_DIRECTORY": S_DEFAULT_OUTPUT_FOLDER,
-        "CREATE_SUBDIRS": S_DEFAULT,
-        "CREATE_SUBDIRS_LEVEL": S_DEFAULT,
-        "ALLOW_UNICODE_NAMES": S_DEFAULT,
-        "OUTPUT_LANGUAGE": S_DEFAULT,
-        "BRIEF_MEMBER_DESC": S_DEFAULT,
-        "REPEAT_BRIEF": S_DEFAULT,
         "ABBREVIATE_BRIEF": "",  # Each string in this list, will be stripped from the text ("" to prevent warning)
-        "ALWAYS_DETAILED_SEC": S_DEFAULT,
-        "INLINE_INHERITED_MEMB": S_DEFAULT,
         "FULL_PATH_NAMES": NO,
-        "STRIP_FROM_PATH": S_DEFAULT,
-        "STRIP_FROM_INC_PATH": S_DEFAULT,
-        "SHORT_NAMES": S_DEFAULT,
         "JAVADOC_AUTOBRIEF": YES,  # first line (until the first dot) of a Javadoc-style comment as the brief description
-        "JAVADOC_BANNER": S_DEFAULT,
-        "QT_AUTOBRIEF": S_DEFAULT,
-        "MULTILINE_CPP_IS_BRIEF": S_DEFAULT,
-        "PYTHON_DOCSTRING": S_DEFAULT,
-        "INHERIT_DOCS": S_DEFAULT,
-        "SEPARATE_MEMBER_PAGES": S_DEFAULT,
-        "TAB_SIZE": S_DEFAULT,
-        "ALIASES": S_DEFAULT,
-        "OPTIMIZE_OUTPUT_FOR_C": S_DEFAULT,
         "OPTIMIZE_OUTPUT_JAVA": YES,
-        "OPTIMIZE_FOR_FORTRAN": S_DEFAULT,
-        "OPTIMIZE_OUTPUT_VHDL": S_DEFAULT,
-        "OPTIMIZE_OUTPUT_SLICE": S_DEFAULT,
-        "EXTENSION_MAPPING": S_DEFAULT,
-        "MARKDOWN_SUPPORT": S_DEFAULT,
-        "TOC_INCLUDE_HEADINGS": S_DEFAULT,
-        "MARKDOWN_ID_STYLE": S_DEFAULT,
-        "AUTOLINK_SUPPORT": S_DEFAULT,
-        "BUILTIN_STL_SUPPORT": S_DEFAULT,
-        "CPP_CLI_SUPPORT": S_DEFAULT,
-        "SIP_SUPPORT": S_DEFAULT,
-        "IDL_PROPERTY_SUPPORT": S_DEFAULT,
-        "DISTRIBUTE_GROUP_DOC": S_DEFAULT,
-        "GROUP_NESTED_COMPOUNDS": S_DEFAULT,
-        "SUBGROUPING": S_DEFAULT,
-        "INLINE_GROUPED_CLASSES": S_DEFAULT,
-        "INLINE_SIMPLE_STRUCTS": S_DEFAULT,
-        "TYPEDEF_HIDES_STRUCT": S_DEFAULT,
-        "LOOKUP_CACHE_SIZE": S_DEFAULT,
-        "NUM_PROC_THREADS": S_DEFAULT,
         "TIMESTAMP": YES,
         "EXTRACT_ALL": YES,
-        "EXTRACT_PRIVATE": S_DEFAULT,
-        "EXTRACT_PRIV_VIRTUAL": S_DEFAULT,
-        "EXTRACT_PACKAGE": S_DEFAULT,
-        "EXTRACT_STATIC": S_DEFAULT,
-        "EXTRACT_LOCAL_CLASSES": S_DEFAULT,
-        "EXTRACT_LOCAL_METHODS": S_DEFAULT,
-        "EXTRACT_ANON_NSPACES": S_DEFAULT,
-        "RESOLVE_UNNAMED_PARAMS": S_DEFAULT,
-        "HIDE_UNDOC_MEMBERS": S_DEFAULT,
-        "HIDE_UNDOC_CLASSES": S_DEFAULT,
-        "HIDE_FRIEND_COMPOUNDS": S_DEFAULT,
-        "HIDE_IN_BODY_DOCS": S_DEFAULT,
         "INTERNAL_DOCS": YES,  # documentation after internal command is included
-        "CASE_SENSE_NAMES": S_DEFAULT,
         "HIDE_SCOPE_NAMES": YES,  # full class and namespace scopes in the documentation
-        "HIDE_COMPOUND_REFERENCE": S_DEFAULT,
-        "SHOW_HEADERFILE": S_DEFAULT,
-        "SHOW_INCLUDE_FILES": S_DEFAULT,
-        "SHOW_GROUPED_MEMB_INC": S_DEFAULT,
-        "FORCE_LOCAL_INCLUDES": S_DEFAULT,
-        "INLINE_INFO": S_DEFAULT,
-        "SORT_MEMBER_DOCS": S_DEFAULT,
         "SORT_BRIEF_DOCS": YES,  # sort the brief descriptions of file namespace and class members alphabetically by member name
-        "SORT_MEMBERS_CTORS_1ST": S_DEFAULT,
-        "SORT_GROUP_NAMES": S_DEFAULT,
         "SORT_BY_SCOPE_NAME": YES,
-        "STRICT_PROTO_MATCHING": S_DEFAULT,
-        "GENERATE_TODOLIST": S_DEFAULT,
-        "GENERATE_TESTLIST": S_DEFAULT,
-        "GENERATE_BUGLIST": S_DEFAULT,
-        "GENERATE_DEPRECATEDLIST": S_DEFAULT,
-        "ENABLED_SECTIONS": S_DEFAULT,
-        "MAX_INITIALIZER_LINES": S_DEFAULT,
-        "SHOW_USED_FILES": S_DEFAULT,
-        "SHOW_FILES": S_DEFAULT,
-        "SHOW_NAMESPACES": S_DEFAULT,
-        "FILE_VERSION_FILTER": S_DEFAULT,
-        "LAYOUT_FILE": S_DEFAULT,
-        "CITE_BIB_FILES": S_DEFAULT,
-        "QUIET": S_DEFAULT,
-        "WARNINGS": S_DEFAULT,
-        "WARN_IF_UNDOCUMENTED": S_DEFAULT,
-        "WARN_IF_DOC_ERROR": S_DEFAULT,
-        "WARN_IF_INCOMPLETE_DOC": S_DEFAULT,
         "WARN_NO_PARAMDOC": YES,
-        "WARN_IF_UNDOC_ENUM_VAL": S_DEFAULT,
         "WARN_AS_ERROR": WARNING_FAIL,
-        "WARN_FORMAT": S_DEFAULT,
-        "WARN_LINE_FORMAT": S_DEFAULT,
-        "WARN_LOGFILE": S_REQUIRED,
         "INPUT": ["."],
-        "INPUT_ENCODING": S_DEFAULT,
-        "INPUT_FILE_ENCODING": S_DEFAULT,
         "FILE_PATTERNS": L_DEFAULT_FILE_PATTERN,
         "RECURSIVE": YES,
-        "EXCLUDE": S_DEFAULT,
-        "EXCLUDE_SYMLINKS": S_DEFAULT,
-        "EXCLUDE_PATTERNS": S_REQUIRED,
-        "EXCLUDE_SYMBOLS": S_DEFAULT,
-        "EXAMPLE_PATH": S_DEFAULT,
-        "EXAMPLE_PATTERNS": S_DEFAULT,
-        "EXAMPLE_RECURSIVE": S_DEFAULT,
         "IMAGE_PATH": S_MAIN_FOLDER_FOLDER,
-        "INPUT_FILTER": S_DEFAULT,
-        "FILTER_PATTERNS": S_DEFAULT,
-        "FILTER_SOURCE_FILES": S_DEFAULT,
-        "FILTER_SOURCE_PATTERNS": S_DEFAULT,
         "USE_MDFILE_AS_MAINPAGE": f"{S_MAIN_FOLDER_FOLDER}README.md",
-        "FORTRAN_COMMENT_AFTER": S_DEFAULT,
         "SOURCE_BROWSER": YES,
         "INLINE_SOURCES": YES,
-        "STRIP_CODE_COMMENTS": S_DEFAULT,
-        "REFERENCED_BY_RELATION": S_DEFAULT,
-        "REFERENCES_RELATION": S_DEFAULT,
-        "REFERENCES_LINK_SOURCE": S_DEFAULT,
-        "SOURCE_TOOLTIPS": S_DEFAULT,
-        "USE_HTAGS": S_DEFAULT,
-        "VERBATIM_HEADERS": S_DEFAULT,
-        "CLANG_ASSISTED_PARSING": S_DEFAULT,
-        "CLANG_ADD_INC_PATHS": S_DEFAULT,
-        "CLANG_OPTIONS": S_DEFAULT,
-        "CLANG_DATABASE_PATH": S_DEFAULT,
-        "ALPHABETICAL_INDEX": S_DEFAULT,
-        "IGNORE_PREFIX": S_DEFAULT,
-        "GENERATE_HTML": S_DEFAULT,
-        "HTML_OUTPUT": S_DEFAULT,
-        "HTML_FILE_EXTENSION": S_DEFAULT,
-        "HTML_HEADER": S_REQUIRED,  # required for Doxygen Awesome
-        "HTML_FOOTER": S_FOOTER,
-        "HTML_STYLESHEET": S_DEFAULT,
-        "HTML_EXTRA_STYLESHEET": S_REQUIRED,  # required for Doxygen Awesome
-        "HTML_EXTRA_FILES": S_REQUIRED,  # required for Doxygen Awesome
         "HTML_COLORSTYLE": "LIGHT",  # required with Doxygen >= 1.9.5
         "HTML_COLORSTYLE_HUE": 209,  # required for Doxygen Awesome
         "HTML_COLORSTYLE_SAT": 255,  # required for Doxygen Awesome
         "HTML_COLORSTYLE_GAMMA": 113,  # required for Doxygen Awesome
-        "HTML_DYNAMIC_MENUS": S_DEFAULT,
         "HTML_DYNAMIC_SECTIONS": YES,
-        "HTML_CODE_FOLDING": S_DEFAULT,
-        "HTML_COPY_CLIPBOARD": S_DEFAULT,
-        "HTML_PROJECT_COOKIE": S_DEFAULT,
-        "HTML_INDEX_NUM_ENTRIES": S_DEFAULT,
-        "GENERATE_DOCSET": S_DEFAULT,
-        "DOCSET_FEEDNAME": S_DEFAULT,
-        "DOCSET_FEEDURL": S_DEFAULT,
-        "DOCSET_BUNDLE_ID": S_DEFAULT,
-        "DOCSET_PUBLISHER_ID": S_DEFAULT,
-        "DOCSET_PUBLISHER_NAME": S_DEFAULT,
-        "GENERATE_HTMLHELP": S_DEFAULT,
-        "CHM_FILE": S_DEFAULT,
-        "HHC_LOCATION": S_DEFAULT,
-        "GENERATE_CHI": S_DEFAULT,
-        "CHM_INDEX_ENCODING": S_DEFAULT,
-        "BINARY_TOC": S_DEFAULT,
-        "TOC_EXPAND": S_DEFAULT,
-        "SITEMAP_URL": S_DEFAULT,
-        "GENERATE_QHP": S_DEFAULT,
-        "QCH_FILE": S_DEFAULT,
-        "QHP_NAMESPACE": S_DEFAULT,
-        "QHP_VIRTUAL_FOLDER": S_DEFAULT,
-        "QHP_CUST_FILTER_NAME": S_DEFAULT,
-        "QHP_CUST_FILTER_ATTRS": S_DEFAULT,
-        "QHP_SECT_FILTER_ATTRS": S_DEFAULT,
-        "QHG_LOCATION": S_DEFAULT,
-        "GENERATE_ECLIPSEHELP": S_DEFAULT,
-        "ECLIPSE_DOC_ID": S_DEFAULT,
+        "HTML_COPY_CLIPBOARD": NO,  # required for Doxygen Awesome
         "DISABLE_INDEX": NO,  # required for Doxygen Awesome
         "GENERATE_TREEVIEW": YES,  # required for Doxygen Awesome
         "FULL_SIDEBAR": NO,  # required for Doxygen Awesome
-        "ENUM_VALUES_PER_LINE": S_DEFAULT,
-        "TREEVIEW_WIDTH": S_DEFAULT,
-        "EXT_LINKS_IN_WINDOW": S_DEFAULT,
-        "OBFUSCATE_EMAILS": S_DEFAULT,
-        "HTML_FORMULA_FORMAT": S_DEFAULT,
-        "FORMULA_FONTSIZE": S_DEFAULT,
-        "FORMULA_MACROFILE": S_DEFAULT,
-        "USE_MATHJAX": NO,  # https://www.doxygen.nl/manual/formulas.html
-        "MATHJAX_VERSION": S_DEFAULT,
-        "MATHJAX_FORMAT": S_DEFAULT,
-        "MATHJAX_RELPATH": "https://cdn.jsdelivr.net/npm/mathjax@2",
-        "MATHJAX_EXTENSIONS": S_DEFAULT,
-        "MATHJAX_CODEFILE": S_DEFAULT,
         "SEARCHENGINE": YES,
         "SERVER_BASED_SEARCH": NO,
         "EXTERNAL_SEARCH": NO,
-        "SEARCHENGINE_URL": S_DEFAULT,
-        "SEARCHDATA_FILE": S_DEFAULT,
-        "EXTERNAL_SEARCH_ID": S_DEFAULT,
-        "EXTRA_SEARCH_MAPPINGS": S_DEFAULT,
         "GENERATE_LATEX": NO,
-        "LATEX_OUTPUT": S_DEFAULT,
         "LATEX_CMD_NAME": "latex",
-        "MAKEINDEX_CMD_NAME": S_DEFAULT,
-        "LATEX_MAKEINDEX_CMD": S_DEFAULT,
-        "COMPACT_LATEX": S_DEFAULT,
-        "PAPER_TYPE": S_DEFAULT,
-        "EXTRA_PACKAGES": S_DEFAULT,
-        "LATEX_HEADER": S_DEFAULT,
-        "LATEX_FOOTER": S_DEFAULT,
-        "LATEX_EXTRA_STYLESHEET": S_DEFAULT,
-        "LATEX_EXTRA_FILES": S_DEFAULT,
-        "PDF_HYPERLINKS": S_DEFAULT,
-        "USE_PDFLATEX": S_DEFAULT,
-        "LATEX_BATCHMODE": S_DEFAULT,
-        "LATEX_HIDE_INDICES": S_DEFAULT,
-        "LATEX_BIB_STYLE": S_DEFAULT,
-        "LATEX_EMOJI_DIRECTORY": S_DEFAULT,
-        "GENERATE_RTF": S_DEFAULT,
-        "RTF_OUTPUT": S_DEFAULT,
-        "COMPACT_RTF": S_DEFAULT,
-        "RTF_HYPERLINKS": S_DEFAULT,
-        "RTF_STYLESHEET_FILE": S_DEFAULT,
-        "RTF_EXTENSIONS_FILE": S_DEFAULT,
-        "RTF_EXTRA_FILES": S_DEFAULT,
-        "GENERATE_MAN": S_DEFAULT,
-        "MAN_OUTPUT": S_DEFAULT,
-        "MAN_EXTENSION": S_DEFAULT,
-        "MAN_SUBDIR": S_DEFAULT,
-        "MAN_LINKS": S_DEFAULT,
-        "GENERATE_XML": S_DEFAULT,
-        "XML_OUTPUT": S_DEFAULT,
-        "XML_PROGRAMLISTING": S_DEFAULT,
-        "XML_NS_MEMB_FILE_SCOPE": S_DEFAULT,
-        "GENERATE_DOCBOOK": S_DEFAULT,
-        "DOCBOOK_OUTPUT": S_DEFAULT,
-        "GENERATE_AUTOGEN_DEF": S_DEFAULT,
-        "GENERATE_SQLITE3": S_DEFAULT,
-        "SQLITE3_OUTPUT": S_DEFAULT,
-        "SQLITE3_RECREATE_DB": S_DEFAULT,
-        "GENERATE_PERLMOD": S_DEFAULT,
-        "PERLMOD_LATEX": S_DEFAULT,
-        "PERLMOD_PRETTY": S_DEFAULT,
-        "PERLMOD_MAKEVAR_PREFIX": S_DEFAULT,
-        "ENABLE_PREPROCESSING": S_DEFAULT,
-        "MACRO_EXPANSION": S_DEFAULT,
-        "EXPAND_ONLY_PREDEF": S_DEFAULT,
-        "SEARCH_INCLUDES": S_DEFAULT,
-        "INCLUDE_PATH": S_DEFAULT,
-        "INCLUDE_FILE_PATTERNS": S_DEFAULT,
-        "PREDEFINED": S_DEFAULT,
-        "EXPAND_AS_DEFINED": S_DEFAULT,
-        "SKIP_FUNCTION_MACROS": S_DEFAULT,
-        "TAGFILES": S_DEFAULT,
-        "GENERATE_TAGFILE": S_DEFAULT,
-        "ALLEXTERNALS": S_DEFAULT,
-        "EXTERNAL_GROUPS": S_DEFAULT,
-        "EXTERNAL_PAGES": S_DEFAULT,
-        "HIDE_UNDOC_RELATIONS": S_DEFAULT,
         "HAVE_DOT": YES,
-        "DOT_NUM_THREADS": S_DEFAULT,
-        "DOT_COMMON_ATTR": S_DEFAULT,
-        "DOT_EDGE_ATTR": S_DEFAULT,
-        "DOT_NODE_ATTR": S_DEFAULT,
-        "DOT_FONTPATH": S_DEFAULT,
-        "CLASS_GRAPH": S_DEFAULT,
-        "COLLABORATION_GRAPH": S_DEFAULT,
-        "GROUP_GRAPHS": S_DEFAULT,
         "UML_LOOK": YES,
-        "UML_LIMIT_NUM_FIELDS": S_DEFAULT,
-        "DOT_UML_DETAILS": S_DEFAULT,
-        "DOT_WRAP_THRESHOLD": S_DEFAULT,
-        "TEMPLATE_RELATIONS": S_DEFAULT,
-        "INCLUDE_GRAPH": S_DEFAULT,
-        "INCLUDED_BY_GRAPH": S_DEFAULT,
-        "CALL_GRAPH": S_DEFAULT,
-        "CALLER_GRAPH": S_DEFAULT,
-        "GRAPHICAL_HIERARCHY": S_DEFAULT,
-        "DIRECTORY_GRAPH": S_DEFAULT,
-        "DIR_GRAPH_MAX_DEPTH": S_DEFAULT,
         "DOT_IMAGE_FORMAT": "svg",
         "INTERACTIVE_SVG": YES,
-        "DOT_PATH": S_DEFAULT,
-        "DOTFILE_DIRS": S_DEFAULT,
-        "DIA_PATH": S_DEFAULT,
-        "DIAFILE_DIRS": S_DEFAULT,
         "PLANTUML_JAR_PATH": S_PLANTUML_PATH,
-        "PLANTUML_CFG_FILE": S_DEFAULT,
         "PLANTUML_INCLUDE_PATH": S_PLANTUML_PATH,
-        "DOT_GRAPH_MAX_NODES": S_DEFAULT,
-        "MAX_DOT_GRAPH_DEPTH": S_DEFAULT,
         "DOT_MULTI_TARGETS": YES,
-        "GENERATE_LEGEND": S_DEFAULT,
-        "DOT_CLEANUP": YES,
-        "MSCGEN_TOOL": S_DEFAULT,
-        "MSCFILE_DIRS": S_DEFAULT
+        "DOT_CLEANUP": YES
     }
 
-    def __init__(self, s_webside: str = None):
+    def __init__(self, s_webside: Optional[str] = None):
         self.s_webside = s_webside
-        self.l_warnings = []
+        self.l_warnings: list[str] = []
         self.s_output_dir = ""
         self.s_doxyfile_name = ""
         self.s_warning_name = ""
@@ -420,26 +158,6 @@ class DoxygenCreator():
         """
         subprocess.call([S_DOXYGEN_PATH, "-g", s_file_name])
 
-    def check_doxy_settings(self, s_file_name: str):
-        """!
-        @brief Verify that the Doxy settings in this script match the default Doxy settings
-        @param  s_file_name : doxygen file name
-        """
-        l_default_doxy_param = []
-        with open(s_file_name, mode="r", encoding="utf-8") as file:
-            l_doxy_file_content = file.readlines()
-            for line in l_doxy_file_content:
-                if len(line) > 0 and line[0].isupper():
-                    l_words = line.split("=", maxsplit=1)
-                    l_default_doxy_param.append(l_words[0].strip())
-        l_my_doxy_param = list(self.d_settings.keys())
-        if l_default_doxy_param != l_my_doxy_param:
-            self.l_warnings.append("Doxygen settings differ")
-            for i, key in enumerate(l_default_doxy_param):
-                if key != l_my_doxy_param[i]:
-                    self.l_warnings.append(f"{key} invalid or wrong order")
-                    break
-
     def set_configuration(self, s_type: str, value: Any, b_override: bool = True):
         """!
         @brief  Set doxygen configuration.
@@ -447,16 +165,13 @@ class DoxygenCreator():
         @param  value : value to set for s_type in configuration
         @param  b_override : info if selected default setting should override
         """
-        if b_override or (self.get_configuration(s_type) in L_OVERRIDE):
-            if s_type in self.d_settings:
-                if isinstance(value, list):
-                    if self.d_settings[s_type] in L_OVERRIDE:
-                        self.d_settings[s_type] = []
-                    self.d_settings[s_type].extend(value)
-                else:
-                    self.d_settings[s_type] = value
-            else:
-                self.l_warnings.append(f"{s_type} not in configuration to set")
+        if isinstance(value, list):
+            if b_override or (s_type not in self.d_settings):
+                self.d_settings[s_type] = []
+            self.d_settings[s_type].extend(value)
+        else:
+            if b_override or (s_type not in self.d_settings):
+                self.d_settings[s_type] = value
 
     def get_configuration(self, s_type: str) -> Any:
         """!
@@ -467,12 +182,7 @@ class DoxygenCreator():
         if s_type in self.d_settings:
             value = self.d_settings[s_type]
         else:
-            value = "Invalid"
-            text = f"{s_type} not in configuration to set"
-            similar_key = get_close_matches(s_type, list(self.d_settings.keys()), n=1)
-            if len(similar_key) > 0:
-                text += f". Did you mean {similar_key[0]} ?"
-            self.l_warnings.append(text)
+            value = None  # is default value
         return value
 
     def prepare_doxyfile_configuration(self):
@@ -495,7 +205,7 @@ class DoxygenCreator():
         if B_AUTO_VERSION_SUPPORT:
             # write version prefix for version numbers as project number
             s_version = self.get_configuration("PROJECT_NUMBER")
-            if s_version not in L_OVERRIDE:
+            if s_version:
                 try:
                     packaging.version.Version(s_version)  # test if s_sersion is a valid versions string
                     self.set_configuration("PROJECT_NUMBER", f"v{s_version}")
@@ -524,10 +234,11 @@ class DoxygenCreator():
         # load the default doxygen template file
         config_parser = ConfigParser()
         configuration = config_parser.load_configuration(self.s_doxyfile_name)
+        l_existing_keys = list(configuration.keys())
 
         # write doxygen settings
         for key, value in self.d_settings.items():
-            if value not in L_OVERRIDE:
+            if key in l_existing_keys:
                 if isinstance(value, list):
                     configuration[key] = []
                     for entry in value:
@@ -536,8 +247,12 @@ class DoxygenCreator():
                     if isinstance(value, int):
                         value = str(value)  # integer can only write as string to doxyfile
                     configuration[key] = value
-            elif value == S_REQUIRED:
-                self.l_warnings.append(f"Required config setting '{key}' not set, please override it with set_configuration({key},<YOUR_VALUE>)")  # warn if setting that should be override is not set
+            else:
+                text = f"'{key}' is a invalid doxygen setting"
+                similar_key = get_close_matches(key, l_existing_keys, n=1)
+                if len(similar_key) > 0:
+                    text += f". Did you mean: '{similar_key[0]}'?"
+                self.l_warnings.append(text)
 
         # store the configuration in doxyfile
         config_parser.store_configuration(configuration, self.s_doxyfile_name)
@@ -674,7 +389,7 @@ class DoxygenCreator():
                 s_modified_config = file.read()
 
             s_diff_file_name = os.path.join(self.s_output_dir, S_DOXY_DIFF_HTML_NAME)
-            difference = difflib.HtmlDiff(wrapcolumn=I_WRAP_LENGHT).make_file(s_default_config.splitlines(), s_modified_config.splitlines(), "Default", "Modified")
+            difference = difflib.HtmlDiff(wrapcolumn=I_WRAP_LENGTH).make_file(s_default_config.splitlines(), s_modified_config.splitlines(), "Default", "Modified")
             with open(s_diff_file_name, mode="w", encoding="utf-8") as file:
                 file.write(difference)
 
@@ -691,7 +406,6 @@ class DoxygenCreator():
         if not os.path.exists(self.s_output_dir):
             os.makedirs(self.s_output_dir)
         self.create_default_doxyfile(self.s_doxyfile_name)
-        self.check_doxy_settings(self.s_doxyfile_name)
         self.edit_select_doxyfile_settings()
         self.generate_doxygen_output(b_open_doxygen_output)
         if B_GITHUB_CORNER_SUPPORT:
@@ -702,7 +416,12 @@ class DoxygenCreator():
 
         if B_DOXY_PY_CHECKER_SUPPORT:
             # additional script to check for valid doxygen specification in python files
-            if S_PYTHON_PATTERN in self.d_settings["FILE_PATTERNS"]:
+            file_patterns = self.d_settings["FILE_PATTERNS"]
+            if isinstance(file_patterns, list):
+                l_file_patterns = file_patterns
+            else:
+                l_file_patterns = [file_patterns]
+            if S_PYTHON_PATTERN in l_file_patterns:
                 doxy_checker = DoxyPyChecker(S_MAIN_FOLDER_FOLDER)
                 l_finding = doxy_checker.run_check()
                 self.l_warnings.extend(l_finding)

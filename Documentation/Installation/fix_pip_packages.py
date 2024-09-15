@@ -1,9 +1,8 @@
-# This Python file uses the following encoding: utf-8
-"""
-*****************************************************************************
- @file    fix_pip_packages.py
- @brief   Fix code from packages
-*****************************************************************************
+"""!
+********************************************************************************
+@file    fix_pip_packages.py
+@brief   Fix code from packages
+********************************************************************************
 """
 
 # autopep8: off
@@ -24,10 +23,10 @@ def fix_packages():
     """
     src_filename = "cipher.py"
     dest_filename = r"../../.env\Lib\site-packages\pytube\cipher.py"
-    
+
     with open(src_filename, mode="r", encoding="utf-8") as file:
         code = file.read()
-        
+
 
     with open(dest_filename, mode="w", encoding="utf-8") as file:
         file.write(code)

@@ -1,9 +1,8 @@
-# This Python file uses the following encoding: utf-8
-"""
-*****************************************************************************
- @file    generate_executable.py
- @brief   Generate executable file
-*****************************************************************************
+"""!
+********************************************************************************
+@file    generate_executable.py
+@brief   Generate executable file
+********************************************************************************
 """
 
 # autopep8: off
@@ -12,7 +11,6 @@ import os
 import logging
 import subprocess
 import shutil
-from typing import List
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from Executable.generate_git_version import generate_git_version_file  # pylint: disable=wrong-import-position
@@ -48,7 +46,7 @@ L_HIDDEN_IMPORT = [
 ]
 
 
-def get_type_list(type_name: str, l_type_values: List) -> List:
+def get_type_list(type_name: str, l_type_values: list) -> list:
     """!
     @brief get type list
     @param type_name : type name

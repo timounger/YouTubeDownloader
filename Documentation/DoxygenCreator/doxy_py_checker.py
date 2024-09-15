@@ -1,15 +1,14 @@
-# This Python file uses the following encoding: utf-8
-"""
-*****************************************************************************
+"""!
+********************************************************************************
 @file    doxy_py_checker.py
 @brief   Check parameter and return value for valid doxygen specification in python files
-*****************************************************************************
+********************************************************************************
 """
 
 import os
 import logging
-from typing import List
 import argparse
+from typing import Optional
 import ast
 import astunparse
 
@@ -35,9 +34,9 @@ class DoxyPyChecker:
     @param  print_checked_files : status if checked files should print
     """
 
-    def __init__(self, path: str = None, print_checked_files: bool = True):
-        self.warnings = []
-        if path:
+    def __init__(self, path: Optional[str] = None, print_checked_files: bool = True):
+        self.warnings: list[str] = []
+        if path is not None:
             self.s_path = path
         else:
             self.s_path = S_DEFAULT_PATH
@@ -54,7 +53,7 @@ class DoxyPyChecker:
                               help="set relative path to check for python files")
         return o_parser.parse_args()
 
-    def run_check(self) -> List[str]:
+    def run_check(self) -> list[str]:
         """!
         @brief  Run doxygen checker
         @return list of all files
@@ -78,7 +77,7 @@ class DoxyPyChecker:
 
         return findings
 
-    def get_files(self) -> List[str]:
+    def get_files(self) -> list[str]:
         """!
         @brief  Get all python files in folder and subfolders
         @return list of all files
@@ -93,7 +92,7 @@ class DoxyPyChecker:
                     l_files.append(fullpath)
         return l_files
 
-    def get_doc_params(self, docstring: str, findings: List) -> set:
+    def get_doc_params(self, docstring: str, findings: list) -> set:
         """!
         @brief  Get documented parameters from docstring
         @param  docstring : docstring of class
@@ -103,9 +102,9 @@ class DoxyPyChecker:
         documented_params = set()
         for line in docstring.splitlines():
             if line.lstrip().startswith(PARAM_DOC_PREFIX):
-                param_name = line.split()
-                if len(param_name) >= 2:  # minimum two names: @param, param_name
-                    param_name = param_name[1].rstrip(":")
+                l_param_name = line.split()
+                if len(l_param_name) >= 2:  # minimum two names: @param, param_name
+                    param_name = l_param_name[1].rstrip(":")
                     if param_name in documented_params:
                         findings.append(f"{param_name} is documented multiple times")
                     else:
@@ -114,7 +113,7 @@ class DoxyPyChecker:
                     findings.append(f"No parameter name found. Line content '{line}'")
         return documented_params
 
-    def check_return(self, func_def: ast.FunctionDef, docstring: str) -> List[str]:
+    def check_return(self, func_def: ast.FunctionDef | ast.AsyncFunctionDef, docstring: str) -> list[str]:
         """!
         @brief  Check for documented return value
         @param  func_def : function definition
@@ -123,7 +122,7 @@ class DoxyPyChecker:
         """
         findings = []
         doc_has_return = RETURN_DOC_PREFIX in docstring
-        func_has_return = False  # True: need doc, False: no doc, None: optional doc
+        func_has_return: bool | None = False  # True: need doc, False: no doc, None: optional doc
         for node in ast.walk(func_def):
             if isinstance(node, ast.Return) and node.value is not None:  # function has no return None
                 func_has_return = True
@@ -144,14 +143,14 @@ class DoxyPyChecker:
                 findings.append("Return type has no typing")
         return findings
 
-    def check_function(self, func_def: ast.FunctionDef, class_docstring: str = None) -> List[str]:
+    def check_function(self, func_def: ast.FunctionDef | ast.AsyncFunctionDef, class_docstring: Optional[str] = None) -> list[str]:
         """!
         @brief  Check function
         @param  func_def : function definition
         @param  class_docstring : docstring of class
         @return list of findings in function
         """
-        findings = []
+        findings: list[str] = []
         docstring = ast.get_docstring(func_def) or class_docstring
         if docstring:
             # Get documented parameters and check for duplicate documentation
@@ -180,7 +179,7 @@ class DoxyPyChecker:
 
         return findings
 
-    def check_file(self, file_path: str) -> List[str]:
+    def check_file(self, file_path: str) -> list[str]:
         """!
         @brief  Check file for missing parameter description
         @param  file_path : file name

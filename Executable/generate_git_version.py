@@ -1,11 +1,10 @@
-# This Python file uses the following encoding: utf-8
-"""
-*****************************************************************************
- @file    generate_git_version.py
- @brief   Utility script to generate a python file containing the git
-          short SHA as a variable for the executable.
-          Called within the build process (generate_executable.py).
-*****************************************************************************
+"""!
+********************************************************************************
+@file    generate_git_version.py
+@brief   Utility script to generate a python file containing the git
+         short SHA as a variable for the executable.
+         Called within the build process (generate_executable.py).
+********************************************************************************
 """
 
 import sys
@@ -17,12 +16,11 @@ log = logging.getLogger("GenerateGitVersion")
 
 GIT_VERSION_FILE_NAME = "git_version.py"
 
-FILE_HEADER = f'''# This Python file uses the following encoding: utf-8
-"""
-*****************************************************************************
- @file    {GIT_VERSION_FILE_NAME}
- @brief   Defines Git version
-*****************************************************************************
+FILE_HEADER = f'''"""!
+********************************************************************************
+@file    {GIT_VERSION_FILE_NAME}
+@brief   Defines Git version
+********************************************************************************
 """
 
 '''

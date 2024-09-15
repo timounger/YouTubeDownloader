@@ -13,7 +13,7 @@ set ENV_PATH=..\..\.env
 set PY_PATH=%ENV_PATH%\Scripts\python
 
 python -m venv %ENV_PATH%
-%PY_PATH% -m pip install --upgrade --no-cache-dir --use-deprecated=legacy-resolver --requirement requirements.txt --constraint constraints.txt
+%PY_PATH% -m pip install --upgrade --no-cache-dir --requirement requirements.txt --constraint constraints.txt
 
 %PY_PATH% fix_pip_packages.py
 

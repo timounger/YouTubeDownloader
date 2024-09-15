@@ -14,8 +14,6 @@
 /Documentation/DoxygenCreator/libclang.dll
 /Documentation/DoxygenCreator/plantuml.jar
 /Documentation/DoxygenCreator/Output_Doxygen
-/Documentation/DoxygenCreator/YouTubeDownloader.Doxyfile
-/Documentation/DoxygenCreator/YouTubeDownloader.Doxyfile.bak
 
 # Executable
 /Executable/build

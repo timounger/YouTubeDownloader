@@ -1,9 +1,8 @@
-# This Python file uses the following encoding: utf-8
-"""
-*****************************************************************************
- @file    update_py_requirements.py
- @brief   Update version in requirement files
-*****************************************************************************
+"""!
+********************************************************************************
+@file    update_py_requirements.py
+@brief   Update version in requirement files
+********************************************************************************
 """
 
 # autopep8: off
@@ -11,7 +10,7 @@ import sys
 import os
 import logging
 import re
-from typing import NamedTuple, List
+from typing import NamedTuple, Any, Optional
 import requests
 from openpyxl import Workbook
 from openpyxl.utils import get_column_letter
@@ -75,8 +74,8 @@ def set_column_autowidth(worksheet: Worksheet, b_limit: bool = True):
             worksheet.column_dimensions[get_column_letter(i)].width = (i_max_col_len + 1) * 0.10 * FONT_SIZE
 
 
-def set_cell(ws: Worksheet, i_row: int, i_column: int, value: any = None, b_bold: bool = False, b_italic: bool = False, b_underline: bool = False,
-             i_font_size: int = 12, s_font: str = FONT_NAME, fill_color: str = None, align: str = None, s_format: str = None, s_border: Border = None):
+def set_cell(ws: Worksheet, i_row: int, i_column: int, value: Any = None, b_bold: bool = False, b_italic: bool = False, b_underline: bool = False,
+             i_font_size: int = 12, s_font: str = FONT_NAME, fill_color: Optional[str] = None, align: str = None, s_format: str = None, s_border: Border = None):
     """!
     @brief Set cell data
     @param ws : actual worksheet
@@ -91,7 +90,7 @@ def set_cell(ws: Worksheet, i_row: int, i_column: int, value: any = None, b_bold
     @param fill_color : background fill color of cell
     @param align : text align of cell
     @param s_format : format of cell
-    @param s_border : boarder of cell
+    @param s_border : border of cell
     """
     cell = ws.cell(row=i_row, column=i_column)
     if value is not None:
@@ -111,7 +110,7 @@ def set_cell(ws: Worksheet, i_row: int, i_column: int, value: any = None, b_bold
         cell.border = s_border
 
 
-def create_package_summary_xls(l_package_info: List):
+def create_package_summary_xls(l_package_info: list):
     """!
     @brief Update xls fiel with package summary
     @param l_package_info : list with package infos
@@ -183,7 +182,7 @@ def get_package_info(package: str) -> PackageInfo:
     return package_info
 
 
-def update_packages(filename: str) -> List:
+def update_packages(filename: str) -> list:
     """!
     @brief  Update package from text file to latest version
     @param  filename : file name

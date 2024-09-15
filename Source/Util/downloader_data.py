@@ -1,9 +1,8 @@
-# This Python file uses the following encoding: utf-8
-"""
-*****************************************************************************
- @file    downloader_data.py
- @brief   Data module (constants and functions related to path and ini file)
-*****************************************************************************
+"""!
+********************************************************************************
+@file    downloader_data.py
+@brief   Data module (constants and functions related to path and ini file)
+********************************************************************************
 """
 
 import sys
