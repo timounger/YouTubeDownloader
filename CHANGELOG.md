@@ -2,6 +2,14 @@
 
 \tableofcontents
 
+## v1.0.6
+
+[Download](https://github.com/timounger/YouTubeDownloader/releases/tag/v1.0.6)
+
+_[compare to previous version](https://github.com/timounger/YouTubeDownloader/compare/v1.0.5...v1.0.6)_
+
+- Download fix
+
 ## v1.0.5
 
 [Download](https://github.com/timounger/YouTubeDownloader/releases/tag/v1.0.5)

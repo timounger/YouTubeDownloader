@@ -28,7 +28,7 @@ defaults:
     shell: cmd
 
 env:
-  PYTHON_VERSION: 3.11.5
+  PYTHON_VERSION: 3.11.9
   PYTHON_ARCH: x64
   PYTHON_PACKAGE_INST_PATH: ./Documentation/Installation
   PYTHON_PACKAGE_INST_FILE: install_packages.bat
@@ -101,7 +101,7 @@ jobs:
         run: ${{ env.PYTHON_PACKAGE_INST_FILE }}
       - name: Run Doxygen
         working-directory: ./Documentation/DoxygenCreator
-        run: ..\..\.env\Scripts\python doxygen_creator.py
+        run: ..\..\.env\Scripts\python create_doxygen.py
       - name: Upload Doxygen Output
         uses: actions/upload-artifact@v4
         with:

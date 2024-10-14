@@ -1,4 +1,7 @@
 :: create Doxygen documentation
+
+@echo off
 cd DoxygenCreator
-..\..\.env\Scripts\python doxygen_creator.py -o True
+rmdir /s/q "Output_Doxygen"
+..\..\.env\Scripts\python create_doxygen.py -o True
 pause

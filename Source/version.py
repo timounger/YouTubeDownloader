@@ -1,15 +1,14 @@
-# This Python file uses the following encoding: utf-8
-"""
-*****************************************************************************
- @file    version.py
- @brief   Version and general information
-*****************************************************************************
+"""!
+********************************************************************************
+@file    version.py
+@brief   Version and general information
+********************************************************************************
 """
 
 # Version
 VERSION_MAJOR = 1  # major changes/breaks at API (e.g incompatibility)
 VERSION_MINOR = 0  # minor changes/does not break the API (e.g new feature)
-VERSION_PATCH = 5  # Bug fixes
+VERSION_PATCH = 6  # Bug fixes
 VERSION_BUILD = 0  # build number (if available)
 
 

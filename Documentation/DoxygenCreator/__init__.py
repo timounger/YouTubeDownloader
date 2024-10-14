@@ -5,4 +5,4 @@
 ********************************************************************************
 """
 
-from . import main_window
+from . import configParser, create_doxygen, doxy_py_checker

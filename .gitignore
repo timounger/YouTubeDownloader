@@ -6,6 +6,7 @@
 
 # Source
 /Source/Download
+/Source/Util/git_version.py
 
 # Doxygen
 /Documentation/DoxygenCreator/doxygen-*.windows.x64.bin.zip
@@ -13,8 +14,6 @@
 /Documentation/DoxygenCreator/libclang.dll
 /Documentation/DoxygenCreator/plantuml.jar
 /Documentation/DoxygenCreator/Output_Doxygen
-/Documentation/DoxygenCreator/YouTubeDownloader.Doxyfile
-/Documentation/DoxygenCreator/YouTubeDownloader.Doxyfile.bak
 
 # Executable
 /Executable/build
