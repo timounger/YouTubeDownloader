@@ -1,5 +1,5 @@
 <map id="PackageInfo" name="PackageInfo">
-<area shape="rect" id="Node000001" title="Package Information." alt="" coords="5,123,103,363"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="11,5,97,75"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,90,57,123,51,123,51,90"/>
+<area shape="rect" id="Node000001" title="Package Information." alt="" coords="6,123,91,192"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,92,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="51,90,51,123,46,123,46,90"/>
 </map>

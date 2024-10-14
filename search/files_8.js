@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['setup_5finfo_5fbefore_5finstall_5fenglish_2etxt_0',['setup_info_before_install_english.txt',['../setup__info__before__install__english_8txt.html',1,'']]],
-  ['setup_5finfo_5fbefore_5finstall_5fgerman_2etxt_1',['setup_info_before_install_german.txt',['../setup__info__before__install__german_8txt.html',1,'']]],
-  ['setup_5fyoutubedownloader_2eiss_2',['setup_youtubedownloader.iss',['../setup__youtubedownloader_8iss.html',1,'']]]
+  ['readme_2emd_0',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
+  ['requirements_2etxt_1',['requirements.txt',['../requirements_8txt.html',1,'']]],
+  ['run_5fautopep8_2ebat_2',['run_autopep8.bat',['../run__autopep8_8bat.html',1,'']]],
+  ['run_5fpylint_2ebat_3',['run_pylint.bat',['../run__pylint_8bat.html',1,'']]],
+  ['run_5fyoutubedownloader_2ebat_4',['run_YouTubeDownloader.bat',['../run___you_tube_downloader_8bat.html',1,'']]]
 ];
