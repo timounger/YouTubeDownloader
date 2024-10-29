@@ -1,7 +1,7 @@
 """!
 ********************************************************************************
-@file    downloader.py
-@brief   Download Thread
+@file   downloader.py
+@brief  Download Thread
 ********************************************************************************
 """
 
@@ -59,8 +59,8 @@ class DownloadThread(threading.Thread):
         """!
         @brief Download YouTube content
         """
-        self.main_controller.o_status.config(text="Analysiere URL...", fg="blue")
-        i_choice = self.main_controller.o_format_choice.get()
+        self.main_controller.status_lbl.config(text="Analysiere URL...", fg="blue")
+        i_choice = self.main_controller.choice_var.get()
         s_url = self.main_controller.o_url_choice.get()
         if i_choice != 0:
             l_url = []
@@ -74,18 +74,18 @@ class DownloadThread(threading.Thread):
                 l_url = [s_url]
             i_titels = len(l_url)
             for i, s_url in enumerate(l_url, 1):
-                self.main_controller.o_status.config(text="Analysiere URL...", fg="blue")
+                self.main_controller.status_lbl.config(text="Analysiere URL...", fg="blue")
                 s_text = f"Titel {i}/{i_titels}: ..."
-                self.main_controller.o_titel.config(text=s_text, fg="orange")
+                self.main_controller.title_lbl.config(text=s_text, fg="orange")
                 b_valid_url = False
                 try:
                     o_youtube = pytube.YouTube(s_url, on_progress_callback=self.progress_callback)
                     s_titel = o_youtube.title[:35]
                     s_text = f"Titel {i}/{i_titels}: {s_titel}"
-                    self.main_controller.o_titel.config(text=s_text, fg="orange")
+                    self.main_controller.title_lbl.config(text=s_text, fg="orange")
                     b_valid_url = True
                 except BaseException:  # pylint: disable=bare-except
-                    self.main_controller.o_status.config(text="Ungültige URL!", fg="red")
+                    self.main_controller.status_lbl.config(text="Ungültige URL!", fg="red")
                 if b_valid_url:
                     self.clear_data()
                     s_filename = None
@@ -99,26 +99,26 @@ class DownloadThread(threading.Thread):
                         o_stream = o_youtube.streams.filter(only_audio=True).first()
                     else:
                         o_stream = None  # TODO
-                        self.main_controller.o_status.config(text="Unerwarteter Fehler!", fg="red")
+                        self.main_controller.status_lbl.config(text="Unerwarteter Fehler!", fg="red")
                     try:
-                        self.main_controller.o_status.config(text="Download läuft...", fg="blue")
+                        self.main_controller.status_lbl.config(text="Download läuft...", fg="blue")
                         o_stream.download(S_DOWNLOAD_FOLDER + s_subfolder_name, s_filename)
-                        self.main_controller.o_status.config(text="Download abgeschlossen!", fg="green")
+                        self.main_controller.status_lbl.config(text="Download abgeschlossen!", fg="green")
                         if B_MP3_CONVERT:
                             if i_choice == 3:
-                                self.main_controller.o_status.config(text="MP3 wird erstellt...", fg="blue")
+                                self.main_controller.status_lbl.config(text="MP3 wird erstellt...", fg="blue")
                                 s_file_path_name = S_DOWNLOAD_FOLDER + s_subfolder_name + "/" + o_stream.default_filename
                                 audioclip = AudioFileClip(s_file_path_name)
                                 audioclip.write_audiofile(s_file_path_name[:-1] + "3")
                                 audioclip.close()
                                 os.remove(s_file_path_name)
-                                self.main_controller.o_status.config(text="MP3 erstellt!", fg="green")
+                                self.main_controller.status_lbl.config(text="MP3 erstellt!", fg="green")
                     except BaseException:  # pylint: disable=bare-except
-                        self.main_controller.o_status.config(text="Dieses Video kann nicht heruntergeladen werden!",
-                                                             fg="red")
+                        self.main_controller.status_lbl.config(text="Dieses Video kann nicht heruntergeladen werden!",
+                                                               fg="red")
         else:
-            self.main_controller.o_status.config(text="Bitte Format angeben!", fg="red")
-        self.main_controller.o_download_button["state"] = "normal"
+            self.main_controller.status_lbl.config(text="Bitte Format angeben!", fg="red")
+        self.main_controller.download_btn["state"] = "normal"
 
     def progress_callback(self, _stream, _chunk, bytes_remaining):
         """!
@@ -146,13 +146,13 @@ class DownloadThread(threading.Thread):
                     self.l_speed_history[I_SPEED_AVERAGE_VALUES - 1] = i_actual_speed
                 i_average_speed = statistics.mean(self.l_speed_history)
                 i_remaining_seconds = int(bytes_remaining / i_average_speed)
-                self.main_controller.o_status.config(text=f'Download läuft... noch {i_remaining_seconds}sek', fg="blue")
+                self.main_controller.status_lbl.config(text=f'Download läuft... noch {i_remaining_seconds}sek', fg="blue")
             self.f_time_stamp = f_actual_time
             self.i_last_bytes_remaining = bytes_remaining
             i_percent = int(((self.i_file_size - bytes_remaining) / self.i_file_size) * 100)
             i_percent_diff = i_percent - self.i_last_percent
             for _ in range(i_percent_diff):
-                self.main_controller.o_progress.step()
+                self.main_controller.progress_bar.step()
             self.main_controller.style.configure('text.Horizontal.TProgressbar', text=f'{i_percent}%')
             self.i_last_percent = i_percent
 

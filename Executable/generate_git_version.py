@@ -1,9 +1,9 @@
 """!
 ********************************************************************************
-@file    generate_git_version.py
-@brief   Utility script to generate a python file containing the git
-         short SHA as a variable for the executable.
-         Called within the build process (generate_executable.py).
+@file   generate_git_version.py
+@brief  Utility script to generate a python file containing the git
+        short SHA as a variable for the executable.
+        Called within the build process (generate_executable.py).
 ********************************************************************************
 """
 
@@ -18,8 +18,8 @@ GIT_VERSION_FILE_NAME = "git_version.py"
 
 FILE_HEADER = f'''"""!
 ********************************************************************************
-@file    {GIT_VERSION_FILE_NAME}
-@brief   Defines Git version
+@file   {GIT_VERSION_FILE_NAME}
+@brief  Defines Git version
 ********************************************************************************
 """
 

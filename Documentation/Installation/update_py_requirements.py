@@ -1,7 +1,7 @@
 """!
 ********************************************************************************
-@file    update_py_requirements.py
-@brief   Update version in requirement files
+@file   update_py_requirements.py
+@brief  Update version in requirement files
 ********************************************************************************
 """
 
@@ -10,26 +10,19 @@ import sys
 import os
 import logging
 import re
-from typing import NamedTuple, Any, Optional
+from typing import NamedTuple
 import requests
-from openpyxl import Workbook
-from openpyxl.utils import get_column_letter
-from openpyxl.worksheet import table
-from openpyxl.worksheet.worksheet import Worksheet
-from openpyxl.styles import Font, PatternFill, Alignment
-from openpyxl.styles.borders import Border
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "../../"))
 from Source.Util.colored_log import init_console_logging  # pylint: disable=wrong-import-position
+from Source.Util.openpyxl_util import XLSCreator  # pylint: disable=wrong-import-position
 # autopep8: on
 
 log = logging.getLogger("UpdatePyRequirements")
 init_console_logging(logging.INFO)
 
 L_FILES = ["requirements.txt", "constraints.txt"]  # files to update
-L_IGNORE_PACKAGES = []
-MAX_COLUMN_WIDTH = 30
-FONT_SIZE = 11
+L_IGNORE_PACKAGES: list[str] = []
 FONT_NAME = "Consolas"
 I_TIMEOUT = 2  # timeout to get pip data
 
@@ -47,79 +40,20 @@ class PackageInfo(NamedTuple):
     license_info: str
     home_page: str
     package_url: str
-    requires_dist: str
+    requires_dist: list
     requires_py: str
-
-
-def set_column_autowidth(worksheet: Worksheet, b_limit: bool = True):
-    """!
-    @brief Set automatic column width of worksheet.
-    @param worksheet : select worksheet
-    @param b_limit : status if width has a max limit
-    """
-    for i, col_cells in enumerate(worksheet.columns, start=1):
-        i_max_col_len = 0
-        for j, cell in enumerate(col_cells):
-            if b_limit:
-                if j != 0:  # do use not use first line description
-                    i_max_col_len = max(i_max_col_len, len(str(cell.value).split("n", maxsplit=1)[0]))
-            else:
-                for s_line in str(cell.value).split("/n"):
-                    i_max_col_len = max(i_max_col_len, len(s_line))
-        if b_limit:
-            i_max_col_len = min(i_max_col_len, MAX_COLUMN_WIDTH)
-        if i_max_col_len == 0:
-            worksheet.column_dimensions[get_column_letter(i)].hidden = True  # hide empty lines
-        else:
-            worksheet.column_dimensions[get_column_letter(i)].width = (i_max_col_len + 1) * 0.10 * FONT_SIZE
-
-
-def set_cell(ws: Worksheet, i_row: int, i_column: int, value: Any = None, b_bold: bool = False, b_italic: bool = False, b_underline: bool = False,
-             i_font_size: int = 12, s_font: str = FONT_NAME, fill_color: Optional[str] = None, align: str = None, s_format: str = None, s_border: Border = None):
-    """!
-    @brief Set cell data
-    @param ws : actual worksheet
-    @param i_row : row position
-    @param i_column : column position
-    @param value : value to set in cell; None: set no data to cell
-    @param b_bold : status if cell content should be bold
-    @param b_italic : status if cell content should be italic
-    @param b_underline : status if cell content should be underlined
-    @param i_font_size : font size
-    @param s_font : font art
-    @param fill_color : background fill color of cell
-    @param align : text align of cell
-    @param s_format : format of cell
-    @param s_border : border of cell
-    """
-    cell = ws.cell(row=i_row, column=i_column)
-    if value is not None:
-        cell.value = value
-    if b_underline:
-        s_underline = "single"
-    else:
-        s_underline = "none"
-    cell.font = Font(name=s_font, size=str(i_font_size), bold=b_bold, italic=b_italic, underline=s_underline)
-    if fill_color is not None:
-        cell.fill = PatternFill(start_color=fill_color, end_color=fill_color, fill_type="solid")
-    if align is not None:
-        cell.alignment = Alignment(horizontal=align)
-    if s_format is not None:
-        cell.number_format = s_format
-    if s_border is not None:
-        cell.border = s_border
 
 
 def create_package_summary_xls(l_package_info: list):
     """!
-    @brief Update xls fiel with package summary
+    @brief Update xls field with package summary
     @param l_package_info : list with package infos
     """
-    workbook = Workbook()
-    worksheet = workbook.active
+    xls_creator = XLSCreator(font_name=FONT_NAME)
+    worksheet = xls_creator.workbook.active
     worksheet.title = "PackageInfo"
     for i, title in enumerate(L_PACKAGE_INFO_TITLE):
-        set_cell(worksheet, 1, i + 1, title, b_bold=True)
+        xls_creator.set_cell(worksheet, 1, i + 1, title, bold=True)
     l_added_package = []
     i_package = 0
     for package in l_package_info:
@@ -135,25 +69,19 @@ def create_package_summary_xls(l_package_info: list):
                     pass
                 elif not value:
                     value = ""
-                set_cell(worksheet, i_package + 2, i + 1, str(value))
+                xls_creator.set_cell(worksheet, i_package + 2, i + 1, str(value))
             i_package += 1
-    table_style = table.TableStyleInfo(name="TableStyleLight15",
-                                       showRowStripes=True)
-    s_end_cell = get_column_letter(len(l_added_package[0])) + str(len(l_added_package) + 1)
-    report_table = table.Table(ref=f"A1:{s_end_cell}",
-                               displayName=worksheet.title,
-                               tableStyleInfo=table_style)
-    worksheet.add_table(report_table)
-    set_column_autowidth(worksheet)
+    xls_creator.set_table(worksheet, max_col=len(l_added_package[0]), max_row=len(l_added_package) + 1)
+    xls_creator.set_column_autowidth(worksheet)
     worksheet.freeze_panes = "C2"
-    workbook.save(filename="PackageInfos.xlsx")
+    xls_creator.save(filename="PackageInfos.xlsx")
     log.info("Write %s package infos to file", len(l_added_package))
 
 
 def get_package_info(package: str) -> PackageInfo:
     """!
     @brief Upgrade package from text file to latest version
-    @param  package : check latest version of this package
+    @param package : check latest version of this package
     @return package info
     """
     try:
@@ -165,7 +93,7 @@ def get_package_info(package: str) -> PackageInfo:
         log.error("Error occurred: %s", e)
         package_info = None
     else:
-        l_requires_dist = []
+        l_requires_dist: list[str] = []
         requires_dist = package_info["info"]["requires_dist"]
         if requires_dist:
             for req in requires_dist:
@@ -184,9 +112,9 @@ def get_package_info(package: str) -> PackageInfo:
 
 def update_packages(filename: str) -> list:
     """!
-    @brief  Update package from text file to latest version
-    @param  filename : file name
-    @return  list with updated packages
+    @brief Update package from text file to latest version
+    @param filename : file name
+    @return list with updated packages
     """
     with open(filename, mode="r", encoding="utf-8") as file:
         lines = file.readlines()

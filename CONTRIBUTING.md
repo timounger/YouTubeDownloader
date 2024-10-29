@@ -30,7 +30,7 @@ package "YouTubeDownloader" as YtDl #ededed {
     [main_window]
   }
   package "Util" as util {
-    [downloader_data] as data
+    [app_data] as data
   }
   note top of data
     Constants (e.g paths, keys) and
@@ -71,7 +71,7 @@ Ressourcenintensive Operationen wie z.B. der Download von YouTube Inhalten werde
 
 ### Util
 
-Anwendungsweite, globale Konstanten und andere Daten werden in `Util/downloader_data.py` gespeichert.
+Anwendungsweite, globale Konstanten und andere Daten werden in `Util/app_data.py` gespeichert.
 
 ---
 

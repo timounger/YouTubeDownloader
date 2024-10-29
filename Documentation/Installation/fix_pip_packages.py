@@ -1,7 +1,7 @@
 """!
 ********************************************************************************
-@file    fix_pip_packages.py
-@brief   Fix code from packages
+@file   fix_pip_packages.py
+@brief  Fix code from packages
 ********************************************************************************
 """
 
@@ -19,7 +19,7 @@ init_console_logging(logging.INFO)
 
 def fix_packages():
     """!
-    @brief  Fix PIP packages
+    @brief Fix PIP packages
     """
     src_filename = "cipher.py"
     dest_filename = r"../../.env\Lib\site-packages\pytube\cipher.py"

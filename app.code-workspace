@@ -7,7 +7,7 @@
   "settings": {
     "editor.tabSize": 2,
     "plantuml.includepaths": [
-      "../PlantUML"
+      "../Documentation/DoxygenCreator"
     ],
     "plantuml.jar": "./Documentation/DoxygenCreator/plantuml.jar",
     "files.trimTrailingWhitespace": true,
@@ -16,6 +16,10 @@
     },
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
+    "[json]": {
+      "files.insertFinalNewline": false,
+      "files.trimFinalNewlines": false,
+    },
     "[python]": {
       "editor.detectIdentation": false,
       "editor.insertSpaces": true,

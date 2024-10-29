@@ -1,7 +1,7 @@
 """!
 ********************************************************************************
-@file    doxy_py_checker.py
-@brief   Check parameter and return value for valid doxygen specification in python files
+@file   doxy_py_checker.py
+@brief  Check parameter and return value for valid doxygen specification in python files
 ********************************************************************************
 """
 
@@ -23,15 +23,12 @@ L_EXCLUDE_FOLDER = [".env", "Documentation"]
 
 CHECK_TYPING = False
 
-B_DOXY_PY_DEBUG = False
-L_DEBUG_FILE = ["doxy_py_checker.py"]
-
 
 class DoxyPyChecker:
     """!
-    @brief  Doxygen documentation checker class
-    @param  path : Check python files located in this path
-    @param  print_checked_files : status if checked files should print
+    @brief Doxygen documentation checker class
+    @param path : Check python files located in this path
+    @param print_checked_files : status if checked files should print
     """
 
     def __init__(self, path: Optional[str] = None, print_checked_files: bool = True):
@@ -44,7 +41,7 @@ class DoxyPyChecker:
 
     def get_cmd_args(self) -> argparse.Namespace:
         """!
-        @brief  Define CMD arguments.
+        @brief Define CMD arguments.
         @return argument parser.
         """
         o_parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -55,13 +52,11 @@ class DoxyPyChecker:
 
     def run_check(self) -> list[str]:
         """!
-        @brief  Run doxygen checker
+        @brief Run doxygen checker
         @return list of all files
         """
         findings = []
         l_files = self.get_files()
-        if B_DOXY_PY_DEBUG:
-            l_files = L_DEBUG_FILE
         for file in l_files:
             if self.print_checked_files:
                 log.info("Check docs for file: %s", file)
@@ -79,7 +74,7 @@ class DoxyPyChecker:
 
     def get_files(self) -> list[str]:
         """!
-        @brief  Get all python files in folder and subfolders
+        @brief Get all python files in folder and subfolders
         @return list of all files
         """
         l_files = []
@@ -94,9 +89,9 @@ class DoxyPyChecker:
 
     def get_doc_params(self, docstring: str, findings: list) -> set:
         """!
-        @brief  Get documented parameters from docstring
-        @param  docstring : docstring of class
-        @param  findings : list to add doc warnings
+        @brief Get documented parameters from docstring
+        @param docstring : docstring of class
+        @param findings : list to add doc warnings
         @return collection with documented parameters
         """
         documented_params = set()
@@ -115,9 +110,9 @@ class DoxyPyChecker:
 
     def check_return(self, func_def: ast.FunctionDef | ast.AsyncFunctionDef, docstring: str) -> list[str]:
         """!
-        @brief  Check for documented return value
-        @param  func_def : function definition
-        @param  docstring : docstring of function
+        @brief Check for documented return value
+        @param func_def : function definition
+        @param docstring : docstring of function
         @return list of return findings in function
         """
         findings = []
@@ -145,9 +140,9 @@ class DoxyPyChecker:
 
     def check_function(self, func_def: ast.FunctionDef | ast.AsyncFunctionDef, class_docstring: Optional[str] = None) -> list[str]:
         """!
-        @brief  Check function
-        @param  func_def : function definition
-        @param  class_docstring : docstring of class
+        @brief Check function
+        @param func_def : function definition
+        @param class_docstring : docstring of class
         @return list of findings in function
         """
         findings: list[str] = []
@@ -181,8 +176,8 @@ class DoxyPyChecker:
 
     def check_file(self, file_path: str) -> list[str]:
         """!
-        @brief  Check file for missing parameter description
-        @param  file_path : file name
+        @brief Check file for missing parameter description
+        @param file_path : file name
         @return list of findings in file
         """
         with open(file_path, mode="r", encoding="utf-8") as file:
@@ -219,6 +214,7 @@ class DoxyPyChecker:
 
 
 if __name__ == "__main__":
+    CHECK_TYPING = True
     doxy_checker = DoxyPyChecker(path="../../", print_checked_files=False)
     args = doxy_checker.get_cmd_args()
     if args.path:

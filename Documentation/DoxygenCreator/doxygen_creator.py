@@ -1,7 +1,7 @@
 """!
 ********************************************************************************
-@file    doxygen_creator.py
-@brief   create doxygen documentation
+@file   doxygen_creator.py
+@brief  create doxygen documentation
 ********************************************************************************
 """
 
@@ -75,8 +75,8 @@ if B_GITHUB_CORNER_SUPPORT:
 
 class OpenNotepad(Thread):
     """!
-    @brief  Class to open Notepad in thread to prevent program stop until close file
-    @param  s_file : file to open
+    @brief Class to open Notepad in thread to prevent program stop until close file
+    @param s_file : file to open
     """
 
     def __init__(self, s_file: str):
@@ -86,7 +86,7 @@ class OpenNotepad(Thread):
 
     def run(self):
         """!
-        @brief  Open file with notepad
+        @brief Open file with notepad
         """
         time.sleep(1)
         with subprocess.Popen(["notepad.exe", self.s_file]):
@@ -95,8 +95,8 @@ class OpenNotepad(Thread):
 
 class DoxygenCreator():
     """!
-    @brief  Class to generate Doxygen documentation for any code documentation with uniform settings and styling.
-    @param  s_webside : URL to website
+    @brief Class to generate Doxygen documentation for any code documentation with uniform settings and styling.
+    @param s_webside : URL to website
     """
     d_settings = {
         "PROJECT_NAME": "MyProject",  # important to define default user name to create output folder and files
@@ -154,16 +154,16 @@ class DoxygenCreator():
     def create_default_doxyfile(self, s_file_name: str):
         """!
         @brief Create default doxyfile
-        @param  s_file_name : doxygen file name
+        @param s_file_name : doxygen file name
         """
         subprocess.call([S_DOXYGEN_PATH, "-g", s_file_name])
 
     def set_configuration(self, s_type: str, value: Any, b_override: bool = True):
         """!
-        @brief  Set doxygen configuration.
-        @param  s_type : type to set in configuration
-        @param  value : value to set for s_type in configuration
-        @param  b_override : info if selected default setting should override
+        @brief Set doxygen configuration.
+        @param s_type : type to set in configuration
+        @param value : value to set for s_type in configuration
+        @param b_override : info if selected default setting should override
         """
         if isinstance(value, list):
             if b_override or (s_type not in self.d_settings):
@@ -175,8 +175,8 @@ class DoxygenCreator():
 
     def get_configuration(self, s_type: str) -> Any:
         """!
-        @brief  Get type in doxygen configuration.
-        @param  s_type : type in configuration get setting
+        @brief Get type in doxygen configuration.
+        @param s_type : type in configuration get setting
         @return configuration settings
         """
         if s_type in self.d_settings:
@@ -187,9 +187,9 @@ class DoxygenCreator():
 
     def prepare_doxyfile_configuration(self):
         """!
-        @brief  Prepare doxfile configuration with default settings that depend on other parameters.
-                Parameters that set before as fix parameter or by user will not override.
-                This allows the user to make settings that differ from the default configuration.
+        @brief Prepare doxfile configuration with default settings that depend on other parameters.
+               Parameters that set before as fix parameter or by user will not override.
+               This allows the user to make settings that differ from the default configuration.
         """
         # set filenames and directories needed to save/open files
         self.s_output_dir = self.get_configuration('OUTPUT_DIRECTORY')  # save output directory witch used for other file names
@@ -229,7 +229,7 @@ class DoxygenCreator():
 
     def edit_select_doxyfile_settings(self):
         """!
-        @brief  Override default settings in doxyfile with selected settings.
+        @brief Override default settings in doxyfile with selected settings.
         """
         # load the default doxygen template file
         config_parser = ConfigParser()
@@ -259,7 +259,7 @@ class DoxygenCreator():
 
     def add_warnings(self):
         """!
-        @brief  Add warnings to warning file
+        @brief Add warnings to warning file
         """
         if self.l_warnings:
             with open(self.s_warning_name, mode="a", encoding="utf-8") as file:
@@ -311,8 +311,8 @@ class DoxygenCreator():
 
     def check_doxygen_warnings(self, b_open_warning_file: bool = True) -> bool:
         """!
-        @brief  Check for doxygen Warnings
-        @param  b_open_warning_file : [True] open warning file; [False] only check for warnings
+        @brief Check for doxygen Warnings
+        @param b_open_warning_file : [True] open warning file; [False] only check for warnings
         @return status if doxygen warnings exist
         """
         b_warnings = False
@@ -371,7 +371,7 @@ class DoxygenCreator():
     if B_DOXY_CONFIG_DIFF_SUPPORT:
         def generate_configuration_diff(self):
             """!
-            @brief  Generate doxyfile diff to view changes
+            @brief Generate doxyfile diff to view changes
             """
             s_default_doxyfile = os.path.join(self.s_output_dir, S_DOXY_FILE_DEFAULT_NAME)
 
@@ -395,8 +395,8 @@ class DoxygenCreator():
 
     def run_doxygen(self, b_open_doxygen_output: bool = True) -> bool:
         """!
-        @brief  Generate Doxyfile and Doxygen output depend on doxyfile settings
-        @param  b_open_doxygen_output : [True] open output in browser; [False] only generate output
+        @brief Generate Doxyfile and Doxygen output depend on doxyfile settings
+        @param b_open_doxygen_output : [True] open output in browser; [False] only generate output
         @return status for found doxygen warning
         """
         self.download_doxygen()
@@ -434,7 +434,7 @@ class DoxygenCreator():
 
 def get_cmd_args() -> argparse.Namespace:
     """!
-    @brief  Function to define CMD arguments.
+    @brief Function to define CMD arguments.
     @return Function returns argument parser.
     """
     o_parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)

@@ -42,7 +42,7 @@ DisableProgramGroupPage=yes
 ;PrivilegesRequired=lowest
 OutputDir={#OutputFolder}
 OutputBaseFilename={#OutputFilename}
-SetupIconFile=..\Resources\YouTubeDownloader_Setup.ico
+SetupIconFile=..\Resources\setup.ico
 UninstallDisplayIcon={app}\{#MyAppExeName}
 Compression=lzma
 SolidCompression=yes
@@ -51,7 +51,6 @@ ArchitecturesInstallIn64BitMode=x64
 RestartIfNeededByRun=no
 
 [Languages]
-Name: "english"; MessagesFile: "compiler:Default.isl"; InfoBeforeFile:"setup_info_before_install_english.txt"
 Name: "german"; MessagesFile: "compiler:Languages\German.isl"; InfoBeforeFile:"setup_info_before_install_german.txt"
 
 [Components]
@@ -62,7 +61,6 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "{#SourceFile}"; DestDir: "{app}"; Flags: ignoreversion;
-; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"

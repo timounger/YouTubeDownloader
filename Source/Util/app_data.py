@@ -1,14 +1,13 @@
 """!
 ********************************************************************************
-@file    downloader_data.py
-@brief   Data module (constants and functions related to path and ini file)
+@file   app_data.py
+@brief  Data module (constants and functions related to path and ini file)
 ********************************************************************************
 """
 
 import sys
 import os
-
-B_DEBUG = False
+import enum
 
 
 def resource_path(s_relative_path: str) -> str:
@@ -27,6 +26,16 @@ def resource_path(s_relative_path: str) -> str:
 
 
 # Files and Paths
-S_ICON_RESOURCE_PATH = 'Resources/YouTubeDownloader.ico'
+S_ICON_RESOURCE_PATH = 'Resources/app.ico'
 S_ICON_32_RESOURCE_PATH = 'Resources/favicon.ico'
 S_ICON_REL_PATH = resource_path(S_ICON_RESOURCE_PATH)
+
+
+class ETheme(str, enum.Enum):
+    """!
+    @brief Available application themes
+    """
+    LIGHT = "light"
+    DARK = "dark"
+    CLASSIC = "classic"
+    SYSTEM = "system"

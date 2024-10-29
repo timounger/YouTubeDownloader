@@ -1,7 +1,7 @@
 """!
 ********************************************************************************
-@file    generate_executable.py
-@brief   Generate executable file
+@file   generate_executable.py
+@brief  Generate executable file
 ********************************************************************************
 """
 
@@ -26,7 +26,7 @@ init_console_logging(logging.INFO)
 
 WORKPATH = "build"
 GIT_VERSION_PATH = "../Source/Util"
-VERSION_FILE_NAME = "downloader_version_info.txt"
+VERSION_FILE_NAME = "version_info.txt"
 
 L_EXCLUDE_MODULES = [
     # actual not used
@@ -34,10 +34,11 @@ L_EXCLUDE_MODULES = [
 ]
 
 TOLERATED_WARNINGS = [
+    "No backend available"  # possible on CI
 ]
 
 add_data = [
-    "..\\Resources\\YouTubeDownloader.ico;Resources\\"
+    "..\\Resources\\app.ico;Resources\\"
 ]
 
 
@@ -64,7 +65,7 @@ WARNING_FILE = "PyInstaller_warnings.txt"
 command = [r"..\.env\Scripts\python", "-m", "PyInstaller", "--clean"]
 command.extend(["--paths", "..\\"])
 command.extend(get_type_list("add-data", add_data))
-command.extend(["--icon", "..\\Resources\\YouTubeDownloader.ico"])
+command.extend(["--icon", "..\\Resources\\app.ico"])
 command.extend(["--version-file", f"{WORKPATH}\\{VERSION_FILE_NAME}"])
 command.extend(get_type_list("hidden-import", L_HIDDEN_IMPORT))
 command.extend(get_type_list("exclude-module", L_EXCLUDE_MODULES))
@@ -72,7 +73,7 @@ command.extend(["--name", __title__])
 command.extend(["--onefile", "--noconsole", "--noupx",])
 command.extend(["--distpath", "bin"])
 command.extend(["--workpath", WORKPATH])
-command.extend(["../Source/youtube_downloader.py"])
+command.extend(["../Source/app.py"])
 
 if __name__ == "__main__":
     result_report = []

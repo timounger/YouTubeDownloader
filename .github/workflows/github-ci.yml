@@ -166,8 +166,8 @@ jobs:
       - name: Upload PyLint report
         uses: actions/upload-artifact@v4
         with:
-          name: pylint_YouTubeDownloader.log
-          path: ./Test/pylint_YouTubeDownloader.log
+          name: pylint.log
+          path: ./Test/pylint.log
   #------------------------------------------------------------------------------
   build-Exe:
     if: (inputs.build != 'none') || inputs.create_release || (github.event_name == 'push')

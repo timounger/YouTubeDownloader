@@ -1,7 +1,7 @@
 """!
 ********************************************************************************
-@file    version.py
-@brief   Version and general information
+@file   version.py
+@brief  Version and general information
 ********************************************************************************
 """
 

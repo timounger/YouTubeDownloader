@@ -5,4 +5,4 @@
 ********************************************************************************
 """
 
-from . import colored_log, app_data, openpyxl_util
+from . import dialog_about_ui_tk, dialog_help_ui_tk, dialog_splash_ui_tk

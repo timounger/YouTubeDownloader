@@ -1,14 +1,16 @@
 """!
 ********************************************************************************
-@file    check_included_packages.py
-@brief   Utility script to list and check if the build executable
-         contains only specified third party packages
+@file   check_included_packages.py
+@brief  Utility script to list and check if the build executable
+        contains only specified third party packages
 ********************************************************************************
 """
 
 import logging
 import re
 from bs4 import BeautifulSoup
+
+from Source.version import __title__
 
 log = logging.getLogger("CheckIncludedPackages")
 
@@ -26,9 +28,7 @@ L_ALLOWED_THIRD_PARTY_PACKAGES = [
     "colorama"
 ]
 
-APP_NAME = "YouTubeDownloader"
-
-S_RELATIVE_PATH = fr"build\{APP_NAME}\xref-{APP_NAME}.html"
+S_RELATIVE_PATH = fr"build\{__title__}\xref-{__title__}.html"
 
 
 def check_included_packages() -> list:
@@ -45,7 +45,7 @@ def check_included_packages() -> list:
     regex_third_party_name = re.compile(r"(?<=site-packages\/).*", re.IGNORECASE)
     regex_builtin = re.compile(r".env\/lib\/.*.py", re.IGNORECASE)
     regex_builtin_name = re.compile(r"(?<=lib\/).*", re.IGNORECASE)
-    regex_own_packs = re.compile(fr"{APP_NAME}\/.*")
+    regex_own_packs = re.compile(fr"{__title__}\/.*")
 
     # read PyInstaller modulegraph cross reference HTML
     with open(S_RELATIVE_PATH, mode="r", encoding="utf-8") as o_html_file:
@@ -71,12 +71,12 @@ def check_included_packages() -> list:
                     d_own_packs[matches.group()] = ""
 
     # print included packages
-    log.info("\nThird party packages:")
-    log.info("\n".join(list(d_third_party.keys())))
-    # log.info("\nOwn packages:")
-    # log.info("\n".join(list(d_own_packs.keys())))
-    # log.info("\nPython buildin packages:")
-    # log.info("\n".join(list(d_buildin.keys())))
+    log.debug("\nThird party packages:")
+    log.debug("\n".join(list(d_third_party.keys())))
+    log.debug("\nOwn packages:")
+    log.debug("\n".join(list(d_own_packs.keys())))
+    log.debug("\nPython buildin packages:")
+    log.debug("\n".join(list(d_buildin.keys())))
 
     # check third party packages
     l_not_allowed_packages = []
