@@ -5,4 +5,4 @@
 ********************************************************************************
 """
 
-from . import version, app, Controller, Model, Util, Views, Worker
+# from . import version, app, Controller, Model, Util, Views, Worker  # comment you for CI Job on linux
