@@ -24,6 +24,11 @@ L_ALLOWED_THIRD_PARTY_PACKAGES = [
     "pyperclip",
     # youtube downloader
     "pytube",
+    "customtkinter",
+    "darkdetect",
+    "packaging",
+    "openpyxl",
+    "et_xmlfile",
     # colored log
     "colorama"
 ]
@@ -31,7 +36,7 @@ L_ALLOWED_THIRD_PARTY_PACKAGES = [
 S_RELATIVE_PATH = fr"build\{__title__}\xref-{__title__}.html"
 
 
-def check_included_packages() -> list:
+def check_included_packages() -> list[str]:
     """!
     @brief Check included packages
     @return status if included packages are okay

@@ -13,9 +13,10 @@ clipboard==0.0.4
 sv_ttk==2.6.0
 darkdetect==0.7.1 # <0.8.0 required by pyqtdarktheme
 pyqtdarktheme==2.1.0
+customtkinter==5.2.2
 
 # Executable
-pyinstaller==6.9.0  # 6.10.0 has executable attribute bug
+pyinstaller==6.11.1
 beautifulsoup4==4.12.3
 
 # Test

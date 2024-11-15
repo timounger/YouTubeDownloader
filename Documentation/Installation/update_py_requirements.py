@@ -40,11 +40,11 @@ class PackageInfo(NamedTuple):
     license_info: str
     home_page: str
     package_url: str
-    requires_dist: list
+    requires_dist: list[str]
     requires_py: str
 
 
-def create_package_summary_xls(l_package_info: list):
+def create_package_summary_xls(l_package_info: list[PackageInfo]) -> None:
     """!
     @brief Update xls field with package summary
     @param l_package_info : list with package infos
@@ -78,7 +78,7 @@ def create_package_summary_xls(l_package_info: list):
     log.info("Write %s package infos to file", len(l_added_package))
 
 
-def get_package_info(package: str) -> PackageInfo:
+def get_package_info(package: str) -> PackageInfo | None:
     """!
     @brief Upgrade package from text file to latest version
     @param package : check latest version of this package
@@ -88,29 +88,29 @@ def get_package_info(package: str) -> PackageInfo:
         url = f"https://pypi.org/pypi/{package}/json"
         response = requests.get(url, timeout=I_TIMEOUT)
         response.raise_for_status()
-        package_info = response.json()
+        d_package_info = response.json()
     except requests.exceptions.RequestException as e:
         log.error("Error occurred: %s", e)
         package_info = None
     else:
         l_requires_dist: list[str] = []
-        requires_dist = package_info["info"]["requires_dist"]
+        requires_dist = d_package_info["info"]["requires_dist"]
         if requires_dist:
             for req in requires_dist:
                 l_requires_dist.append(req)
         package_info = PackageInfo(package,
-                                   package_info["info"]["version"],
-                                   package_info["info"]["author"],
-                                   package_info["info"]["author_email"],
-                                   package_info["info"]["license"],
-                                   package_info["info"]["home_page"],
-                                   package_info["info"]["package_url"],
+                                   d_package_info["info"]["version"],
+                                   d_package_info["info"]["author"],
+                                   d_package_info["info"]["author_email"],
+                                   d_package_info["info"]["license"],
+                                   d_package_info["info"]["home_page"],
+                                   d_package_info["info"]["package_url"],
                                    l_requires_dist,
-                                   package_info["info"]["requires_python"])
+                                   d_package_info["info"]["requires_python"])
     return package_info
 
 
-def update_packages(filename: str) -> list:
+def update_packages(filename: str) -> list[PackageInfo]:
     """!
     @brief Update package from text file to latest version
     @param filename : file name

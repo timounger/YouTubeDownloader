@@ -6,7 +6,9 @@
 """
 
 import logging
-from typing import Optional
+from logging import LogRecord
+from typing import Optional, Any
+from types import TracebackType
 from colorama import just_fix_windows_console
 just_fix_windows_console()
 
@@ -47,7 +49,7 @@ def get_format(line_no: bool = False, threads: bool = False) -> str:
     return msg_format
 
 
-def init_console_logging(level: int, threads: bool = False):
+def init_console_logging(level: int, threads: bool = False) -> None:
     """!
     @brief Initializes logging for console output.
            Line numbers are active in DEBUG level or lower.
@@ -78,7 +80,7 @@ class ColorFormatter(logging.Formatter):
     bg_red = "\033[41m"
     reset = "\033[0m"
 
-    def __init__(self, fmt: Optional[str] = None, line_no: bool = True, threads: bool = False, data_format: Optional[str] = None, **kwargs) -> None:
+    def __init__(self, fmt: Optional[str] = None, line_no: bool = True, threads: bool = False, data_format: Optional[str] = None, **kwargs: Any) -> None:
         super().__init__(fmt, **kwargs)
         msg_format = fmt if fmt else get_format(line_no=line_no, threads=threads)
         self.d_formats = {
@@ -90,7 +92,7 @@ class ColorFormatter(logging.Formatter):
         }
         self.data_format = data_format
 
-    def format(self, record: logging.LogRecord) -> str:
+    def format(self, record: LogRecord) -> str:
         """!
         @brief Overwrite format method of logging.Formatter to use colors formatting
         @param record : log record
@@ -100,7 +102,7 @@ class ColorFormatter(logging.Formatter):
         formatter = logging.Formatter(fmt=log_fmt, datefmt=self.data_format)
         return formatter.format(record)
 
-    def formatException(self, ei):
+    def formatException(self, ei: tuple[type[BaseException], BaseException, TracebackType | None] | tuple[None, None, None]) -> str:
         """!
         @brief Overwrite formatException method of logging. Formatter to use critical color formatting
         @param ei : exception info
@@ -109,7 +111,7 @@ class ColorFormatter(logging.Formatter):
         log_fmt = self.d_formats.get(logging.CRITICAL)
         formatter = logging.Formatter(log_fmt, datefmt=self.data_format)
         record = super().formatException(ei)
-        return formatter.format(record)
+        return formatter.format(record)  # type: ignore
 
 
 if __name__ == "__main__":

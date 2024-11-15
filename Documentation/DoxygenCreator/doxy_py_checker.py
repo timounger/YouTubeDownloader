@@ -87,7 +87,7 @@ class DoxyPyChecker:
                     l_files.append(fullpath)
         return l_files
 
-    def get_doc_params(self, docstring: str, findings: list) -> set:
+    def get_doc_params(self, docstring: str, findings: list[str]) -> set[str]:
         """!
         @brief Get documented parameters from docstring
         @param docstring : docstring of class

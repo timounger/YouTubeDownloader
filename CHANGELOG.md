@@ -2,6 +2,17 @@
 
 \tableofcontents
 
+## v1.0.7
+
+[Download](https://github.com/timounger/YouTubeDownloader/releases/tag/v1.0.7)
+
+_[compare to previous version](https://github.com/timounger/YouTubeDownloader/compare/v1.0.6...v1.0.7)_
+
+- Download fix
+- TKCostum Design
+- Automatischer Darkmode
+- Typing
+
 ## v1.0.6
 
 [Download](https://github.com/timounger/YouTubeDownloader/releases/tag/v1.0.6)

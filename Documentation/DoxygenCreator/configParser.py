@@ -9,7 +9,6 @@
 import logging
 import os
 import re
-from typing import Tuple
 
 
 class ParseException(Exception):
@@ -24,11 +23,11 @@ class ConfigParser:
     @brief This class should be used to parse and store a doxygen configuration file
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.__single_line_option_regex = re.compile("^\\s*(\\w+)\\s*=\\s*([^\\\\]*)\\s*$")
         self.__first_line_of_multine_option_regex = re.compile("^\\s*(\\w+)\\s*=\\s*(.*)\\\\$")
 
-    def load_configuration(self, doxyfile: str) -> dict:
+    def load_configuration(self, doxyfile: str) -> dict[str, str | list[str]]:
         """!
         @brief Parse a Doxygen configuration file
         @param doxyfile : doxyfile: Path to the Doxygen configuration file
@@ -39,7 +38,7 @@ class ConfigParser:
             logging.error("Impossible to access to %s", doxyfile)
             raise FileNotFoundError(doxyfile)
 
-        configuration: dict[str, str | list] = {}
+        configuration: dict[str, str | list[str]] = {}
 
         with open(doxyfile, 'r', encoding='utf-8') as file:
 
@@ -72,7 +71,7 @@ class ConfigParser:
 
         return configuration
 
-    def store_configuration(self, config: dict, doxyfile: str):
+    def store_configuration(self, config: dict[str, str | list[str]], doxyfile: str) -> None:
         """!
         @brief Store the doxygen configuration to the disk
         @param config : The doxygen configuration you want to write on disk
@@ -94,7 +93,7 @@ class ConfigParser:
         with open(doxyfile, 'w', encoding='utf-8') as file:
             file.write("\n".join(lines))
 
-    def __extract_multiline_option_name_and_first_value(self, line: str) -> Tuple[str, str]:
+    def __extract_multiline_option_name_and_first_value(self, line: str) -> tuple[str, str]:
         """!
         @brief Extract the option name and the first value of multi line option
         @param line : The line you want to parse
@@ -108,7 +107,7 @@ class ConfigParser:
 
         return matches.group(1), self.__remove_double_quote_if_required(matches.group(2))
 
-    def __extract_single_line_option_name_and_value(self, line: str) -> Tuple[str, str]:
+    def __extract_single_line_option_name_and_value(self, line: str) -> tuple[str, str]:
         """!
         @brief Extract the option name and the value of single line option
         @param line : The line you want to parse

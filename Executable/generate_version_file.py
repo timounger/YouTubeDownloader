@@ -56,7 +56,7 @@ versionInfo = VSVersionInfo(
 )
 
 
-def generate_version_file(s_filename: str, s_workpath: str):
+def generate_version_file(s_filename: str, s_workpath: str) -> None:
     """!
     @brief Generate version file
     @param s_filename : version file name

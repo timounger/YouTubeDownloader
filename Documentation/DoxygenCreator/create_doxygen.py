@@ -13,7 +13,7 @@ import logging
 sys.path.append(os.path.join(os.path.dirname(__file__), "../.."))
 
 from Source.version import __title__, __version__, __description__, __author__  # pylint: disable=wrong-import-position
-from Source.Util.app_data import S_ICON_RESOURCE_PATH, S_ICON_32_RESOURCE_PATH  # pylint: disable=wrong-import-position
+from Source.Util.app_data import ICON_APP_PATH, ICON_APP_FAVICON_PATH  # pylint: disable=wrong-import-position
 from Source.Util.colored_log import init_console_logging  # pylint: disable=wrong-import-position
 from Documentation.DoxygenCreator.doxygen_creator import DoxygenCreator, get_cmd_args, S_MAIN_FOLDER_FOLDER, S_PYTHON_PATTERN  # pylint: disable=wrong-import-position
 # autopep8: on
@@ -29,8 +29,8 @@ if __name__ == "__main__":
     doxygen_creator.set_configuration("PROJECT_NAME", __title__)
     doxygen_creator.set_configuration("PROJECT_NUMBER", __version__)
     doxygen_creator.set_configuration("PROJECT_BRIEF", __description__)
-    doxygen_creator.set_configuration("PROJECT_LOGO", f"{S_MAIN_FOLDER_FOLDER}{S_ICON_RESOURCE_PATH}")
-    doxygen_creator.set_configuration("PROJECT_ICON", f"{S_MAIN_FOLDER_FOLDER}{S_ICON_32_RESOURCE_PATH}")
+    doxygen_creator.set_configuration("PROJECT_LOGO", f"{S_MAIN_FOLDER_FOLDER}{ICON_APP_PATH}")
+    doxygen_creator.set_configuration("PROJECT_ICON", f"{S_MAIN_FOLDER_FOLDER}{ICON_APP_FAVICON_PATH}")
     doxygen_creator.set_configuration("DOCSET_PUBLISHER_NAME", __author__)
     doxygen_creator.set_configuration("INPUT", S_MAIN_FOLDER_FOLDER)
     l_exclude_pattern = [".env"]

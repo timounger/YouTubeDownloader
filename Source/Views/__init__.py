@@ -5,4 +5,4 @@
 ********************************************************************************
 """
 
-from . import mainwindow_tk_ui, dialogs
+from . import mainwindow_tk_ui

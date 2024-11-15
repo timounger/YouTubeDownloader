@@ -26,7 +26,7 @@ FILE_HEADER = f'''"""!
 '''
 
 
-def generate_git_version_file(s_workpath: str):
+def generate_git_version_file(s_workpath: str) -> None:
     """!
     @brief Generate git version file
     @param s_workpath : workpath

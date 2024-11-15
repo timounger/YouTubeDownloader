@@ -84,7 +84,7 @@ class OpenNotepad(Thread):
         self.s_file = s_file
         self.start()
 
-    def run(self):
+    def run(self) -> None:
         """!
         @brief Open file with notepad
         """
@@ -98,7 +98,7 @@ class DoxygenCreator():
     @brief Class to generate Doxygen documentation for any code documentation with uniform settings and styling.
     @param s_webside : URL to website
     """
-    d_settings = {
+    d_settings: dict[str, str | list[str] | int] = {
         "PROJECT_NAME": "MyProject",  # important to define default user name to create output folder and files
         "OUTPUT_DIRECTORY": S_DEFAULT_OUTPUT_FOLDER,
         "ABBREVIATE_BRIEF": "",  # Each string in this list, will be stripped from the text ("" to prevent warning)
@@ -134,31 +134,30 @@ class DoxygenCreator():
         "EXTERNAL_SEARCH": NO,
         "GENERATE_LATEX": NO,
         "LATEX_CMD_NAME": "latex",
-        "HAVE_DOT": YES,
         "UML_LOOK": YES,
         "DOT_IMAGE_FORMAT": "svg",
         "INTERACTIVE_SVG": YES,
         "PLANTUML_JAR_PATH": S_PLANTUML_PATH,
         "PLANTUML_INCLUDE_PATH": S_PLANTUML_PATH,
         "DOT_MULTI_TARGETS": YES,
-        "DOT_CLEANUP": YES
+        "DOT_CLEANUP": YES,
     }
 
-    def __init__(self, s_webside: Optional[str] = None):
+    def __init__(self, s_webside: Optional[str] = None) -> None:
         self.s_webside = s_webside
         self.l_warnings: list[str] = []
         self.s_output_dir = ""
         self.s_doxyfile_name = ""
         self.s_warning_name = ""
 
-    def create_default_doxyfile(self, s_file_name: str):
+    def create_default_doxyfile(self, s_file_name: str) -> None:
         """!
         @brief Create default doxyfile
         @param s_file_name : doxygen file name
         """
         subprocess.call([S_DOXYGEN_PATH, "-g", s_file_name])
 
-    def set_configuration(self, s_type: str, value: Any, b_override: bool = True):
+    def set_configuration(self, s_type: str, value: Any, b_override: bool = True) -> None:
         """!
         @brief Set doxygen configuration.
         @param s_type : type to set in configuration
@@ -168,7 +167,11 @@ class DoxygenCreator():
         if isinstance(value, list):
             if b_override or (s_type not in self.d_settings):
                 self.d_settings[s_type] = []
-            self.d_settings[s_type].extend(value)
+            list_to_extend = self.d_settings[s_type]  # Now mypy knows this is a list
+            if isinstance(list_to_extend, list):
+                list_to_extend.extend(value)
+            else:
+                log.warning("Not possible to append value to %s", s_type)
         else:
             if b_override or (s_type not in self.d_settings):
                 self.d_settings[s_type] = value
@@ -185,7 +188,7 @@ class DoxygenCreator():
             value = None  # is default value
         return value
 
-    def prepare_doxyfile_configuration(self):
+    def prepare_doxyfile_configuration(self) -> None:
         """!
         @brief Prepare doxfile configuration with default settings that depend on other parameters.
                Parameters that set before as fix parameter or by user will not override.
@@ -227,7 +230,7 @@ class DoxygenCreator():
         if B_FOOTER_SUPPORT:
             self.set_configuration("HTML_FOOTER", "footer.html", b_override=False)  # use own doxygen footer
 
-    def edit_select_doxyfile_settings(self):
+    def edit_select_doxyfile_settings(self) -> None:
         """!
         @brief Override default settings in doxyfile with selected settings.
         """
@@ -240,9 +243,10 @@ class DoxygenCreator():
         for key, value in self.d_settings.items():
             if key in l_existing_keys:
                 if isinstance(value, list):
-                    configuration[key] = []
+                    new_values = []
                     for entry in value:
-                        configuration[key].append(entry)
+                        new_values.append(entry)
+                    configuration[key] = new_values
                 else:
                     if isinstance(value, int):
                         value = str(value)  # integer can only write as string to doxyfile
@@ -257,7 +261,7 @@ class DoxygenCreator():
         # store the configuration in doxyfile
         config_parser.store_configuration(configuration, self.s_doxyfile_name)
 
-    def add_warnings(self):
+    def add_warnings(self) -> None:
         """!
         @brief Add warnings to warning file
         """
@@ -267,7 +271,7 @@ class DoxygenCreator():
                     file.write(s_warning + "\n")
 
     if B_PLANTUML_SUPPORT:
-        def download_plantuml_jar(self):
+        def download_plantuml_jar(self) -> None:
             """!
             @brief Download PlantUML Jar
             """
@@ -285,7 +289,7 @@ class DoxygenCreator():
             else:
                 log.info("%s already exist!", S_PLANTUML_JAR_NAME)
 
-    def download_doxygen(self):
+    def download_doxygen(self) -> None:
         """!
         @brief Download Doxygen
         """
@@ -331,7 +335,7 @@ class DoxygenCreator():
 
         return b_warnings
 
-    def generate_doxygen_output(self, b_open_doxygen_output: bool = True):
+    def generate_doxygen_output(self, b_open_doxygen_output: bool = True) -> None:
         """!
         @brief Generate Doxygen output depend on existing doxyfile
         @param b_open_doxygen_output : [True] open output in browser; [False] only generate output
@@ -344,7 +348,7 @@ class DoxygenCreator():
             webbrowser.open_new_tab(filename)
 
     if B_GITHUB_CORNER_SUPPORT:
-        def add_github_corner(self):
+        def add_github_corner(self) -> None:
             """!
             @brief Add Github corner and tab icon
             """
@@ -360,7 +364,7 @@ class DoxygenCreator():
                         if s_corner_text is not None:
                             file.write(s_corner_text + "\n")
 
-    def add_nojekyll_file(self):
+    def add_nojekyll_file(self) -> None:
         """!
         @brief Add .nojekyll file that files with underscores visible
         """
@@ -369,7 +373,7 @@ class DoxygenCreator():
             file.write("")
 
     if B_DOXY_CONFIG_DIFF_SUPPORT:
-        def generate_configuration_diff(self):
+        def generate_configuration_diff(self) -> None:
             """!
             @brief Generate doxyfile diff to view changes
             """
@@ -418,9 +422,9 @@ class DoxygenCreator():
             # additional script to check for valid doxygen specification in python files
             file_patterns = self.d_settings["FILE_PATTERNS"]
             if isinstance(file_patterns, list):
-                l_file_patterns = file_patterns
+                l_file_patterns = [str(pattern) for pattern in file_patterns]
             else:
-                l_file_patterns = [file_patterns]
+                l_file_patterns = [str(file_patterns)]
             if S_PYTHON_PATTERN in l_file_patterns:
                 doxy_checker = DoxyPyChecker(S_MAIN_FOLDER_FOLDER)
                 l_finding = doxy_checker.run_check()

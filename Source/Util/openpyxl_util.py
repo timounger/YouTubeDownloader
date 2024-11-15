@@ -18,6 +18,7 @@ from openpyxl.styles.borders import Border, Side
 FONT_SIZE = 11
 FONT_NAME = "Calibri"
 MAX_COLUMN_WIDTH = 30
+MAX_ROW_HEIGHT = 1.3
 
 # https://www.farb-tabelle.de/de/farbtabelle.htm
 COLOR_BLACK = "000000"
@@ -42,7 +43,6 @@ NUMBER_FORMAT_PERCENT = "0%"
 NUMBER_FORMAT_DATETIME = "YYYY-MM-DD HH:MM:SS"
 NUMBER_FORMAT_TIME = "hh:mm"
 
-CELL_WIDTH_FACTOR = 1 / 11  # 1 width is 11 pixel
 PAGE_MARGIN_FACTOR = 1 / 2.54  # convert inch to cm
 
 
@@ -58,14 +58,14 @@ class XLSCreator():
         self.font_size = FONT_SIZE if (font_size is None) else font_size
         self.workbook = Workbook()
 
-    def save(self, filename: str):
+    def save(self, filename: str) -> None:
         """!
         @brief Save file
         @param filename : name of file
         """
         self.workbook.save(filename=filename)
 
-    def set_table(self, worksheet: Worksheet, max_col: int, max_row: int, min_col: int = 1, min_row: int = 1):
+    def set_table(self, worksheet: Worksheet, max_col: int, max_row: int, min_col: int = 1, min_row: int = 1) -> None:
         """!
         @brief Set table
         @param worksheet : worksheet
@@ -84,7 +84,7 @@ class XLSCreator():
         worksheet.add_table(new_table)
 
     def set_page_marcins(self, worksheet: Worksheet, left: Optional[float] = None, right: Optional[float] = None,
-                         top: Optional[float] = None, bottom: Optional[float] = None):
+                         top: Optional[float] = None, bottom: Optional[float] = None) -> None:
         """!
         @brief Set page margins in cm
         @param worksheet : select worksheet
@@ -102,7 +102,7 @@ class XLSCreator():
         if bottom is not None:
             worksheet.page_margins.bottom = bottom * PAGE_MARGIN_FACTOR
 
-    def set_column_autowidth(self, worksheet: Worksheet, b_limit: bool = True):
+    def set_column_autowidth(self, worksheet: Worksheet, b_limit: bool = True) -> None:
         """!
         @brief Set automatic column width of worksheet.
         @param worksheet : select worksheet
@@ -124,12 +124,25 @@ class XLSCreator():
             else:
                 worksheet.column_dimensions[get_column_letter(i)].width = (i_max_col_len + 1) * 0.10 * self.font_size
 
+    def set_row_autoheight(self, worksheet: Worksheet, b_limit: bool = True) -> None:
+        """!
+        @brief Set automatic row height of worksheet.
+        @param worksheet : select worksheet
+        @param b_limit : status if height has a max limit
+        """
+        for i, col_cells in enumerate(worksheet.rows, start=1):
+            i_high = MAX_ROW_HEIGHT
+            if not b_limit:
+                for cell in col_cells:
+                    i_high = max(i_high, len(str(cell.value).split("\n")) * MAX_ROW_HEIGHT)
+            worksheet.row_dimensions[i].height = i_high * self.font_size
+
     def set_cell(self, ws: Worksheet, row: int, column: int, value: Optional[str | int | float | datetime | time] = None,
                  font_name: Optional[str] = None, color: Optional[str] = None, font_size: Optional[int] = None,
                  bold: bool = False, italic: bool = False, strike: bool = False, underline: Optional[str] = None,
                  vert_align: Optional[str] = None, fill_color: Optional[str] = None,
                  align: Optional[str] = None, align_vert: Optional[str] = "center", wrap_text: bool = False,
-                 number_format: Optional[str] = None, border: Optional[Border] = None):
+                 number_format: Optional[str] = None, border: Optional[Border] = None) -> None:
         """!
         @brief Set cell data
                Font: https://openpyxl.readthedocs.io/en/stable/api/openpyxl.styles.fonts.html
@@ -168,12 +181,3 @@ class XLSCreator():
             cell.number_format = number_format
         if border is not None:
             cell.border = border
-
-
-if __name__ == "__main__":
-    xls_creator = XLSCreator()
-    ws = xls_creator.workbook.active
-    ws.title = "Test"
-    xls_creator.set_cell(ws, row=1, column=1, value="Test")
-    xls_creator.save(filename="Test.xlsx")
-    print("END")

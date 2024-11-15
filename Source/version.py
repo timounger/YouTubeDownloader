@@ -7,8 +7,8 @@
 
 # Version
 VERSION_MAJOR = 1  # major changes/breaks at API (e.g incompatibility)
-VERSION_MINOR = 0  # minor changes/does not break the API (e.g new feature)
-VERSION_PATCH = 6  # Bug fixes
+VERSION_MINOR = 1  # minor changes/does not break the API (e.g new feature)
+VERSION_PATCH = 0  # Bug fixes
 VERSION_BUILD = 0  # build number (if available)
 
 
