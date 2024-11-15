@@ -22,7 +22,7 @@ package "YouTubeDownloader" as YtDl #ededed {
     [main_window]
   }
   package "Util" as util {
-    [downloader_data] as data
+    [app_data] as data
   }
   note top of data
     Constants (e.g paths, keys) and

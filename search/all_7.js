@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['7_20additional_20terms_0',['7. Additional Terms',['../_l_i_c_e_n_s_e.html#autotoc_md34',1,'']]]
+  ['7_0',['v1.0.7',['../_c_h_a_n_g_e_l_o_g.html#autotoc_md0',1,'']]],
+  ['7_20additional_20terms_1',['7. Additional Terms',['../_l_i_c_e_n_s_e.html#autotoc_md35',1,'']]]
 ];

@@ -7,5 +7,5 @@ var dir_7b3fabe2584a7a404cce81bafb4f8564 =
     [ "generate_git_version.py", "generate__git__version_8py.html", "generate__git__version_8py" ],
     [ "generate_setup.bat", "generate__setup_8bat.html", null ],
     [ "generate_version_file.py", "generate__version__file_8py.html", "generate__version__file_8py" ],
-    [ "setup_youtubedownloader.iss", "setup__youtubedownloader_8iss.html", null ]
+    [ "setup.iss", "setup_8iss.html", null ]
 ];

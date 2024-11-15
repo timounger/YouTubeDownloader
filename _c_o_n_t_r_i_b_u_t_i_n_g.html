@@ -30,9 +30,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="YouTubeDownloader.ico"/></td>
+  <td id="projectlogo"><img alt="Logo" src="app.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.0.6</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.0</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -155,42 +155,42 @@ $(function(){initNavTree('_c_o_n_t_r_i_b_u_t_i_n_g.html',''); initResizable(true
   <li class="level1 empty">
     <ul>
       <li class="level2">
-        <a href="#autotoc_md9">Architektur 🏭️</a>
+        <a href="#autotoc_md10">Architektur 🏭️</a>
         <ul>
           <li class="level3">
-            <a href="#autotoc_md10">Einstiegspunkt</a>
+            <a href="#autotoc_md11">Einstiegspunkt</a>
           </li>
           <li class="level3">
-            <a href="#autotoc_md11">Controller</a>
+            <a href="#autotoc_md12">Controller</a>
           </li>
           <li class="level3">
-            <a href="#autotoc_md12">Background-Worker</a>
+            <a href="#autotoc_md13">Background-Worker</a>
           </li>
           <li class="level3">
-            <a href="#autotoc_md13">Util</a>
+            <a href="#autotoc_md14">Util</a>
           </li>
         </ul>
       </li>
       <li class="level2">
-        <a href="#autotoc_md15">Versionsverwaltung</a>
+        <a href="#autotoc_md16">Versionsverwaltung</a>
       </li>
       <li class="level2">
-        <a href="#autotoc_md17">Exe-Generierung 🔧</a>
+        <a href="#autotoc_md18">Exe-Generierung 🔧</a>
       </li>
       <li class="level2">
-        <a href="#autotoc_md18">Setup-Generierung 🔧</a>
+        <a href="#autotoc_md19">Setup-Generierung 🔧</a>
       </li>
       <li class="level2">
-        <a href="#autotoc_md20">GitHub Release Schritte</a>
+        <a href="#autotoc_md21">GitHub Release Schritte</a>
         <ul>
           <li class="level3">
-            <a href="#autotoc_md21">Vorbereitung</a>
+            <a href="#autotoc_md22">Vorbereitung</a>
           </li>
           <li class="level3">
-            <a href="#autotoc_md22">Tests</a>
+            <a href="#autotoc_md23">Tests</a>
           </li>
           <li class="level3">
-            <a href="#autotoc_md23">Freigabe</a>
+            <a href="#autotoc_md24">Freigabe</a>
           </li>
         </ul>
       </li>
@@ -198,39 +198,39 @@ $(function(){initNavTree('_c_o_n_t_r_i_b_u_t_i_n_g.html',''); initResizable(true
   </li>
 </ul>
 </div>
-<div class="textblock"><h2><a class="anchor" id="autotoc_md9"></a>
+<div class="textblock"><h2><a class="anchor" id="autotoc_md10"></a>
 Architektur 🏭️</h2>
 <p>Das YouTubeDownloader Tool ist nach dem Model-View-Controller (MVC) Pattern aufgebaut, wobei eine klare Trennung zwischen View und Controller nicht möglich ist.</p>
 <div class="plantumlgraph">
 <object type="image/svg+xml" data="cdYouTubeDownloaderSWComponents.svg"></object>
 </div>
-<h3><a class="anchor" id="autotoc_md10"></a>
-Einstiegspunkt</h3>
-<p>Der Einstiegspunkt in die Anwendung ist die Datei <code><a class="el" href="youtube__downloader_8py.html" title="YouTube content downloader.">youtube_downloader.py</a></code>. Sie startet den Startbildschirm und dann das Anwendungsfenster.</p>
 <h3><a class="anchor" id="autotoc_md11"></a>
+Einstiegspunkt</h3>
+<p>Der Einstiegspunkt in die Anwendung ist die Datei <code>youtube_downloader.py</code>. Sie startet den Startbildschirm und dann das Anwendungsfenster.</p>
+<h3><a class="anchor" id="autotoc_md12"></a>
 Controller</h3>
 <p>Das gestartete Anwendungsfenster wird von den verschiedenen View Controllern (<code>Source/Controller</code>) gesteuert. Diese verarbeiten die Benutzereingaben, aktualisieren die im Model gespeicherten Daten und aktualisieren auf dieser Basis die View. Es ist eine Mischung aus View und Controller.</p>
-<h3><a class="anchor" id="autotoc_md12"></a>
+<h3><a class="anchor" id="autotoc_md13"></a>
 Background-Worker</h3>
 <p>Ressourcenintensive Operationen wie z.B. der Download von YouTube Inhalten werden in Threads ausgelagert und befinden sich unter <code>Source/Worker</code>. Dadurch wird der Main-Thread nicht blockiert, so dass die GUI nicht einfriert.</p>
-<h3><a class="anchor" id="autotoc_md13"></a>
+<h3><a class="anchor" id="autotoc_md14"></a>
 Util</h3>
-<p>Anwendungsweite, globale Konstanten und andere Daten werden in <code><a class="el" href="downloader__data_8py.html" title="Data module (constants and functions related to path and ini file)">Util/downloader_data.py</a></code> gespeichert.</p>
+<p>Anwendungsweite, globale Konstanten und andere Daten werden in <code><a class="el" href="app__data_8py.html" title="Data module (constants and functions related to path and ini file)">Util/app_data.py</a></code> gespeichert.</p>
 <hr  />
-<h2><a class="anchor" id="autotoc_md15"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 Versionsverwaltung</h2>
 <p>Die Version ist in <code><a class="el" href="version_8py.html" title="Version and general information.">Source/version.py</a></code> gespeichert und wird manuell aktualisiert. Im Ordner <code><a class="el" href="namespace_executable.html">Executable</a></code> befindet sich ein Hilfsskript (<code><a class="el" href="generate__version__file_8py.html" title="Utility script to create a version info .txt file for the executable.">Executable/generate_version_file.py</a></code>), welches die aktuelle Versionsinfo-Datei erzeugt, die für die Generierung der Exe-Datei benötigt wird.</p>
 <hr  />
-<h2><a class="anchor" id="autotoc_md17"></a>
+<h2><a class="anchor" id="autotoc_md18"></a>
 Exe-Generierung 🔧</h2>
 <p>Die Generierung der EXE erfolgt mit Hilfe des <code>pyinstallers</code>. In der Datei <code><a class="el" href="generate__executable_8py.html" title="Generate executable file.">Executable/generate_executable.py</a></code> werden die notwendigen Parameter angegeben. Durch Ausführen des Batch-Skripts wird die EXE im Verzeichnis <code>Executable/bin</code> erzeugt.</p>
-<h2><a class="anchor" id="autotoc_md18"></a>
+<h2><a class="anchor" id="autotoc_md19"></a>
 Setup-Generierung 🔧</h2>
-<p>Die Generierung des Installers erfolgt mit Hilfe von <a href="https://jrsoftware.org/isdl.php">InnoSetup6</a>. In der Datei <code><a class="el" href="setup__youtubedownloader_8iss.html">Executable/setup_youtubedownloader.iss</a></code> sind die notwendigen Parameter spezifiziert. Durch Ausführen des Batch-Skripts <code><a class="el" href="generate__setup_8bat.html">Executable/generate_setup.bat</a></code> wird der Installer EXE im Ordner <code>Executable/bin</code> erzeugt.</p>
+<p>Die Generierung des Installers erfolgt mit Hilfe von <a href="https://jrsoftware.org/isdl.php">InnoSetup6</a>. In der Datei <code>Executable/setup_youtubedownloader.iss</code> sind die notwendigen Parameter spezifiziert. Durch Ausführen des Batch-Skripts <code><a class="el" href="generate__setup_8bat.html">Executable/generate_setup.bat</a></code> wird der Installer EXE im Ordner <code>Executable/bin</code> erzeugt.</p>
 <hr  />
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h2><a class="anchor" id="autotoc_md21"></a>
 GitHub Release Schritte</h2>
-<h3><a class="anchor" id="autotoc_md21"></a>
+<h3><a class="anchor" id="autotoc_md22"></a>
 Vorbereitung</h3>
 <ul class="check">
 <li class="unchecked">Versionierung hochzählen</li>
@@ -247,7 +247,7 @@ Vorbereitung</h3>
 <ul class="check">
 <li class="unchecked">Nicht benötigte Pakete explizit ausschließen (<code>L_EXCLUDE_MODULES</code> in <code><a class="el" href="generate__executable_8py.html" title="Generate executable file.">Executable/generate_executable.py</a></code>).</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md22"></a>
+<h3><a class="anchor" id="autotoc_md23"></a>
 Tests</h3>
 <ul class="check">
 <li class="unchecked">CI Jobs für statische Prüfungen starten</li>
@@ -255,7 +255,7 @@ Tests</h3>
 <ul class="check">
 <li class="unchecked">stichprobenartige Prüfung aller Funktionen</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md23"></a>
+<h3><a class="anchor" id="autotoc_md24"></a>
 Freigabe</h3>
 <ul class="check">
 <li class="unchecked">Nach Merge in master: Commit taggen (z.B. <code>v1.0.0</code>) &amp; Release erstellen </li>
@@ -266,7 +266,7 @@ Freigabe</h3>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Oct 14 2024 23:00:49 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Fri Nov 15 2024 22:57:43 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>

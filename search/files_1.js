@@ -1,8 +1,11 @@
 var searchData=
 [
-  ['documentation_2fdoxygencreator_2f_5f_5finit_5f_5f_2epy_0',['__init__.py',['../_documentation_2_doxygen_creator_2____init_____8py.html',1,'']]],
-  ['downloader_2epy_1',['downloader.py',['../downloader_8py.html',1,'']]],
-  ['downloader_5fdata_2epy_2',['downloader_data.py',['../downloader__data_8py.html',1,'']]],
-  ['doxy_5fpy_5fchecker_2epy_3',['doxy_py_checker.py',['../doxy__py__checker_8py.html',1,'']]],
-  ['doxygen_5fcreator_2epy_4',['doxygen_creator.py',['../doxygen__creator_8py.html',1,'']]]
+  ['changelog_2emd_0',['CHANGELOG.md',['../_c_h_a_n_g_e_l_o_g_8md.html',1,'']]],
+  ['check_5fincluded_5fpackages_2epy_1',['check_included_packages.py',['../check__included__packages_8py.html',1,'']]],
+  ['colored_5flog_2epy_2',['colored_log.py',['../colored__log_8py.html',1,'']]],
+  ['configparser_2epy_3',['configParser.py',['../config_parser_8py.html',1,'']]],
+  ['constraints_2etxt_4',['constraints.txt',['../constraints_8txt.html',1,'']]],
+  ['contributing_2emd_5',['CONTRIBUTING.md',['../_c_o_n_t_r_i_b_u_t_i_n_g_8md.html',1,'']]],
+  ['create_5fdocumentation_2ebat_6',['create_documentation.bat',['../create__documentation_8bat.html',1,'']]],
+  ['create_5fdoxygen_2epy_7',['create_doxygen.py',['../create__doxygen_8py.html',1,'']]]
 ];

@@ -1,8 +1,8 @@
 var namespace_source_1_1_util_1_1colored__log =
 [
     [ "ColorFormatter", "class_source_1_1_util_1_1colored__log_1_1_color_formatter.html", "class_source_1_1_util_1_1colored__log_1_1_color_formatter" ],
-    [ "get_format", "namespace_source_1_1_util_1_1colored__log.html#a36615d436e7bd1979ab5294df89982be", null ],
-    [ "init_console_logging", "namespace_source_1_1_util_1_1colored__log.html#aa4de7fff6e6afcbd2c59b280c536bb33", null ],
+    [ "get_format", "namespace_source_1_1_util_1_1colored__log.html#af8cc627081356a69f1fbb0fddaac8fee", null ],
+    [ "init_console_logging", "namespace_source_1_1_util_1_1colored__log.html#a6ceb7f1492770e5c77a9a335ee315b72", null ],
     [ "log", "namespace_source_1_1_util_1_1colored__log.html#ab09a63eb35b270b5cdbead1983ebdccb", null ],
     [ "S_LOG_DATE_FORMAT", "namespace_source_1_1_util_1_1colored__log.html#acc533a9e4b21b53e3311a120fefa457c", null ],
     [ "S_LOG_MSG_FORMAT_W_LINENO_W_THREADS", "namespace_source_1_1_util_1_1colored__log.html#a8dde42b4eef418f64a7a267b399c0abf", null ],

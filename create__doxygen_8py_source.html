@@ -30,9 +30,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="YouTubeDownloader.ico"/></td>
+  <td id="projectlogo"><img alt="Logo" src="app.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.0.6</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.0</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -150,10 +150,10 @@ $(function(){initNavTree('create__doxygen_8py_source.html',''); initResizable(tr
   <div class="headertitle"><div class="title">create_doxygen.py</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="create__doxygen_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno"><a class="line" href="namespace_doxygen_creator_1_1create__doxygen.html">    1</a></span><span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<a href="create__doxygen_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno"><a class="line" href="namespace_documentation_1_1_doxygen_creator_1_1create__doxygen.html">    1</a></span><span class="stringliteral">&quot;&quot;&quot;!</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="stringliteral">********************************************************************************</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="stringliteral">@file    create_doxygen.py</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="stringliteral">@brief   create doxygen documentation for project</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="stringliteral">@file   create_doxygen.py</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="stringliteral">@brief  create doxygen documentation for project</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="stringliteral">********************************************************************************</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="stringliteral">&quot;&quot;&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
@@ -165,33 +165,35 @@ $(function(){initNavTree('create__doxygen_8py_source.html',''); initResizable(tr
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>sys.path.append(os.path.join(os.path.dirname(__file__), <span class="stringliteral">&quot;../..&quot;</span>))</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">from</span> <a class="code hl_namespace" href="namespace_source_1_1version.html">Source.version</a> <span class="keyword">import</span> __title__, __version__, __description__, __author__  <span class="comment"># pylint: disable=wrong-import-position</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">from</span> <a class="code hl_namespace" href="namespace_source_1_1_util_1_1downloader__data.html">Source.Util.downloader_data</a> <span class="keyword">import</span> S_ICON_RESOURCE_PATH, S_ICON_32_RESOURCE_PATH  <span class="comment"># pylint: disable=wrong-import-position</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">from</span> <a class="code hl_namespace" href="namespace_source_1_1_util_1_1app__data.html">Source.Util.app_data</a> <span class="keyword">import</span> ICON_APP_PATH, ICON_APP_FAVICON_PATH  <span class="comment"># pylint: disable=wrong-import-position</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">from</span> <a class="code hl_namespace" href="namespace_source_1_1_util_1_1colored__log.html">Source.Util.colored_log</a> <span class="keyword">import</span> init_console_logging  <span class="comment"># pylint: disable=wrong-import-position</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">from</span> Documentation.DoxygenCreator.doxygen_creator <span class="keyword">import</span> DoxygenCreator, get_cmd_args, S_MAIN_FOLDER_FOLDER, S_PYTHON_PATTERN  <span class="comment"># pylint: disable=wrong-import-position</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">from</span> <a class="code hl_namespace" href="namespace_documentation_1_1_doxygen_creator_1_1doxygen__creator.html">Documentation.DoxygenCreator.doxygen_creator</a> <span class="keyword">import</span> DoxygenCreator, get_cmd_args, S_MAIN_FOLDER_FOLDER, S_PYTHON_PATTERN  <span class="comment"># pylint: disable=wrong-import-position</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"># autopep8: on</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>init_console_logging(logging.INFO)</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="namespace_doxygen_creator_1_1create__doxygen.html#a94244ddf33d122d9f42ee7ac6d550a75">   23</a></span>S_REPO_LINK = <span class="stringliteral">&quot;https://github.com/timounger/YouTubeDownloader&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="namespace_documentation_1_1_doxygen_creator_1_1create__doxygen.html#a94244ddf33d122d9f42ee7ac6d550a75">   23</a></span>S_REPO_LINK = <span class="stringliteral">&quot;https://github.com/timounger/YouTubeDownloader&quot;</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordflow">if</span> __name__ == <span class="stringliteral">&quot;__main__&quot;</span>:</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="namespace_doxygen_creator_1_1create__doxygen.html#a8187411843a6284ffb964ef3fb9fcab3">   27</a></span>    args = get_cmd_args()</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="namespace_doxygen_creator_1_1create__doxygen.html#a8f097dceec84a5f0579e4fecb6590dd7">   28</a></span>    doxygen_creator = DoxygenCreator(S_REPO_LINK)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="namespace_documentation_1_1_doxygen_creator_1_1create__doxygen.html#a8187411843a6284ffb964ef3fb9fcab3">   27</a></span>    args = get_cmd_args()</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="namespace_documentation_1_1_doxygen_creator_1_1create__doxygen.html#a8f097dceec84a5f0579e4fecb6590dd7">   28</a></span>    doxygen_creator = <a class="code hl_class" href="class_documentation_1_1_doxygen_creator_1_1doxygen__creator_1_1_doxygen_creator.html">DoxygenCreator</a>(S_REPO_LINK)</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    doxygen_creator.set_configuration(<span class="stringliteral">&quot;PROJECT_NAME&quot;</span>, __title__)</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    doxygen_creator.set_configuration(<span class="stringliteral">&quot;PROJECT_NUMBER&quot;</span>, __version__)</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    doxygen_creator.set_configuration(<span class="stringliteral">&quot;PROJECT_BRIEF&quot;</span>, __description__)</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    doxygen_creator.set_configuration(<span class="stringliteral">&quot;PROJECT_LOGO&quot;</span>, f<span class="stringliteral">&quot;{S_MAIN_FOLDER_FOLDER}{S_ICON_RESOURCE_PATH}&quot;</span>)</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    doxygen_creator.set_configuration(<span class="stringliteral">&quot;PROJECT_ICON&quot;</span>, f<span class="stringliteral">&quot;{S_MAIN_FOLDER_FOLDER}{S_ICON_32_RESOURCE_PATH}&quot;</span>)</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    doxygen_creator.set_configuration(<span class="stringliteral">&quot;PROJECT_LOGO&quot;</span>, f<span class="stringliteral">&quot;{S_MAIN_FOLDER_FOLDER}{ICON_APP_PATH}&quot;</span>)</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    doxygen_creator.set_configuration(<span class="stringliteral">&quot;PROJECT_ICON&quot;</span>, f<span class="stringliteral">&quot;{S_MAIN_FOLDER_FOLDER}{ICON_APP_FAVICON_PATH}&quot;</span>)</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    doxygen_creator.set_configuration(<span class="stringliteral">&quot;DOCSET_PUBLISHER_NAME&quot;</span>, __author__)</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    doxygen_creator.set_configuration(<span class="stringliteral">&quot;INPUT&quot;</span>, S_MAIN_FOLDER_FOLDER)</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="namespace_doxygen_creator_1_1create__doxygen.html#a14146a445e7377d33374f74636ef62c1">   36</a></span>    l_exclude_pattern = [<span class="stringliteral">&quot;.env&quot;</span>]</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="namespace_documentation_1_1_doxygen_creator_1_1create__doxygen.html#a14146a445e7377d33374f74636ef62c1">   36</a></span>    l_exclude_pattern = [<span class="stringliteral">&quot;.env&quot;</span>]</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    doxygen_creator.set_configuration(<span class="stringliteral">&quot;EXCLUDE_PATTERNS&quot;</span>, l_exclude_pattern)</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="namespace_doxygen_creator_1_1create__doxygen.html#ab3fd704054bc4667088f6a737e9bd430">   38</a></span>    l_file_pattern = [S_PYTHON_PATTERN, <span class="stringliteral">&quot;*.md&quot;</span>, <span class="stringliteral">&quot;*.bat&quot;</span>, <span class="stringliteral">&quot;*.pyproject&quot;</span>, <span class="stringliteral">&quot;*.iss&quot;</span>, <span class="stringliteral">&quot;*.yml&quot;</span>, <span class="stringliteral">&quot;*.txt&quot;</span>]</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="namespace_documentation_1_1_doxygen_creator_1_1create__doxygen.html#ab3fd704054bc4667088f6a737e9bd430">   38</a></span>    l_file_pattern = [S_PYTHON_PATTERN, <span class="stringliteral">&quot;*.md&quot;</span>, <span class="stringliteral">&quot;*.bat&quot;</span>, <span class="stringliteral">&quot;*.pyproject&quot;</span>, <span class="stringliteral">&quot;*.iss&quot;</span>, <span class="stringliteral">&quot;*.yml&quot;</span>, <span class="stringliteral">&quot;*.txt&quot;</span>]</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    doxygen_creator.set_configuration(<span class="stringliteral">&quot;FILE_PATTERNS&quot;</span>, l_file_pattern)</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    sys.exit(doxygen_creator.run_doxygen(b_open_doxygen_output=args.open))</div>
+<div class="ttc" id="aclass_documentation_1_1_doxygen_creator_1_1doxygen__creator_1_1_doxygen_creator_html"><div class="ttname"><a href="class_documentation_1_1_doxygen_creator_1_1doxygen__creator_1_1_doxygen_creator.html">Documentation.DoxygenCreator.doxygen_creator.DoxygenCreator</a></div><div class="ttdoc">Class to generate Doxygen documentation for any code documentation with uniform settings and styling.</div><div class="ttdef"><b>Definition</b> <a href="doxygen__creator_8py_source.html#l00096">doxygen_creator.py:96</a></div></div>
+<div class="ttc" id="anamespace_documentation_1_1_doxygen_creator_1_1doxygen__creator_html"><div class="ttname"><a href="namespace_documentation_1_1_doxygen_creator_1_1doxygen__creator.html">Documentation.DoxygenCreator.doxygen_creator</a></div><div class="ttdef"><b>Definition</b> <a href="doxygen__creator_8py_source.html#l00001">doxygen_creator.py:1</a></div></div>
+<div class="ttc" id="anamespace_source_1_1_util_1_1app__data_html"><div class="ttname"><a href="namespace_source_1_1_util_1_1app__data.html">Source.Util.app_data</a></div><div class="ttdef"><b>Definition</b> <a href="app__data_8py_source.html#l00001">app_data.py:1</a></div></div>
 <div class="ttc" id="anamespace_source_1_1_util_1_1colored__log_html"><div class="ttname"><a href="namespace_source_1_1_util_1_1colored__log.html">Source.Util.colored_log</a></div><div class="ttdef"><b>Definition</b> <a href="colored__log_8py_source.html#l00001">colored_log.py:1</a></div></div>
-<div class="ttc" id="anamespace_source_1_1_util_1_1downloader__data_html"><div class="ttname"><a href="namespace_source_1_1_util_1_1downloader__data.html">Source.Util.downloader_data</a></div><div class="ttdef"><b>Definition</b> <a href="downloader__data_8py_source.html#l00001">downloader_data.py:1</a></div></div>
 <div class="ttc" id="anamespace_source_1_1version_html"><div class="ttname"><a href="namespace_source_1_1version.html">Source.version</a></div><div class="ttdef"><b>Definition</b> <a href="version_8py_source.html#l00001">version.py:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -199,7 +201,7 @@ $(function(){initNavTree('create__doxygen_8py_source.html',''); initResizable(tr
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="create__doxygen_8py.html">create_doxygen.py</a></li>
-    <li class="footer">Generated on Mon Oct 14 2024 23:00:49 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Fri Nov 15 2024 22:57:42 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>

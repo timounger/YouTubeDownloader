@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['load_5fconfiguration_0',['load_configuration',['../class_doxygen_creator_1_1config_parser_1_1_config_parser.html#abe85147018f9113c44a62c09e7f7bdc1',1,'DoxygenCreator::configParser::ConfigParser']]]
+  ['open_5fdownload_5ffolder_0',['open_download_folder',['../class_source_1_1_controller_1_1main__window_1_1_main_window.html#af7c3af0d46f16bd343e78c35e0e657b2',1,'Source::Controller::main_window::MainWindow']]]
 ];

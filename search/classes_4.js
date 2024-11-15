@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['youtubedownloader_0',['YoutubeDownloader',['../class_source_1_1_controller_1_1main__window_1_1_youtube_downloader.html',1,'Source::Controller::main_window']]]
+  ['opennotepad_0',['OpenNotepad',['../class_documentation_1_1_doxygen_creator_1_1doxygen__creator_1_1_open_notepad.html',1,'Documentation::DoxygenCreator::doxygen_creator']]]
 ];

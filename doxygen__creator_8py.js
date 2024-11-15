@@ -1,7 +1,7 @@
 var doxygen__creator_8py =
 [
-    [ "DoxygenCreator", "class_doxygen_creator_1_1doxygen__creator_1_1_doxygen_creator.html", "class_doxygen_creator_1_1doxygen__creator_1_1_doxygen_creator" ],
-    [ "OpenNotepad", "class_doxygen_creator_1_1doxygen__creator_1_1_open_notepad.html", "class_doxygen_creator_1_1doxygen__creator_1_1_open_notepad" ],
+    [ "DoxygenCreator", "class_documentation_1_1_doxygen_creator_1_1doxygen__creator_1_1_doxygen_creator.html", "class_documentation_1_1_doxygen_creator_1_1doxygen__creator_1_1_doxygen_creator" ],
+    [ "OpenNotepad", "class_documentation_1_1_doxygen_creator_1_1doxygen__creator_1_1_open_notepad.html", "class_documentation_1_1_doxygen_creator_1_1doxygen__creator_1_1_open_notepad" ],
     [ "get_cmd_args", "doxygen__creator_8py.html#a44d83951d16520017502a581ab20bf77", null ],
     [ "B_AUTO_VERSION_SUPPORT", "doxygen__creator_8py.html#a194e1fc45d91bd628e1bca7fe21b01a4", null ],
     [ "B_DOXY_CONFIG_DIFF_SUPPORT", "doxygen__creator_8py.html#acd481c48977a8c408be631e3b46c6eab", null ],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['js_5ffunc_5fpatterns_0',['js_func_patterns',['../classcipher_1_1_cipher.html#a4f7dcb77f1e4dd6f59d839e2aec3efdc',1,'cipher::Cipher']]]
+  ['high_5fresolution_0',['HIGH_RESOLUTION',['../namespace_source_1_1_views_1_1mainwindow__tk__ui.html#a7f06cbe01661ecded9de2f7a983e0f8f',1,'Source::Views::mainwindow_tk_ui']]]
 ];

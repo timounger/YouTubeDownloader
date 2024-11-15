@@ -30,9 +30,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="YouTubeDownloader.ico"/></td>
+  <td id="projectlogo"><img alt="Logo" src="app.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.0.6</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.0</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -152,8 +152,8 @@ $(function(){initNavTree('generate__executable_8py_source.html',''); initResizab
 <div class="contents">
 <a href="generate__executable_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html">    1</a></span><span class="stringliteral">&quot;&quot;&quot;!</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="stringliteral">********************************************************************************</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="stringliteral">@file    generate_executable.py</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="stringliteral">@brief   Generate executable file</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="stringliteral">@file   generate_executable.py</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="stringliteral">@brief  Generate executable file</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="stringliteral">********************************************************************************</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="stringliteral">&quot;&quot;&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
@@ -178,101 +178,110 @@ $(function(){initNavTree('generate__executable_8py_source.html',''); initResizab
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a24f90b1401d1ba03b43dcadbf12b78d6">   27</a></span>WORKPATH = <span class="stringliteral">&quot;build&quot;</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a9e4ec65b82b53af9c1c5d7f98d048711">   28</a></span>GIT_VERSION_PATH = <span class="stringliteral">&quot;../Source/Util&quot;</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#ab4eebde576250e5b51ac86b875ee5aab">   29</a></span>VERSION_FILE_NAME = <span class="stringliteral">&quot;downloader_version_info.txt&quot;</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#ae51f6ad7850682ee4da42be76fdc413d">   31</a></span>L_EXCLUDE_MODULES = [</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment"># actual not used</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="stringliteral">&quot;moviepy&quot;</span>,</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>]</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a4c87ae2ed3aaa54be00922ddecdf8c19">   36</a></span>TOLERATED_WARNINGS = [</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>]</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#adfa5ce48c34673a10946668d1f048440">   39</a></span>add_data = [</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="stringliteral">&quot;..\\Resources\\YouTubeDownloader.ico;Resources\\&quot;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#ab4eebde576250e5b51ac86b875ee5aab">   29</a></span>VERSION_FILE_NAME = <span class="stringliteral">&quot;version_info.txt&quot;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a51fe0a69b6582924d93ecb9ad59863dd">   30</a></span>WARNING_FILE = <span class="stringliteral">&quot;PyInstaller_warnings.txt&quot;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#ae51f6ad7850682ee4da42be76fdc413d">   32</a></span>L_EXCLUDE_MODULES = [</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="stringliteral">&quot;PIL&quot;</span>,</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="stringliteral">&quot;charset_normalizer&quot;</span>,</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="stringliteral">&quot;numpy&quot;</span>,</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="stringliteral">&quot;pkg_resources&quot;</span>,</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="stringliteral">&quot;typing_extensions&quot;</span>,</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="stringliteral">&quot;darkdetect._mac_detect&quot;</span>,</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment"># actual not used</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="stringliteral">&quot;moviepy&quot;</span>,</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>]</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a11c2ce0027943c420282124212e83bc8">   44</a></span>L_HIDDEN_IMPORT = [</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="stringliteral">&quot;html.parser&quot;</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>]</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="foldopen" id="foldopen00049" data-start="" data-end="">
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a07089ef8f08ac2ecf9d3ead82a17f7b6">   49</a></span><span class="keyword">def </span><a class="code hl_function" href="namespace_executable_1_1generate__executable.html#a07089ef8f08ac2ecf9d3ead82a17f7b6">get_type_list</a>(type_name: str, l_type_values: list) -&gt; list:</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="stringliteral">    @brief get type list</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="stringliteral">    @param type_name : type name</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="stringliteral">    @param l_type_values : type values</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="stringliteral">    @return type list</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    type_list = []</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">for</span> type_value <span class="keywordflow">in</span> l_type_values:</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        type_list.extend([f<span class="stringliteral">&quot;--{type_name}&quot;</span>, type_value])</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">return</span> type_list</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a4c87ae2ed3aaa54be00922ddecdf8c19">   43</a></span>TOLERATED_WARNINGS = [</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="stringliteral">&quot;No backend available&quot;</span>  <span class="comment"># possible on CI</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>]</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#adfa5ce48c34673a10946668d1f048440">   47</a></span>add_data = [</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="stringliteral">&quot;..\\Resources\\app.ico;Resources\\&quot;</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>]</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a11c2ce0027943c420282124212e83bc8">   52</a></span>L_HIDDEN_IMPORT = [</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="stringliteral">&quot;html.parser&quot;</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>]</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="foldopen" id="foldopen00057" data-start="" data-end="">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a59842a236dd2e76023daad78de067784">   57</a></span><span class="keyword">def </span><a class="code hl_function" href="namespace_executable_1_1generate__executable.html#a59842a236dd2e76023daad78de067784">get_type_list</a>(type_name: str, l_type_values: list[str]) -&gt; list[str]:</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="stringliteral">    @brief get type list</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="stringliteral">    @param type_name : type name</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="stringliteral">    @param l_type_values : type values</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="stringliteral">    @return type list</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    type_list = []</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordflow">for</span> type_value <span class="keywordflow">in</span> l_type_values:</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        type_list.extend([f<span class="stringliteral">&quot;--{type_name}&quot;</span>, type_value])</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">return</span> type_list</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
 </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a51fe0a69b6582924d93ecb9ad59863dd">   62</a></span>WARNING_FILE = <span class="stringliteral">&quot;PyInstaller_warnings.txt&quot;</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a60b6bd6c82e7e003776d8b6558d08e06">   64</a></span>command = [<span class="stringliteral">r&quot;..\.env\Scripts\python&quot;</span>, <span class="stringliteral">&quot;-m&quot;</span>, <span class="stringliteral">&quot;PyInstaller&quot;</span>, <span class="stringliteral">&quot;--clean&quot;</span>]</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>command.extend([<span class="stringliteral">&quot;--paths&quot;</span>, <span class="stringliteral">&quot;..\\&quot;</span>])</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>command.extend(<a class="code hl_function" href="namespace_executable_1_1generate__executable.html#a07089ef8f08ac2ecf9d3ead82a17f7b6">get_type_list</a>(<span class="stringliteral">&quot;add-data&quot;</span>, add_data))</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>command.extend([<span class="stringliteral">&quot;--icon&quot;</span>, <span class="stringliteral">&quot;..\\Resources\\YouTubeDownloader.ico&quot;</span>])</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>command.extend([<span class="stringliteral">&quot;--version-file&quot;</span>, f<span class="stringliteral">&quot;{WORKPATH}\\{VERSION_FILE_NAME}&quot;</span>])</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>command.extend(<a class="code hl_function" href="namespace_executable_1_1generate__executable.html#a07089ef8f08ac2ecf9d3ead82a17f7b6">get_type_list</a>(<span class="stringliteral">&quot;hidden-import&quot;</span>, L_HIDDEN_IMPORT))</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>command.extend(<a class="code hl_function" href="namespace_executable_1_1generate__executable.html#a07089ef8f08ac2ecf9d3ead82a17f7b6">get_type_list</a>(<span class="stringliteral">&quot;exclude-module&quot;</span>, L_EXCLUDE_MODULES))</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>command.extend([<span class="stringliteral">&quot;--name&quot;</span>, __title__])</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>command.extend([<span class="stringliteral">&quot;--onefile&quot;</span>, <span class="stringliteral">&quot;--noconsole&quot;</span>, <span class="stringliteral">&quot;--noupx&quot;</span>,])</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>command.extend([<span class="stringliteral">&quot;--distpath&quot;</span>, <span class="stringliteral">&quot;bin&quot;</span>])</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>command.extend([<span class="stringliteral">&quot;--workpath&quot;</span>, WORKPATH])</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>command.extend([<span class="stringliteral">&quot;../Source/youtube_downloader.py&quot;</span>])</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keywordflow">if</span> __name__ == <span class="stringliteral">&quot;__main__&quot;</span>:</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a4aa63dd1781d70f36f4b61cd99713958">   78</a></span>    result_report = []</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    generate_git_version_file(GIT_VERSION_PATH)</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    generate_version_file(VERSION_FILE_NAME, WORKPATH)</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a937d4dd628a8858b443a399410d2600b">   81</a></span>    result = subprocess.run(command, stderr=subprocess.PIPE, text=<span class="keyword">True</span>, shell=<span class="keyword">True</span>, check=<span class="keyword">False</span>)</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">if</span> result.returncode != 0:</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        result_report.append(<span class="stringliteral">&quot;Build executable failed!&quot;</span>)</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        result_report.append(result.stderr)</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordflow">else</span>:</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a2b7e6be3b7635232d62be326c2f64fcd">   86</a></span>        possible_build_warnings = [line <span class="keywordflow">for</span> line <span class="keywordflow">in</span> result.stderr.split(<span class="stringliteral">&quot;\n&quot;</span>) <span class="keywordflow">if</span> <span class="stringliteral">&quot;WARNING&quot;</span> <span class="keywordflow">in</span> line]</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a79bfcca83cdfb9473f7ffe009b44d175">   87</a></span>        build_warnings = []</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">for</span> warning <span class="keywordflow">in</span> possible_build_warnings:</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a41d0abc7672afd7a011f0c75265988f3">   89</a></span>            b_tolerate = <span class="keyword">False</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            <span class="keywordflow">for</span> tolerate <span class="keywordflow">in</span> TOLERATED_WARNINGS:</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                <span class="keywordflow">if</span> tolerate <span class="keywordflow">in</span> warning:</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                    b_tolerate = <span class="keyword">True</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                    <span class="keywordflow">break</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            <span class="keywordflow">if</span> <span class="keywordflow">not</span> b_tolerate:</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                build_warnings.append(warning)</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">if</span> build_warnings:</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            result_report.extend(build_warnings)</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keywordflow">else</span>:</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a022b9ca6a18d2bd06a6ccfd41707112f">   99</a></span>            l_not_allowed_packages = check_included_packages()</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            <span class="keywordflow">if</span> l_not_allowed_packages:</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                result_report.extend(l_not_allowed_packages)</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    log.info(result.stderr)</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#ab1000d1f2ea9878f60bc119650013894">  103</a></span>    <span class="keyword">with</span> open(WARNING_FILE, mode=<span class="stringliteral">&quot;w&quot;</span>, encoding=<span class="stringliteral">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#ac97b78e7c161c178a23a3d1478f74aa5">  104</a></span>        report = <span class="stringliteral">&quot;\n&quot;</span>.join(result_report)</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordflow">if</span> report:</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            log.warning(report)</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        file.write(report)</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordflow">if</span> result_report:</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        log.error(<span class="stringliteral">&quot;FAILED build of executable&quot;</span>)</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#aabe89482a17bf30a40e9c316bc5a2bb9">  110</a></span>        ret_value = 1</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordflow">else</span>:</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a05453b274ae2ccae1bef10244f3825ba">  112</a></span>        s_spec_file = f<span class="stringliteral">&quot;{__title__}.spec&quot;</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keywordflow">if</span> os.path.exists(s_spec_file):</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            os.remove(s_spec_file)</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="keywordflow">if</span> os.path.exists(WORKPATH):</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            shutil.rmtree(WORKPATH)</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        log.info(<span class="stringliteral">&quot;SUCCESS build of executable&quot;</span>)</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        ret_value = 0</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    sys.exit(ret_value)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keywordflow">if</span> __name__ == <span class="stringliteral">&quot;__main__&quot;</span>:</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a4aa63dd1781d70f36f4b61cd99713958">   71</a></span>    result_report = []</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a60b6bd6c82e7e003776d8b6558d08e06">   73</a></span>    command = [<span class="stringliteral">r&quot;..\.env\Scripts\python&quot;</span>, <span class="stringliteral">&quot;-m&quot;</span>, <span class="stringliteral">&quot;PyInstaller&quot;</span>, <span class="stringliteral">&quot;--clean&quot;</span>]</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    command.extend([<span class="stringliteral">&quot;--paths&quot;</span>, <span class="stringliteral">&quot;..\\&quot;</span>])</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    command.extend(<a class="code hl_function" href="namespace_executable_1_1generate__executable.html#a59842a236dd2e76023daad78de067784">get_type_list</a>(<span class="stringliteral">&quot;add-data&quot;</span>, add_data))</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    command.extend([<span class="stringliteral">&quot;--icon&quot;</span>, <span class="stringliteral">&quot;..\\Resources\\app.ico&quot;</span>])</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    command.extend([<span class="stringliteral">&quot;--version-file&quot;</span>, f<span class="stringliteral">&quot;{WORKPATH}\\{VERSION_FILE_NAME}&quot;</span>])</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    command.extend(<a class="code hl_function" href="namespace_executable_1_1generate__executable.html#a59842a236dd2e76023daad78de067784">get_type_list</a>(<span class="stringliteral">&quot;hidden-import&quot;</span>, L_HIDDEN_IMPORT))</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    command.extend(<a class="code hl_function" href="namespace_executable_1_1generate__executable.html#a59842a236dd2e76023daad78de067784">get_type_list</a>(<span class="stringliteral">&quot;exclude-module&quot;</span>, L_EXCLUDE_MODULES))</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    command.extend([<span class="stringliteral">&quot;--name&quot;</span>, __title__])</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    command.extend([<span class="stringliteral">&quot;--onefile&quot;</span>, <span class="stringliteral">&quot;--noconsole&quot;</span>, <span class="stringliteral">&quot;--noupx&quot;</span>,])</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    command.extend([<span class="stringliteral">&quot;--distpath&quot;</span>, <span class="stringliteral">&quot;bin&quot;</span>])</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    command.extend([<span class="stringliteral">&quot;--workpath&quot;</span>, WORKPATH])</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    command.extend([<span class="stringliteral">&quot;../Source/app.py&quot;</span>])</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    generate_git_version_file(GIT_VERSION_PATH)</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    generate_version_file(VERSION_FILE_NAME, WORKPATH)</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a937d4dd628a8858b443a399410d2600b">   89</a></span>    result = subprocess.run(command, stderr=subprocess.PIPE, text=<span class="keyword">True</span>, shell=<span class="keyword">True</span>, check=<span class="keyword">False</span>)</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">if</span> result.returncode != 0:</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        result_report.append(<span class="stringliteral">&quot;Build executable failed!&quot;</span>)</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        result_report.append(result.stderr)</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordflow">else</span>:</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a2b7e6be3b7635232d62be326c2f64fcd">   94</a></span>        possible_build_warnings = [line <span class="keywordflow">for</span> line <span class="keywordflow">in</span> result.stderr.split(<span class="stringliteral">&quot;\n&quot;</span>) <span class="keywordflow">if</span> <span class="stringliteral">&quot;WARNING&quot;</span> <span class="keywordflow">in</span> line]</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a79bfcca83cdfb9473f7ffe009b44d175">   95</a></span>        build_warnings = []</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">for</span> warning <span class="keywordflow">in</span> possible_build_warnings:</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a41d0abc7672afd7a011f0c75265988f3">   97</a></span>            b_tolerate = <span class="keyword">False</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            <span class="keywordflow">for</span> tolerate <span class="keywordflow">in</span> TOLERATED_WARNINGS:</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                <span class="keywordflow">if</span> tolerate <span class="keywordflow">in</span> warning:</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                    b_tolerate = <span class="keyword">True</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                    <span class="keywordflow">break</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            <span class="keywordflow">if</span> <span class="keywordflow">not</span> b_tolerate:</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                build_warnings.append(warning)</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keywordflow">if</span> build_warnings:</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            result_report.extend(build_warnings)</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keywordflow">else</span>:</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a022b9ca6a18d2bd06a6ccfd41707112f">  107</a></span>            l_not_allowed_packages = check_included_packages()</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            <span class="keywordflow">if</span> l_not_allowed_packages:</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                result_report.extend(l_not_allowed_packages)</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    log.info(result.stderr)</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#ab1000d1f2ea9878f60bc119650013894">  112</a></span>    <span class="keyword">with</span> open(WARNING_FILE, mode=<span class="stringliteral">&quot;w&quot;</span>, encoding=<span class="stringliteral">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#ac97b78e7c161c178a23a3d1478f74aa5">  113</a></span>        report = <span class="stringliteral">&quot;\n&quot;</span>.join(result_report)</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keywordflow">if</span> report:</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            log.warning(report)</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        file.write(report)</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordflow">if</span> result_report:</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        log.error(<span class="stringliteral">&quot;FAILED build of executable&quot;</span>)</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#aabe89482a17bf30a40e9c316bc5a2bb9">  119</a></span>        ret_value = 1</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">else</span>:</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="namespace_executable_1_1generate__executable.html#a05453b274ae2ccae1bef10244f3825ba">  121</a></span>        s_spec_file = f<span class="stringliteral">&quot;{__title__}.spec&quot;</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keywordflow">if</span> os.path.exists(s_spec_file):</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            os.remove(s_spec_file)</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">if</span> os.path.exists(WORKPATH):</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            shutil.rmtree(WORKPATH)</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        log.info(<span class="stringliteral">&quot;SUCCESS build of executable&quot;</span>)</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        ret_value = 0</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    sys.exit(ret_value)</div>
 <div class="ttc" id="anamespace_executable_1_1check__included__packages_html"><div class="ttname"><a href="namespace_executable_1_1check__included__packages.html">Executable.check_included_packages</a></div><div class="ttdef"><b>Definition</b> <a href="check__included__packages_8py_source.html#l00001">check_included_packages.py:1</a></div></div>
-<div class="ttc" id="anamespace_executable_1_1generate__executable_html_a07089ef8f08ac2ecf9d3ead82a17f7b6"><div class="ttname"><a href="namespace_executable_1_1generate__executable.html#a07089ef8f08ac2ecf9d3ead82a17f7b6">Executable.generate_executable.get_type_list</a></div><div class="ttdeci">list get_type_list(str type_name, list l_type_values)</div><div class="ttdoc">get type list</div><div class="ttdef"><b>Definition</b> <a href="#l00049">generate_executable.py:49</a></div></div>
+<div class="ttc" id="anamespace_executable_1_1generate__executable_html_a59842a236dd2e76023daad78de067784"><div class="ttname"><a href="namespace_executable_1_1generate__executable.html#a59842a236dd2e76023daad78de067784">Executable.generate_executable.get_type_list</a></div><div class="ttdeci">list[str] get_type_list(str type_name, list[str] l_type_values)</div><div class="ttdoc">get type list</div><div class="ttdef"><b>Definition</b> <a href="#l00057">generate_executable.py:57</a></div></div>
 <div class="ttc" id="anamespace_executable_1_1generate__git__version_html"><div class="ttname"><a href="namespace_executable_1_1generate__git__version.html">Executable.generate_git_version</a></div><div class="ttdef"><b>Definition</b> <a href="generate__git__version_8py_source.html#l00001">generate_git_version.py:1</a></div></div>
 <div class="ttc" id="anamespace_executable_1_1generate__version__file_html"><div class="ttname"><a href="namespace_executable_1_1generate__version__file.html">Executable.generate_version_file</a></div><div class="ttdef"><b>Definition</b> <a href="generate__version__file_8py_source.html#l00001">generate_version_file.py:1</a></div></div>
 <div class="ttc" id="anamespace_source_1_1_util_1_1colored__log_html"><div class="ttname"><a href="namespace_source_1_1_util_1_1colored__log.html">Source.Util.colored_log</a></div><div class="ttdef"><b>Definition</b> <a href="colored__log_8py_source.html#l00001">colored_log.py:1</a></div></div>
@@ -283,7 +292,7 @@ $(function(){initNavTree('generate__executable_8py_source.html',''); initResizab
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_7b3fabe2584a7a404cce81bafb4f8564.html">Executable</a></li><li class="navelem"><a class="el" href="generate__executable_8py.html">generate_executable.py</a></li>
-    <li class="footer">Generated on Mon Oct 14 2024 23:00:49 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Fri Nov 15 2024 22:57:43 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>
