@@ -1,7 +1,7 @@
 """!
 ********************************************************************************
-@file    generate_executable.py
-@brief   Generate executable file
+@file   generate_executable.py
+@brief  Generate executable file
 ********************************************************************************
 """
 
@@ -26,18 +26,26 @@ init_console_logging(logging.INFO)
 
 WORKPATH = "build"
 GIT_VERSION_PATH = "../Source/Util"
-VERSION_FILE_NAME = "downloader_version_info.txt"
+VERSION_FILE_NAME = "version_info.txt"
+WARNING_FILE = "PyInstaller_warnings.txt"
 
 L_EXCLUDE_MODULES = [
+    "PIL",
+    "charset_normalizer",
+    "numpy",
+    "pkg_resources",
+    "typing_extensions",
+    "darkdetect._mac_detect",
     # actual not used
     "moviepy",
 ]
 
 TOLERATED_WARNINGS = [
+    "No backend available"  # possible on CI
 ]
 
 add_data = [
-    "..\\Resources\\YouTubeDownloader.ico;Resources\\"
+    "..\\Resources\\app.ico;Resources\\"
 ]
 
 
@@ -46,7 +54,7 @@ L_HIDDEN_IMPORT = [
 ]
 
 
-def get_type_list(type_name: str, l_type_values: list) -> list:
+def get_type_list(type_name: str, l_type_values: list[str]) -> list[str]:
     """!
     @brief get type list
     @param type_name : type name
@@ -59,25 +67,25 @@ def get_type_list(type_name: str, l_type_values: list) -> list:
     return type_list
 
 
-WARNING_FILE = "PyInstaller_warnings.txt"
-
-command = [r"..\.env\Scripts\python", "-m", "PyInstaller", "--clean"]
-command.extend(["--paths", "..\\"])
-command.extend(get_type_list("add-data", add_data))
-command.extend(["--icon", "..\\Resources\\YouTubeDownloader.ico"])
-command.extend(["--version-file", f"{WORKPATH}\\{VERSION_FILE_NAME}"])
-command.extend(get_type_list("hidden-import", L_HIDDEN_IMPORT))
-command.extend(get_type_list("exclude-module", L_EXCLUDE_MODULES))
-command.extend(["--name", __title__])
-command.extend(["--onefile", "--noconsole", "--noupx",])
-command.extend(["--distpath", "bin"])
-command.extend(["--workpath", WORKPATH])
-command.extend(["../Source/youtube_downloader.py"])
-
 if __name__ == "__main__":
     result_report = []
+
+    command = [r"..\.env\Scripts\python", "-m", "PyInstaller", "--clean"]
+    command.extend(["--paths", "..\\"])
+    command.extend(get_type_list("add-data", add_data))
+    command.extend(["--icon", "..\\Resources\\app.ico"])
+    command.extend(["--version-file", f"{WORKPATH}\\{VERSION_FILE_NAME}"])
+    command.extend(get_type_list("hidden-import", L_HIDDEN_IMPORT))
+    command.extend(get_type_list("exclude-module", L_EXCLUDE_MODULES))
+    command.extend(["--name", __title__])
+    command.extend(["--onefile", "--noconsole", "--noupx",])
+    command.extend(["--distpath", "bin"])
+    command.extend(["--workpath", WORKPATH])
+    command.extend(["../Source/app.py"])
+
     generate_git_version_file(GIT_VERSION_PATH)
     generate_version_file(VERSION_FILE_NAME, WORKPATH)
+
     result = subprocess.run(command, stderr=subprocess.PIPE, text=True, shell=True, check=False)
     if result.returncode != 0:
         result_report.append("Build executable failed!")
@@ -100,6 +108,7 @@ if __name__ == "__main__":
             if l_not_allowed_packages:
                 result_report.extend(l_not_allowed_packages)
     log.info(result.stderr)
+
     with open(WARNING_FILE, mode="w", encoding="utf-8") as file:
         report = "\n".join(result_report)
         if report:

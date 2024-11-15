@@ -1,87 +1,106 @@
 """!
 ********************************************************************************
-@file    main_window.py
-@brief   View controller for the main window
+@file   main_window.py
+@brief  View controller for the main window
 ********************************************************************************
 """
 
 import os
-from tkinter import Label, Tk, StringVar, IntVar, Entry, Radiobutton, Button, Menu
-from tkinter.ttk import Progressbar, Style
+import logging
+from typing import Any
 import subprocess
+from tkinter import Menu, Event
+from customtkinter import CTk, CTkFont
+from customtkinter.windows.widgets.ctk_entry import CTkEntry
+from pytube import YouTube
 import clipboard
-import pytube
 
-import Source.Util.downloader_data as mdata
+from Source.Util.app_data import ICON_APP
+from Source.version import __title__
+from Source.Model.model import Model
 from Source.Worker.downloader import DownloadThread
+
+from Source.Views.mainwindow_tk_ui import Ui_MainWindow  # pylint: disable=wrong-import-position
 
 from Source import version
 
+log = logging.getLogger(__title__)
+
 S_DOWNLOAD_FOLDER = "Download"
+FONT_NAME = "Comic Sans MS"
+FONT_SIZE = 14
 
-L_FORMAT = [
-    ("Hohe Auflösung", 1),
-    ("Niedrige Auflösung", 2),
-    ("Nur Audio", 3)
-]
-
-
-def copy_selected_text_to_clipboard(o_url):
+def copy_selected_text_to_clipboard(url_input: CTkEntry) -> None:
     """!
     @brief Copy selected text to clipboard
-    @param o_url : url
+    @param url_input : url
     """
-    s_text = o_url.selection_get()
+    s_text = url_input.selection_get()
     clipboard.copy(s_text)
 
 
-def delete_selected_text(o_url):
+def delete_selected_text(url_input: CTkEntry) -> None:
     """!
     @brief Delete selected text
-    @param o_url : url
+    @param url_input : url
     """
     try:
-        s_select_text = o_url.selection_get()
+        s_select_text = url_input.selection_get()
     except BaseException:  # pylint: disable=bare-except
         pass
     else:
-        s_enty_text = o_url.get()
+        s_enty_text = url_input.get()
         i_selected_text_length = len(s_select_text)
-        i_curser_pos = o_url.index('insert')
+        i_curser_pos = url_input.index('insert')
         i_curser_pos_end = i_curser_pos + i_selected_text_length
         s_text_to_check = s_enty_text[i_curser_pos: i_curser_pos_end]
         if s_text_to_check == s_select_text:
-            o_url.delete(i_curser_pos, i_curser_pos_end)
+            url_input.delete(i_curser_pos, i_curser_pos_end)
         else:
-            o_url.delete(i_curser_pos - i_selected_text_length, i_curser_pos)
+            url_input.delete(i_curser_pos - i_selected_text_length, i_curser_pos)
 
 
-class YoutubeDownloader:
+class MainWindow(CTk, Ui_MainWindow):
     """!
     @brief Class for YouTube download GUI
     """
 
-    def __init__(self):  # pylint: disable=R0914
-        self.root = Tk()
-        self.root.title(version.__title__ + f" v{version.__version__}")
-        self.root.wm_iconbitmap(mdata.S_ICON_REL_PATH)  # set icon
-        self.root.geometry("350x320")  # set window
-        self.root.resizable(0, 0)  # Don't allow resizing
-        self.root.columnconfigure(0, weight=1)  # set all content in center.
-        self.o_url_choice = StringVar()
-        self.o_format_choice = IntVar()
-        # YouTube Link Label
-        o_url_label = Label(self.root, text="Gebe die YouTube URL ein:", font=("jost", 15))
-        o_url_label.grid()
+    def __init__(self, *args: Any, **kwargs: Any) -> None:  # pylint: disable=keyword-arg-before-vararg
+        log.debug("Initializing Main Window")
+        super().__init__(*args, **kwargs)
+        self.setupUi(self)
+        self.title(__title__)
+        self.wm_iconbitmap(ICON_APP)  # set icon
+        self.geometry("350x360")  # set window
+        self.resizable(0, 0)  # Don't allow resizing
+        self.columnconfigure(0, weight=1)  # set all content in center.
+        # init widgets
+        self.init_widgets()
+        self.model = Model(self)
+        self.model.c_monitor.update_darkmode_status(self.model.c_monitor.e_style)
+
+    def init_widgets(self) -> None:
+        """!
+        @brief Initialize widgets
+        """
+        # right click content menu
+        d_context = {
+            "Ausschneiden": self.cut,
+            "Kopieren": self.copy,
+            "Einfügen": self.paste
+        }
+        self.menu = Menu(self, tearoff=0)
+        for text, callback in d_context.items():
+            self.menu.add_command(label=text, command=callback)
+        self.url_input.bind("<Button-3>", self.do_popup)  # event for right mouse click (button 3)
+        self.url_input.configure(placeholder_text="Gebe die YouTube URL ein:")
         # Entry Box
-        self.o_url = Entry(self.root, width=50, textvariable=self.o_url_choice)
-        self.o_url.bind("<Button-3>", self.do_popup)  # event for right mouse click (button 3)
         s_clipboard_text = clipboard.paste()  # get content of clip board
         s_compare_string = "https://"
         b_valid_url = False
         if s_clipboard_text[0:len(s_compare_string)] == s_compare_string:
             try:
-                pytube.YouTube(s_clipboard_text)
+                YouTube(s_clipboard_text)
                 b_valid_url = True
             except BaseException:  # pylint: disable=bare-except
                 b_valid_url = False
@@ -91,82 +110,49 @@ class YoutubeDownloader:
         else:
             s_default_text = ""  # if no YouTube link or invalid set no text as default
             s_default_status = "URL eingeben und Download starten!"
-        self.o_url.insert(0, s_default_text)  # set content of clipboard as default
-        self.o_url.grid()
-        o_input_button = Button(self.root, text="Einfügen", width=10,
-                                bg="green", fg="white", command=self.input_link)
-        o_input_button.grid()
+        self.url_input.insert(0, s_default_text)  # set content of clipboard as default
+        self.insert_btn.configure(text="Einfügen", fg_color="green", text_color="white", command=self.input_link)
+        self.direct_btn.configure(text="Direkt Download", fg_color="darkorange", text_color="white", command=self.direct_clicked)
         # Error Message
-        self.o_status = Label(self.root, text=s_default_status, fg="blue", font=("jost", 10))
-        self.o_status.grid()
+        self.status_lbl.configure(text=s_default_status, text_color="grey", font=CTkFont(family=FONT_NAME, size=FONT_SIZE))
         # Title Message
-        self.o_titel = Label(self.root, text="Aktueller Song", fg="orange", font=("jost", 10))
-        self.o_titel.grid()
-        # progress bar
-        self.style = Style(self.root)
-        self.style.layout('text.Horizontal.TProgressbar',
-                          [('Horizontal.Progressbar.trough',
-                            {'children': [('Horizontal.Progressbar.pbar',
-                                           {'side': 'left', 'sticky': 'ns'})],
-                             'sticky': 'nswe'}),
-                              ('Horizontal.Progressbar.label', {'sticky': ''})])
-        self.style.configure('text.Horizontal.TProgressbar', text='0 %')
-        self.o_progress = Progressbar(self.root, style='text.Horizontal.TProgressbar',
-                                      length=200, maximum=100, value=0,)
-        self.o_progress.grid()
+        self.title_lbl.configure(text="Aktueller Song", text_color="orange", font=CTkFont(family=FONT_NAME, size=FONT_SIZE))
         # format label
-        o_format_label = Label(self.root, text="Wähle ein Format:", font=("jost", 14))
-        o_format_label.grid()
-        # format radio button
-        for txt, val in L_FORMAT:
-            o_format = Radiobutton(self.root, text=txt, padx=20,
-                                   variable=self.o_format_choice, value=val)
-            o_format.grid()
-        self.o_format_choice.set(1)  # set first radio button as default
+        self.format_lbl.configure(text="Wähle ein Format:", font=CTkFont(size=FONT_SIZE))
         # download button
-        self.o_download_button = Button(self.root, text="Download", width=10,
-                                        bg="red", fg="white", command=self.start_download)
-        self.o_download_button.grid()
+        self.download_btn.configure(text="Download", fg_color="red", text_color="white", command=self.start_download)
         # folder button
-        o_folder_button = Button(self.root, text="Öffne Speicherort", width=15,
-                                 bg="grey", fg="white", command=self.open_download_folder)
-        o_folder_button.grid()
+        self.open_folder_btn.configure(text="Öffne Speicherort", fg_color="grey", text_color="white")
         # developer Label
-        o_developer_label = Label(self.root, text=version.__copyright__, font=("Calibri", 12))
-        o_developer_label.grid()
-        # right click content menu
-        self.menu = Menu(self.root, tearoff=0)
-        self.menu.add_command(label="Ausschneiden", command=self.cut)
-        self.menu.add_command(label="Kopieren", command=self.copy)
-        self.menu.add_command(label="Einfügen", command=self.paste)
+        self.copyright_lbl.configure(text=version.__copyright__, font=CTkFont(family=FONT_NAME, size=FONT_SIZE))
 
-    def copy(self):
+    def copy(self) -> None:
         """!
         @brief Copy selected text to clipboard
         """
-        copy_selected_text_to_clipboard(self.o_url)
+        copy_selected_text_to_clipboard(self.url_input)
 
-    def cut(self):
+    def cut(self) -> None:
         """!
         @brief Copy selected text to clipboard and cut text out
         """
-        copy_selected_text_to_clipboard(self.o_url)
-        delete_selected_text(self.o_url)
+        copy_selected_text_to_clipboard(self.url_input)
+        delete_selected_text(self.url_input)
 
-    def paste(self):
+    def paste(self) -> None:
         """!
         @brief Paste text from clipboard to position
         """
-        delete_selected_text(self.o_url)
-        self.o_url.insert(self.o_url.index('insert'), clipboard.paste())  # paste at cursor position
+        delete_selected_text(self.url_input)
+        self.url_input.insert(self.url_input.index('insert'), clipboard.paste())  # paste at cursor position
 
-    def do_popup(self, event):
+    def do_popup(self, event: Event) -> None:
         """!
         @brief Pop up content menu
         @param event : arrived event
         """
         try:
-            self.o_url.selection_get()
+            self.url_input.selection_get()
             self.menu.entryconfig("Kopieren", state="normal")
             self.menu.entryconfig("Ausschneiden", state="normal")
         except BaseException:  # pylint: disable=bare-except
@@ -177,23 +163,31 @@ class YoutubeDownloader:
         finally:
             self.menu.grab_release()
 
-    def input_link(self):
+    def input_link(self) -> None:
         """!
         @brief Input text from clipboard to entry box
         """
-        self.o_url.delete(0, "end")
-        self.o_url.insert(0, clipboard.paste())  # paste content of clipboard
-        self.o_status.config(text="Text aus Zwischenablage wurde eingefügt!", fg="blue")
+        self.url_input.delete(0, "end")
+        self.url_input.insert(0, clipboard.paste())  # paste content of clipboard
+        self.status_lbl.configure(text="Text aus Zwischenablage wurde eingefügt!", text_color="grey")
 
-    def start_download(self):
+    def direct_clicked(self) -> None:
+        """!
+        @brief direct download clicked
+        """
+        self.input_link()
+        self.start_download()
+
+    def start_download(self) -> None:
         """!
         @brief Create and start thread for download
         """
-        self.o_download_button["state"] = "disable"
+        self.download_btn.configure(state="disabled")
+        self.direct_btn.configure(state="disabled")
         c_download = DownloadThread(self)
         c_download.start()
 
-    def open_download_folder(self):
+    def open_download_folder(self) -> None:
         """!
         @brief Open download folder and create if not exist
         """

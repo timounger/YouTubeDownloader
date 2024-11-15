@@ -7,7 +7,7 @@ set MAIN_DIR=..\
 set TEST_DIR=Test
 set TARGET_DIR=Source
 set CONFIG_FILE=%TEST_DIR%\.pylintrc
-set LOG_FILE=%TEST_DIR%\pylint_YouTubeDownloader.log
+set LOG_FILE=%TEST_DIR%\pylint.log
 set PY_PATH=.env\Scripts\python
 
 cd %MAIN_DIR%

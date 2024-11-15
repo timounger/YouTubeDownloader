@@ -1,7 +1,7 @@
 """!
 ********************************************************************************
-@file    generate_version_file.py
-@brief   Utility script to create a version info .txt file for the executable.
+@file   generate_version_file.py
+@brief  Utility script to create a version info .txt file for the executable.
 ********************************************************************************
 """
 
@@ -56,7 +56,7 @@ versionInfo = VSVersionInfo(
 )
 
 
-def generate_version_file(s_filename: str, s_workpath: str):
+def generate_version_file(s_filename: str, s_workpath: str) -> None:
     """!
     @brief Generate version file
     @param s_filename : version file name
@@ -74,6 +74,6 @@ def generate_version_file(s_filename: str, s_workpath: str):
 
 if __name__ == "__main__":
     workpath = sys.argv[1]
-    filename = "downloader_version_info.txt"
+    filename = "version_info.txt"
     generate_version_file(filename, workpath)
     sys.exit()

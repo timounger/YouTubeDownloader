@@ -1,3 +1,0 @@
-﻿############ IMPORTANT INFORMATIONS ############
-
-Install the software in a location with write access, e.g. "C:\YouTubeDownloader".

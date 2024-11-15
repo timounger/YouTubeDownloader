@@ -1,12 +1,14 @@
 """!
 ********************************************************************************
-@file    colored_log.py
-@brief   Logging formatter for colored log in terminal.
+@file   colored_log.py
+@brief  Logging formatter for colored log in terminal.
 ********************************************************************************
 """
 
 import logging
-from typing import Optional
+from logging import LogRecord
+from typing import Optional, Any
+from types import TracebackType
 from colorama import just_fix_windows_console
 just_fix_windows_console()
 
@@ -27,11 +29,11 @@ S_LOG_MSG_FORMAT_W_LINENO_W_THREADS = "%(asctime)s [%(name)s:%(lineno)d][%(threa
 S_LOG_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 
-def get_format(line_no: bool = False, threads: bool = False):
+def get_format(line_no: bool = False, threads: bool = False) -> str:
     """!
-    @brief  Get the configurable log format string
-    @param  line_no : include line number in log string
-    @param  threads : include thread name in log string
+    @brief Get the configurable log format string
+    @param line_no : include line number in log string
+    @param threads : include thread name in log string
     @return log format string
     """
     if not line_no and not threads:
@@ -47,12 +49,12 @@ def get_format(line_no: bool = False, threads: bool = False):
     return msg_format
 
 
-def init_console_logging(level: int, threads: bool = False):
+def init_console_logging(level: int, threads: bool = False) -> None:
     """!
-    @brief  Initializes logging for console output.
-            Line numbers are active in DEBUG level or lower.
-    @param  level   : root log level
-    @param  threads : include thread names in log strings
+    @brief Initializes logging for console output.
+           Line numbers are active in DEBUG level or lower.
+    @param level : root log level
+    @param threads : include thread names in log strings
     """
     root_logger = logging.getLogger()
     root_logger.setLevel(level)
@@ -66,11 +68,11 @@ def init_console_logging(level: int, threads: bool = False):
 
 class ColorFormatter(logging.Formatter):
     """!
-    @brief  Logging formatter that colors logging messages depending on their level
-    @param  fmt     : [optional] overwrite format with a complete custom log format -> ignores all other parameters
-    @param  line_no : [optional] include line number in log format string
-    @param  threads : [optional] include thread names in log format string
-    @param  data_format : [optional] date format
+    @brief Logging formatter that colors logging messages depending on their level
+    @param fmt : [optional] overwrite format with a complete custom log format -> ignores all other parameters
+    @param line_no : [optional] include line number in log format string
+    @param threads : [optional] include thread names in log format string
+    @param data_format : [optional] date format
     """
     fg_grey = "\033[90m"
     fg_yellow = "\033[33m"
@@ -78,7 +80,7 @@ class ColorFormatter(logging.Formatter):
     bg_red = "\033[41m"
     reset = "\033[0m"
 
-    def __init__(self, fmt: Optional[str] = None, line_no: bool = True, threads: bool = False, data_format: str = None, **kwargs) -> None:
+    def __init__(self, fmt: Optional[str] = None, line_no: bool = True, threads: bool = False, data_format: Optional[str] = None, **kwargs: Any) -> None:
         super().__init__(fmt, **kwargs)
         msg_format = fmt if fmt else get_format(line_no=line_no, threads=threads)
         self.d_formats = {
@@ -90,26 +92,26 @@ class ColorFormatter(logging.Formatter):
         }
         self.data_format = data_format
 
-    def format(self, record):
+    def format(self, record: LogRecord) -> str:
         """!
-        @brief  Overwrite format method of logging.Formatter to use colors formatting
-        @param  record  : log record
+        @brief Overwrite format method of logging.Formatter to use colors formatting
+        @param record : log record
         @return formatted log record
         """
         log_fmt = self.d_formats.get(record.levelno)
         formatter = logging.Formatter(fmt=log_fmt, datefmt=self.data_format)
         return formatter.format(record)
 
-    def formatException(self, ei):
+    def formatException(self, ei: tuple[type[BaseException], BaseException, TracebackType | None] | tuple[None, None, None]) -> str:
         """!
-        @brief  Overwrite formatException method of logging. Formatter to use critical color formatting
-        @param  ei    : exception info
+        @brief Overwrite formatException method of logging. Formatter to use critical color formatting
+        @param ei : exception info
         @return formatted exception log record
         """
         log_fmt = self.d_formats.get(logging.CRITICAL)
         formatter = logging.Formatter(log_fmt, datefmt=self.data_format)
         record = super().formatException(ei)
-        return formatter.format(record)
+        return formatter.format(record)  # type: ignore
 
 
 if __name__ == "__main__":
