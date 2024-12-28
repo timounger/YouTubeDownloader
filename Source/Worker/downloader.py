@@ -12,12 +12,9 @@ from typing import TYPE_CHECKING
 import statistics
 import threading
 import time
-import ssl
-import pytube
-from pytube import YouTube
-from pytube.innertube import _default_clients
-from pytube.exceptions import RegexMatchError
-from pytube.streams import Stream
+import pytubefix
+from pytubefix import YouTube
+from pytubefix.streams import Stream
 
 from Source.version import __title__
 from Source.Views.mainwindow_tk_ui import HIGH_RESOLUTION, LOW_RESOLUTION, ONLY_AUDIO
@@ -33,54 +30,6 @@ log = logging.getLogger(__title__)
 
 S_DOWNLOAD_FOLDER = "Download"
 I_SPEED_AVERAGE_VALUES = 10
-
-# Download Fix: https://github.com/pytube/pytube/issues/2062
-_default_clients["ANDROID"]["context"]["client"]["clientVersion"] = "19.08.35"
-_default_clients["IOS"]["context"]["client"]["clientVersion"] = "19.08.35"
-_default_clients["ANDROID_EMBED"]["context"]["client"]["clientVersion"] = "19.08.35"
-_default_clients["IOS_EMBED"]["context"]["client"]["clientVersion"] = "19.08.35"
-_default_clients["IOS_MUSIC"]["context"]["client"]["clientVersion"] = "6.41"
-_default_clients["ANDROID_MUSIC"] = _default_clients["ANDROID"]
-
-
-def patched_get_throttling_function_name(js: str) -> str:
-    """!
-    @brief Patched get thottling function name
-    @param js : data
-    @return throttling
-    """
-    function_patterns = [
-        r'a\.[a-zA-Z]\s*&&\s*\([a-z]\s*=\s*a\.get\("n"\)\)\s*&&.*?\|\|\s*([a-z]+)',
-        r'\([a-z]\s*=\s*([a-zA-Z0-9$]+)(\[\d+\])?\([a-z]\)',
-        r'\([a-z]\s*=\s*([a-zA-Z0-9$]+)(\[\d+\])\([a-z]\)',
-    ]
-    for pattern in function_patterns:
-        regex = re.compile(pattern)
-        function_match = regex.search(js)
-        if function_match:
-            if len(function_match.groups()) == 1:
-                return function_match.group(1)
-            idx = function_match.group(2)
-            if idx:
-                idx = idx.strip("[]")
-                array = re.search(
-                    r'var {nfunc}\s*=\s*(\[.+?\]);'.format(
-                        nfunc=re.escape(function_match.group(1))),
-                    js
-                )
-                if array:
-                    array = array.group(1).strip("[]").split(",")
-                    array = [x.strip() for x in array]
-                    return array[int(idx)]
-
-    raise RegexMatchError(
-        caller="get_throttling_function_name", pattern="multiple"
-    )
-
-
-ssl._create_default_https_context = ssl._create_unverified_context
-pytube.cipher.get_throttling_function_name = patched_get_throttling_function_name
-# End fix
 
 
 class DownloadThread(threading.Thread):
@@ -123,7 +72,7 @@ class DownloadThread(threading.Thread):
             l_url = []
             s_subfolder_name = ""
             if re.search("&list=", s_url):
-                o_playlist = pytube.Playlist(s_url)
+                o_playlist = pytubefix.Playlist(s_url)
                 s_subfolder_name = "/" + o_playlist.title
                 for video in o_playlist.videos:
                     l_url.append(video.watch_url)
@@ -210,7 +159,7 @@ class DownloadThread(threading.Thread):
             i_percent = int(((self.i_file_size - bytes_remaining) / self.i_file_size) * 100)
             i_percent_diff = i_percent - self.i_last_percent
             for _ in range(i_percent_diff):
-                self.main_controller.progress_bar.set(i_percent/100)
+                self.main_controller.progress_bar.set(i_percent / 100)
             self.i_last_percent = i_percent
 
 

@@ -9,10 +9,12 @@
 
 @echo off
 
-set ENV_PATH=..\..\.env
+set ENV_PATH=..\..\.venv
 set PY_PATH=%ENV_PATH%\Scripts\python
 
-python -m venv %ENV_PATH%
+if not exist %ENV_PATH% (
+    python -m venv %ENV_PATH%
+)
 %PY_PATH% -m pip install --upgrade --no-cache-dir --requirement requirements.txt --constraint constraints.txt
 
 ::pause

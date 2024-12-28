@@ -1,3 +1,3 @@
 cd ./Source
-..\.env\Scripts\python app.py
+..\.venv\Scripts\python app.py
 pause

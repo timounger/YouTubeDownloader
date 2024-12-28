@@ -18,11 +18,11 @@ skinparam CollectionsBorderColor black
 
 title SW components of YouTubeDownloader Tool
 
-node "YouTubeDownloader.ico" as icon #yellow
+node "app.ico" as icon #yellow
 
 package "YouTubeDownloader" as YtDl #ededed {
-  component "**youtube_downloader**" as youtube_downloader #63d8ff
-  note left of youtube_downloader
+  component "**app**" as app #63d8ff
+  note left of app
     Application entry point:
     Init and startup
   end note
@@ -40,8 +40,8 @@ package "YouTubeDownloader" as YtDl #ededed {
   package "Worker" {
     [downloader]
   }
-  [youtube_downloader] -d-> [main_window]
-  [youtube_downloader] -[#black]u--> icon
+  [app] -d-> [main_window]
+  [app] -[#black]u--> icon
 }
 
 node "YouTubeDownloader.exe" #plum
@@ -51,7 +51,7 @@ package "Python Libraries (mostly third party)" #lightgreen {
  [pytube]
 }
 
-[youtube_downloader] -[#black]-> [downloader]
+[app] -[#black]-> [downloader]
 [downloader] -[#black]-> [pytube]
 [PyInstaller] -[#black]d-> YouTubeDownloader.exe
 
@@ -59,7 +59,7 @@ package "Python Libraries (mostly third party)" #lightgreen {
 
 ### Einstiegspunkt
 
-Der Einstiegspunkt in die Anwendung ist die Datei `youtube_downloader.py`. Sie startet den Startbildschirm und dann das Anwendungsfenster.
+Der Einstiegspunkt in die Anwendung ist die Datei `Source/app.py`. Sie startet den Startbildschirm und dann das Anwendungsfenster.
 
 ### Controller
 

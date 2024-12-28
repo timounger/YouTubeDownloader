@@ -8,7 +8,7 @@ cd ../../
 
 echo Run Doxygen
 cd ./Documentation/DoxygenCreator
-..\..\.env\Scripts\python create_doxygen.py
+..\..\.venv\Scripts\python create_doxygen.py
 cd ../../
 
 echo Run PyLint

@@ -3,7 +3,7 @@
 
 @echo off
 
-set ENV_PATH=..\..\.env
+set ENV_PATH=..\..\.venv
 set PY_PATH=%ENV_PATH%\Scripts\python
 
 set package_file=installed_packages.txt

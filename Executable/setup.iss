@@ -49,6 +49,8 @@ SolidCompression=yes
 WizardStyle=modern
 ArchitecturesInstallIn64BitMode=x64
 RestartIfNeededByRun=no
+WizardImageFile=..\Resources\setup_image.bmp
+WizardSmallImageFile=..\Resources\setup_image_small.bmp
 
 [Languages]
 Name: "german"; MessagesFile: "compiler:Languages\German.isl"; InfoBeforeFile:"setup_info_before_install_german.txt"

@@ -2,6 +2,15 @@
 
 \tableofcontents
 
+## v1.1.1
+
+[Download](https://github.com/timounger/YouTubeDownloader/releases/tag/v1.1.1)
+
+_[compare to previous version](https://github.com/timounger/YouTubeDownloader/compare/v1.1.0...v1.1.1)_
+
+- pytubefix verwendet
+- Setup Image
+
 ## v1.1.0
 
 [Download](https://github.com/timounger/YouTubeDownloader/releases/tag/v1.1.0)

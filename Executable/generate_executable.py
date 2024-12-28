@@ -50,7 +50,6 @@ add_data = [
 
 
 L_HIDDEN_IMPORT = [
-    "html.parser"
 ]
 
 
@@ -70,7 +69,7 @@ def get_type_list(type_name: str, l_type_values: list[str]) -> list[str]:
 if __name__ == "__main__":
     result_report = []
 
-    command = [r"..\.env\Scripts\python", "-m", "PyInstaller", "--clean"]
+    command = [r"..\.venv\Scripts\python", "-m", "PyInstaller", "--clean"]
     command.extend(["--paths", "..\\"])
     command.extend(get_type_list("add-data", add_data))
     command.extend(["--icon", "..\\Resources\\app.ico"])

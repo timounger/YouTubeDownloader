@@ -7,7 +7,7 @@ A copy of the GNU GPL is appended to this file.
 
 IMPORTANT YOUTUBEDOWNLOADER LICENSE TERMS
 
-_Copyright © 2021-2024 Timo Unger_
+_Copyright © 2021-2025 Timo Unger_
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

@@ -8,7 +8,7 @@ set TEST_DIR=Test
 set TARGET_DIR=Source
 set CONFIG_FILE=%TEST_DIR%\mypy.ini
 set LOG_FILE=%TEST_DIR%\mypy.log
-set PY_PATH=.env\Scripts\python
+set PY_PATH=.venv\Scripts\python
 
 cd %MAIN_DIR%
 

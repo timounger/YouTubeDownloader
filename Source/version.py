@@ -8,7 +8,7 @@
 # Version
 VERSION_MAJOR = 1  # major changes/breaks at API (e.g incompatibility)
 VERSION_MINOR = 1  # minor changes/does not break the API (e.g new feature)
-VERSION_PATCH = 0  # Bug fixes
+VERSION_PATCH = 1  # Bug fixes
 VERSION_BUILD = 0  # build number (if available)
 
 
@@ -17,7 +17,7 @@ __description__ = "YouTube content downloader"
 __author__ = "Timo Unger"
 __owner__ = "timounger"
 __repo__ = "YouTubeDownloader"
-__copyright__ = f"Copyright © 2021-2024 {__author__}"
+__copyright__ = f"Copyright © 2021-2025 {__author__}"
 __license__ = "GNU General Public License"
 __home__ = f"https://{__owner__}.github.io/{__repo__}"
 

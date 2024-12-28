@@ -12,7 +12,7 @@ import subprocess
 from tkinter import Menu, Event
 from customtkinter import CTk, CTkFont
 from customtkinter.windows.widgets.ctk_entry import CTkEntry
-from pytube import YouTube
+from pytubefix import YouTube
 import clipboard
 
 from Source.Util.app_data import ICON_APP
@@ -29,6 +29,7 @@ log = logging.getLogger(__title__)
 S_DOWNLOAD_FOLDER = "Download"
 FONT_NAME = "Comic Sans MS"
 FONT_SIZE = 14
+
 
 def copy_selected_text_to_clipboard(url_input: CTkEntry) -> None:
     """!
