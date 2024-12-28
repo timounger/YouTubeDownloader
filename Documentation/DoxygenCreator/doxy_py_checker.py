@@ -19,7 +19,7 @@ L_IGNORE_PARAM = ["self", "cls"]
 PARAM_DOC_PREFIX = "@param"
 RETURN_DOC_PREFIX = "@return"
 INIT_FUNCTION = "__init__"
-L_EXCLUDE_FOLDER = [".env", "Documentation"]
+L_EXCLUDE_FOLDER = [".venv", "Documentation"]
 
 CHECK_TYPING = False
 

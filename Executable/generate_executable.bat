@@ -1,3 +1,3 @@
 :: generate executbale file
-..\.env\Scripts\python generate_executable.py
+..\.venv\Scripts\python generate_executable.py
 ::pause

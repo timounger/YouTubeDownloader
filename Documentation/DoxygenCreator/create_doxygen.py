@@ -33,7 +33,7 @@ if __name__ == "__main__":
     doxygen_creator.set_configuration("PROJECT_ICON", f"{S_MAIN_FOLDER_FOLDER}{ICON_APP_FAVICON_PATH}")
     doxygen_creator.set_configuration("DOCSET_PUBLISHER_NAME", __author__)
     doxygen_creator.set_configuration("INPUT", S_MAIN_FOLDER_FOLDER)
-    l_exclude_pattern = [".env"]
+    l_exclude_pattern = [".venv"]
     doxygen_creator.set_configuration("EXCLUDE_PATTERNS", l_exclude_pattern)
     l_file_pattern = [S_PYTHON_PATTERN, "*.md", "*.bat", "*.pyproject", "*.iss", "*.yml", "*.txt"]
     doxygen_creator.set_configuration("FILE_PATTERNS", l_file_pattern)

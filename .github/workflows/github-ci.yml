@@ -101,7 +101,7 @@ jobs:
         run: ${{ env.PYTHON_PACKAGE_INST_FILE }}
       - name: Run Doxygen
         working-directory: ./Documentation/DoxygenCreator
-        run: ..\..\.env\Scripts\python create_doxygen.py
+        run: ..\..\.venv\Scripts\python create_doxygen.py
       - name: Upload Doxygen Output
         uses: actions/upload-artifact@v4
         with:

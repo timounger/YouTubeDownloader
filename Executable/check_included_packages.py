@@ -23,7 +23,7 @@ L_ALLOWED_THIRD_PARTY_PACKAGES = [
     "clipboard",
     "pyperclip",
     # youtube downloader
-    "pytube",
+    "pytubefix",
     "customtkinter",
     "darkdetect",
     "packaging",
@@ -46,9 +46,9 @@ def check_included_packages() -> list[str]:
     d_own_packs = {}
 
     # Regular Expressions
-    regex_third_party = re.compile(r".env\/lib\/site-packages.*.py", re.IGNORECASE)
+    regex_third_party = re.compile(r".venv\/lib\/site-packages.*.py", re.IGNORECASE)
     regex_third_party_name = re.compile(r"(?<=site-packages\/).*", re.IGNORECASE)
-    regex_builtin = re.compile(r".env\/lib\/.*.py", re.IGNORECASE)
+    regex_builtin = re.compile(r".venv\/lib\/.*.py", re.IGNORECASE)
     regex_builtin_name = re.compile(r"(?<=lib\/).*", re.IGNORECASE)
     regex_own_packs = re.compile(fr"{__title__}\/.*")
 

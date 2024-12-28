@@ -51,7 +51,7 @@ fail-under=8.0
 
 # Files or directories to be skipped. They should be base names, not paths.
 ignore=Views,
-       .env
+       .venv
 
 # Add files or directories matching the regular expressions patterns to the
 # ignore-list. The regex matches against paths and can be in Posix or Windows
