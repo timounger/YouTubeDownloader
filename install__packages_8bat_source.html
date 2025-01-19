@@ -32,7 +32,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="app.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.0</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.1</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -161,20 +161,22 @@ $(function(){initNavTree('install__packages_8bat_source.html',''); initResizable
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>@echo off</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>set ENV_PATH=..\..\.env</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>set ENV_PATH=..\..\.venv</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>set PY_PATH=%ENV_PATH%\Scripts\python</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>python -m venv %ENV_PATH%</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>%PY_PATH% -m pip install --upgrade --no-cache-dir --requirement requirements.txt --constraint constraints.txt</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>::pause</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>if not exist %ENV_PATH% (</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    python -m venv %ENV_PATH%</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>)</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>%PY_PATH% -m pip install --upgrade --no-cache-dir --requirement requirements.txt --constraint constraints.txt</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>::pause</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_6d698909b8fec338f4c4b378f6294549.html">Installation</a></li><li class="navelem"><a class="el" href="install__packages_8bat.html">install_packages.bat</a></li>
-    <li class="footer">Generated on Fri Nov 15 2024 22:57:42 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Sun Jan 19 2025 19:59:17 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>

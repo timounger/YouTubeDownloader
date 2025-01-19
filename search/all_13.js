@@ -15,6 +15,6 @@ var searchData=
   ['input_5flink_12',['input_link',['../class_source_1_1_controller_1_1main__window_1_1_main_window.html#a045041d0ae9e58bd089920a9f9fe01de',1,'Source::Controller::main_window::MainWindow']]],
   ['insert_5fbtn_13',['insert_btn',['../class_source_1_1_views_1_1mainwindow__tk__ui_1_1_ui___main_window.html#a4c5b11dd3e7eebede44205e93b192f87',1,'Source::Views::mainwindow_tk_ui::Ui_MainWindow']]],
   ['install_5fpackages_2ebat_14',['install_packages.bat',['../install__packages_8bat.html',1,'']]],
-  ['interpretation_20of_20sections_2015_20and_2016_15',['17. Interpretation of Sections 15 and 16',['../_l_i_c_e_n_s_e.html#autotoc_md45',1,'']]],
+  ['interpretation_20of_20sections_2015_20and_2016_15',['17. Interpretation of Sections 15 and 16',['../_l_i_c_e_n_s_e.html#autotoc_md46',1,'']]],
   ['is_5flight_5ftheme_16',['is_light_theme',['../class_source_1_1_model_1_1monitor_1_1_monitor_scale.html#a253f3054d04996b6e1869cf33175de0d',1,'Source::Model::monitor::MonitorScale']]]
 ];

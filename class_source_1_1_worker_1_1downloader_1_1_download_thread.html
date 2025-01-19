@@ -32,7 +32,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="app.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.0</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.1</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -206,7 +206,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00086">86</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00035">35</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3ee58316ded6f20cf8fb0ce6e68efa03" name="a3ee58316ded6f20cf8fb0ce6e68efa03"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3ee58316ded6f20cf8fb0ce6e68efa03">&#9670;&#160;</a></span>__init__()</h2>
@@ -227,18 +227,18 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00092">92</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   92</span>    <span class="keyword">def </span>__init__(self, main_controller: <span class="stringliteral">&quot;MainWindow&quot;</span>):</div>
-<div class="line"><span class="lineno">   93</span>        threading.Thread.__init__(self)</div>
-<div class="line"><span class="lineno">   94</span>        self.main_controller = main_controller</div>
-<div class="line"><span class="lineno">   95</span>        self.b_first_callback_call = <span class="keyword">False</span></div>
-<div class="line"><span class="lineno">   96</span>        self.i_file_size = 0</div>
-<div class="line"><span class="lineno">   97</span>        self.i_last_percent = 0</div>
-<div class="line"><span class="lineno">   98</span>        self.f_time_stamp = 0.0</div>
-<div class="line"><span class="lineno">   99</span>        self.i_last_bytes_remaining = 0</div>
-<div class="line"><span class="lineno">  100</span>        self.l_speed_history: list[int] = []  <span class="comment"># download speed history</span></div>
-<div class="line"><span class="lineno">  101</span>        self.clear_data()</div>
-<div class="line"><span class="lineno">  102</span> </div>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00041">41</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>    <span class="keyword">def </span>__init__(self, main_controller: <span class="stringliteral">&quot;MainWindow&quot;</span>):</div>
+<div class="line"><span class="lineno">   42</span>        threading.Thread.__init__(self)</div>
+<div class="line"><span class="lineno">   43</span>        self.main_controller = main_controller</div>
+<div class="line"><span class="lineno">   44</span>        self.b_first_callback_call = <span class="keyword">False</span></div>
+<div class="line"><span class="lineno">   45</span>        self.i_file_size = 0</div>
+<div class="line"><span class="lineno">   46</span>        self.i_last_percent = 0</div>
+<div class="line"><span class="lineno">   47</span>        self.f_time_stamp = 0.0</div>
+<div class="line"><span class="lineno">   48</span>        self.i_last_bytes_remaining = 0</div>
+<div class="line"><span class="lineno">   49</span>        self.l_speed_history: list[int] = []  <span class="comment"># download speed history</span></div>
+<div class="line"><span class="lineno">   50</span>        self.clear_data()</div>
+<div class="line"><span class="lineno">   51</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -260,18 +260,18 @@ Public Attributes</h2></td></tr>
 
 <p>Clear data. </p>
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00103">103</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  103</span>    <span class="keyword">def </span>clear_data(self) -&gt; None:</div>
-<div class="line"><span class="lineno">  104</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  105</span><span class="stringliteral">        @brief Clear data</span></div>
-<div class="line"><span class="lineno">  106</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  107</span>        self.b_first_callback_call = <span class="keyword">False</span></div>
-<div class="line"><span class="lineno">  108</span>        self.i_file_size = 0</div>
-<div class="line"><span class="lineno">  109</span>        self.i_last_percent = 0</div>
-<div class="line"><span class="lineno">  110</span>        self.f_time_stamp = 0.0</div>
-<div class="line"><span class="lineno">  111</span>        self.i_last_bytes_remaining = 0</div>
-<div class="line"><span class="lineno">  112</span>        self.l_speed_history = []  <span class="comment"># download speed history</span></div>
-<div class="line"><span class="lineno">  113</span> </div>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00052">52</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   52</span>    <span class="keyword">def </span>clear_data(self) -&gt; None:</div>
+<div class="line"><span class="lineno">   53</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">   54</span><span class="stringliteral">        @brief Clear data</span></div>
+<div class="line"><span class="lineno">   55</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   56</span>        self.b_first_callback_call = <span class="keyword">False</span></div>
+<div class="line"><span class="lineno">   57</span>        self.i_file_size = 0</div>
+<div class="line"><span class="lineno">   58</span>        self.i_last_percent = 0</div>
+<div class="line"><span class="lineno">   59</span>        self.f_time_stamp = 0.0</div>
+<div class="line"><span class="lineno">   60</span>        self.i_last_bytes_remaining = 0</div>
+<div class="line"><span class="lineno">   61</span>        self.l_speed_history = []  <span class="comment"># download speed history</span></div>
+<div class="line"><span class="lineno">   62</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -314,43 +314,43 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00181">181</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  181</span>    <span class="keyword">def </span>progress_callback(self, _stream: Stream, _chunk: bytes, bytes_remaining: int) -&gt; <span class="keywordtype">None</span>:</div>
-<div class="line"><span class="lineno">  182</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  183</span><span class="stringliteral">        @brief Calculate process and update process bar</span></div>
-<div class="line"><span class="lineno">  184</span><span class="stringliteral">        @param _stream : stream</span></div>
-<div class="line"><span class="lineno">  185</span><span class="stringliteral">        @param _chunk : chunk</span></div>
-<div class="line"><span class="lineno">  186</span><span class="stringliteral">        @param bytes_remaining : bytes remaining</span></div>
-<div class="line"><span class="lineno">  187</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  188</span>        <span class="keywordflow">if</span> <span class="keywordflow">not</span> self.b_first_callback_call:</div>
-<div class="line"><span class="lineno">  189</span>            self.i_file_size = bytes_remaining</div>
-<div class="line"><span class="lineno">  190</span>            self.i_last_bytes_remaining = bytes_remaining</div>
-<div class="line"><span class="lineno">  191</span>            self.b_first_callback_call = <span class="keyword">True</span></div>
-<div class="line"><span class="lineno">  192</span>        <span class="keywordflow">else</span>:</div>
-<div class="line"><span class="lineno">  193</span>            f_actual_time = time.time()</div>
-<div class="line"><span class="lineno">  194</span>            f_past_time = f_actual_time - self.f_time_stamp</div>
-<div class="line"><span class="lineno">  195</span>            <span class="keywordflow">if</span> self.f_time_stamp != 0:  <span class="comment"># set calculate time only for second call</span></div>
-<div class="line"><span class="lineno">  196</span>                i_actual_speed = int((self.i_last_bytes_remaining - bytes_remaining) / f_past_time)</div>
-<div class="line"><span class="lineno">  197</span>                i_history_len = len(self.l_speed_history)</div>
-<div class="line"><span class="lineno">  198</span>                <span class="keywordflow">if</span> i_history_len &lt; I_SPEED_AVERAGE_VALUES:</div>
-<div class="line"><span class="lineno">  199</span>                    self.l_speed_history.append(i_actual_speed)</div>
-<div class="line"><span class="lineno">  200</span>                <span class="keywordflow">else</span>:</div>
-<div class="line"><span class="lineno">  201</span>                    <span class="keywordflow">for</span> i, value <span class="keywordflow">in</span> enumerate(self.l_speed_history):</div>
-<div class="line"><span class="lineno">  202</span>                        <span class="keywordflow">if</span> i != 0:</div>
-<div class="line"><span class="lineno">  203</span>                            self.l_speed_history[i - 1] = value</div>
-<div class="line"><span class="lineno">  204</span>                    self.l_speed_history[I_SPEED_AVERAGE_VALUES - 1] = i_actual_speed</div>
-<div class="line"><span class="lineno">  205</span>                i_average_speed = statistics.mean(self.l_speed_history)</div>
-<div class="line"><span class="lineno">  206</span>                i_remaining_seconds = int(bytes_remaining / i_average_speed)</div>
-<div class="line"><span class="lineno">  207</span>                self.main_controller.status_lbl.configure(text=f<span class="stringliteral">&#39;Download läuft... noch {i_remaining_seconds}sek&#39;</span>, text_color=<span class="stringliteral">&quot;grey&quot;</span>)</div>
-<div class="line"><span class="lineno">  208</span>            self.f_time_stamp = f_actual_time</div>
-<div class="line"><span class="lineno">  209</span>            self.i_last_bytes_remaining = bytes_remaining</div>
-<div class="line"><span class="lineno">  210</span>            i_percent = int(((self.i_file_size - bytes_remaining) / self.i_file_size) * 100)</div>
-<div class="line"><span class="lineno">  211</span>            i_percent_diff = i_percent - self.i_last_percent</div>
-<div class="line"><span class="lineno">  212</span>            <span class="keywordflow">for</span> _ <span class="keywordflow">in</span> range(i_percent_diff):</div>
-<div class="line"><span class="lineno">  213</span>                self.main_controller.progress_bar.set(i_percent/100)</div>
-<div class="line"><span class="lineno">  214</span>            self.i_last_percent = i_percent</div>
-<div class="line"><span class="lineno">  215</span> </div>
-<div class="line"><span class="lineno">  216</span> </div>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00130">130</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  130</span>    <span class="keyword">def </span>progress_callback(self, _stream: Stream, _chunk: bytes, bytes_remaining: int) -&gt; <span class="keywordtype">None</span>:</div>
+<div class="line"><span class="lineno">  131</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">  132</span><span class="stringliteral">        @brief Calculate process and update process bar</span></div>
+<div class="line"><span class="lineno">  133</span><span class="stringliteral">        @param _stream : stream</span></div>
+<div class="line"><span class="lineno">  134</span><span class="stringliteral">        @param _chunk : chunk</span></div>
+<div class="line"><span class="lineno">  135</span><span class="stringliteral">        @param bytes_remaining : bytes remaining</span></div>
+<div class="line"><span class="lineno">  136</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  137</span>        <span class="keywordflow">if</span> <span class="keywordflow">not</span> self.b_first_callback_call:</div>
+<div class="line"><span class="lineno">  138</span>            self.i_file_size = bytes_remaining</div>
+<div class="line"><span class="lineno">  139</span>            self.i_last_bytes_remaining = bytes_remaining</div>
+<div class="line"><span class="lineno">  140</span>            self.b_first_callback_call = <span class="keyword">True</span></div>
+<div class="line"><span class="lineno">  141</span>        <span class="keywordflow">else</span>:</div>
+<div class="line"><span class="lineno">  142</span>            f_actual_time = time.time()</div>
+<div class="line"><span class="lineno">  143</span>            f_past_time = f_actual_time - self.f_time_stamp</div>
+<div class="line"><span class="lineno">  144</span>            <span class="keywordflow">if</span> self.f_time_stamp != 0:  <span class="comment"># set calculate time only for second call</span></div>
+<div class="line"><span class="lineno">  145</span>                i_actual_speed = int((self.i_last_bytes_remaining - bytes_remaining) / f_past_time)</div>
+<div class="line"><span class="lineno">  146</span>                i_history_len = len(self.l_speed_history)</div>
+<div class="line"><span class="lineno">  147</span>                <span class="keywordflow">if</span> i_history_len &lt; I_SPEED_AVERAGE_VALUES:</div>
+<div class="line"><span class="lineno">  148</span>                    self.l_speed_history.append(i_actual_speed)</div>
+<div class="line"><span class="lineno">  149</span>                <span class="keywordflow">else</span>:</div>
+<div class="line"><span class="lineno">  150</span>                    <span class="keywordflow">for</span> i, value <span class="keywordflow">in</span> enumerate(self.l_speed_history):</div>
+<div class="line"><span class="lineno">  151</span>                        <span class="keywordflow">if</span> i != 0:</div>
+<div class="line"><span class="lineno">  152</span>                            self.l_speed_history[i - 1] = value</div>
+<div class="line"><span class="lineno">  153</span>                    self.l_speed_history[I_SPEED_AVERAGE_VALUES - 1] = i_actual_speed</div>
+<div class="line"><span class="lineno">  154</span>                i_average_speed = statistics.mean(self.l_speed_history)</div>
+<div class="line"><span class="lineno">  155</span>                i_remaining_seconds = int(bytes_remaining / i_average_speed)</div>
+<div class="line"><span class="lineno">  156</span>                self.main_controller.status_lbl.configure(text=f<span class="stringliteral">&#39;Download läuft... noch {i_remaining_seconds}sek&#39;</span>, text_color=<span class="stringliteral">&quot;grey&quot;</span>)</div>
+<div class="line"><span class="lineno">  157</span>            self.f_time_stamp = f_actual_time</div>
+<div class="line"><span class="lineno">  158</span>            self.i_last_bytes_remaining = bytes_remaining</div>
+<div class="line"><span class="lineno">  159</span>            i_percent = int(((self.i_file_size - bytes_remaining) / self.i_file_size) * 100)</div>
+<div class="line"><span class="lineno">  160</span>            i_percent_diff = i_percent - self.i_last_percent</div>
+<div class="line"><span class="lineno">  161</span>            <span class="keywordflow">for</span> _ <span class="keywordflow">in</span> range(i_percent_diff):</div>
+<div class="line"><span class="lineno">  162</span>                self.main_controller.progress_bar.set(i_percent / 100)</div>
+<div class="line"><span class="lineno">  163</span>            self.i_last_percent = i_percent</div>
+<div class="line"><span class="lineno">  164</span> </div>
+<div class="line"><span class="lineno">  165</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -371,74 +371,74 @@ Public Attributes</h2></td></tr>
 
 <p>Download YouTube content. </p>
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00114">114</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  114</span>    <span class="keyword">def </span>run(self) -&gt; None:</div>
-<div class="line"><span class="lineno">  115</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  116</span><span class="stringliteral">        @brief Download YouTube content</span></div>
-<div class="line"><span class="lineno">  117</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  118</span>        self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;Analysiere URL...&quot;</span>, text_color=<span class="stringliteral">&quot;grey&quot;</span>)</div>
-<div class="line"><span class="lineno">  119</span>        self.main_controller.progress_bar.set(0)</div>
-<div class="line"><span class="lineno">  120</span>        i_choice = self.main_controller.choice_var.get()</div>
-<div class="line"><span class="lineno">  121</span>        s_url = self.main_controller.o_url_choice.get()</div>
-<div class="line"><span class="lineno">  122</span>        <span class="keywordflow">if</span> i_choice != 0:</div>
-<div class="line"><span class="lineno">  123</span>            l_url = []</div>
-<div class="line"><span class="lineno">  124</span>            s_subfolder_name = <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  125</span>            <span class="keywordflow">if</span> re.search(<span class="stringliteral">&quot;&amp;list=&quot;</span>, s_url):</div>
-<div class="line"><span class="lineno">  126</span>                o_playlist = pytube.Playlist(s_url)</div>
-<div class="line"><span class="lineno">  127</span>                s_subfolder_name = <span class="stringliteral">&quot;/&quot;</span> + o_playlist.title</div>
-<div class="line"><span class="lineno">  128</span>                <span class="keywordflow">for</span> video <span class="keywordflow">in</span> o_playlist.videos:</div>
-<div class="line"><span class="lineno">  129</span>                    l_url.append(video.watch_url)</div>
-<div class="line"><span class="lineno">  130</span>            <span class="keywordflow">else</span>:</div>
-<div class="line"><span class="lineno">  131</span>                l_url = [s_url]</div>
-<div class="line"><span class="lineno">  132</span>            i_titels = len(l_url)</div>
-<div class="line"><span class="lineno">  133</span>            <span class="keywordflow">for</span> i, s_url <span class="keywordflow">in</span> enumerate(l_url, 1):</div>
-<div class="line"><span class="lineno">  134</span>                self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;Analysiere URL...&quot;</span>, text_color=<span class="stringliteral">&quot;grey&quot;</span>)</div>
-<div class="line"><span class="lineno">  135</span>                s_text = f<span class="stringliteral">&quot;Titel {i}/{i_titels}: ...&quot;</span></div>
-<div class="line"><span class="lineno">  136</span>                self.main_controller.title_lbl.configure(text=s_text, text_color=<span class="stringliteral">&quot;orange&quot;</span>)</div>
-<div class="line"><span class="lineno">  137</span>                b_valid_url = <span class="keyword">False</span></div>
-<div class="line"><span class="lineno">  138</span>                <span class="keywordflow">try</span>:</div>
-<div class="line"><span class="lineno">  139</span>                    o_youtube = YouTube(s_url, on_progress_callback=self.progress_callback)</div>
-<div class="line"><span class="lineno">  140</span>                    s_titel = o_youtube.title[:35]</div>
-<div class="line"><span class="lineno">  141</span>                    s_text = f<span class="stringliteral">&quot;Titel {i}/{i_titels}: {s_titel}&quot;</span></div>
-<div class="line"><span class="lineno">  142</span>                    self.main_controller.title_lbl.configure(text=s_text, text_color=<span class="stringliteral">&quot;orange&quot;</span>)</div>
-<div class="line"><span class="lineno">  143</span>                    b_valid_url = <span class="keyword">True</span></div>
-<div class="line"><span class="lineno">  144</span>                <span class="keywordflow">except</span> BaseException:  <span class="comment"># pylint: disable=bare-except</span></div>
-<div class="line"><span class="lineno">  145</span>                    self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;Ungültige URL!&quot;</span>, text_color=<span class="stringliteral">&quot;red&quot;</span>)</div>
-<div class="line"><span class="lineno">  146</span>                <span class="keywordflow">if</span> b_valid_url:</div>
-<div class="line"><span class="lineno">  147</span>                    self.clear_data()</div>
-<div class="line"><span class="lineno">  148</span>                    s_filename = <span class="keywordtype">None</span></div>
-<div class="line"><span class="lineno">  149</span>                    <span class="keywordflow">if</span> i_choice == HIGH_RESOLUTION:</div>
-<div class="line"><span class="lineno">  150</span>                        o_stream = o_youtube.streams.filter(progressive=<span class="keyword">True</span>, file_extension=<span class="stringliteral">&#39;mp4&#39;</span>)\</div>
-<div class="line"><span class="lineno">  151</span>                            .get_highest_resolution()</div>
-<div class="line"><span class="lineno">  152</span>                    <span class="keywordflow">elif</span> i_choice == LOW_RESOLUTION:</div>
-<div class="line"><span class="lineno">  153</span>                        o_stream = o_youtube.streams.filter(progressive=<span class="keyword">True</span>, file_extension=<span class="stringliteral">&#39;mp4&#39;</span>)\</div>
-<div class="line"><span class="lineno">  154</span>                            .get_lowest_resolution()</div>
-<div class="line"><span class="lineno">  155</span>                    <span class="keywordflow">elif</span> i_choice == ONLY_AUDIO:</div>
-<div class="line"><span class="lineno">  156</span>                        o_stream = o_youtube.streams.filter(only_audio=<span class="keyword">True</span>).first()</div>
-<div class="line"><span class="lineno">  157</span>                    <span class="keywordflow">else</span>:</div>
-<div class="line"><span class="lineno">  158</span>                        o_stream = <span class="keywordtype">None</span>  <span class="comment"># TODO</span></div>
-<div class="line"><span class="lineno">  159</span>                        self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;Unerwarteter Fehler!&quot;</span>, text_color=<span class="stringliteral">&quot;red&quot;</span>)</div>
-<div class="line"><span class="lineno">  160</span>                    <span class="keywordflow">try</span>:</div>
-<div class="line"><span class="lineno">  161</span>                        self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;Download läuft...&quot;</span>, text_color=<span class="stringliteral">&quot;grey&quot;</span>)</div>
-<div class="line"><span class="lineno">  162</span>                        o_stream.download(S_DOWNLOAD_FOLDER + s_subfolder_name, s_filename)</div>
-<div class="line"><span class="lineno">  163</span>                        self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;Download abgeschlossen!&quot;</span>, text_color=<span class="stringliteral">&quot;green&quot;</span>)</div>
-<div class="line"><span class="lineno">  164</span>                        <span class="keywordflow">if</span> B_MP3_CONVERT:</div>
-<div class="line"><span class="lineno">  165</span>                            <span class="keywordflow">if</span> i_choice == ONLY_AUDIO:</div>
-<div class="line"><span class="lineno">  166</span>                                self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;MP3 wird erstellt...&quot;</span>, text_color=<span class="stringliteral">&quot;grey&quot;</span>)</div>
-<div class="line"><span class="lineno">  167</span>                                s_file_path_name = S_DOWNLOAD_FOLDER + s_subfolder_name + <span class="stringliteral">&quot;/&quot;</span> + o_stream.default_filename</div>
-<div class="line"><span class="lineno">  168</span>                                audioclip = AudioFileClip(s_file_path_name)</div>
-<div class="line"><span class="lineno">  169</span>                                audioclip.write_audiofile(s_file_path_name[:-1] + <span class="stringliteral">&quot;3&quot;</span>)</div>
-<div class="line"><span class="lineno">  170</span>                                audioclip.close()</div>
-<div class="line"><span class="lineno">  171</span>                                os.remove(s_file_path_name)</div>
-<div class="line"><span class="lineno">  172</span>                                self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;MP3 erstellt!&quot;</span>, text_color=<span class="stringliteral">&quot;green&quot;</span>)</div>
-<div class="line"><span class="lineno">  173</span>                    <span class="keywordflow">except</span> BaseException:  <span class="comment"># pylint: disable=bare-except</span></div>
-<div class="line"><span class="lineno">  174</span>                        self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;Dieses Video kann nicht heruntergeladen werden!&quot;</span>,</div>
-<div class="line"><span class="lineno">  175</span>                                                                  text_color=<span class="stringliteral">&quot;red&quot;</span>)</div>
-<div class="line"><span class="lineno">  176</span>        <span class="keywordflow">else</span>:</div>
-<div class="line"><span class="lineno">  177</span>            self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;Bitte Format angeben!&quot;</span>, fg=<span class="stringliteral">&quot;red&quot;</span>)</div>
-<div class="line"><span class="lineno">  178</span>        self.main_controller.download_btn.configure(state=<span class="stringliteral">&quot;normal&quot;</span>)</div>
-<div class="line"><span class="lineno">  179</span>        self.main_controller.direct_btn.configure(state=<span class="stringliteral">&quot;normal&quot;</span>)</div>
-<div class="line"><span class="lineno">  180</span> </div>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00063">63</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   63</span>    <span class="keyword">def </span>run(self) -&gt; None:</div>
+<div class="line"><span class="lineno">   64</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">   65</span><span class="stringliteral">        @brief Download YouTube content</span></div>
+<div class="line"><span class="lineno">   66</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   67</span>        self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;Analysiere URL...&quot;</span>, text_color=<span class="stringliteral">&quot;grey&quot;</span>)</div>
+<div class="line"><span class="lineno">   68</span>        self.main_controller.progress_bar.set(0)</div>
+<div class="line"><span class="lineno">   69</span>        i_choice = self.main_controller.choice_var.get()</div>
+<div class="line"><span class="lineno">   70</span>        s_url = self.main_controller.o_url_choice.get()</div>
+<div class="line"><span class="lineno">   71</span>        <span class="keywordflow">if</span> i_choice != 0:</div>
+<div class="line"><span class="lineno">   72</span>            l_url = []</div>
+<div class="line"><span class="lineno">   73</span>            s_subfolder_name = <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   74</span>            <span class="keywordflow">if</span> re.search(<span class="stringliteral">&quot;&amp;list=&quot;</span>, s_url):</div>
+<div class="line"><span class="lineno">   75</span>                o_playlist = pytubefix.Playlist(s_url)</div>
+<div class="line"><span class="lineno">   76</span>                s_subfolder_name = <span class="stringliteral">&quot;/&quot;</span> + o_playlist.title</div>
+<div class="line"><span class="lineno">   77</span>                <span class="keywordflow">for</span> video <span class="keywordflow">in</span> o_playlist.videos:</div>
+<div class="line"><span class="lineno">   78</span>                    l_url.append(video.watch_url)</div>
+<div class="line"><span class="lineno">   79</span>            <span class="keywordflow">else</span>:</div>
+<div class="line"><span class="lineno">   80</span>                l_url = [s_url]</div>
+<div class="line"><span class="lineno">   81</span>            i_titels = len(l_url)</div>
+<div class="line"><span class="lineno">   82</span>            <span class="keywordflow">for</span> i, s_url <span class="keywordflow">in</span> enumerate(l_url, 1):</div>
+<div class="line"><span class="lineno">   83</span>                self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;Analysiere URL...&quot;</span>, text_color=<span class="stringliteral">&quot;grey&quot;</span>)</div>
+<div class="line"><span class="lineno">   84</span>                s_text = f<span class="stringliteral">&quot;Titel {i}/{i_titels}: ...&quot;</span></div>
+<div class="line"><span class="lineno">   85</span>                self.main_controller.title_lbl.configure(text=s_text, text_color=<span class="stringliteral">&quot;orange&quot;</span>)</div>
+<div class="line"><span class="lineno">   86</span>                b_valid_url = <span class="keyword">False</span></div>
+<div class="line"><span class="lineno">   87</span>                <span class="keywordflow">try</span>:</div>
+<div class="line"><span class="lineno">   88</span>                    o_youtube = YouTube(s_url, on_progress_callback=self.progress_callback)</div>
+<div class="line"><span class="lineno">   89</span>                    s_titel = o_youtube.title[:35]</div>
+<div class="line"><span class="lineno">   90</span>                    s_text = f<span class="stringliteral">&quot;Titel {i}/{i_titels}: {s_titel}&quot;</span></div>
+<div class="line"><span class="lineno">   91</span>                    self.main_controller.title_lbl.configure(text=s_text, text_color=<span class="stringliteral">&quot;orange&quot;</span>)</div>
+<div class="line"><span class="lineno">   92</span>                    b_valid_url = <span class="keyword">True</span></div>
+<div class="line"><span class="lineno">   93</span>                <span class="keywordflow">except</span> BaseException:  <span class="comment"># pylint: disable=bare-except</span></div>
+<div class="line"><span class="lineno">   94</span>                    self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;Ungültige URL!&quot;</span>, text_color=<span class="stringliteral">&quot;red&quot;</span>)</div>
+<div class="line"><span class="lineno">   95</span>                <span class="keywordflow">if</span> b_valid_url:</div>
+<div class="line"><span class="lineno">   96</span>                    self.clear_data()</div>
+<div class="line"><span class="lineno">   97</span>                    s_filename = <span class="keywordtype">None</span></div>
+<div class="line"><span class="lineno">   98</span>                    <span class="keywordflow">if</span> i_choice == HIGH_RESOLUTION:</div>
+<div class="line"><span class="lineno">   99</span>                        o_stream = o_youtube.streams.filter(progressive=<span class="keyword">True</span>, file_extension=<span class="stringliteral">&#39;mp4&#39;</span>)\</div>
+<div class="line"><span class="lineno">  100</span>                            .get_highest_resolution()</div>
+<div class="line"><span class="lineno">  101</span>                    <span class="keywordflow">elif</span> i_choice == LOW_RESOLUTION:</div>
+<div class="line"><span class="lineno">  102</span>                        o_stream = o_youtube.streams.filter(progressive=<span class="keyword">True</span>, file_extension=<span class="stringliteral">&#39;mp4&#39;</span>)\</div>
+<div class="line"><span class="lineno">  103</span>                            .get_lowest_resolution()</div>
+<div class="line"><span class="lineno">  104</span>                    <span class="keywordflow">elif</span> i_choice == ONLY_AUDIO:</div>
+<div class="line"><span class="lineno">  105</span>                        o_stream = o_youtube.streams.filter(only_audio=<span class="keyword">True</span>).first()</div>
+<div class="line"><span class="lineno">  106</span>                    <span class="keywordflow">else</span>:</div>
+<div class="line"><span class="lineno">  107</span>                        o_stream = <span class="keywordtype">None</span>  <span class="comment"># TODO</span></div>
+<div class="line"><span class="lineno">  108</span>                        self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;Unerwarteter Fehler!&quot;</span>, text_color=<span class="stringliteral">&quot;red&quot;</span>)</div>
+<div class="line"><span class="lineno">  109</span>                    <span class="keywordflow">try</span>:</div>
+<div class="line"><span class="lineno">  110</span>                        self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;Download läuft...&quot;</span>, text_color=<span class="stringliteral">&quot;grey&quot;</span>)</div>
+<div class="line"><span class="lineno">  111</span>                        o_stream.download(S_DOWNLOAD_FOLDER + s_subfolder_name, s_filename)</div>
+<div class="line"><span class="lineno">  112</span>                        self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;Download abgeschlossen!&quot;</span>, text_color=<span class="stringliteral">&quot;green&quot;</span>)</div>
+<div class="line"><span class="lineno">  113</span>                        <span class="keywordflow">if</span> B_MP3_CONVERT:</div>
+<div class="line"><span class="lineno">  114</span>                            <span class="keywordflow">if</span> i_choice == ONLY_AUDIO:</div>
+<div class="line"><span class="lineno">  115</span>                                self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;MP3 wird erstellt...&quot;</span>, text_color=<span class="stringliteral">&quot;grey&quot;</span>)</div>
+<div class="line"><span class="lineno">  116</span>                                s_file_path_name = S_DOWNLOAD_FOLDER + s_subfolder_name + <span class="stringliteral">&quot;/&quot;</span> + o_stream.default_filename</div>
+<div class="line"><span class="lineno">  117</span>                                audioclip = AudioFileClip(s_file_path_name)</div>
+<div class="line"><span class="lineno">  118</span>                                audioclip.write_audiofile(s_file_path_name[:-1] + <span class="stringliteral">&quot;3&quot;</span>)</div>
+<div class="line"><span class="lineno">  119</span>                                audioclip.close()</div>
+<div class="line"><span class="lineno">  120</span>                                os.remove(s_file_path_name)</div>
+<div class="line"><span class="lineno">  121</span>                                self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;MP3 erstellt!&quot;</span>, text_color=<span class="stringliteral">&quot;green&quot;</span>)</div>
+<div class="line"><span class="lineno">  122</span>                    <span class="keywordflow">except</span> BaseException:  <span class="comment"># pylint: disable=bare-except</span></div>
+<div class="line"><span class="lineno">  123</span>                        self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;Dieses Video kann nicht heruntergeladen werden!&quot;</span>,</div>
+<div class="line"><span class="lineno">  124</span>                                                                  text_color=<span class="stringliteral">&quot;red&quot;</span>)</div>
+<div class="line"><span class="lineno">  125</span>        <span class="keywordflow">else</span>:</div>
+<div class="line"><span class="lineno">  126</span>            self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;Bitte Format angeben!&quot;</span>, fg=<span class="stringliteral">&quot;red&quot;</span>)</div>
+<div class="line"><span class="lineno">  127</span>        self.main_controller.download_btn.configure(state=<span class="stringliteral">&quot;normal&quot;</span>)</div>
+<div class="line"><span class="lineno">  128</span>        self.main_controller.direct_btn.configure(state=<span class="stringliteral">&quot;normal&quot;</span>)</div>
+<div class="line"><span class="lineno">  129</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -455,7 +455,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00095">95</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00044">44</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
 
 </div>
 </div>
@@ -471,7 +471,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00098">98</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00047">47</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
 
 </div>
 </div>
@@ -487,7 +487,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00096">96</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00045">45</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
 
 </div>
 </div>
@@ -503,7 +503,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00099">99</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00048">48</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
 
 </div>
 </div>
@@ -519,7 +519,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00097">97</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00046">46</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
 
 </div>
 </div>
@@ -535,7 +535,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00100">100</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00049">49</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
 
 </div>
 </div>
@@ -551,7 +551,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00094">94</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00043">43</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
 
 </div>
 </div>
@@ -564,7 +564,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_source.html">Source</a></li><li class="navelem"><a class="el" href="namespace_source_1_1_worker.html">Worker</a></li><li class="navelem"><a class="el" href="namespace_source_1_1_worker_1_1downloader.html">downloader</a></li><li class="navelem"><a class="el" href="class_source_1_1_worker_1_1downloader_1_1_download_thread.html">DownloadThread</a></li>
-    <li class="footer">Generated on Fri Nov 15 2024 22:57:43 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Sun Jan 19 2025 19:59:17 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>
