@@ -185,6 +185,14 @@ jobs:
       - name: Install Packages
         working-directory: ${{ env.PYTHON_PACKAGE_INST_PATH }}
         run: ${{ env.PYTHON_PACKAGE_INST_FILE }}
+      - name: Get Package list
+        working-directory: ${{ env.PYTHON_PACKAGE_INST_PATH }}
+        run: get_package_list.bat
+      - name: Upload Package list
+        uses: actions/upload-artifact@v4
+        with:
+          name: installed_packages.txt
+          path: ./Documentation/Installation/installed_packages.txt
       - name: Build Executable
         working-directory: ./Executable
         run: generate_executable.bat

@@ -37,7 +37,7 @@ THIN_BORDER = Border(left=Side(style="thin"),
                      top=Side(style="thin"),
                      bottom=Side(style="thin"))
 
-NUMBER_FORAMT_CURRENCY = "#,##0.00"
+NUMBER_FORMAT_CURRENCY = "#,##0.00"
 NUMBER_FORMAT_EUR = "#,##0.00 €"
 NUMBER_FORMAT_PERCENT = "0%"
 NUMBER_FORMAT_DATETIME = "YYYY-MM-DD HH:MM:SS"

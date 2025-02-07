@@ -50,11 +50,11 @@ def delete_selected_text(url_input: CTkEntry) -> None:
     except BaseException:  # pylint: disable=bare-except
         pass
     else:
-        s_enty_text = url_input.get()
+        s_entry_text = url_input.get()
         i_selected_text_length = len(s_select_text)
         i_curser_pos = url_input.index('insert')
         i_curser_pos_end = i_curser_pos + i_selected_text_length
-        s_text_to_check = s_enty_text[i_curser_pos: i_curser_pos_end]
+        s_text_to_check = s_entry_text[i_curser_pos: i_curser_pos_end]
         if s_text_to_check == s_select_text:
             url_input.delete(i_curser_pos, i_curser_pos_end)
         else:
