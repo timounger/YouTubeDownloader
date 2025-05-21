@@ -86,8 +86,8 @@ class DownloadThread(threading.Thread):
                 b_valid_url = False
                 try:
                     o_youtube = YouTube(s_url, on_progress_callback=self.progress_callback)
-                    s_titel = o_youtube.title[:35]
-                    s_text = f"Titel {i}/{i_title_cnt}: {s_titel}"
+                    s_title = o_youtube.title[:35]
+                    s_text = f"Titel {i}/{i_title_cnt}: {s_title}"
                     self.main_controller.title_lbl.configure(text=s_text, text_color="orange")
                     b_valid_url = True
                 except BaseException:  # pylint: disable=bare-except
