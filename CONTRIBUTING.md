@@ -87,7 +87,7 @@ Die Generierung der EXE erfolgt mit Hilfe des `pyinstallers`. In der Datei `Exec
 
 ## Setup-Generierung 🔧
 
-Die Generierung des Installers erfolgt mit Hilfe von [InnoSetup6](https://jrsoftware.org/isdl.php). In der Datei `Executable/setup_youtubedownloader.iss` sind die notwendigen Parameter spezifiziert. Durch Ausführen des Batch-Skripts `Executable/generate_setup.bat` wird der Installer EXE im Ordner `Executable/bin` erzeugt.
+Die Generierung des Installers erfolgt mit Hilfe von [InnoSetup6](https://jrsoftware.org/isdl.php). In der Datei `Executable/setup.iss` sind die notwendigen Parameter spezifiziert. Durch Ausführen des Batch-Skripts `Executable/generate_setup.bat` wird der Installer EXE im Ordner `Executable/bin` erzeugt.
 
 ---
 

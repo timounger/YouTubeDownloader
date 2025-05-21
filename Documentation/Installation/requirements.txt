@@ -1,13 +1,13 @@
 # General
-pip==24.3.1
+pip==25.1.1
 requests==2.32.3
-openpyxl==3.1.3 # 3.1.4 has diagram bug
+openpyxl==3.1.5 # 3.1.4 has diagram bug
 colorama==0.4.6
 GitPython==3.1.44
 pillow==11.1.0
 
 # Source
-pytubefix==8.12.0
+pytubefix==8.13.1
 moviepy==1.0.3 # dont cange dependencies to pillow
 clipboard==0.0.4
 sv_ttk==2.6.0
@@ -16,13 +16,13 @@ pyqtdarktheme==2.1.0
 customtkinter==5.2.2
 
 # Executable
-pyinstaller==6.11.1
-beautifulsoup4==4.12.3
+pyinstaller==6.13.0
+beautifulsoup4==4.13.4
 
 # Test
 autopep8==2.3.2
-mypy==1.14.1
-pylint==3.3.3
+mypy==1.15.0
+pylint==3.3.7
 
 # Documentation
 astunparse==1.6.3

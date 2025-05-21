@@ -27,7 +27,7 @@ def resource_path(s_relative_path: str) -> str:
     else:
         s_base_path = os.path.abspath("../")
     s_resource_path = os.path.join(s_base_path, s_relative_path)
-    log.debug("Recource Path (relative %s): %s", s_relative_path, s_resource_path)
+    log.debug("Resource Path (relative %s): %s", s_relative_path, s_resource_path)
     return s_resource_path
 
 

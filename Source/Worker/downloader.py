@@ -78,16 +78,16 @@ class DownloadThread(threading.Thread):
                     l_url.append(video.watch_url)
             else:
                 l_url = [s_url]
-            i_titels = len(l_url)
+            i_title_cnt = len(l_url)
             for i, s_url in enumerate(l_url, 1):
                 self.main_controller.status_lbl.configure(text="Analysiere URL...", text_color="grey")
-                s_text = f"Titel {i}/{i_titels}: ..."
+                s_text = f"Titel {i}/{i_title_cnt}: ..."
                 self.main_controller.title_lbl.configure(text=s_text, text_color="orange")
                 b_valid_url = False
                 try:
                     o_youtube = YouTube(s_url, on_progress_callback=self.progress_callback)
                     s_titel = o_youtube.title[:35]
-                    s_text = f"Titel {i}/{i_titels}: {s_titel}"
+                    s_text = f"Titel {i}/{i_title_cnt}: {s_titel}"
                     self.main_controller.title_lbl.configure(text=s_text, text_color="orange")
                     b_valid_url = True
                 except BaseException:  # pylint: disable=bare-except
