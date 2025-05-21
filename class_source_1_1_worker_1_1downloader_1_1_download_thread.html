@@ -32,7 +32,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="app.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.1</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.2</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -390,16 +390,16 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   78</span>                    l_url.append(video.watch_url)</div>
 <div class="line"><span class="lineno">   79</span>            <span class="keywordflow">else</span>:</div>
 <div class="line"><span class="lineno">   80</span>                l_url = [s_url]</div>
-<div class="line"><span class="lineno">   81</span>            i_titels = len(l_url)</div>
+<div class="line"><span class="lineno">   81</span>            i_title_cnt = len(l_url)</div>
 <div class="line"><span class="lineno">   82</span>            <span class="keywordflow">for</span> i, s_url <span class="keywordflow">in</span> enumerate(l_url, 1):</div>
 <div class="line"><span class="lineno">   83</span>                self.main_controller.status_lbl.configure(text=<span class="stringliteral">&quot;Analysiere URL...&quot;</span>, text_color=<span class="stringliteral">&quot;grey&quot;</span>)</div>
-<div class="line"><span class="lineno">   84</span>                s_text = f<span class="stringliteral">&quot;Titel {i}/{i_titels}: ...&quot;</span></div>
+<div class="line"><span class="lineno">   84</span>                s_text = f<span class="stringliteral">&quot;Titel {i}/{i_title_cnt}: ...&quot;</span></div>
 <div class="line"><span class="lineno">   85</span>                self.main_controller.title_lbl.configure(text=s_text, text_color=<span class="stringliteral">&quot;orange&quot;</span>)</div>
 <div class="line"><span class="lineno">   86</span>                b_valid_url = <span class="keyword">False</span></div>
 <div class="line"><span class="lineno">   87</span>                <span class="keywordflow">try</span>:</div>
 <div class="line"><span class="lineno">   88</span>                    o_youtube = YouTube(s_url, on_progress_callback=self.progress_callback)</div>
 <div class="line"><span class="lineno">   89</span>                    s_titel = o_youtube.title[:35]</div>
-<div class="line"><span class="lineno">   90</span>                    s_text = f<span class="stringliteral">&quot;Titel {i}/{i_titels}: {s_titel}&quot;</span></div>
+<div class="line"><span class="lineno">   90</span>                    s_text = f<span class="stringliteral">&quot;Titel {i}/{i_title_cnt}: {s_titel}&quot;</span></div>
 <div class="line"><span class="lineno">   91</span>                    self.main_controller.title_lbl.configure(text=s_text, text_color=<span class="stringliteral">&quot;orange&quot;</span>)</div>
 <div class="line"><span class="lineno">   92</span>                    b_valid_url = <span class="keyword">True</span></div>
 <div class="line"><span class="lineno">   93</span>                <span class="keywordflow">except</span> BaseException:  <span class="comment"># pylint: disable=bare-except</span></div>
@@ -564,7 +564,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_source.html">Source</a></li><li class="navelem"><a class="el" href="namespace_source_1_1_worker.html">Worker</a></li><li class="navelem"><a class="el" href="namespace_source_1_1_worker_1_1downloader.html">downloader</a></li><li class="navelem"><a class="el" href="class_source_1_1_worker_1_1downloader_1_1_download_thread.html">DownloadThread</a></li>
-    <li class="footer">Generated on Sun Jan 19 2025 19:59:17 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Wed May 21 2025 12:35:17 for YouTubeDownloader by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>

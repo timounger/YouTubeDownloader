@@ -10,12 +10,12 @@ var searchData=
   ['font_5fname_7',['font_name',['../class_source_1_1_util_1_1openpyxl__util_1_1_x_l_s_creator.html#aaca078361355d470c58da2fa1839330a',1,'Source::Util::openpyxl_util::XLSCreator']]],
   ['font_5fsize_8',['FONT_SIZE',['../namespace_source_1_1_controller_1_1main__window.html#af07c328d706e1297d7d306d96fc653b4',1,'Source.Controller.main_window.FONT_SIZE'],['../namespace_source_1_1_util_1_1openpyxl__util.html#af07c328d706e1297d7d306d96fc653b4',1,'Source.Util.openpyxl_util.FONT_SIZE']]],
   ['font_5fsize_9',['font_size',['../class_source_1_1_util_1_1openpyxl__util_1_1_x_l_s_creator.html#ae352d5727e97fc9aa0e71d6510550c12',1,'Source::Util::openpyxl_util::XLSCreator']]],
-  ['for_20having_20copies_10',['9. Acceptance Not Required for Having Copies',['../_l_i_c_e_n_s_e.html#autotoc_md38',1,'']]],
+  ['for_20having_20copies_10',['9. Acceptance Not Required for Having Copies',['../_l_i_c_e_n_s_e.html#autotoc_md39',1,'']]],
   ['format_11',['format',['../class_source_1_1_util_1_1colored__log_1_1_color_formatter.html#aba559499d0f1f94e020846e194f3d192',1,'Source::Util::colored_log::ColorFormatter']]],
   ['format_5flbl_12',['format_lbl',['../class_source_1_1_views_1_1mainwindow__tk__ui_1_1_ui___main_window.html#a1845cda669eb0498c5f71aca01e98186',1,'Source::Views::mainwindow_tk_ui::Ui_MainWindow']]],
   ['formatexception_13',['formatException',['../class_source_1_1_util_1_1colored__log_1_1_color_formatter.html#ae83ad16c31f86c5638792114431de3b8',1,'Source::Util::colored_log::ColorFormatter']]],
-  ['forms_14',['6. Conveying Non-Source Forms',['../_l_i_c_e_n_s_e.html#autotoc_md35',1,'']]],
-  ['freedom_15',['12. No Surrender of Others&apos; Freedom',['../_l_i_c_e_n_s_e.html#autotoc_md41',1,'']]],
-  ['freigabe_16',['Freigabe',['../_c_o_n_t_r_i_b_u_t_i_n_g.html#autotoc_md25',1,'']]],
-  ['from_20anti_20circumvention_20law_17',['3. Protecting Users&apos; Legal Rights From Anti-Circumvention Law',['../_l_i_c_e_n_s_e.html#autotoc_md32',1,'']]]
+  ['forms_14',['6. Conveying Non-Source Forms',['../_l_i_c_e_n_s_e.html#autotoc_md36',1,'']]],
+  ['freedom_15',['12. No Surrender of Others&apos; Freedom',['../_l_i_c_e_n_s_e.html#autotoc_md42',1,'']]],
+  ['freigabe_16',['Freigabe',['../_c_o_n_t_r_i_b_u_t_i_n_g.html#autotoc_md26',1,'']]],
+  ['from_20anti_20circumvention_20law_17',['3. Protecting Users&apos; Legal Rights From Anti-Circumvention Law',['../_l_i_c_e_n_s_e.html#autotoc_md33',1,'']]]
 ];

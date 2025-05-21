@@ -15,7 +15,7 @@ var openpyxl__util_8py =
     [ "FONT_SIZE", "openpyxl__util_8py.html#af07c328d706e1297d7d306d96fc653b4", null ],
     [ "MAX_COLUMN_WIDTH", "openpyxl__util_8py.html#abedab2ef3626b1e564fdf2033b8ef548", null ],
     [ "MAX_ROW_HEIGHT", "openpyxl__util_8py.html#afd26ae8c355493d4702f8b5dff194e1f", null ],
-    [ "NUMBER_FORAMT_CURRENCY", "openpyxl__util_8py.html#ad24d5460e175489d27b3a1fde972813f", null ],
+    [ "NUMBER_FORMAT_CURRENCY", "openpyxl__util_8py.html#af8b5992a98501f5b0981eda5a44bd81e", null ],
     [ "NUMBER_FORMAT_DATETIME", "openpyxl__util_8py.html#a45565ed0a33b6a822bcfa8c5088694d6", null ],
     [ "NUMBER_FORMAT_EUR", "openpyxl__util_8py.html#a100ec0e0bab2460073461011039a15f5", null ],
     [ "NUMBER_FORMAT_PERCENT", "openpyxl__util_8py.html#a36cb75f47501b90438f7f1617004251d", null ],

@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"class_source_1_1_util_1_1openpyxl__util_1_1_x_l_s_creator.html#ae352d5727e97fc9aa0e71d6510550c12":[3,0,2,3,2,0,8],
 "class_source_1_1_util_1_1openpyxl__util_1_1_x_l_s_creator.html#ae352d5727e97fc9aa0e71d6510550c12":[4,0,1,2,2,0,8],
 "class_source_1_1_util_1_1openpyxl__util_1_1_x_l_s_creator.html#aeea170c2e67c6ee15e700a58e364ae44":[3,0,2,3,2,0,9],
 "class_source_1_1_util_1_1openpyxl__util_1_1_x_l_s_creator.html#aeea170c2e67c6ee15e700a58e364ae44":[4,0,1,2,2,0,9],
@@ -196,16 +197,18 @@ var NAVTREEINDEX1 =
 "generate__version__file_8py.html#a17db834a4849acea08a3637c0e1bd6c5":[5,0,0,6,0],
 "generate__version__file_8py.html#ab09a63eb35b270b5cdbead1983ebdccb":[5,0,0,6,2],
 "generate__version__file_8py_source.html":[5,0,0,6],
+"get__package__list_8bat.html":[5,0,1,0],
+"get__package__list_8bat_source.html":[5,0,1,0],
 "globals.html":[5,1,0],
 "globals_vars.html":[5,1,1],
 "hierarchy.html":[4,2],
 "index.html":[],
-"index.html#autotoc_md48":[0],
-"index.html#autotoc_md49":[1],
-"index.html#autotoc_md50":[2],
-"index.html#autotoc_md51":[3],
-"install__packages_8bat.html":[5,0,1,0],
-"install__packages_8bat_source.html":[5,0,1,0],
+"index.html#autotoc_md49":[0],
+"index.html#autotoc_md50":[1],
+"index.html#autotoc_md51":[2],
+"index.html#autotoc_md52":[3],
+"install__packages_8bat.html":[5,0,1,1],
+"install__packages_8bat_source.html":[5,0,1,1],
 "main__window_8py.html":[5,0,2,0,1],
 "main__window_8py.html#a77fa83e3c70c0f366b6b1c9864c1dbd7":[5,0,2,0,1,2],
 "main__window_8py.html#a809f07cd4f5fb7c789fbceea9f545486":[5,0,2,0,1,1],
@@ -246,8 +249,5 @@ var NAVTREEINDEX1 =
 "namespace_documentation_1_1_doxygen_creator_1_1doxy__py__checker.html#ab09a63eb35b270b5cdbead1983ebdccb":[3,0,0,0,2,7],
 "namespace_documentation_1_1_doxygen_creator_1_1doxy__py__checker.html#acf90fed603823f6ceec89babf5fed4db":[3,0,0,0,2,11],
 "namespace_documentation_1_1_doxygen_creator_1_1doxy__py__checker.html#ad23ba9780ff9251189bdbf262bc64840":[3,0,0,0,2,5],
-"namespace_documentation_1_1_doxygen_creator_1_1doxy__py__checker.html#ad8f563187527c827d936291facf00386":[3,0,0,0,2,2],
-"namespace_documentation_1_1_doxygen_creator_1_1doxy__py__checker.html#ade78692db54b43468e08a93edcdc13eb":[3,0,0,0,2,4],
-"namespace_documentation_1_1_doxygen_creator_1_1doxy__py__checker.html#af236cf907eb59300c9e354df102f4ba0":[3,0,0,0,2,8],
-"namespace_documentation_1_1_doxygen_creator_1_1doxygen__creator.html":[3,0,0,0,3]
+"namespace_documentation_1_1_doxygen_creator_1_1doxy__py__checker.html#ad8f563187527c827d936291facf00386":[3,0,0,0,2,2]
 };
