@@ -1,27 +1,27 @@
 # General
 pip==25.1.1
-requests==2.32.3
-openpyxl==3.1.5 # 3.1.4 has diagram bug
+requests==2.32.4
+openpyxl==3.1.3 # 3.1.4 has diagram bug
 colorama==0.4.6
 GitPython==3.1.44
-pillow==11.1.0
+pillow==11.3.0
 
 # Source
-pytubefix==8.13.1
+pytubefix==9.3.0
 moviepy==1.0.3 # dont cange dependencies to pillow
 clipboard==0.0.4
-sv_ttk==2.6.0
+sv_ttk==2.6.1
 darkdetect==0.7.1 # <0.8.0 required by pyqtdarktheme
 pyqtdarktheme==2.1.0
 customtkinter==5.2.2
 
 # Executable
-pyinstaller==6.13.0
+pyinstaller==6.14.2
 beautifulsoup4==4.13.4
 
 # Test
 autopep8==2.3.2
-mypy==1.15.0
+mypy==1.17.0
 pylint==3.3.7
 
 # Documentation
