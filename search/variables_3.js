@@ -2,7 +2,7 @@ var searchData=
 [
   ['d_5fformat_0',['D_FORMAT',['../namespace_source_1_1_views_1_1mainwindow__tk__ui.html#a096b930ea086dd351e79fa458e646a8a',1,'Source::Views::mainwindow_tk_ui']]],
   ['d_5fformats_1',['d_formats',['../class_source_1_1_util_1_1colored__log_1_1_color_formatter.html#a83b19910788b02effade7f8970ff1439',1,'Source::Util::colored_log::ColorFormatter']]],
-  ['d_5fsettings_2',['d_settings',['../class_documentation_1_1_doxygen_creator_1_1doxygen__creator_1_1_doxygen_creator.html#ac0459a5ed4381660bdb7c93337b86570',1,'Documentation::DoxygenCreator::doxygen_creator::DoxygenCreator']]],
+  ['d_5fsettings_2',['d_settings',['../class_documentation_1_1_doxygen_creator_1_1doxygen__creator_1_1_doxygen_creator.html#ad1c0d3ade7a6910995eb111bcd73f02b',1,'Documentation::DoxygenCreator::doxygen_creator::DoxygenCreator']]],
   ['dark_3',['DARK',['../class_source_1_1_util_1_1app__data_1_1_e_theme.html#a187f595ad759b7c6a011962424f8ed67',1,'Source::Util::app_data::ETheme']]],
   ['data_5fformat_4',['data_format',['../class_source_1_1_util_1_1colored__log_1_1_color_formatter.html#a6f4c349d4e39f375cdd2ed7264033a96',1,'Source::Util::colored_log::ColorFormatter']]],
   ['direct_5fbtn_5',['direct_btn',['../class_source_1_1_views_1_1mainwindow__tk__ui_1_1_ui___main_window.html#a50b250921f5a9d7330c3e240651397b1',1,'Source::Views::mainwindow_tk_ui::Ui_MainWindow']]],

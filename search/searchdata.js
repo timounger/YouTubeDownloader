@@ -6,7 +6,7 @@ var indexSectionsWithContent =
   3: "acdegilmorsuv",
   4: "_acdefgiloprsu",
   5: "abcdefghilmnoprstuvwy",
-  6: "cly📋"
+  6: "0123456789abcdefghilmnoprstuvwyüℹ☁⬇🏭📋🔧"
 };
 
 var indexSectionNames =

@@ -12,6 +12,5 @@ var class_source_1_1_controller_1_1main__window_1_1_main_window =
     [ "start_download", "class_source_1_1_controller_1_1main__window_1_1_main_window.html#a5c8d7c15324707090a2d1be8dd3dc859", null ],
     [ "do_popup", "class_source_1_1_controller_1_1main__window_1_1_main_window.html#ae3ea5cdad27cdabdb19db1ca2bf08e4c", null ],
     [ "menu", "class_source_1_1_controller_1_1main__window_1_1_main_window.html#a905479d79c2aa8410d2fc374bc75cc5b", null ],
-    [ "model", "class_source_1_1_controller_1_1main__window_1_1_main_window.html#a508cc3106d2c29fe07dc87cbe3ea6927", null ],
-    [ "url_input", "class_source_1_1_controller_1_1main__window_1_1_main_window.html#af115052193b98c1145577472bbb4e063", null ]
+    [ "model", "class_source_1_1_controller_1_1main__window_1_1_main_window.html#a508cc3106d2c29fe07dc87cbe3ea6927", null ]
 ];
