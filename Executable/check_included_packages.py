@@ -29,6 +29,16 @@ L_ALLOWED_THIRD_PARTY_PACKAGES = [
     "packaging",
     "openpyxl",
     "et_xmlfile",
+    "aiohappyeyeballs",
+    "aiohttp",
+    "aiosignal",
+    "attr",
+    "frozenlist",
+    "idna",
+    "multidict",
+    "propcache",
+    "yarl",
+    "typing_extensions",
     # colored log
     "colorama"
 ]

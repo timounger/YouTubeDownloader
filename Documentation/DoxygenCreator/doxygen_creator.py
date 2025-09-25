@@ -42,7 +42,7 @@ S_DEFAULT_OUTPUT_FOLDER = "Output_Doxygen"
 
 S_MAIN_FOLDER_FOLDER = "../../"
 
-DOXYGEN_VERSION = "1.12.0"
+DOXYGEN_VERSION = "1.14.0"
 S_DOXYGEN_URL = f"https://sourceforge.net/projects/doxygen/files/rel-{DOXYGEN_VERSION}/doxygen-{DOXYGEN_VERSION}.windows.x64.bin.zip/download"
 S_DOXYGEN_ZIP = f"doxygen-{DOXYGEN_VERSION}.windows.x64.bin.zip"
 S_DOXYGEN_DLL = "libclang.dll"
@@ -56,7 +56,7 @@ S_PYTHON_PATTERN = "*.py"
 L_DEFAULT_FILE_PATTERN: list[str] = []
 
 if B_PLANTUML_SUPPORT:
-    PLANT_UML_VERSION = "1.2024.7"
+    PLANT_UML_VERSION = "1.2025.7"
     S_PLANTUML_JAR_URL = f"https://github.com/plantuml/plantuml/releases/download/v{PLANT_UML_VERSION}/plantuml-{PLANT_UML_VERSION}.jar"
     S_PLANTUML_JAR_NAME = "plantuml.jar"
     S_PLANTUML_PATH = "./"  # need plantuml.jar in this folder

@@ -61,7 +61,7 @@ def delete_selected_text(url_input: CTkEntry) -> None:
             url_input.delete(i_curser_pos - i_selected_text_length, i_curser_pos)
 
 
-class MainWindow(CTk, Ui_MainWindow):
+class MainWindow(CTk, Ui_MainWindow):  # type: ignore[misc]
     """!
     @brief Class for YouTube download GUI
     """

@@ -8,18 +8,17 @@
 /Source/Download
 /Source/Util/git_version.py
 
-# Doxygen
+# Documentation
 /Documentation/DoxygenCreator/doxygen-*.windows.x64.bin.zip
 /Documentation/DoxygenCreator/doxygen.exe
 /Documentation/DoxygenCreator/libclang.dll
 /Documentation/DoxygenCreator/plantuml.jar
 /Documentation/DoxygenCreator/Output_Doxygen
+/Documentation/Installation/installed_packages.txt
+/Documentation/Installation/PackageInfos.xlsx
 
 # Executable
 /Executable/build
 /Executable/bin
 /Executable/YouTubeDownloader.spec
 /Executable/PyInstaller_warnings.txt
-
-# Documentation
-/Documentation/Installation/PackageInfos.xlsx

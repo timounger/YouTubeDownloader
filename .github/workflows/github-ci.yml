@@ -215,6 +215,15 @@ jobs:
         with:
           name: ${{ env.BINARY_EXE_NAME }}
           path: ${{ env.BINARY_PATH }}
+      - name: Download and install Inno Setup
+        shell: powershell
+        run: |
+          Invoke-WebRequest -Uri https://jrsoftware.org/download.php/is.exe -OutFile is.exe
+          Start-Process -Wait -FilePath .\is.exe -ArgumentList "/VERYSILENT", "/SUPPRESSMSGBOXES", "/NORESTART", "/SP-", "/DIR=C:\InnoSetup"
+      - name: Add Inno Setup to PATH
+        shell: powershell
+        run: |
+          echo "C:\InnoSetup" | Out-File -Append -Encoding ascii $env:GITHUB_PATH
       - name: Build Setup
         working-directory: ./Executable
         run: generate_setup.bat

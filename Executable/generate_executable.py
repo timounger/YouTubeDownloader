@@ -34,7 +34,6 @@ L_EXCLUDE_MODULES = [
     "charset_normalizer",
     "numpy",
     "pkg_resources",
-    "typing_extensions",
     "darkdetect._mac_detect",
     # actual not used
     "moviepy",
