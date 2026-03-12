@@ -1,7 +1,7 @@
 """!
 *****************************************************************************
 @file   mainwindow_tk_ui.py
-@brief  Main Window with tkinter
+@brief  Main window UI layout definition with tkinter widgets.
 *****************************************************************************
 """
 
@@ -21,11 +21,20 @@ D_FORMAT = {
     ONLY_AUDIO: "Nur Audio",
 }
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.geometry("350x360")
 
-        self.o_url_choice = StringVar()
+class Ui_MainWindow:
+    """!
+    @brief Base class defining the main window UI layout and widget placement.
+    """
+
+    def setupUi(self, main_window: object) -> None:
+        """!
+        @brief Create and arrange all UI widgets in the main window.
+        @param main_window : the main window instance to place widgets in
+        """
+        main_window.geometry("350x360")
+
+        self.url_choice = StringVar()
         self.choice_var = IntVar()
 
         # Song Title
@@ -42,7 +51,7 @@ class Ui_MainWindow(object):
         self.status_lbl.grid(columnspan=2, padx=PADX, pady=PADY, sticky="ew")
 
         # Entry Box
-        self.url_input = CTkEntry(self, textvariable=self.o_url_choice)
+        self.url_input = CTkEntry(self, textvariable=self.url_choice)
         self.url_input.grid(columnspan=2, padx=PADX, pady=PADY, sticky="ew")
         self.insert_btn = CTkButton(self)
         self.insert_btn.grid(row=5, column=0, padx=PADX, pady=PADY, sticky="ew")

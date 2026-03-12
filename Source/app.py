@@ -1,7 +1,7 @@
 """!
 ********************************************************************************
 @file   app.py
-@brief  Application entry file
+@brief  Application entry file.
 ********************************************************************************
 """
 
@@ -22,17 +22,17 @@ log = logging.getLogger(__title__)
 
 def start_application() -> MainWindow:
     """!
-    @brief Start application
-    @return windows and application object
+    @brief Start the application and configure the main window.
+    @return the initialized main window instance.
     """
-    # Set custom application id to show correct icon instead of Python in the task bar
+    # Set custom Windows app user model ID (taskbar icon)
     try:
         from ctypes import windll  # only exists on windows. # pylint: disable=import-outside-toplevel
-        app_id = __title__ + "." + __version__
-        log.debug("Setting explicit app user model id: %s", app_id)
+        app_id = f"{__title__}.{__version__}"
+        log.debug("Setting explicit app user model ID: %s", app_id)
         windll.shell32.SetCurrentProcessExplicitAppUserModelID(app_id)
     except ImportError:
-        pass
+        log.debug("Windows-specific app user model ID not set")
 
     window = MainWindow()
 
@@ -43,5 +43,5 @@ def start_application() -> MainWindow:
 
 if __name__ == "__main__":
     init_console_logging(logging.WARNING)
-    o_window = start_application()
-    o_window.mainloop()
+    window_instance = start_application()
+    window_instance.mainloop()

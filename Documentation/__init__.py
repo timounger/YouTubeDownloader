@@ -1,7 +1,7 @@
 """!
 ********************************************************************************
 @file   __init__.py
-@brief  Exposes some parts of this python package for public usage
+@brief  Exposes some parts of this python package for public usage.
 ********************************************************************************
 """
 

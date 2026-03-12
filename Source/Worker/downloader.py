@@ -1,7 +1,7 @@
 """!
 ********************************************************************************
 @file   downloader.py
-@brief  Download Thread
+@brief  Background thread for downloading YouTube videos and audio.
 ********************************************************************************
 """
 
@@ -9,6 +9,7 @@ import os
 import re
 import logging
 from typing import TYPE_CHECKING
+from collections import deque
 import statistics
 import threading
 import time
@@ -17,6 +18,7 @@ from pytubefix import YouTube
 from pytubefix.streams import Stream
 
 from Source.version import __title__
+from Source.Util.app_data import DOWNLOAD_FOLDER
 from Source.Views.mainwindow_tk_ui import HIGH_RESOLUTION, LOW_RESOLUTION, ONLY_AUDIO
 if TYPE_CHECKING:
     from Source.Controller.main_window import MainWindow
@@ -28,139 +30,139 @@ if B_MP3_CONVERT:
 
 log = logging.getLogger(__title__)
 
-S_DOWNLOAD_FOLDER = "Download"
-I_SPEED_AVERAGE_VALUES = 10
+SPEED_AVERAGE_VALUES = 10
 
 
 class DownloadThread(threading.Thread):
     """!
-    @brief Thread class for download
-    @param main_controller : main controller
+    @brief Thread that downloads YouTube content and updates the UI progress.
+    @param main_controller : main window controller providing UI access
     """
 
     def __init__(self, main_controller: "MainWindow"):
         threading.Thread.__init__(self)
         self.main_controller = main_controller
-        self.b_first_callback_call = False
-        self.i_file_size = 0
-        self.i_last_percent = 0
-        self.f_time_stamp = 0.0
-        self.i_last_bytes_remaining = 0
-        self.l_speed_history: list[int] = []  # download speed history
-        self.clear_data()
+        self.first_callback_call = False
+        self.file_size = 0
+        self.last_percent = 0
+        self.timestamp = 0.0
+        self.last_bytes_remaining = 0
+        self.speed_history: deque[int] = deque(maxlen=SPEED_AVERAGE_VALUES)
+        self.reset_progress_state()
 
-    def clear_data(self) -> None:
+    def reset_progress_state(self) -> None:
         """!
-        @brief Clear data
+        @brief Reset all download progress tracking variables to initial state.
         """
-        self.b_first_callback_call = False
-        self.i_file_size = 0
-        self.i_last_percent = 0
-        self.f_time_stamp = 0.0
-        self.i_last_bytes_remaining = 0
-        self.l_speed_history = []  # download speed history
+        self.first_callback_call = False
+        self.file_size = 0
+        self.last_percent = 0
+        self.timestamp = 0.0
+        self.last_bytes_remaining = 0
+        self.speed_history.clear()
 
     def run(self) -> None:
         """!
-        @brief Download YouTube content
+        @brief Execute the download process for a single video or playlist.
         """
         self.main_controller.status_lbl.configure(text="Analysiere URL...", text_color="grey")
         self.main_controller.progress_bar.set(0)
-        i_choice = self.main_controller.choice_var.get()
-        s_url = self.main_controller.o_url_choice.get()
-        if i_choice != 0:
-            l_url = []
-            s_subfolder_name = ""
-            if re.search("&list=", s_url):
-                o_playlist = pytubefix.Playlist(s_url)
-                s_subfolder_name = "/" + o_playlist.title
-                for video in o_playlist.videos:
-                    l_url.append(video.watch_url)
+        choice = self.main_controller.choice_var.get()
+        url = self.main_controller.url_choice.get()
+        if choice != 0:
+            urls: list[str] = []
+            subfolder_name = ""
+            if re.search("&list=", url):
+                playlist = pytubefix.Playlist(url)
+                subfolder_name = f"/{playlist.title}"
+                for video in playlist.videos:
+                    urls.append(video.watch_url)
             else:
-                l_url = [s_url]
-            i_title_cnt = len(l_url)
-            for i, s_url in enumerate(l_url, 1):
+                urls = [url]
+            title_count = len(urls)
+            for index, url in enumerate(urls, 1):
                 self.main_controller.status_lbl.configure(text="Analysiere URL...", text_color="grey")
-                s_text = f"Titel {i}/{i_title_cnt}: ..."
-                self.main_controller.title_lbl.configure(text=s_text, text_color="orange")
-                b_valid_url = False
+                text = f"Titel {index}/{title_count}: ..."
+                self.main_controller.title_lbl.configure(text=text, text_color="orange")
+                valid_url = False
                 try:
-                    o_youtube = YouTube(s_url, on_progress_callback=self.progress_callback)
-                    s_title = o_youtube.title[:35]
-                    s_text = f"Titel {i}/{i_title_cnt}: {s_title}"
-                    self.main_controller.title_lbl.configure(text=s_text, text_color="orange")
-                    b_valid_url = True
-                except BaseException:  # pylint: disable=bare-except
+                    youtube = YouTube(url, on_progress_callback=self.progress_callback)
+                    title = youtube.title[:35]
+                    text = f"Titel {index}/{title_count}: {title}"
+                    self.main_controller.title_lbl.configure(text=text, text_color="orange")
+                    valid_url = True
+                except Exception:
                     self.main_controller.status_lbl.configure(text="Ungültige URL!", text_color="red")
-                if b_valid_url:
-                    self.clear_data()
-                    s_filename = None
-                    if i_choice == HIGH_RESOLUTION:
-                        o_stream = o_youtube.streams.filter(progressive=True, file_extension='mp4')\
-                            .get_highest_resolution()
-                    elif i_choice == LOW_RESOLUTION:
-                        o_stream = o_youtube.streams.filter(progressive=True, file_extension='mp4')\
-                            .get_lowest_resolution()
-                    elif i_choice == ONLY_AUDIO:
-                        o_stream = o_youtube.streams.filter(only_audio=True).first()
-                    else:
-                        o_stream = None  # TODO
-                        self.main_controller.status_lbl.configure(text="Unerwarteter Fehler!", text_color="red")
-                    try:
-                        self.main_controller.status_lbl.configure(text="Download läuft...", text_color="grey")
-                        o_stream.download(S_DOWNLOAD_FOLDER + s_subfolder_name, s_filename)
-                        self.main_controller.status_lbl.configure(text="Download abgeschlossen!", text_color="green")
-                        if B_MP3_CONVERT:
-                            if i_choice == ONLY_AUDIO:
-                                self.main_controller.status_lbl.configure(text="MP3 wird erstellt...", text_color="grey")
-                                s_file_path_name = S_DOWNLOAD_FOLDER + s_subfolder_name + "/" + o_stream.default_filename
-                                audioclip = AudioFileClip(s_file_path_name)
-                                audioclip.write_audiofile(s_file_path_name[:-1] + "3")
-                                audioclip.close()
-                                os.remove(s_file_path_name)
-                                self.main_controller.status_lbl.configure(text="MP3 erstellt!", text_color="green")
-                    except BaseException:  # pylint: disable=bare-except
-                        self.main_controller.status_lbl.configure(text="Dieses Video kann nicht heruntergeladen werden!",
-                                                                  text_color="red")
+                if valid_url:
+                    self.reset_progress_state()
+                    self.download_stream(youtube, choice, subfolder_name)
         else:
-            self.main_controller.status_lbl.configure(text="Bitte Format angeben!", fg="red")
+            self.main_controller.status_lbl.configure(text="Bitte Format angeben!", text_color="red")
         self.main_controller.download_btn.configure(state="normal")
         self.main_controller.direct_btn.configure(state="normal")
 
+    def download_stream(self, youtube: YouTube, choice: int, subfolder_name: str) -> None:
+        """!
+        @brief Download a single YouTube stream based on the selected format.
+        @param youtube : YouTube object for the video to download
+        @param choice : format selection (HIGH_RESOLUTION, LOW_RESOLUTION, ONLY_AUDIO)
+        @param subfolder_name : optional subfolder for playlist downloads
+        """
+        filename = None
+        if choice == HIGH_RESOLUTION:
+            stream = youtube.streams.filter(progressive=True, file_extension='mp4') \
+                .get_highest_resolution()
+        elif choice == LOW_RESOLUTION:
+            stream = youtube.streams.filter(progressive=True, file_extension='mp4') \
+                .get_lowest_resolution()
+        elif choice == ONLY_AUDIO:
+            stream = youtube.streams.filter(only_audio=True).first()
+        else:
+            stream = None  # TODO
+            self.main_controller.status_lbl.configure(text="Unerwarteter Fehler!", text_color="red")
+        try:
+            self.main_controller.status_lbl.configure(text="Download läuft...", text_color="grey")
+            stream.download(f"{DOWNLOAD_FOLDER}{subfolder_name}", filename)
+            self.main_controller.status_lbl.configure(text="Download abgeschlossen!", text_color="green")
+            if B_MP3_CONVERT:
+                if choice == ONLY_AUDIO:
+                    self.main_controller.status_lbl.configure(text="MP3 wird erstellt...", text_color="grey")
+                    file_path = f"{DOWNLOAD_FOLDER}{subfolder_name}/{stream.default_filename}"
+                    audioclip = AudioFileClip(file_path)
+                    audioclip.write_audiofile(f"{file_path[:-1]}3")
+                    audioclip.close()
+                    os.remove(file_path)
+                    self.main_controller.status_lbl.configure(text="MP3 erstellt!", text_color="green")
+        except Exception:
+            self.main_controller.status_lbl.configure(text="Dieses Video kann nicht heruntergeladen werden!",
+                                                      text_color="red")
+
     def progress_callback(self, _stream: Stream, _chunk: bytes, bytes_remaining: int) -> None:
         """!
-        @brief Calculate process and update process bar
-        @param _stream : stream
-        @param _chunk : chunk
-        @param bytes_remaining : bytes remaining
+        @brief Callback for download progress updates. Calculates speed and remaining time.
+        @param _stream : the stream being downloaded (unused)
+        @param _chunk : the last downloaded data chunk (unused)
+        @param bytes_remaining : number of bytes still to be downloaded
         """
-        if not self.b_first_callback_call:
-            self.i_file_size = bytes_remaining
-            self.i_last_bytes_remaining = bytes_remaining
-            self.b_first_callback_call = True
+        if not self.first_callback_call:
+            self.file_size = bytes_remaining
+            self.last_bytes_remaining = bytes_remaining
+            self.first_callback_call = True
         else:
-            f_actual_time = time.time()
-            f_past_time = f_actual_time - self.f_time_stamp
-            if self.f_time_stamp != 0:  # set calculate time only for second call
-                i_actual_speed = int((self.i_last_bytes_remaining - bytes_remaining) / f_past_time)
-                i_history_len = len(self.l_speed_history)
-                if i_history_len < I_SPEED_AVERAGE_VALUES:
-                    self.l_speed_history.append(i_actual_speed)
-                else:
-                    for i, value in enumerate(self.l_speed_history):
-                        if i != 0:
-                            self.l_speed_history[i - 1] = value
-                    self.l_speed_history[I_SPEED_AVERAGE_VALUES - 1] = i_actual_speed
-                i_average_speed = statistics.mean(self.l_speed_history)
-                i_remaining_seconds = int(bytes_remaining / i_average_speed)
-                self.main_controller.status_lbl.configure(text=f'Download läuft... noch {i_remaining_seconds}sek', text_color="grey")
-            self.f_time_stamp = f_actual_time
-            self.i_last_bytes_remaining = bytes_remaining
-            i_percent = int(((self.i_file_size - bytes_remaining) / self.i_file_size) * 100)
-            i_percent_diff = i_percent - self.i_last_percent
-            for _ in range(i_percent_diff):
-                self.main_controller.progress_bar.set(i_percent / 100)
-            self.i_last_percent = i_percent
+            current_time = time.time()
+            elapsed_time = current_time - self.timestamp
+            if self.timestamp != 0:
+                current_speed = int((self.last_bytes_remaining - bytes_remaining) / elapsed_time)
+                self.speed_history.append(current_speed)
+                average_speed = statistics.mean(self.speed_history)
+                remaining_seconds = int(bytes_remaining / average_speed)
+                self.main_controller.status_lbl.configure(
+                    text=f"Download läuft... noch {remaining_seconds}sek", text_color="grey")
+            self.timestamp = current_time
+            self.last_bytes_remaining = bytes_remaining
+            percent = int(((self.file_size - bytes_remaining) / self.file_size) * 100)
+            self.main_controller.progress_bar.set(percent / 100)
+            self.last_percent = percent
 
 
 if __name__ == "__main__":
@@ -174,7 +176,7 @@ if __name__ == "__main__":
         my_stream = my_youtube.streams.filter(only_audio=True).first()
         try:
             print("Download läuft...")
-            my_stream.download(S_DOWNLOAD_FOLDER, my_filename)
+            my_stream.download(DOWNLOAD_FOLDER, my_filename)
             print("Download abgeschlossen!")
         except BaseException:  # pylint: disable=bare-except
             print("Dieses Video kann nicht heruntergeladen werden!")

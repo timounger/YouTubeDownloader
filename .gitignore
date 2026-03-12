@@ -1,8 +1,9 @@
 # General
 *.log
 *.pyc
-/.settings
 /.venv
+*.claude
+CLAUDE.md
 
 # Source
 /Source/Download

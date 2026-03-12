@@ -25,4 +25,4 @@ class Model:
 
     def __init__(self, ui: "MainWindow"):
         self.ui = ui
-        self.c_monitor = monitor.MonitorScale(ui)
+        self.monitor = monitor.ThemeManager(ui)

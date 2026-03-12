@@ -2,7 +2,7 @@
 ********************************************************************************
 @file   configParser.py
 @brief  Load and store settings from doxyfile
-        origin code see: https://github.com/TraceSoftwareInternational/doxygen-python-interface
+        origin code see: https://github.com/TraceSoftwareInternational/doxygen-python-interface.
 ********************************************************************************
 """
 
@@ -13,23 +13,23 @@ import re
 
 class ParseException(Exception):
     """!
-    @brief Exception throw when error during parsing doxygen config.
+    @brief Exception thrown when error during parsing doxygen config.
            Will probably means that there is an error in the doxygen config file
     """
 
 
 class ConfigParser:
     """!
-    @brief This class should be used to parse and store a doxygen configuration file
+    @brief This class should be used to parse and store a doxygen configuration file.
     """
 
     def __init__(self) -> None:
-        self.__single_line_option_regex = re.compile("^\\s*(\\w+)\\s*=\\s*([^\\\\]*)\\s*$")
-        self.__first_line_of_multine_option_regex = re.compile("^\\s*(\\w+)\\s*=\\s*(.*)\\\\$")
+        self.__single_line_option_regex = re.compile(r"^\s*(\w+)\s*=\s*([^\\]*)\s*$")
+        self.__first_line_of_multiline_option_regex = re.compile(r"^\s*(\w+)\s*=\s*(.*)\\\s*$")
 
     def load_configuration(self, doxyfile: str) -> dict[str, str | list[str]]:
         """!
-        @brief Parse a Doxygen configuration file
+        @brief Parse a Doxygen configuration file.
         @param doxyfile : doxyfile: Path to the Doxygen configuration file
         @return A dict with all doxygen configuration
         """
@@ -45,9 +45,9 @@ class ConfigParser:
             in_multiline_option = False
             current_multiline_option_name = None
 
-            for line in file.readlines():
-                line = line.strip()
-                if len(line) == 0:
+            for raw_line in file:
+                line = raw_line.strip()
+                if not line:
                     continue
 
                 if self.__is_comment_line(line):
@@ -73,7 +73,7 @@ class ConfigParser:
 
     def store_configuration(self, config: dict[str, str | list[str]], doxyfile: str) -> None:
         """!
-        @brief Store the doxygen configuration to the disk
+        @brief Store the doxygen configuration to the disk.
         @param config : The doxygen configuration you want to write on disk
         @param doxyfile : The output path where configuration will be written. If the file exist, it will be truncated
         """
@@ -95,12 +95,12 @@ class ConfigParser:
 
     def __extract_multiline_option_name_and_first_value(self, line: str) -> tuple[str, str]:
         """!
-        @brief Extract the option name and the first value of multi line option
+        @brief Extract the option name and the first value of multi line option.
         @param line : The line you want to parse
         @return the option name and the option first value
         """
 
-        matches = self.__first_line_of_multine_option_regex.search(line)
+        matches = self.__first_line_of_multiline_option_regex.search(line)
         if matches is None or len(matches.groups()) != 2:
             logging.error("Impossible to extract first value off multi line option from: %s", line)
             raise ParseException(f"Impossible to extract first value off multi line option from: {line}")
@@ -109,7 +109,7 @@ class ConfigParser:
 
     def __extract_single_line_option_name_and_value(self, line: str) -> tuple[str, str]:
         """!
-        @brief Extract the option name and the value of single line option
+        @brief Extract the option name and the value of single line option.
         @param line : The line you want to parse
         @return the option name and the option value
         """
@@ -124,7 +124,7 @@ class ConfigParser:
 
     def __is_single_line_option(self, line: str) -> bool:
         """!
-        @brief Match single line option
+        @brief Match single line option.
         @param line : The line you want to parse
         @return single line option status
         """
@@ -132,7 +132,7 @@ class ConfigParser:
 
     def __is_comment_line(self, line: str) -> bool:
         """!
-        @brief Match comment line
+        @brief Match comment line.
         @param line : The line you want to parse
         @return comment line option status
         """
@@ -140,11 +140,11 @@ class ConfigParser:
 
     def __is_first_line_of_multiline_option(self, line: str) -> bool:
         """!
-        @brief Match first line option
+        @brief Match first line option.
         @param line : The line you want to parse
         @return first line option status
         """
-        return self.__first_line_of_multine_option_regex.match(line) is not None
+        return self.__first_line_of_multiline_option_regex.match(line) is not None
 
     @staticmethod
     def __remove_double_quote_if_required(option_value: str) -> str:
@@ -164,7 +164,7 @@ class ConfigParser:
     @staticmethod
     def __add_double_quote_if_required(option_value: str, force_double_quote: bool = False) -> str:
         """!
-        @brief Add the double quote around string in option value if its required
+        @brief Add the double quote around string in option value if its required.
         @param option_value : The value you want to work on
         @param force_double_quote : force double quote
         @return The option value proper
