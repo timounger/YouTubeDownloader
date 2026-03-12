@@ -31,7 +31,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="app.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.3</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.4</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -145,7 +145,7 @@ $(function(){initNavTree('app_8py_source.html','',''); });
 <a href="app_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno"><a class="line" href="namespace_source_1_1app.html">    1</a></span><span class="stringliteral">&quot;&quot;&quot;!</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="stringliteral">********************************************************************************</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="stringliteral">@file   app.py</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="stringliteral">@brief  Application entry file</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="stringliteral">@brief  Application entry file.</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="stringliteral">********************************************************************************</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="stringliteral">&quot;&quot;&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
@@ -167,17 +167,17 @@ $(function(){initNavTree('app_8py_source.html','',''); });
 <div class="foldopen" id="foldopen00023" data-start="" data-end="">
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="namespace_source_1_1app.html#a39c2ba889ec10db3d045e468643fd7e0">   23</a></span><span class="keyword">def </span><a class="code hl_function" href="namespace_source_1_1app.html#a39c2ba889ec10db3d045e468643fd7e0">start_application</a>() -&gt; MainWindow:</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="stringliteral">    @brief Start application</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="stringliteral">    @return windows and application object</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="stringliteral">    @brief Start the application and configure the main window.</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="stringliteral">    @return the initialized main window instance.</span></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="comment"># Set custom application id to show correct icon instead of Python in the task bar</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="comment"># Set custom Windows app user model ID (taskbar icon)</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">try</span>:</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keyword">from</span> ctypes <span class="keyword">import</span> windll  <span class="comment"># only exists on windows. # pylint: disable=import-outside-toplevel</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        app_id = __title__ + <span class="stringliteral">&quot;.&quot;</span> + __version__</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        log.debug(<span class="stringliteral">&quot;Setting explicit app user model id: %s&quot;</span>, app_id)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        app_id = f<span class="stringliteral">&quot;{__title__}.{__version__}&quot;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        log.debug(<span class="stringliteral">&quot;Setting explicit app user model ID: %s&quot;</span>, app_id)</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        windll.shell32.SetCurrentProcessExplicitAppUserModelID(app_id)</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordflow">except</span> ImportError:</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordflow">pass</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        log.debug(<span class="stringliteral">&quot;Windows-specific app user model ID not set&quot;</span>)</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    window = <a class="code hl_class" href="class_source_1_1_controller_1_1main__window_1_1_main_window.html">MainWindow</a>()</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
@@ -189,13 +189,13 @@ $(function(){initNavTree('app_8py_source.html','',''); });
 </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordflow">if</span> __name__ == <span class="stringliteral">&quot;__main__&quot;</span>:</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    init_console_logging(logging.WARNING)</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="namespace_source_1_1app.html#a9d8b1d5a7788d5f2b2d8d5209a1c0b4d">   46</a></span>    o_window = <a class="code hl_function" href="namespace_source_1_1app.html#a39c2ba889ec10db3d045e468643fd7e0">start_application</a>()</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    o_window.mainloop()</div>
-<div class="ttc" id="aclass_source_1_1_controller_1_1main__window_1_1_main_window_html"><div class="ttname"><a href="class_source_1_1_controller_1_1main__window_1_1_main_window.html">Source.Controller.main_window.MainWindow</a></div><div class="ttdoc">Class for YouTube download GUI.</div><div class="ttdef"><b>Definition</b> <a href="main__window_8py_source.html#l00064">main_window.py:64</a></div></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="namespace_source_1_1app.html#a2ff0deff66eaa96ff5f47a4145001e89">   46</a></span>    window_instance = <a class="code hl_function" href="namespace_source_1_1app.html#a39c2ba889ec10db3d045e468643fd7e0">start_application</a>()</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    window_instance.mainloop()</div>
+<div class="ttc" id="aclass_source_1_1_controller_1_1main__window_1_1_main_window_html"><div class="ttname"><a href="class_source_1_1_controller_1_1main__window_1_1_main_window.html">Source.Controller.main_window.MainWindow</a></div><div class="ttdoc">Main application window for the YouTube download GUI.</div><div class="ttdef"><b>Definition</b> <a href="main__window_8py_source.html#l00063">main_window.py:63</a></div></div>
 <div class="ttc" id="anamespace_source_1_1_controller_1_1main__window_html"><div class="ttname"><a href="namespace_source_1_1_controller_1_1main__window.html">Source.Controller.main_window</a></div><div class="ttdef"><b>Definition</b> <a href="main__window_8py_source.html#l00001">main_window.py:1</a></div></div>
 <div class="ttc" id="anamespace_source_1_1_util_1_1app__data_html"><div class="ttname"><a href="namespace_source_1_1_util_1_1app__data.html">Source.Util.app_data</a></div><div class="ttdef"><b>Definition</b> <a href="app__data_8py_source.html#l00001">app_data.py:1</a></div></div>
 <div class="ttc" id="anamespace_source_1_1_util_1_1colored__log_html"><div class="ttname"><a href="namespace_source_1_1_util_1_1colored__log.html">Source.Util.colored_log</a></div><div class="ttdef"><b>Definition</b> <a href="colored__log_8py_source.html#l00001">colored_log.py:1</a></div></div>
-<div class="ttc" id="anamespace_source_1_1app_html_a39c2ba889ec10db3d045e468643fd7e0"><div class="ttname"><a href="namespace_source_1_1app.html#a39c2ba889ec10db3d045e468643fd7e0">Source.app.start_application</a></div><div class="ttdeci">MainWindow start_application()</div><div class="ttdoc">Start application.</div><div class="ttdef"><b>Definition</b> <a href="#l00023">app.py:23</a></div></div>
+<div class="ttc" id="anamespace_source_1_1app_html_a39c2ba889ec10db3d045e468643fd7e0"><div class="ttname"><a href="namespace_source_1_1app.html#a39c2ba889ec10db3d045e468643fd7e0">Source.app.start_application</a></div><div class="ttdeci">MainWindow start_application()</div><div class="ttdoc">Start the application and configure the main window.</div><div class="ttdef"><b>Definition</b> <a href="#l00023">app.py:23</a></div></div>
 <div class="ttc" id="anamespace_source_1_1version_html"><div class="ttname"><a href="namespace_source_1_1version.html">Source.version</a></div><div class="ttdef"><b>Definition</b> <a href="version_8py_source.html#l00001">version.py:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

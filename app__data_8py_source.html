@@ -31,7 +31,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="app.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.3</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.4</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -160,40 +160,37 @@ $(function(){initNavTree('app__data_8py_source.html','',''); });
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="foldopen" id="foldopen00018" data-start="" data-end="">
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="namespace_source_1_1_util_1_1app__data.html#af326f1f18e67e7eb1930ea6349650f5e">   18</a></span><span class="keyword">def </span><a class="code hl_function" href="namespace_source_1_1_util_1_1app__data.html#af326f1f18e67e7eb1930ea6349650f5e">resource_path</a>(s_relative_path: str) -&gt; str:</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="namespace_source_1_1_util_1_1app__data.html#aea1dc7cb14a1d252fb598b5bdbe8e92e">   18</a></span><span class="keyword">def </span><a class="code hl_function" href="namespace_source_1_1_util_1_1app__data.html#aea1dc7cb14a1d252fb598b5bdbe8e92e">resource_path</a>(relative_path: str) -&gt; str:</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="stringliteral">    @brief Returns the absolute path to a resource given by a relative path depending on the environment (EXE or Python)</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="stringliteral">    @param s_relative_path : the relative path to a file or directory</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="stringliteral">    @return absolute path to the resource</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="stringliteral">    @brief Get the absolute path to a resource given by a relative path depending on the environment (EXE or Python).</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="stringliteral">    @param relative_path : the relative path to a file or directory.</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="stringliteral">    @return absolute path to the resource.</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordflow">if</span> hasattr(sys, <span class="stringliteral">&quot;_MEIPASS&quot;</span>):</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="comment"># PyInstaller creates a temp folder and stores path in _MEIPASS</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        s_base_path = sys._MEIPASS</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">else</span>:</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        s_base_path = os.path.abspath(<span class="stringliteral">&quot;../&quot;</span>)</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    s_resource_path = os.path.join(s_base_path, s_relative_path)</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    log.debug(<span class="stringliteral">&quot;Resource Path (relative %s): %s&quot;</span>, s_relative_path, s_resource_path)</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">return</span> s_resource_path</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment"># Files and Paths</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    base_path = getattr(sys, <span class="stringliteral">&quot;_MEIPASS&quot;</span>, os.path.abspath(<span class="stringliteral">&quot;../&quot;</span>))</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    full_path = os.path.join(base_path, relative_path)</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    log.debug(<span class="stringliteral">&quot;Resource Path (relative %s): %s&quot;</span>, relative_path, full_path)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">return</span> full_path</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"># Files and Paths</span></div>
 </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="namespace_source_1_1_util_1_1app__data.html#a078ba1a444e2b28d3cf0b9876b390e5b">   35</a></span>ICON_APP_PATH = <span class="stringliteral">&quot;Resources/app.ico&quot;</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="namespace_source_1_1_util_1_1app__data.html#a2dff70484352b74b6347cd9bb17347e1">   36</a></span>ICON_APP_FAVICON_PATH = <span class="stringliteral">&quot;Resources/favicon.ico&quot;</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="namespace_source_1_1_util_1_1app__data.html#aa795dc5d637e3a2bd53cd4a6b64fa8d8">   37</a></span>ICON_APP = <a class="code hl_function" href="namespace_source_1_1_util_1_1app__data.html#af326f1f18e67e7eb1930ea6349650f5e">resource_path</a>(ICON_APP_PATH)</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="foldopen" id="foldopen00040" data-start="" data-end="">
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="class_source_1_1_util_1_1app__data_1_1_e_theme.html">   40</a></span><span class="keyword">class </span><a class="code hl_class" href="class_source_1_1_util_1_1app__data_1_1_e_theme.html">ETheme</a>(str, enum.Enum):</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="stringliteral">    @brief Available application themes</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="class_source_1_1_util_1_1app__data_1_1_e_theme.html#a121d61fb109f8f63c0f510b8d24de0dc">   44</a></span>    LIGHT = <span class="stringliteral">&quot;light&quot;</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="class_source_1_1_util_1_1app__data_1_1_e_theme.html#a187f595ad759b7c6a011962424f8ed67">   45</a></span>    DARK = <span class="stringliteral">&quot;dark&quot;</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="class_source_1_1_util_1_1app__data_1_1_e_theme.html#a782ff3513a4964d4807434902bcbb8c9">   46</a></span>    SYSTEM = <span class="stringliteral">&quot;system&quot;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="namespace_source_1_1_util_1_1app__data.html#a2378793cc2da40957f86621c7ef899e3">   31</a></span>DOWNLOAD_FOLDER = <span class="stringliteral">&quot;Download&quot;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="namespace_source_1_1_util_1_1app__data.html#a078ba1a444e2b28d3cf0b9876b390e5b">   32</a></span>ICON_APP_PATH = <span class="stringliteral">&quot;Resources/app.ico&quot;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="namespace_source_1_1_util_1_1app__data.html#a2dff70484352b74b6347cd9bb17347e1">   33</a></span>ICON_APP_FAVICON_PATH = <span class="stringliteral">&quot;Resources/favicon.ico&quot;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="namespace_source_1_1_util_1_1app__data.html#aa795dc5d637e3a2bd53cd4a6b64fa8d8">   34</a></span>ICON_APP = <a class="code hl_function" href="namespace_source_1_1_util_1_1app__data.html#aea1dc7cb14a1d252fb598b5bdbe8e92e">resource_path</a>(ICON_APP_PATH)</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="foldopen" id="foldopen00037" data-start="" data-end="">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="class_source_1_1_util_1_1app__data_1_1_e_theme.html">   37</a></span><span class="keyword">class </span><a class="code hl_class" href="class_source_1_1_util_1_1app__data_1_1_e_theme.html">ETheme</a>(str, enum.Enum):</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="stringliteral">    @brief Available application themes.</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="class_source_1_1_util_1_1app__data_1_1_e_theme.html#a121d61fb109f8f63c0f510b8d24de0dc">   41</a></span>    LIGHT = <span class="stringliteral">&quot;light&quot;</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="class_source_1_1_util_1_1app__data_1_1_e_theme.html#a187f595ad759b7c6a011962424f8ed67">   42</a></span>    DARK = <span class="stringliteral">&quot;dark&quot;</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="class_source_1_1_util_1_1app__data_1_1_e_theme.html#a782ff3513a4964d4807434902bcbb8c9">   43</a></span>    SYSTEM = <span class="stringliteral">&quot;system&quot;</span></div>
 </div>
-<div class="ttc" id="aclass_source_1_1_util_1_1app__data_1_1_e_theme_html"><div class="ttname"><a href="class_source_1_1_util_1_1app__data_1_1_e_theme.html">Source.Util.app_data.ETheme</a></div><div class="ttdoc">Available application themes.</div><div class="ttdef"><b>Definition</b> <a href="#l00040">app_data.py:40</a></div></div>
-<div class="ttc" id="anamespace_source_1_1_util_1_1app__data_html_af326f1f18e67e7eb1930ea6349650f5e"><div class="ttname"><a href="namespace_source_1_1_util_1_1app__data.html#af326f1f18e67e7eb1930ea6349650f5e">Source.Util.app_data.resource_path</a></div><div class="ttdeci">str resource_path(str s_relative_path)</div><div class="ttdoc">Returns the absolute path to a resource given by a relative path depending on the environment (EXE or...</div><div class="ttdef"><b>Definition</b> <a href="#l00018">app_data.py:18</a></div></div>
+<div class="ttc" id="aclass_source_1_1_util_1_1app__data_1_1_e_theme_html"><div class="ttname"><a href="class_source_1_1_util_1_1app__data_1_1_e_theme.html">Source.Util.app_data.ETheme</a></div><div class="ttdoc">Available application themes.</div><div class="ttdef"><b>Definition</b> <a href="#l00037">app_data.py:37</a></div></div>
+<div class="ttc" id="anamespace_source_1_1_util_1_1app__data_html_aea1dc7cb14a1d252fb598b5bdbe8e92e"><div class="ttname"><a href="namespace_source_1_1_util_1_1app__data.html#aea1dc7cb14a1d252fb598b5bdbe8e92e">Source.Util.app_data.resource_path</a></div><div class="ttdeci">str resource_path(str relative_path)</div><div class="ttdoc">Get the absolute path to a resource given by a relative path depending on the environment (EXE or Pyt...</div><div class="ttdef"><b>Definition</b> <a href="#l00018">app_data.py:18</a></div></div>
 <div class="ttc" id="anamespace_source_1_1version_html"><div class="ttname"><a href="namespace_source_1_1version.html">Source.version</a></div><div class="ttdef"><b>Definition</b> <a href="version_8py_source.html#l00001">version.py:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -31,7 +31,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="app.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.3</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.4</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -155,16 +155,16 @@ $(function(){initNavTree('class_source_1_1_util_1_1colored__log_1_1_color_format
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a01a6ea1d08837a7c6bde6148cf86b6d1" id="r_a01a6ea1d08837a7c6bde6148cf86b6d1"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01a6ea1d08837a7c6bde6148cf86b6d1">__init__</a> (self, Optional[str] fmt=None, bool line_no=True, bool threads=False, Optional[str] <a class="el" href="#a6f4c349d4e39f375cdd2ed7264033a96">data_format</a>=None, **Any kwargs)</td></tr>
+<tr class="memitem:a956c95c77bcb7e6309025a9669d0fef3" id="r_a956c95c77bcb7e6309025a9669d0fef3"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a956c95c77bcb7e6309025a9669d0fef3">__init__</a> (self, str|None fmt=None, bool line_no=True, bool threads=False, str|None <a class="el" href="#aa1adf0ef345ae84f1c0f13a07ed1dee0">date_format</a>=None, **Any kwargs)</td></tr>
 <tr class="memitem:aba559499d0f1f94e020846e194f3d192" id="r_aba559499d0f1f94e020846e194f3d192"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba559499d0f1f94e020846e194f3d192">format</a> (self, LogRecord record)</td></tr>
-<tr class="memdesc:aba559499d0f1f94e020846e194f3d192"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overwrite format method of logging.Formatter to use colors formatting.  <br /></td></tr>
+<tr class="memdesc:aba559499d0f1f94e020846e194f3d192"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override format method of logging.Formatter to use colored formatting.  <br /></td></tr>
 <tr class="memitem:ae83ad16c31f86c5638792114431de3b8" id="r_ae83ad16c31f86c5638792114431de3b8"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae83ad16c31f86c5638792114431de3b8">formatException</a> (self, tuple[type[BaseException], BaseException, TracebackType|None]|tuple[None, None, None] ei)</td></tr>
-<tr class="memdesc:ae83ad16c31f86c5638792114431de3b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overwrite formatException method of logging.  <br /></td></tr>
+<tr class="memdesc:ae83ad16c31f86c5638792114431de3b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override formatException method of logging.Formatter to use critical color formatting.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a83b19910788b02effade7f8970ff1439" id="r_a83b19910788b02effade7f8970ff1439"><td class="memItemLeft" align="right" valign="top">dict&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83b19910788b02effade7f8970ff1439">d_formats</a></td></tr>
-<tr class="memitem:a6f4c349d4e39f375cdd2ed7264033a96" id="r_a6f4c349d4e39f375cdd2ed7264033a96"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f4c349d4e39f375cdd2ed7264033a96">data_format</a> = data_format</td></tr>
+<tr class="memitem:aa1adf0ef345ae84f1c0f13a07ed1dee0" id="r_aa1adf0ef345ae84f1c0f13a07ed1dee0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1adf0ef345ae84f1c0f13a07ed1dee0">date_format</a> = date_format</td></tr>
+<tr class="memitem:afe2919e95be266f31b4950219711cb87" id="r_afe2919e95be266f31b4950219711cb87"><td class="memItemLeft" align="right" valign="top">dict&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe2919e95be266f31b4950219711cb87">formats</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-attribs" class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -178,18 +178,18 @@ Static Public Attributes</h2></td></tr>
 <div class="textblock"><p>Logging formatter that colors logging messages depending on their level. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">fmt</td><td>: [optional] overwrite format with a complete custom log format -&gt; ignores all other parameters </td></tr>
+    <tr><td class="paramname">fmt</td><td>: [optional] override format with a complete custom log format -&gt; ignores all other parameters </td></tr>
     <tr><td class="paramname">line_no</td><td>: [optional] include line number in log format string </td></tr>
     <tr><td class="paramname">threads</td><td>: [optional] include thread names in log format string </td></tr>
-    <tr><td class="paramname">data_format</td><td>: [optional] date format </td></tr>
+    <tr><td class="paramname">date_format</td><td>: [optional] date format </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00069">69</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00067">67</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a01a6ea1d08837a7c6bde6148cf86b6d1" name="a01a6ea1d08837a7c6bde6148cf86b6d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a01a6ea1d08837a7c6bde6148cf86b6d1">&#9670;&#160;</a></span>__init__()</h2>
+<a id="a956c95c77bcb7e6309025a9669d0fef3" name="a956c95c77bcb7e6309025a9669d0fef3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a956c95c77bcb7e6309025a9669d0fef3">&#9670;&#160;</a></span>__init__()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -202,7 +202,7 @@ Static Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Optional[str] </td>          <td class="paramname"><span class="paramname"><em>fmt</em></span><span class="paramdefsep"> = </span><span class="paramdefval">None</span>, </td>
+          <td class="paramtype">str | None </td>          <td class="paramname"><span class="paramname"><em>fmt</em></span><span class="paramdefsep"> = </span><span class="paramdefval">None</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -217,7 +217,7 @@ Static Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Optional[str] </td>          <td class="paramname"><span class="paramname"><em>data_format</em></span><span class="paramdefsep"> = </span><span class="paramdefval">None</span>, </td>
+          <td class="paramtype">str | None </td>          <td class="paramname"><span class="paramname"><em>date_format</em></span><span class="paramdefsep"> = </span><span class="paramdefval">None</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -227,19 +227,19 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00083">83</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   83</span>    <span class="keyword">def </span>__init__(self, fmt: Optional[str] = <span class="keywordtype">None</span>, line_no: bool = <span class="keyword">True</span>, threads: bool = <span class="keyword">False</span>, data_format: Optional[str] = <span class="keywordtype">None</span>, **kwargs: Any) -&gt; <span class="keywordtype">None</span>:</div>
-<div class="line"><span class="lineno">   84</span>        super().__init__(fmt, **kwargs)</div>
-<div class="line"><span class="lineno">   85</span>        msg_format = fmt <span class="keywordflow">if</span> fmt <span class="keywordflow">else</span> get_format(line_no=line_no, threads=threads)</div>
-<div class="line"><span class="lineno">   86</span>        self.d_formats = {</div>
-<div class="line"><span class="lineno">   87</span>            logging.DEBUG: self.fg_grey + msg_format + self.reset,</div>
-<div class="line"><span class="lineno">   88</span>            logging.INFO: self.reset + msg_format,</div>
-<div class="line"><span class="lineno">   89</span>            logging.WARNING: self.fg_yellow + msg_format + self.reset,</div>
-<div class="line"><span class="lineno">   90</span>            logging.ERROR: self.fg_red + msg_format + self.reset,</div>
-<div class="line"><span class="lineno">   91</span>            logging.CRITICAL: self.bg_red + msg_format + self.reset</div>
-<div class="line"><span class="lineno">   92</span>        }</div>
-<div class="line"><span class="lineno">   93</span>        self.data_format = data_format</div>
-<div class="line"><span class="lineno">   94</span> </div>
+<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00081">81</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   81</span>    <span class="keyword">def </span>__init__(self, fmt: str | <span class="keywordtype">None</span> = <span class="keywordtype">None</span>, line_no: bool = <span class="keyword">True</span>, threads: bool = <span class="keyword">False</span>, date_format: str | <span class="keywordtype">None</span> = <span class="keywordtype">None</span>, **kwargs: Any) -&gt; <span class="keywordtype">None</span>:</div>
+<div class="line"><span class="lineno">   82</span>        super().__init__(fmt, **kwargs)</div>
+<div class="line"><span class="lineno">   83</span>        msg_format = fmt <span class="keywordflow">if</span> fmt <span class="keywordflow">else</span> get_format(line_no=line_no, threads=threads)</div>
+<div class="line"><span class="lineno">   84</span>        self.formats = {</div>
+<div class="line"><span class="lineno">   85</span>            logging.DEBUG: self.fg_grey + msg_format + self.reset,</div>
+<div class="line"><span class="lineno">   86</span>            logging.INFO: self.reset + msg_format,</div>
+<div class="line"><span class="lineno">   87</span>            logging.WARNING: self.fg_yellow + msg_format + self.reset,</div>
+<div class="line"><span class="lineno">   88</span>            logging.ERROR: self.fg_red + msg_format + self.reset,</div>
+<div class="line"><span class="lineno">   89</span>            logging.CRITICAL: self.bg_red + msg_format + self.reset</div>
+<div class="line"><span class="lineno">   90</span>        }</div>
+<div class="line"><span class="lineno">   91</span>        self.date_format = date_format</div>
+<div class="line"><span class="lineno">   92</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -263,26 +263,26 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Overwrite format method of logging.Formatter to use colors formatting. </p>
+<p>Override format method of logging.Formatter to use colored formatting. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">record</td><td>: log record </td></tr>
+    <tr><td class="paramname">record</td><td>: LogRecord instance to format with color codes </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>formatted log record </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>formatted string with ANSI color codes based on log level </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00095">95</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   95</span>    <span class="keyword">def </span>format(self, record: LogRecord) -&gt; str:</div>
-<div class="line"><span class="lineno">   96</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">   97</span><span class="stringliteral">        @brief Overwrite format method of logging.Formatter to use colors formatting</span></div>
-<div class="line"><span class="lineno">   98</span><span class="stringliteral">        @param record : log record</span></div>
-<div class="line"><span class="lineno">   99</span><span class="stringliteral">        @return formatted log record</span></div>
-<div class="line"><span class="lineno">  100</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  101</span>        log_fmt = self.d_formats.get(record.levelno)</div>
-<div class="line"><span class="lineno">  102</span>        formatter = logging.Formatter(fmt=log_fmt, datefmt=self.data_format)</div>
-<div class="line"><span class="lineno">  103</span>        <span class="keywordflow">return</span> formatter.format(record)</div>
-<div class="line"><span class="lineno">  104</span> </div>
+<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00093">93</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   93</span>    <span class="keyword">def </span>format(self, record: LogRecord) -&gt; str:</div>
+<div class="line"><span class="lineno">   94</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">   95</span><span class="stringliteral">        @brief Override format method of logging.Formatter to use colored formatting.</span></div>
+<div class="line"><span class="lineno">   96</span><span class="stringliteral">        @param record : LogRecord instance to format with color codes</span></div>
+<div class="line"><span class="lineno">   97</span><span class="stringliteral">        @return formatted string with ANSI color codes based on log level</span></div>
+<div class="line"><span class="lineno">   98</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   99</span>        log_fmt = self.formats.get(record.levelno)</div>
+<div class="line"><span class="lineno">  100</span>        formatter = logging.Formatter(fmt=log_fmt, datefmt=self.date_format)</div>
+<div class="line"><span class="lineno">  101</span>        <span class="keywordflow">return</span> formatter.format(record)</div>
+<div class="line"><span class="lineno">  102</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -305,8 +305,8 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Overwrite formatException method of logging. </p>
-<p>Formatter to use critical color formatting </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Override formatException method of logging.Formatter to use critical color formatting. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ei</td><td>: exception info </td></tr>
   </table>
@@ -314,19 +314,17 @@ Static Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>formatted exception log record </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00105">105</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  105</span>    <span class="keyword">def </span>formatException(self, ei: tuple[type[BaseException], BaseException, TracebackType | <span class="keywordtype">None</span>] | tuple[<span class="keywordtype">None</span>, <span class="keywordtype">None</span>, <span class="keywordtype">None</span>]) -&gt; str:</div>
-<div class="line"><span class="lineno">  106</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">  107</span><span class="stringliteral">        @brief Overwrite formatException method of logging. Formatter to use critical color formatting</span></div>
-<div class="line"><span class="lineno">  108</span><span class="stringliteral">        @param ei : exception info</span></div>
-<div class="line"><span class="lineno">  109</span><span class="stringliteral">        @return formatted exception log record</span></div>
-<div class="line"><span class="lineno">  110</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  111</span>        log_fmt = self.d_formats.get(logging.CRITICAL)</div>
-<div class="line"><span class="lineno">  112</span>        formatter = logging.Formatter(log_fmt, datefmt=self.data_format)</div>
-<div class="line"><span class="lineno">  113</span>        record = super().formatException(ei)</div>
-<div class="line"><span class="lineno">  114</span>        <span class="keywordflow">return</span> formatter.format(record)  <span class="comment"># type: ignore</span></div>
-<div class="line"><span class="lineno">  115</span> </div>
-<div class="line"><span class="lineno">  116</span> </div>
+<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00103">103</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  103</span>    <span class="keyword">def </span>formatException(self, ei: tuple[type[BaseException], BaseException, TracebackType | <span class="keywordtype">None</span>] | tuple[<span class="keywordtype">None</span>, <span class="keywordtype">None</span>, <span class="keywordtype">None</span>]) -&gt; str:</div>
+<div class="line"><span class="lineno">  104</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">  105</span><span class="stringliteral">        @brief Override formatException method of logging.Formatter to use critical color formatting.</span></div>
+<div class="line"><span class="lineno">  106</span><span class="stringliteral">        @param ei : exception info</span></div>
+<div class="line"><span class="lineno">  107</span><span class="stringliteral">        @return formatted exception log record</span></div>
+<div class="line"><span class="lineno">  108</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  109</span>        result = super().formatException(ei)</div>
+<div class="line"><span class="lineno">  110</span>        <span class="keywordflow">return</span> self.bg_red + result + self.reset</div>
+<div class="line"><span class="lineno">  111</span> </div>
+<div class="line"><span class="lineno">  112</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -351,46 +349,23 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00080">80</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00078">78</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
 
 </div>
 </div>
-<a id="a83b19910788b02effade7f8970ff1439" name="a83b19910788b02effade7f8970ff1439"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83b19910788b02effade7f8970ff1439">&#9670;&#160;</a></span>d_formats</h2>
+<a id="aa1adf0ef345ae84f1c0f13a07ed1dee0" name="aa1adf0ef345ae84f1c0f13a07ed1dee0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1adf0ef345ae84f1c0f13a07ed1dee0">&#9670;&#160;</a></span>date_format</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">dict d_formats</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=  {</div>
-<div class="line">            logging.DEBUG: self.fg_grey + msg_format + self.reset,</div>
-<div class="line">            logging.INFO: self.reset + msg_format,</div>
-<div class="line">            logging.WARNING: self.fg_yellow + msg_format + self.reset,</div>
-<div class="line">            logging.ERROR: self.fg_red + msg_format + self.reset,</div>
-<div class="line">            logging.CRITICAL: self.bg_red + msg_format + self.reset</div>
-<div class="line">        }</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00086">86</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
-
-</div>
-</div>
-<a id="a6f4c349d4e39f375cdd2ed7264033a96" name="a6f4c349d4e39f375cdd2ed7264033a96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f4c349d4e39f375cdd2ed7264033a96">&#9670;&#160;</a></span>data_format</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">data_format = data_format</td>
+          <td class="memname">date_format = date_format</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00093">93</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00091">91</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
 
 </div>
 </div>
@@ -414,7 +389,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00077">77</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00075">75</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
 
 </div>
 </div>
@@ -438,7 +413,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00079">79</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00077">77</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
 
 </div>
 </div>
@@ -462,7 +437,30 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00078">78</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00076">76</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
+
+</div>
+</div>
+<a id="afe2919e95be266f31b4950219711cb87" name="afe2919e95be266f31b4950219711cb87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe2919e95be266f31b4950219711cb87">&#9670;&#160;</a></span>formats</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dict formats</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=  {</div>
+<div class="line">            logging.DEBUG: self.fg_grey + msg_format + self.reset,</div>
+<div class="line">            logging.INFO: self.reset + msg_format,</div>
+<div class="line">            logging.WARNING: self.fg_yellow + msg_format + self.reset,</div>
+<div class="line">            logging.ERROR: self.fg_red + msg_format + self.reset,</div>
+<div class="line">            logging.CRITICAL: self.bg_red + msg_format + self.reset</div>
+<div class="line">        }</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00084">84</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
 
 </div>
 </div>
@@ -486,7 +484,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00081">81</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="colored__log_8py_source.html#l00079">79</a> of file <a class="el" href="colored__log_8py_source.html">colored_log.py</a>.</p>
 
 </div>
 </div>

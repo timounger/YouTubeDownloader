@@ -31,7 +31,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="app.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.3</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.4</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -146,13 +146,13 @@ $(function(){initNavTree('namespace_executable_1_1check__included__packages.html
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a8b9447b8e07bd5b6e37e315bc696805e" id="r_a8b9447b8e07bd5b6e37e315bc696805e"><td class="memItemLeft" align="right" valign="top">list[str]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b9447b8e07bd5b6e37e315bc696805e">check_included_packages</a> ()</td></tr>
-<tr class="memdesc:a8b9447b8e07bd5b6e37e315bc696805e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check included packages.  <br /></td></tr>
+<tr class="memdesc:a8b9447b8e07bd5b6e37e315bc696805e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse PyInstaller cross-reference HTML and verify all third-party packages are whitelisted.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a854a4b28517b6a2676c148ebf4f6f6fd" id="r_a854a4b28517b6a2676c148ebf4f6f6fd"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a854a4b28517b6a2676c148ebf4f6f6fd">L_ALLOWED_THIRD_PARTY_PACKAGES</a></td></tr>
+<tr class="memitem:ad0dac8650e380c920c7b5db44f3f7fd3" id="r_ad0dac8650e380c920c7b5db44f3f7fd3"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0dac8650e380c920c7b5db44f3f7fd3">ALLOWED_THIRD_PARTY_PACKAGES</a></td></tr>
 <tr class="memitem:ab09a63eb35b270b5cdbead1983ebdccb" id="r_ab09a63eb35b270b5cdbead1983ebdccb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab09a63eb35b270b5cdbead1983ebdccb">log</a> = logging.getLogger(&quot;CheckIncludedPackages&quot;)</td></tr>
-<tr class="memitem:a900940494558d461e5175e428afdb261" id="r_a900940494558d461e5175e428afdb261"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a900940494558d461e5175e428afdb261">S_RELATIVE_PATH</a> = fr&quot;build\{__title__}\xref-{__title__}.html&quot;</td></tr>
+<tr class="memitem:ab163dc34f6be457074e4dc401614f0bf" id="r_ab163dc34f6be457074e4dc401614f0bf"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab163dc34f6be457074e4dc401614f0bf">RELATIVE_PATH</a> = fr&quot;build\{__title__}\xref-{__title__}.html&quot;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><hr  />
@@ -172,75 +172,72 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Check included packages. </p>
-<dl class="section return"><dt>Returns</dt><dd>status if included packages are okay </dd></dl>
+<p>Parse PyInstaller cross-reference HTML and verify all third-party packages are whitelisted. </p>
+<dl class="section return"><dt>Returns</dt><dd>list of error messages for unknown packages (empty if all packages are allowed) </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="check__included__packages_8py_source.html#l00049">49</a> of file <a class="el" href="check__included__packages_8py_source.html">check_included_packages.py</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   49</span><span class="keyword">def </span>check_included_packages() -&gt; list[str]:</div>
 <div class="line"><span class="lineno">   50</span>    <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">   51</span><span class="stringliteral">    @brief Check included packages</span></div>
-<div class="line"><span class="lineno">   52</span><span class="stringliteral">    @return status if included packages are okay</span></div>
+<div class="line"><span class="lineno">   51</span><span class="stringliteral">    @brief Parse PyInstaller cross-reference HTML and verify all third-party packages are whitelisted.</span></div>
+<div class="line"><span class="lineno">   52</span><span class="stringliteral">    @return list of error messages for unknown packages (empty if all packages are allowed)</span></div>
 <div class="line"><span class="lineno">   53</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">   54</span>    d_third_party = {}</div>
-<div class="line"><span class="lineno">   55</span>    d_buildin = {}</div>
-<div class="line"><span class="lineno">   56</span>    d_own_packs = {}</div>
+<div class="line"><span class="lineno">   54</span>    third_party: set[str] = set()</div>
+<div class="line"><span class="lineno">   55</span>    builtin: set[str] = set()</div>
+<div class="line"><span class="lineno">   56</span>    own_packs: set[str] = set()</div>
 <div class="line"><span class="lineno">   57</span> </div>
 <div class="line"><span class="lineno">   58</span>    <span class="comment"># Regular Expressions</span></div>
-<div class="line"><span class="lineno">   59</span>    regex_third_party = re.compile(<span class="stringliteral">r&quot;.venv\/lib\/site-packages.*.py&quot;</span>, re.IGNORECASE)</div>
+<div class="line"><span class="lineno">   59</span>    regex_third_party = re.compile(<span class="stringliteral">r&quot;\.venv\/lib\/site-packages.*.py&quot;</span>, re.IGNORECASE)</div>
 <div class="line"><span class="lineno">   60</span>    regex_third_party_name = re.compile(<span class="stringliteral">r&quot;(?&lt;=site-packages\/).*&quot;</span>, re.IGNORECASE)</div>
-<div class="line"><span class="lineno">   61</span>    regex_builtin = re.compile(<span class="stringliteral">r&quot;.venv\/lib\/.*.py&quot;</span>, re.IGNORECASE)</div>
+<div class="line"><span class="lineno">   61</span>    regex_builtin = re.compile(<span class="stringliteral">r&quot;\.venv\/lib\/.*.py&quot;</span>, re.IGNORECASE)</div>
 <div class="line"><span class="lineno">   62</span>    regex_builtin_name = re.compile(<span class="stringliteral">r&quot;(?&lt;=lib\/).*&quot;</span>, re.IGNORECASE)</div>
 <div class="line"><span class="lineno">   63</span>    regex_own_packs = re.compile(fr<span class="stringliteral">&quot;{__title__}\/.*&quot;</span>)</div>
 <div class="line"><span class="lineno">   64</span> </div>
 <div class="line"><span class="lineno">   65</span>    <span class="comment"># read PyInstaller modulegraph cross reference HTML</span></div>
-<div class="line"><span class="lineno">   66</span>    <span class="keyword">with</span> open(S_RELATIVE_PATH, mode=<span class="stringliteral">&quot;r&quot;</span>, encoding=<span class="stringliteral">&quot;utf-8&quot;</span>) <span class="keyword">as</span> o_html_file:</div>
-<div class="line"><span class="lineno">   67</span>        soup = BeautifulSoup(o_html_file, <span class="stringliteral">&quot;html.parser&quot;</span>)</div>
+<div class="line"><span class="lineno">   66</span>    <span class="keyword">with</span> open(RELATIVE_PATH, mode=<span class="stringliteral">&quot;r&quot;</span>, encoding=<span class="stringliteral">&quot;utf-8&quot;</span>) <span class="keyword">as</span> html_file:</div>
+<div class="line"><span class="lineno">   67</span>        soup = BeautifulSoup(html_file, <span class="stringliteral">&quot;html.parser&quot;</span>)</div>
 <div class="line"><span class="lineno">   68</span> </div>
 <div class="line"><span class="lineno">   69</span>    <span class="comment"># parse HTML</span></div>
-<div class="line"><span class="lineno">   70</span>    l_nodes = soup.find_all(<span class="stringliteral">&quot;div&quot;</span>, class_=<span class="stringliteral">&quot;node&quot;</span>)</div>
-<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">for</span> o_node <span class="keywordflow">in</span> l_nodes:</div>
-<div class="line"><span class="lineno">   72</span>        l_targets = o_node.find_all(<span class="stringliteral">&quot;a&quot;</span>, target=<span class="stringliteral">&quot;code&quot;</span>)</div>
-<div class="line"><span class="lineno">   73</span>        <span class="keywordflow">for</span> o_target <span class="keywordflow">in</span> l_targets:</div>
-<div class="line"><span class="lineno">   74</span>            s_package_path = o_target[<span class="stringliteral">&quot;href&quot;</span>]</div>
-<div class="line"><span class="lineno">   75</span>            <span class="keywordflow">if</span> regex_third_party.search(s_package_path):</div>
-<div class="line"><span class="lineno">   76</span>                matches = regex_third_party_name.search(s_package_path)</div>
+<div class="line"><span class="lineno">   70</span>    nodes = soup.find_all(<span class="stringliteral">&quot;div&quot;</span>, class_=<span class="stringliteral">&quot;node&quot;</span>)</div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">for</span> node <span class="keywordflow">in</span> nodes:</div>
+<div class="line"><span class="lineno">   72</span>        targets = node.find_all(<span class="stringliteral">&quot;a&quot;</span>, target=<span class="stringliteral">&quot;code&quot;</span>)</div>
+<div class="line"><span class="lineno">   73</span>        <span class="keywordflow">for</span> target <span class="keywordflow">in</span> targets:</div>
+<div class="line"><span class="lineno">   74</span>            package_path = target[<span class="stringliteral">&quot;href&quot;</span>]</div>
+<div class="line"><span class="lineno">   75</span>            <span class="keywordflow">if</span> regex_third_party.search(package_path):</div>
+<div class="line"><span class="lineno">   76</span>                matches = regex_third_party_name.search(package_path)</div>
 <div class="line"><span class="lineno">   77</span>                <span class="keywordflow">if</span> matches <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
-<div class="line"><span class="lineno">   78</span>                    d_third_party[matches.group().split(<span class="stringliteral">&quot;/&quot;</span>, maxsplit=1)[0].replace(<span class="stringliteral">&quot;.py&quot;</span>, <span class="stringliteral">&quot;&quot;</span>)] = <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><span class="lineno">   79</span>            <span class="keywordflow">elif</span> regex_builtin.search(s_package_path):</div>
-<div class="line"><span class="lineno">   80</span>                matches = regex_builtin_name.search(s_package_path)</div>
+<div class="line"><span class="lineno">   78</span>                    third_party.add(matches.group().split(<span class="stringliteral">&quot;/&quot;</span>, maxsplit=1)[0].replace(<span class="stringliteral">&quot;.py&quot;</span>, <span class="stringliteral">&quot;&quot;</span>))</div>
+<div class="line"><span class="lineno">   79</span>            <span class="keywordflow">elif</span> regex_builtin.search(package_path):</div>
+<div class="line"><span class="lineno">   80</span>                matches = regex_builtin_name.search(package_path)</div>
 <div class="line"><span class="lineno">   81</span>                <span class="keywordflow">if</span> matches <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
-<div class="line"><span class="lineno">   82</span>                    d_buildin[matches.group().replace(<span class="stringliteral">&quot;.py&quot;</span>, <span class="stringliteral">&quot;&quot;</span>)] = <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><span class="lineno">   83</span>            <span class="keywordflow">elif</span> regex_own_packs.search(s_package_path):</div>
-<div class="line"><span class="lineno">   84</span>                matches = regex_own_packs.search(s_package_path)</div>
+<div class="line"><span class="lineno">   82</span>                    builtin.add(matches.group().replace(<span class="stringliteral">&quot;.py&quot;</span>, <span class="stringliteral">&quot;&quot;</span>))</div>
+<div class="line"><span class="lineno">   83</span>            <span class="keywordflow">else</span>:</div>
+<div class="line"><span class="lineno">   84</span>                matches = regex_own_packs.search(package_path)</div>
 <div class="line"><span class="lineno">   85</span>                <span class="keywordflow">if</span> matches <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
-<div class="line"><span class="lineno">   86</span>                    d_own_packs[matches.group()] = <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   86</span>                    own_packs.add(matches.group())</div>
 <div class="line"><span class="lineno">   87</span> </div>
 <div class="line"><span class="lineno">   88</span>    <span class="comment"># print included packages</span></div>
 <div class="line"><span class="lineno">   89</span>    log.debug(<span class="stringliteral">&quot;\nThird party packages:&quot;</span>)</div>
-<div class="line"><span class="lineno">   90</span>    log.debug(<span class="stringliteral">&quot;\n&quot;</span>.join(list(d_third_party.keys())))</div>
+<div class="line"><span class="lineno">   90</span>    log.debug(<span class="stringliteral">&quot;\n&quot;</span>.join(sorted(third_party)))</div>
 <div class="line"><span class="lineno">   91</span>    log.debug(<span class="stringliteral">&quot;\nOwn packages:&quot;</span>)</div>
-<div class="line"><span class="lineno">   92</span>    log.debug(<span class="stringliteral">&quot;\n&quot;</span>.join(list(d_own_packs.keys())))</div>
-<div class="line"><span class="lineno">   93</span>    log.debug(<span class="stringliteral">&quot;\nPython buildin packages:&quot;</span>)</div>
-<div class="line"><span class="lineno">   94</span>    log.debug(<span class="stringliteral">&quot;\n&quot;</span>.join(list(d_buildin.keys())))</div>
+<div class="line"><span class="lineno">   92</span>    log.debug(<span class="stringliteral">&quot;\n&quot;</span>.join(sorted(own_packs)))</div>
+<div class="line"><span class="lineno">   93</span>    log.debug(<span class="stringliteral">&quot;\nPython builtin packages:&quot;</span>)</div>
+<div class="line"><span class="lineno">   94</span>    log.debug(<span class="stringliteral">&quot;\n&quot;</span>.join(sorted(builtin)))</div>
 <div class="line"><span class="lineno">   95</span> </div>
 <div class="line"><span class="lineno">   96</span>    <span class="comment"># check third party packages</span></div>
-<div class="line"><span class="lineno">   97</span>    l_not_allowed_packages = []</div>
-<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">for</span> s_package <span class="keywordflow">in</span> list(d_third_party.keys()):</div>
-<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">if</span> s_package <span class="keywordflow">not</span> <span class="keywordflow">in</span> L_ALLOWED_THIRD_PARTY_PACKAGES:</div>
-<div class="line"><span class="lineno">  100</span>            l_not_allowed_packages.append(f<span class="stringliteral">&quot;ERROR PyInstaller included an unknown package in the executable: \&#39;{s_package}\&#39;&quot;</span>)</div>
-<div class="line"><span class="lineno">  101</span>    <span class="keywordflow">return</span> l_not_allowed_packages</div>
+<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">return</span> [f<span class="stringliteral">&quot;ERROR PyInstaller included an unknown package in the executable: &#39;{package}&#39;&quot;</span></div>
+<div class="line"><span class="lineno">   98</span>            <span class="keywordflow">for</span> package <span class="keywordflow">in</span> third_party <span class="keywordflow">if</span> package <span class="keywordflow">not</span> <span class="keywordflow">in</span> ALLOWED_THIRD_PARTY_PACKAGES]</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
-<a id="a854a4b28517b6a2676c148ebf4f6f6fd" name="a854a4b28517b6a2676c148ebf4f6f6fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a854a4b28517b6a2676c148ebf4f6f6fd">&#9670;&#160;</a></span>L_ALLOWED_THIRD_PARTY_PACKAGES</h2>
+<a id="ad0dac8650e380c920c7b5db44f3f7fd3" name="ad0dac8650e380c920c7b5db44f3f7fd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0dac8650e380c920c7b5db44f3f7fd3">&#9670;&#160;</a></span>ALLOWED_THIRD_PARTY_PACKAGES</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">list L_ALLOWED_THIRD_PARTY_PACKAGES</td>
+          <td class="memname">list ALLOWED_THIRD_PARTY_PACKAGES</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -291,14 +288,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a900940494558d461e5175e428afdb261" name="a900940494558d461e5175e428afdb261"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a900940494558d461e5175e428afdb261">&#9670;&#160;</a></span>S_RELATIVE_PATH</h2>
+<a id="ab163dc34f6be457074e4dc401614f0bf" name="ab163dc34f6be457074e4dc401614f0bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab163dc34f6be457074e4dc401614f0bf">&#9670;&#160;</a></span>RELATIVE_PATH</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">str S_RELATIVE_PATH = fr&quot;build\{__title__}\xref-{__title__}.html&quot;</td>
+          <td class="memname">str RELATIVE_PATH = fr&quot;build\{__title__}\xref-{__title__}.html&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">

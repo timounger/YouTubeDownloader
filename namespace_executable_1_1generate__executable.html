@@ -31,7 +31,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="app.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.3</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.4</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -145,28 +145,27 @@ $(function(){initNavTree('namespace_executable_1_1generate__executable.html','',
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a59842a236dd2e76023daad78de067784" id="r_a59842a236dd2e76023daad78de067784"><td class="memItemLeft" align="right" valign="top">list[str]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59842a236dd2e76023daad78de067784">get_type_list</a> (str type_name, list[str] l_type_values)</td></tr>
-<tr class="memdesc:a59842a236dd2e76023daad78de067784"><td class="mdescLeft">&#160;</td><td class="mdescRight">get type list  <br /></td></tr>
+<tr class="memitem:a244cc2d8c7bf4be41a773b186d986cd2" id="r_a244cc2d8c7bf4be41a773b186d986cd2"><td class="memItemLeft" align="right" valign="top">list[str]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a244cc2d8c7bf4be41a773b186d986cd2">get_type_list</a> (str type_name, list[str] type_values)</td></tr>
+<tr class="memdesc:a244cc2d8c7bf4be41a773b186d986cd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build repeated PyInstaller CLI argument pairs (e.g.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:adfa5ce48c34673a10946668d1f048440" id="r_adfa5ce48c34673a10946668d1f048440"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adfa5ce48c34673a10946668d1f048440">add_data</a></td></tr>
-<tr class="memitem:a41d0abc7672afd7a011f0c75265988f3" id="r_a41d0abc7672afd7a011f0c75265988f3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41d0abc7672afd7a011f0c75265988f3">b_tolerate</a> = False</td></tr>
-<tr class="memitem:a79bfcca83cdfb9473f7ffe009b44d175" id="r_a79bfcca83cdfb9473f7ffe009b44d175"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79bfcca83cdfb9473f7ffe009b44d175">build_warnings</a> = []</td></tr>
+<tr class="memitem:a79bfcca83cdfb9473f7ffe009b44d175" id="r_a79bfcca83cdfb9473f7ffe009b44d175"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79bfcca83cdfb9473f7ffe009b44d175">build_warnings</a> = [w for w in <a class="el" href="#a2b7e6be3b7635232d62be326c2f64fcd">possible_build_warnings</a> if not any(t in w for t in <a class="el" href="#a4c87ae2ed3aaa54be00922ddecdf8c19">TOLERATED_WARNINGS</a>)]</td></tr>
 <tr class="memitem:a60b6bd6c82e7e003776d8b6558d08e06" id="r_a60b6bd6c82e7e003776d8b6558d08e06"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60b6bd6c82e7e003776d8b6558d08e06">command</a> = [r&quot;..\.venv\Scripts\python&quot;, &quot;-m&quot;, &quot;PyInstaller&quot;, &quot;--clean&quot;]</td></tr>
 <tr class="memitem:ab1000d1f2ea9878f60bc119650013894" id="r_ab1000d1f2ea9878f60bc119650013894"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1000d1f2ea9878f60bc119650013894">encoding</a></td></tr>
+<tr class="memitem:ac5a347cfb8bee9aa8d127027e5c48fbe" id="r_ac5a347cfb8bee9aa8d127027e5c48fbe"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5a347cfb8bee9aa8d127027e5c48fbe">EXCLUDE_MODULES</a></td></tr>
 <tr class="memitem:a9e4ec65b82b53af9c1c5d7f98d048711" id="r_a9e4ec65b82b53af9c1c5d7f98d048711"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e4ec65b82b53af9c1c5d7f98d048711">GIT_VERSION_PATH</a> = &quot;../Source/Util&quot;</td></tr>
-<tr class="memitem:ae51f6ad7850682ee4da42be76fdc413d" id="r_ae51f6ad7850682ee4da42be76fdc413d"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae51f6ad7850682ee4da42be76fdc413d">L_EXCLUDE_MODULES</a></td></tr>
-<tr class="memitem:a11c2ce0027943c420282124212e83bc8" id="r_a11c2ce0027943c420282124212e83bc8"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11c2ce0027943c420282124212e83bc8">L_HIDDEN_IMPORT</a></td></tr>
-<tr class="memitem:a022b9ca6a18d2bd06a6ccfd41707112f" id="r_a022b9ca6a18d2bd06a6ccfd41707112f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a022b9ca6a18d2bd06a6ccfd41707112f">l_not_allowed_packages</a> = check_included_packages()</td></tr>
+<tr class="memitem:a931b4d84e8f3541aa62655188b2d2b35" id="r_a931b4d84e8f3541aa62655188b2d2b35"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a931b4d84e8f3541aa62655188b2d2b35">HIDDEN_IMPORT</a></td></tr>
 <tr class="memitem:ab09a63eb35b270b5cdbead1983ebdccb" id="r_ab09a63eb35b270b5cdbead1983ebdccb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab09a63eb35b270b5cdbead1983ebdccb">log</a> = logging.getLogger(&quot;GenerateExecutable&quot;)</td></tr>
 <tr class="memitem:a1a6b6fb557d8d37d59700faf4e4c9167" id="r_a1a6b6fb557d8d37d59700faf4e4c9167"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a6b6fb557d8d37d59700faf4e4c9167">mode</a></td></tr>
+<tr class="memitem:a89b2f768d678aa846dde5859da94f7ae" id="r_a89b2f768d678aa846dde5859da94f7ae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89b2f768d678aa846dde5859da94f7ae">not_allowed_packages</a> = check_included_packages()</td></tr>
 <tr class="memitem:a2b7e6be3b7635232d62be326c2f64fcd" id="r_a2b7e6be3b7635232d62be326c2f64fcd"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b7e6be3b7635232d62be326c2f64fcd">possible_build_warnings</a> = [line for line in result.stderr.split(&quot;\n&quot;) if &quot;WARNING&quot; in line]</td></tr>
 <tr class="memitem:ac97b78e7c161c178a23a3d1478f74aa5" id="r_ac97b78e7c161c178a23a3d1478f74aa5"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac97b78e7c161c178a23a3d1478f74aa5">report</a> = &quot;\n&quot;.join(<a class="el" href="#a4aa63dd1781d70f36f4b61cd99713958">result_report</a>)</td></tr>
-<tr class="memitem:a937d4dd628a8858b443a399410d2600b" id="r_a937d4dd628a8858b443a399410d2600b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a937d4dd628a8858b443a399410d2600b">result</a> = subprocess.run(<a class="el" href="#a60b6bd6c82e7e003776d8b6558d08e06">command</a>, stderr=subprocess.PIPE, text=True, shell=True, check=False)</td></tr>
+<tr class="memitem:a937d4dd628a8858b443a399410d2600b" id="r_a937d4dd628a8858b443a399410d2600b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a937d4dd628a8858b443a399410d2600b">result</a> = subprocess.run(<a class="el" href="#a60b6bd6c82e7e003776d8b6558d08e06">command</a>, stderr=subprocess.PIPE, text=True, check=False)</td></tr>
 <tr class="memitem:a4aa63dd1781d70f36f4b61cd99713958" id="r_a4aa63dd1781d70f36f4b61cd99713958"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4aa63dd1781d70f36f4b61cd99713958">result_report</a> = []</td></tr>
 <tr class="memitem:aabe89482a17bf30a40e9c316bc5a2bb9" id="r_aabe89482a17bf30a40e9c316bc5a2bb9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aabe89482a17bf30a40e9c316bc5a2bb9">ret_value</a> = 1</td></tr>
-<tr class="memitem:a05453b274ae2ccae1bef10244f3825ba" id="r_a05453b274ae2ccae1bef10244f3825ba"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05453b274ae2ccae1bef10244f3825ba">s_spec_file</a> = f&quot;{__title__}.spec&quot;</td></tr>
+<tr class="memitem:ac6071a65db005c210e21d6436aec0bd5" id="r_ac6071a65db005c210e21d6436aec0bd5"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6071a65db005c210e21d6436aec0bd5">spec_file</a> = f&quot;{__title__}.spec&quot;</td></tr>
 <tr class="memitem:a4c87ae2ed3aaa54be00922ddecdf8c19" id="r_a4c87ae2ed3aaa54be00922ddecdf8c19"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c87ae2ed3aaa54be00922ddecdf8c19">TOLERATED_WARNINGS</a></td></tr>
 <tr class="memitem:ab4eebde576250e5b51ac86b875ee5aab" id="r_ab4eebde576250e5b51ac86b875ee5aab"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4eebde576250e5b51ac86b875ee5aab">VERSION_FILE_NAME</a> = &quot;version_info.txt&quot;</td></tr>
 <tr class="memitem:a51fe0a69b6582924d93ecb9ad59863dd" id="r_a51fe0a69b6582924d93ecb9ad59863dd"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51fe0a69b6582924d93ecb9ad59863dd">WARNING_FILE</a> = &quot;PyInstaller_warnings.txt&quot;</td></tr>
@@ -175,8 +174,8 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><hr  />
  </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="a59842a236dd2e76023daad78de067784" name="a59842a236dd2e76023daad78de067784"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59842a236dd2e76023daad78de067784">&#9670;&#160;</a></span>get_type_list()</h2>
+<a id="a244cc2d8c7bf4be41a773b186d986cd2" name="a244cc2d8c7bf4be41a773b186d986cd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a244cc2d8c7bf4be41a773b186d986cd2">&#9670;&#160;</a></span>get_type_list()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,35 +188,35 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">list[str]</td>          <td class="paramname"><span class="paramname"><em>l_type_values</em></span>&#160;)</td>
+          <td class="paramtype">list[str]</td>          <td class="paramname"><span class="paramname"><em>type_values</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>get type list </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Build repeated PyInstaller CLI argument pairs (e.g. </p>
+<p>&ndash;exclude-module foo &ndash;exclude-module bar). </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">type_name</td><td>: type name </td></tr>
-    <tr><td class="paramname">l_type_values</td><td>: type values </td></tr>
+    <tr><td class="paramname">type_name</td><td>: PyInstaller argument name (e.g. "exclude-module", "add-data") </td></tr>
+    <tr><td class="paramname">type_values</td><td>: values to pair with the argument name </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>type list </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>flat list of alternating argument flags and values </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00055">55</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span><span class="keyword">def </span>get_type_list(type_name: str, l_type_values: list[str]) -&gt; list[str]:</div>
-<div class="line"><span class="lineno">   56</span>    <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">   57</span><span class="stringliteral">    @brief get type list</span></div>
-<div class="line"><span class="lineno">   58</span><span class="stringliteral">    @param type_name : type name</span></div>
-<div class="line"><span class="lineno">   59</span><span class="stringliteral">    @param l_type_values : type values</span></div>
-<div class="line"><span class="lineno">   60</span><span class="stringliteral">    @return type list</span></div>
-<div class="line"><span class="lineno">   61</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">   62</span>    type_list = []</div>
-<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">for</span> type_value <span class="keywordflow">in</span> l_type_values:</div>
-<div class="line"><span class="lineno">   64</span>        type_list.extend([f<span class="stringliteral">&quot;--{type_name}&quot;</span>, type_value])</div>
-<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">return</span> type_list</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span> </div>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00057">57</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   57</span><span class="keyword">def </span>get_type_list(type_name: str, type_values: list[str]) -&gt; list[str]:</div>
+<div class="line"><span class="lineno">   58</span>    <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><span class="lineno">   59</span><span class="stringliteral">    @brief Build repeated PyInstaller CLI argument pairs (e.g. --exclude-module foo --exclude-module bar).</span></div>
+<div class="line"><span class="lineno">   60</span><span class="stringliteral">    @param type_name : PyInstaller argument name (e.g. &quot;exclude-module&quot;, &quot;add-data&quot;)</span></div>
+<div class="line"><span class="lineno">   61</span><span class="stringliteral">    @param type_values : values to pair with the argument name</span></div>
+<div class="line"><span class="lineno">   62</span><span class="stringliteral">    @return flat list of alternating argument flags and values</span></div>
+<div class="line"><span class="lineno">   63</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   64</span>    type_list = []</div>
+<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">for</span> type_value <span class="keywordflow">in</span> type_values:</div>
+<div class="line"><span class="lineno">   66</span>        type_list.extend([f<span class="stringliteral">&quot;--{type_name}&quot;</span>, type_value])</div>
+<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">return</span> type_list</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -237,23 +236,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">    2</span>    <span class="stringliteral">&quot;..\\Resources\\app.ico;Resources\\&quot;</span></div>
 <div class="line"><span class="lineno">    3</span>]</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00046">46</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
-
-</div>
-</div>
-<a id="a41d0abc7672afd7a011f0c75265988f3" name="a41d0abc7672afd7a011f0c75265988f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41d0abc7672afd7a011f0c75265988f3">&#9670;&#160;</a></span>b_tolerate</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool b_tolerate = False</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00095">95</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00048">48</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
 
 </div>
 </div>
@@ -264,12 +247,12 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">list build_warnings = []</td>
+          <td class="memname">list build_warnings = [w for w in <a class="el" href="#a2b7e6be3b7635232d62be326c2f64fcd">possible_build_warnings</a> if not any(t in w for t in <a class="el" href="#a4c87ae2ed3aaa54be00922ddecdf8c19">TOLERATED_WARNINGS</a>)]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00093">93</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00095">95</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
 
 </div>
 </div>
@@ -285,7 +268,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00071">71</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00073">73</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
 
 </div>
 </div>
@@ -301,7 +284,32 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00110">110</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00104">104</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+
+</div>
+</div>
+<a id="ac5a347cfb8bee9aa8d127027e5c48fbe" name="ac5a347cfb8bee9aa8d127027e5c48fbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5a347cfb8bee9aa8d127027e5c48fbe">&#9670;&#160;</a></span>EXCLUDE_MODULES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list EXCLUDE_MODULES</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"><span class="lineno">    1</span>=  [</div>
+<div class="line"><span class="lineno">    2</span>    <span class="stringliteral">&quot;PIL&quot;</span>,</div>
+<div class="line"><span class="lineno">    3</span>    <span class="stringliteral">&quot;charset_normalizer&quot;</span>,</div>
+<div class="line"><span class="lineno">    4</span>    <span class="stringliteral">&quot;numpy&quot;</span>,</div>
+<div class="line"><span class="lineno">    5</span>    <span class="stringliteral">&quot;pkg_resources&quot;</span>,</div>
+<div class="line"><span class="lineno">    6</span>    <span class="stringliteral">&quot;darkdetect._mac_detect&quot;</span>,</div>
+<div class="line"><span class="lineno">    7</span>    <span class="comment"># actual not used</span></div>
+<div class="line"><span class="lineno">    8</span>    <span class="stringliteral">&quot;moviepy&quot;</span>,</div>
+<div class="line"><span class="lineno">    9</span>]</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00034">34</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
 
 </div>
 </div>
@@ -317,66 +325,25 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00028">28</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00030">30</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
 
 </div>
 </div>
-<a id="ae51f6ad7850682ee4da42be76fdc413d" name="ae51f6ad7850682ee4da42be76fdc413d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae51f6ad7850682ee4da42be76fdc413d">&#9670;&#160;</a></span>L_EXCLUDE_MODULES</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">list L_EXCLUDE_MODULES</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"><span class="lineno">    1</span>=  [</div>
-<div class="line"><span class="lineno">    2</span>    <span class="stringliteral">&quot;PIL&quot;</span>,</div>
-<div class="line"><span class="lineno">    3</span>    <span class="stringliteral">&quot;charset_normalizer&quot;</span>,</div>
-<div class="line"><span class="lineno">    4</span>    <span class="stringliteral">&quot;numpy&quot;</span>,</div>
-<div class="line"><span class="lineno">    5</span>    <span class="stringliteral">&quot;pkg_resources&quot;</span>,</div>
-<div class="line"><span class="lineno">    6</span>    <span class="stringliteral">&quot;darkdetect._mac_detect&quot;</span>,</div>
-<div class="line"><span class="lineno">    7</span>    <span class="comment"># actual not used</span></div>
-<div class="line"><span class="lineno">    8</span>    <span class="stringliteral">&quot;moviepy&quot;</span>,</div>
-<div class="line"><span class="lineno">    9</span>]</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00032">32</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
-
-</div>
-</div>
-<a id="a11c2ce0027943c420282124212e83bc8" name="a11c2ce0027943c420282124212e83bc8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a11c2ce0027943c420282124212e83bc8">&#9670;&#160;</a></span>L_HIDDEN_IMPORT</h2>
+<a id="a931b4d84e8f3541aa62655188b2d2b35" name="a931b4d84e8f3541aa62655188b2d2b35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a931b4d84e8f3541aa62655188b2d2b35">&#9670;&#160;</a></span>HIDDEN_IMPORT</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">list L_HIDDEN_IMPORT</td>
+          <td class="memname">list HIDDEN_IMPORT</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line"><span class="lineno">    1</span>=  [</div>
 <div class="line"><span class="lineno">    2</span>]</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00051">51</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
-
-</div>
-</div>
-<a id="a022b9ca6a18d2bd06a6ccfd41707112f" name="a022b9ca6a18d2bd06a6ccfd41707112f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a022b9ca6a18d2bd06a6ccfd41707112f">&#9670;&#160;</a></span>l_not_allowed_packages</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">l_not_allowed_packages = check_included_packages()</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00105">105</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00053">53</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
 
 </div>
 </div>
@@ -392,7 +359,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00024">24</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00026">26</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
 
 </div>
 </div>
@@ -408,7 +375,23 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00110">110</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00104">104</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+
+</div>
+</div>
+<a id="a89b2f768d678aa846dde5859da94f7ae" name="a89b2f768d678aa846dde5859da94f7ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89b2f768d678aa846dde5859da94f7ae">&#9670;&#160;</a></span>not_allowed_packages</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">not_allowed_packages = check_included_packages()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00099">99</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
 
 </div>
 </div>
@@ -424,7 +407,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00092">92</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00094">94</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
 
 </div>
 </div>
@@ -440,7 +423,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00111">111</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00105">105</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
 
 </div>
 </div>
@@ -451,12 +434,12 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">result = subprocess.run(<a class="el" href="#a60b6bd6c82e7e003776d8b6558d08e06">command</a>, stderr=subprocess.PIPE, text=True, shell=True, check=False)</td>
+          <td class="memname">result = subprocess.run(<a class="el" href="#a60b6bd6c82e7e003776d8b6558d08e06">command</a>, stderr=subprocess.PIPE, text=True, check=False)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00087">87</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00089">89</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
 
 </div>
 </div>
@@ -472,7 +455,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00069">69</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00071">71</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
 
 </div>
 </div>
@@ -488,23 +471,23 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00117">117</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00111">111</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
 
 </div>
 </div>
-<a id="a05453b274ae2ccae1bef10244f3825ba" name="a05453b274ae2ccae1bef10244f3825ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05453b274ae2ccae1bef10244f3825ba">&#9670;&#160;</a></span>s_spec_file</h2>
+<a id="ac6071a65db005c210e21d6436aec0bd5" name="ac6071a65db005c210e21d6436aec0bd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6071a65db005c210e21d6436aec0bd5">&#9670;&#160;</a></span>spec_file</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">str s_spec_file = f&quot;{__title__}.spec&quot;</td>
+          <td class="memname">str spec_file = f&quot;{__title__}.spec&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00119">119</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00113">113</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
 
 </div>
 </div>
@@ -523,7 +506,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">    2</span>    <span class="stringliteral">&quot;No backend available&quot;</span>  <span class="comment"># possible on CI</span></div>
 <div class="line"><span class="lineno">    3</span>]</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00042">42</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00044">44</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
 
 </div>
 </div>
@@ -539,7 +522,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00029">29</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00031">31</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
 
 </div>
 </div>
@@ -555,7 +538,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00030">30</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00032">32</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
 
 </div>
 </div>
@@ -571,7 +554,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00027">27</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="generate__executable_8py_source.html#l00029">29</a> of file <a class="el" href="generate__executable_8py_source.html">generate_executable.py</a>.</p>
 
 </div>
 </div>

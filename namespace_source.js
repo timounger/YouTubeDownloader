@@ -3,7 +3,7 @@ var namespace_source =
     [ "app", "namespace_source_1_1app.html", [
       [ "start_application", "namespace_source_1_1app.html#a39c2ba889ec10db3d045e468643fd7e0", null ],
       [ "log", "namespace_source_1_1app.html#ab09a63eb35b270b5cdbead1983ebdccb", null ],
-      [ "o_window", "namespace_source_1_1app.html#a9d8b1d5a7788d5f2b2d8d5209a1c0b4d", null ]
+      [ "window_instance", "namespace_source_1_1app.html#a2ff0deff66eaa96ff5f47a4145001e89", null ]
     ] ],
     [ "Controller", "namespace_source_1_1_controller.html", "namespace_source_1_1_controller" ],
     [ "Model", "namespace_source_1_1_model.html", "namespace_source_1_1_model" ],

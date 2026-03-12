@@ -31,7 +31,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="app.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.3</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.4</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -176,8 +176,8 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="config_parser_8py_source.html#l00026">26</a> of file <a class="el" href="config_parser_8py_source.html">configParser.py</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   26</span>    <span class="keyword">def </span>__init__(self) -&gt; None:</div>
-<div class="line"><span class="lineno">   27</span>        self.__single_line_option_regex = re.compile(<span class="stringliteral">&quot;^\\s*(\\w+)\\s*=\\s*([^\\\\]*)\\s*$&quot;</span>)</div>
-<div class="line"><span class="lineno">   28</span>        self.__first_line_of_multine_option_regex = re.compile(<span class="stringliteral">&quot;^\\s*(\\w+)\\s*=\\s*(.*)\\\\$&quot;</span>)</div>
+<div class="line"><span class="lineno">   27</span>        self.__single_line_option_regex = re.compile(<span class="stringliteral">r&quot;^\s*(\w+)\s*=\s*([^\\]*)\s*$&quot;</span>)</div>
+<div class="line"><span class="lineno">   28</span>        self.__first_line_of_multiline_option_regex = re.compile(<span class="stringliteral">r&quot;^\s*(\w+)\s*=\s*(.*)\\\s*$&quot;</span>)</div>
 <div class="line"><span class="lineno">   29</span> </div>
 </div><!-- fragment -->
 </div>
@@ -214,7 +214,7 @@ Public Member Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="config_parser_8py_source.html#l00030">30</a> of file <a class="el" href="config_parser_8py_source.html">configParser.py</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   30</span>    <span class="keyword">def </span>load_configuration(self, doxyfile: str) -&gt; dict[str, str | list[str]]:</div>
 <div class="line"><span class="lineno">   31</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">   32</span><span class="stringliteral">        @brief Parse a Doxygen configuration file</span></div>
+<div class="line"><span class="lineno">   32</span><span class="stringliteral">        @brief Parse a Doxygen configuration file.</span></div>
 <div class="line"><span class="lineno">   33</span><span class="stringliteral">        @param doxyfile : doxyfile: Path to the Doxygen configuration file</span></div>
 <div class="line"><span class="lineno">   34</span><span class="stringliteral">        @return A dict with all doxygen configuration</span></div>
 <div class="line"><span class="lineno">   35</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
@@ -230,9 +230,9 @@ Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   45</span>            in_multiline_option = <span class="keyword">False</span></div>
 <div class="line"><span class="lineno">   46</span>            current_multiline_option_name = <span class="keywordtype">None</span></div>
 <div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>            <span class="keywordflow">for</span> line <span class="keywordflow">in</span> file.readlines():</div>
-<div class="line"><span class="lineno">   49</span>                line = line.strip()</div>
-<div class="line"><span class="lineno">   50</span>                <span class="keywordflow">if</span> len(line) == 0:</div>
+<div class="line"><span class="lineno">   48</span>            <span class="keywordflow">for</span> raw_line <span class="keywordflow">in</span> file:</div>
+<div class="line"><span class="lineno">   49</span>                line = raw_line.strip()</div>
+<div class="line"><span class="lineno">   50</span>                <span class="keywordflow">if</span> <span class="keywordflow">not</span> line:</div>
 <div class="line"><span class="lineno">   51</span>                    <span class="keywordflow">continue</span></div>
 <div class="line"><span class="lineno">   52</span> </div>
 <div class="line"><span class="lineno">   53</span>                <span class="keywordflow">if</span> self.__is_comment_line(line):</div>
@@ -295,7 +295,7 @@ Public Member Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="config_parser_8py_source.html#l00074">74</a> of file <a class="el" href="config_parser_8py_source.html">configParser.py</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   74</span>    <span class="keyword">def </span>store_configuration(self, config: dict[str, str | list[str]], doxyfile: str) -&gt; <span class="keywordtype">None</span>:</div>
 <div class="line"><span class="lineno">   75</span>        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">   76</span><span class="stringliteral">        @brief Store the doxygen configuration to the disk</span></div>
+<div class="line"><span class="lineno">   76</span><span class="stringliteral">        @brief Store the doxygen configuration to the disk.</span></div>
 <div class="line"><span class="lineno">   77</span><span class="stringliteral">        @param config : The doxygen configuration you want to write on disk</span></div>
 <div class="line"><span class="lineno">   78</span><span class="stringliteral">        @param doxyfile : The output path where configuration will be written. If the file exist, it will be truncated</span></div>
 <div class="line"><span class="lineno">   79</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>

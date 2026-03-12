@@ -18,14 +18,12 @@ var hierarchy =
     [ "NamedTuple", null, [
       [ "PackageInfo", "classupdate__py__requirements_1_1_package_info.html", null ]
     ] ],
-    [ "object", null, [
-      [ "Ui_MainWindow", "class_source_1_1_views_1_1mainwindow__tk__ui_1_1_ui___main_window.html", [
-        [ "MainWindow", "class_source_1_1_controller_1_1main__window_1_1_main_window.html", null ]
-      ] ]
-    ] ],
     [ "Model", "class_source_1_1_model_1_1model_1_1_model.html", null ],
-    [ "MonitorScale", "class_source_1_1_model_1_1monitor_1_1_monitor_scale.html", null ],
+    [ "ThemeManager", "class_source_1_1_model_1_1monitor_1_1_theme_manager.html", null ],
     [ "XLSCreator", "class_source_1_1_util_1_1openpyxl__util_1_1_x_l_s_creator.html", null ],
+    [ "Ui_MainWindow", "class_source_1_1_views_1_1mainwindow__tk__ui_1_1_ui___main_window.html", [
+      [ "MainWindow", "class_source_1_1_controller_1_1main__window_1_1_main_window.html", null ]
+    ] ],
     [ "str", null, [
       [ "ETheme", "class_source_1_1_util_1_1app__data_1_1_e_theme.html", null ]
     ] ],

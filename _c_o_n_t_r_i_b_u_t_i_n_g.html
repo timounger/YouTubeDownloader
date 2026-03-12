@@ -31,7 +31,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="app.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.3</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.4</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -142,39 +142,39 @@ $(function(){initNavTree('_c_o_n_t_r_i_b_u_t_i_n_g.html','',''); });
   <div class="headertitle"><div class="title">Contributing </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
+<div class="textblock"><h2 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
 Architektur 🏭️</h2>
 <p>Das YouTubeDownloader Tool ist nach dem Model-View-Controller (MVC) Pattern aufgebaut, wobei eine klare Trennung zwischen View und Controller nicht möglich ist.</p>
 <div class="plantumlgraph">
 <object type="image/svg+xml" data="cdYouTubeDownloaderSWComponents.svg"></object>
 </div>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
 Einstiegspunkt</h3>
 <p>Der Einstiegspunkt in die Anwendung ist die Datei <span class="tt"><a class="el" href="app_8py.html" title="Application entry file.">Source/app.py</a></span>. Sie startet den Startbildschirm und dann das Anwendungsfenster.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
 Controller</h3>
 <p>Das gestartete Anwendungsfenster wird von den verschiedenen View Controllern (<span class="tt">Source/Controller</span>) gesteuert. Diese verarbeiten die Benutzereingaben, aktualisieren die im Model gespeicherten Daten und aktualisieren auf dieser Basis die View. Es ist eine Mischung aus View und Controller.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
 Background-Worker</h3>
 <p>Ressourcenintensive Operationen wie z.B. der Download von YouTube Inhalten werden in Threads ausgelagert und befinden sich unter <span class="tt">Source/Worker</span>. Dadurch wird der Main-Thread nicht blockiert, so dass die GUI nicht einfriert.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
 Util</h3>
 <p>Anwendungsweite, globale Konstanten und andere Daten werden in <span class="tt"><a class="el" href="app__data_8py.html" title="Data module (constants and functions related to path and ini file)">Util/app_data.py</a></span> gespeichert.</p>
 <hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
-Versionsverwaltung</h2>
-<p>Die Version ist in <span class="tt"><a class="el" href="version_8py.html" title="Version and general information.">Source/version.py</a></span> gespeichert und wird manuell aktualisiert. Im Ordner <span class="tt"><a class="el" href="namespace_executable.html">Executable</a></span> befindet sich ein Hilfsskript (<span class="tt"><a class="el" href="generate__version__file_8py.html" title="Utility script to create a version info .txt file for the executable.">Executable/generate_version_file.py</a></span>), welches die aktuelle Versionsinfo-Datei erzeugt, die für die Generierung der Exe-Datei benötigt wird.</p>
-<hr  />
 <h2 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
+Versionsverwaltung</h2>
+<p>Die Version ist in <span class="tt"><a class="el" href="version_8py.html" title="Version, build configuration, and feature flags.">Source/version.py</a></span> gespeichert und wird manuell aktualisiert. Im Ordner <span class="tt"><a class="el" href="namespace_executable.html">Executable</a></span> befindet sich ein Hilfsskript (<span class="tt"><a class="el" href="generate__version__file_8py.html" title="Utility script to create a version info .txt file for the executable.">Executable/generate_version_file.py</a></span>), welches die aktuelle Versionsinfo-Datei erzeugt, die für die Generierung der Exe-Datei benötigt wird.</p>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
 Exe-Generierung 🔧</h2>
-<p>Die Generierung der EXE erfolgt mit Hilfe des <span class="tt">pyinstallers</span>. In der Datei <span class="tt"><a class="el" href="generate__executable_8py.html" title="Generate executable file.">Executable/generate_executable.py</a></span> werden die notwendigen Parameter angegeben. Durch Ausführen des Batch-Skripts wird die EXE im Verzeichnis <span class="tt">Executable/bin</span> erzeugt.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
+<p>Die Generierung der EXE erfolgt mit Hilfe des <span class="tt">pyinstallers</span>. In der Datei <span class="tt"><a class="el" href="generate__executable_8py.html" title="Generate single-file Windows executable using PyInstaller.">Executable/generate_executable.py</a></span> werden die notwendigen Parameter angegeben. Durch Ausführen des Batch-Skripts wird die EXE im Verzeichnis <span class="tt">Executable/bin</span> erzeugt.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
 Setup-Generierung 🔧</h2>
 <p>Die Generierung des Installers erfolgt mit Hilfe von <a href="https://jrsoftware.org/isdl.php">InnoSetup6</a>. In der Datei <span class="tt"><a class="el" href="setup_8iss.html">Executable/setup.iss</a></span> sind die notwendigen Parameter spezifiziert. Durch Ausführen des Batch-Skripts <span class="tt"><a class="el" href="generate__setup_8bat.html">Executable/generate_setup.bat</a></span> wird der Installer EXE im Ordner <span class="tt">Executable/bin</span> erzeugt.</p>
 <hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
 GitHub Release Schritte</h2>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
 Vorbereitung</h3>
 <ul class="check">
 <li class="unchecked">Versionierung hochzählen</li>
@@ -189,9 +189,9 @@ Vorbereitung</h3>
 <li class="unchecked">Liste der erlaubten, in EXE eingebundenen Pakete aktualisieren (<span class="tt">L_ALLOWED_THIRD_PARTY_PACKAGES</span> in <span class="tt"><a class="el" href="check__included__packages_8py.html" title="Utility script to list and check if the build executable contains only specified third party packages...">Executable/check_included_packages.py</a></span>)</li>
 </ul>
 <ul class="check">
-<li class="unchecked">Nicht benötigte Pakete explizit ausschließen (<span class="tt">L_EXCLUDE_MODULES</span> in <span class="tt"><a class="el" href="generate__executable_8py.html" title="Generate executable file.">Executable/generate_executable.py</a></span>).</li>
+<li class="unchecked">Nicht benötigte Pakete explizit ausschließen (<span class="tt">L_EXCLUDE_MODULES</span> in <span class="tt"><a class="el" href="generate__executable_8py.html" title="Generate single-file Windows executable using PyInstaller.">Executable/generate_executable.py</a></span>).</li>
 </ul>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
 Tests</h3>
 <ul class="check">
 <li class="unchecked">CI Jobs für statische Prüfungen starten</li>
@@ -199,7 +199,7 @@ Tests</h3>
 <ul class="check">
 <li class="unchecked">stichprobenartige Prüfung aller Funktionen</li>
 </ul>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
 Freigabe</h3>
 <ul class="check">
 <li class="unchecked">Nach Merge in master: Commit taggen (z.B. <span class="tt">v1.0.0</span>) &amp; Release erstellen </li>

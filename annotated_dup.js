@@ -26,7 +26,7 @@ var annotated_dup =
           [ "Model", "class_source_1_1_model_1_1model_1_1_model.html", "class_source_1_1_model_1_1model_1_1_model" ]
         ] ],
         [ "monitor", "namespace_source_1_1_model_1_1monitor.html", [
-          [ "MonitorScale", "class_source_1_1_model_1_1monitor_1_1_monitor_scale.html", "class_source_1_1_model_1_1monitor_1_1_monitor_scale" ]
+          [ "ThemeManager", "class_source_1_1_model_1_1monitor_1_1_theme_manager.html", "class_source_1_1_model_1_1monitor_1_1_theme_manager" ]
         ] ]
       ] ],
       [ "Util", "namespace_source_1_1_util.html", [

@@ -31,7 +31,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="app.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.3</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.4</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -146,18 +146,17 @@ $(function(){initNavTree('namespace_source_1_1_worker_1_1downloader.html','','')
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:DownloadThread" id="r_DownloadThread"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source_1_1_worker_1_1downloader_1_1_download_thread.html">DownloadThread</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread class for download.  <a href="class_source_1_1_worker_1_1downloader_1_1_download_thread.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread that downloads YouTube content and updates the UI progress.  <a href="class_source_1_1_worker_1_1downloader_1_1_download_thread.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a56a0cd25f874a84cfef3cbadc37b7b8c" id="r_a56a0cd25f874a84cfef3cbadc37b7b8c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56a0cd25f874a84cfef3cbadc37b7b8c">B_MP3_CONVERT</a> = False</td></tr>
-<tr class="memitem:a9f18b71ab6db19997fe80d15f7adbee6" id="r_a9f18b71ab6db19997fe80d15f7adbee6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f18b71ab6db19997fe80d15f7adbee6">I_SPEED_AVERAGE_VALUES</a> = 10</td></tr>
 <tr class="memitem:ab09a63eb35b270b5cdbead1983ebdccb" id="r_ab09a63eb35b270b5cdbead1983ebdccb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab09a63eb35b270b5cdbead1983ebdccb">log</a> = logging.getLogger(__title__)</td></tr>
 <tr class="memitem:a7f69098235b70dd2745582ba40052db1" id="r_a7f69098235b70dd2745582ba40052db1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f69098235b70dd2745582ba40052db1">my_filename</a> = None</td></tr>
 <tr class="memitem:a9dc26af9bd1da91a3a22050b8ee15a2e" id="r_a9dc26af9bd1da91a3a22050b8ee15a2e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9dc26af9bd1da91a3a22050b8ee15a2e">my_stream</a> = my_youtube.streams.filter(only_audio=True).first()</td></tr>
 <tr class="memitem:aff00915bb1f2514ffafbcdc7a84d7dda" id="r_aff00915bb1f2514ffafbcdc7a84d7dda"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff00915bb1f2514ffafbcdc7a84d7dda">my_url</a> = &quot;https://www.youtube.com/watch?v=QCRYA6ck3x0&quot;</td></tr>
 <tr class="memitem:a5e9a64c47396671a6cc7a61bb26a7380" id="r_a5e9a64c47396671a6cc7a61bb26a7380"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e9a64c47396671a6cc7a61bb26a7380">my_youtube</a> = YouTube(<a class="el" href="#aff00915bb1f2514ffafbcdc7a84d7dda">my_url</a>)</td></tr>
-<tr class="memitem:ade3077f1105335bb2dded531deb968f0" id="r_ade3077f1105335bb2dded531deb968f0"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade3077f1105335bb2dded531deb968f0">S_DOWNLOAD_FOLDER</a> = &quot;Download&quot;</td></tr>
+<tr class="memitem:a0746149c68d2b93a239a31876d6d1c75" id="r_a0746149c68d2b93a239a31876d6d1c75"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0746149c68d2b93a239a31876d6d1c75">SPEED_AVERAGE_VALUES</a> = 10</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><hr  />
@@ -174,23 +173,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00024">24</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
-
-</div>
-</div>
-<a id="a9f18b71ab6db19997fe80d15f7adbee6" name="a9f18b71ab6db19997fe80d15f7adbee6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f18b71ab6db19997fe80d15f7adbee6">&#9670;&#160;</a></span>I_SPEED_AVERAGE_VALUES</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int I_SPEED_AVERAGE_VALUES = 10</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00032">32</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00026">26</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
 
 </div>
 </div>
@@ -206,7 +189,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00029">29</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00031">31</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
 
 </div>
 </div>
@@ -222,7 +205,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00173">173</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00175">175</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
 
 </div>
 </div>
@@ -238,7 +221,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00174">174</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00176">176</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
 
 </div>
 </div>
@@ -254,7 +237,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00167">167</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00169">169</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
 
 </div>
 </div>
@@ -270,23 +253,23 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00169">169</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00171">171</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
 
 </div>
 </div>
-<a id="ade3077f1105335bb2dded531deb968f0" name="ade3077f1105335bb2dded531deb968f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade3077f1105335bb2dded531deb968f0">&#9670;&#160;</a></span>S_DOWNLOAD_FOLDER</h2>
+<a id="a0746149c68d2b93a239a31876d6d1c75" name="a0746149c68d2b93a239a31876d6d1c75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0746149c68d2b93a239a31876d6d1c75">&#9670;&#160;</a></span>SPEED_AVERAGE_VALUES</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">str S_DOWNLOAD_FOLDER = &quot;Download&quot;</td>
+          <td class="memname">int SPEED_AVERAGE_VALUES = 10</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00031">31</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="downloader_8py_source.html#l00033">33</a> of file <a class="el" href="downloader_8py_source.html">downloader.py</a>.</p>
 
 </div>
 </div>

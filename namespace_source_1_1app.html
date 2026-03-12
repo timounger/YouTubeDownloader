@@ -31,7 +31,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="app.ico"/></td>
   <td id="projectalign">
-   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.3</span>
+   <div id="projectname">YouTubeDownloader<span id="projectnumber">&#160;v1.1.4</span>
    </div>
    <div id="projectbrief">YouTube content downloader</div>
   </td>
@@ -146,12 +146,12 @@ $(function(){initNavTree('namespace_source_1_1app.html','',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a39c2ba889ec10db3d045e468643fd7e0" id="r_a39c2ba889ec10db3d045e468643fd7e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_source_1_1_controller_1_1main__window_1_1_main_window.html">MainWindow</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39c2ba889ec10db3d045e468643fd7e0">start_application</a> ()</td></tr>
-<tr class="memdesc:a39c2ba889ec10db3d045e468643fd7e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start application.  <br /></td></tr>
+<tr class="memdesc:a39c2ba889ec10db3d045e468643fd7e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the application and configure the main window.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ab09a63eb35b270b5cdbead1983ebdccb" id="r_ab09a63eb35b270b5cdbead1983ebdccb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab09a63eb35b270b5cdbead1983ebdccb">log</a> = logging.getLogger(__title__)</td></tr>
-<tr class="memitem:a9d8b1d5a7788d5f2b2d8d5209a1c0b4d" id="r_a9d8b1d5a7788d5f2b2d8d5209a1c0b4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_source_1_1_controller_1_1main__window_1_1_main_window.html">MainWindow</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d8b1d5a7788d5f2b2d8d5209a1c0b4d">o_window</a> = <a class="el" href="#a39c2ba889ec10db3d045e468643fd7e0">start_application</a>()</td></tr>
+<tr class="memitem:a2ff0deff66eaa96ff5f47a4145001e89" id="r_a2ff0deff66eaa96ff5f47a4145001e89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_source_1_1_controller_1_1main__window_1_1_main_window.html">MainWindow</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ff0deff66eaa96ff5f47a4145001e89">window_instance</a> = <a class="el" href="#a39c2ba889ec10db3d045e468643fd7e0">start_application</a>()</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><hr  />
@@ -171,23 +171,23 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Start application. </p>
-<dl class="section return"><dt>Returns</dt><dd>windows and application object </dd></dl>
+<p>Start the application and configure the main window. </p>
+<dl class="section return"><dt>Returns</dt><dd>the initialized main window instance. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="app_8py_source.html#l00023">23</a> of file <a class="el" href="app_8py_source.html">app.py</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   23</span><span class="keyword">def </span>start_application() -&gt; MainWindow:</div>
 <div class="line"><span class="lineno">   24</span>    <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><span class="lineno">   25</span><span class="stringliteral">    @brief Start application</span></div>
-<div class="line"><span class="lineno">   26</span><span class="stringliteral">    @return windows and application object</span></div>
+<div class="line"><span class="lineno">   25</span><span class="stringliteral">    @brief Start the application and configure the main window.</span></div>
+<div class="line"><span class="lineno">   26</span><span class="stringliteral">    @return the initialized main window instance.</span></div>
 <div class="line"><span class="lineno">   27</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">   28</span>    <span class="comment"># Set custom application id to show correct icon instead of Python in the task bar</span></div>
+<div class="line"><span class="lineno">   28</span>    <span class="comment"># Set custom Windows app user model ID (taskbar icon)</span></div>
 <div class="line"><span class="lineno">   29</span>    <span class="keywordflow">try</span>:</div>
 <div class="line"><span class="lineno">   30</span>        <span class="keyword">from</span> ctypes <span class="keyword">import</span> windll  <span class="comment"># only exists on windows. # pylint: disable=import-outside-toplevel</span></div>
-<div class="line"><span class="lineno">   31</span>        app_id = __title__ + <span class="stringliteral">&quot;.&quot;</span> + __version__</div>
-<div class="line"><span class="lineno">   32</span>        log.debug(<span class="stringliteral">&quot;Setting explicit app user model id: %s&quot;</span>, app_id)</div>
+<div class="line"><span class="lineno">   31</span>        app_id = f<span class="stringliteral">&quot;{__title__}.{__version__}&quot;</span></div>
+<div class="line"><span class="lineno">   32</span>        log.debug(<span class="stringliteral">&quot;Setting explicit app user model ID: %s&quot;</span>, app_id)</div>
 <div class="line"><span class="lineno">   33</span>        windll.shell32.SetCurrentProcessExplicitAppUserModelID(app_id)</div>
 <div class="line"><span class="lineno">   34</span>    <span class="keywordflow">except</span> ImportError:</div>
-<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">pass</span></div>
+<div class="line"><span class="lineno">   35</span>        log.debug(<span class="stringliteral">&quot;Windows-specific app user model ID not set&quot;</span>)</div>
 <div class="line"><span class="lineno">   36</span> </div>
 <div class="line"><span class="lineno">   37</span>    window = MainWindow()</div>
 <div class="line"><span class="lineno">   38</span> </div>
@@ -216,14 +216,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a9d8b1d5a7788d5f2b2d8d5209a1c0b4d" name="a9d8b1d5a7788d5f2b2d8d5209a1c0b4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d8b1d5a7788d5f2b2d8d5209a1c0b4d">&#9670;&#160;</a></span>o_window</h2>
+<a id="a2ff0deff66eaa96ff5f47a4145001e89" name="a2ff0deff66eaa96ff5f47a4145001e89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ff0deff66eaa96ff5f47a4145001e89">&#9670;&#160;</a></span>window_instance</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_source_1_1_controller_1_1main__window_1_1_main_window.html">MainWindow</a> o_window = <a class="el" href="#a39c2ba889ec10db3d045e468643fd7e0">start_application</a>()</td>
+          <td class="memname"><a class="el" href="class_source_1_1_controller_1_1main__window_1_1_main_window.html">MainWindow</a> window_instance = <a class="el" href="#a39c2ba889ec10db3d045e468643fd7e0">start_application</a>()</td>
         </tr>
       </table>
 </div><div class="memdoc">
